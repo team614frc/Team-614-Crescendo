@@ -23,9 +23,9 @@ import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.IntakeConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.setXCommand;
-import frc.robot.commands.intakeCommands.Intake;
-import frc.robot.commands.intakeCommands.PivotDown;
-import frc.robot.commands.intakeCommands.PivotUp;
+// import frc.robot.commands.intakeCommands.Intake;
+// import frc.robot.commands.intakeCommands.PivotDown;
+// import frc.robot.commands.intakeCommands.PivotUp;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.PivotSubsystem;
@@ -115,22 +115,22 @@ public class RobotContainer {
    * {@link JoystickButton}.
    */
   private void configureButtonBindings() {
-    m_driverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new setXCommand());
-    m_driverController.rightTrigger().whileTrue(new Intake(IntakeConstants.SCORE_HIGH_SPEED));
-    m_driverController.button(OIConstants.RIGHT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_MID_SPEED));
-    m_driverController.button(OIConstants.LEFT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_LOW_SPEED));
-    m_driverController.leftTrigger().whileTrue(new Intake(IntakeConstants.INTAKE_SPEED));
-    m_driverController.button(OIConstants.A_BUTTON).onTrue(new PivotDown(IntakeConstants.PIVOT_DOWN_SPEED));
-    m_driverController.button(OIConstants.X_BUTTON).onTrue(new PivotUp(IntakeConstants.PIVOT_UP_SPEED));
+    // m_driverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new setXCommand());
+    // m_driverController.rightTrigger().whileTrue(new Intake(IntakeConstants.SCORE_HIGH_SPEED));
+    // m_driverController.button(OIConstants.RIGHT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_MID_SPEED));
+    // m_driverController.button(OIConstants.LEFT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_LOW_SPEED));
+    // m_driverController.leftTrigger().whileTrue(new Intake(IntakeConstants.INTAKE_SPEED));
+    // m_driverController.button(OIConstants.A_BUTTON).onTrue(new PivotDown(IntakeConstants.PIVOT_DOWN_SPEED));
+    // m_driverController.button(OIConstants.X_BUTTON).onTrue(new PivotUp(IntakeConstants.PIVOT_UP_SPEED));
 
-    // m_coDriverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new
-    // setXCommand());
-    m_coDriverController.rightTrigger().whileTrue(new Intake(IntakeConstants.SCORE_HIGH_SPEED));
-    m_coDriverController.button(OIConstants.RIGHT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_MID_SPEED));
-    m_coDriverController.button(OIConstants.LEFT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_LOW_SPEED));
-    m_coDriverController.leftTrigger().whileTrue(new Intake(IntakeConstants.INTAKE_SPEED));
-    m_coDriverController.button(OIConstants.A_BUTTON).onTrue(new PivotDown(IntakeConstants.PIVOT_DOWN_SPEED));
-    m_coDriverController.button(OIConstants.X_BUTTON).onTrue(new PivotUp(IntakeConstants.PIVOT_UP_SPEED));
+    // // m_coDriverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new
+    // // setXCommand());
+    // m_coDriverController.rightTrigger().whileTrue(new Intake(IntakeConstants.SCORE_HIGH_SPEED));
+    // m_coDriverController.button(OIConstants.RIGHT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_MID_SPEED));
+    // m_coDriverController.button(OIConstants.LEFT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_LOW_SPEED));
+    // m_coDriverController.leftTrigger().whileTrue(new Intake(IntakeConstants.INTAKE_SPEED));
+    // m_coDriverController.button(OIConstants.A_BUTTON).onTrue(new PivotDown(IntakeConstants.PIVOT_DOWN_SPEED));
+    // m_coDriverController.button(OIConstants.X_BUTTON).onTrue(new PivotUp(IntakeConstants.PIVOT_UP_SPEED));
   }
 
   /**
