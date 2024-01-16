@@ -12,7 +12,8 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 public class LimelightSubsystem extends SubsystemBase {
   /** Creates a new LimelightSubsystem. */
   private NetworkTable limelightTable;
-
+  public double x, y, area;
+  
   public LimelightSubsystem() {
     limelightTable = NetworkTableInstance.getDefault().getTable("limelight");
   }
@@ -26,15 +27,15 @@ public class LimelightSubsystem extends SubsystemBase {
   }
 
   public double getHorizontalAngle() {
-    return limelightTable.getEntry("tx").getDouble(0.0);
+    return x;
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    double x = limelightTable.getEntry("tx").getDouble(0.0);
-    double y = limelightTable.getEntry("ty").getDouble(0.0);
-    double area = limelightTable.getEntry("ta").getDouble(0.0);
+    x = limelightTable.getEntry("tx").getDouble(0.0);
+    y = limelightTable.getEntry("ty").getDouble(0.0);
+    area = limelightTable.getEntry("ta").getDouble(0.0);
 
     // post to smart dashboard periodically
     SmartDashboard.putNumber("LimelightX", x);
