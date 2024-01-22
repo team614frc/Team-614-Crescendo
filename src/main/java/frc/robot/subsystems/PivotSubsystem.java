@@ -4,6 +4,7 @@
 
 package frc.robot.subsystems;
 
+import com.revrobotics.CANSparkFlex;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkLowLevel.MotorType;
@@ -25,14 +26,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class PivotSubsystem extends SubsystemBase {
   /** Creates a new PivotSubsystem. */
 
-  private CANSparkMax pivotMotor;
+  private CANSparkFlex pivotMotor;
 
   public PivotSubsystem() {
    
-    pivotMotor = new CANSparkMax(IntakeConstants.PIVOT_MOTOR, MotorType.kBrushless);
+    pivotMotor = new CANSparkFlex(IntakeConstants.PIVOT_MOTOR, MotorType.kBrushless);
     pivotMotor.restoreFactoryDefaults();
     pivotMotor.setSmartCurrentLimit(IntakeConstants.MOTOR_CURRENT_LIMIT);
-    pivotMotor.setIdleMode(CANSparkMax.IdleMode.kBrake);
+    pivotMotor.setIdleMode(CANSparkFlex.IdleMode.kBrake);
     pivotMotor.burnFlash();
     SmartDashboard.putData("PivotSubsystem", this);
 
