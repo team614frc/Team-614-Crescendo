@@ -80,7 +80,7 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
     // autoChooser.addOption("Test Path", TestPath1);
-    // SmartDashboard.putData(autoChooser);
+    
     SmartDashboard.putNumber("Pivot Motor Height", pivotSubsystem.getPivotMotorHeight());
     // Configure default commands
     swerveDrive.setDefaultCommand(
@@ -94,6 +94,7 @@ public class RobotContainer {
                 true, true),
             swerveDrive));
     autoChooser = AutoBuilder.buildAutoChooser();
+    SmartDashboard.putData(autoChooser);
 
   }
 
