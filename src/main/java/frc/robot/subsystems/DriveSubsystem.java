@@ -153,31 +153,7 @@ public class DriveSubsystem extends SubsystemBase {
             m_rearRight.getPosition()
         },
         pose);
-    // if (desiredChassisSpeeds != null) {
-    // var currentStates = getModuleStates();
-    // var desiredStates =
-    // DrivetrainConstants.KINEMATICS.toSwerveModuleStates(desiredChassisSpeeds);
-
-    // if(desiredChassisSpeeds.vxMetersPerSecond == 0.0 &&
-    // desiredChassisSpeeds.vyMetersPerSecond == 0.0
-    // && desiredChassisSpeeds.omegaRadiansPerSecond == 0.0) {
-    // // Keep the wheels at their current angle when stopped, don't snap back to
-    // straight
-    // IntStream.range(0, currentStates.length).forEach(i -> desiredStates[i].angle
-    // = currentStates[i].angle);
-    // }
-
-    // SwerveDriveKinematics.desaturateWheelSpeeds(desiredStates,
-    // DrivetrainConstants.MAX_VELOCITY_METERS_PER_SECOND);
-    // setModuleStates(desiredStates);
-    // }
-    // desiredChassisSpeeds = null;
   }
-
-  // public SwerveModuleState[] getModuleStates() {
-  // return Arrays.stream(swerveModules).map(module ->
-  // module.getState()).toArray(SwerveModuleState[]::new);
-  // }
 
   /**
    * Method to drive the robot using joystick info.

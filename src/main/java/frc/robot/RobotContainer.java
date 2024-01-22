@@ -46,11 +46,7 @@ public class RobotContainer {
   // The driver's controller
   CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
   CommandXboxController m_coDriverController = new CommandXboxController(OIConstants.kCoDriverControllerPort);
-  // private AutoBuilder autoBuilder = new AutoBuilder(swerveDrive,
-  // intakeSubsystem, pivotSubsystem);
 
-  // SendableChooser<Command> autoChooser = new SendableChooser<>();
-  // private final Command TestPath1
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
