@@ -18,16 +18,15 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.DriveSubsystem;
 
 public class TargetAprilTag extends Command {
-  
+
   private static final TrapezoidProfile.Constraints X_CONSTRAINTS = new TrapezoidProfile.Constraints(3, 2);
   private static final TrapezoidProfile.Constraints Y_CONSTRAINTS = new TrapezoidProfile.Constraints(3, 2);
-  private static final TrapezoidProfile.Constraints OMEGA_CONSTRAINTS =   new TrapezoidProfile.Constraints(8, 8);
-  
+  private static final TrapezoidProfile.Constraints OMEGA_CONSTRAINTS = new TrapezoidProfile.Constraints(8, 8);
+
   private static final int TAG_TO_CHASE = 2;
-  private static final Transform3d TAG_TO_GOAL = 
-      new Transform3d(
-          new Translation3d(1.5, 0.0, 0.0),
-          new Rotation3d(0.0, 0.0, Math.PI));
+  private static final Transform3d TAG_TO_GOAL = new Transform3d(
+      new Translation3d(1.5, 0.0, 0.0),
+      new Rotation3d(0.0, 0.0, Math.PI));
 
   private final PhotonCamera photonCamera;
   private final DriveSubsystem drivetrainSubsystem;
@@ -40,9 +39,9 @@ public class TargetAprilTag extends Command {
   private PhotonTrackedTarget lastTarget;
 
   public TargetAprilTag(
-        PhotonCamera photonCamera, 
-        DriveSubsystem drivetrainSubsystem,
-        Supplier<Pose2d> poseProvider) {
+      PhotonCamera photonCamera,
+      DriveSubsystem drivetrainSubsystem,
+      Supplier<Pose2d> poseProvider) {
     this.photonCamera = photonCamera;
     this.drivetrainSubsystem = drivetrainSubsystem;
     this.poseProvider = poseProvider;
@@ -67,13 +66,12 @@ public class TargetAprilTag extends Command {
   @Override
   public void execute() {
     var robotPose2d = poseProvider.get();
-    var robotPose = 
-        new Pose3d(
-            robotPose2d.getX(),
-            robotPose2d.getY(),
-            0.0, 
-            new Rotation3d(0.0, 0.0, robotPose2d.getRotation().getRadians()));
-    
+    var robotPose = new Pose3d(
+        robotPose2d.getX(),
+        robotPose2d.getY(),
+        0.0,
+        new Rotation3d(0.0, 0.0, robotPose2d.getRotation().getRadians()));
+
     var photonRes = photonCamera.getLatestResult();
     if (photonRes.hasTargets()) {
       // Find the tag we want to chase
@@ -85,14 +83,15 @@ public class TargetAprilTag extends Command {
         var target = targetOpt.get();
         // This is new target data, so recalculate the goal
         lastTarget = target;
-        
+
         // Transform the robot's pose to find the camera's pose
-        var cameraPose = robotPose.transformBy(new Transform3d(new Translation3d(-0.3425, 0.0, -0.233), new Rotation3d()));
+        var cameraPose = robotPose
+            .transformBy(new Transform3d(new Translation3d(-0.3425, 0.0, -0.233), new Rotation3d()));
 
         // Trasnform the camera's pose to the target's pose
         var camToTarget = target.getBestCameraToTarget();
         var targetPose = cameraPose.transformBy(camToTarget);
-        
+
         // Transform the tag's pose to set our goal
         var goalPose = targetPose.transformBy(TAG_TO_GOAL).toPose2d();
 
@@ -102,7 +101,7 @@ public class TargetAprilTag extends Command {
         omegaController.setGoal(goalPose.getRotation().getRadians());
       }
     }
-    
+
     if (lastTarget == null) {
       // No target has been visible
       drivetrainSubsystem.stop();
@@ -124,7 +123,7 @@ public class TargetAprilTag extends Command {
       }
 
       drivetrainSubsystem.drive(
-        ChassisSpeeds.fromFieldRelativeSpeeds(xSpeed, ySpeed, omegaSpeed, robotPose2d.getRotation()));
+          ChassisSpeeds.fromFieldRelativeSpeeds(xSpeed, ySpeed, omegaSpeed, robotPose2d.getRotation()), true);
     }
   }
 
