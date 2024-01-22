@@ -22,13 +22,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class PivotUp extends Command {
 
-  private double pivotSpeed;
+  private double climbSpeed;
 
   /** Creates a new Pivot. */
-  public PivotUp(double pivotSpeed) {
+  public PivotUp(double climbSpeed) {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.pivotSubsystem);
-    this.pivotSpeed = pivotSpeed;
+    addRequirements(RobotContainer.climbSubsystem);
+    this.climbSpeed = climbSpeed;
   }
 
   // Called when the command is initially scheduled.
@@ -40,16 +40,16 @@ public class PivotUp extends Command {
   @Override
   public void execute() {
 
-    if (Math.abs(RobotContainer.pivotSubsystem.getPivotMotorHeight()) > 2 ) {
-      RobotContainer.pivotSubsystem.set(-pivotSpeed);
+    if (Math.abs(RobotContainer.climbSubsystem.getClimbMotorHeight()) > 2 ) {
+      RobotContainer.climbSubsystem.set(-climbSpeed);
 
       SmartDashboard.putNumber("Encoder Position in Command",
-      RobotContainer.pivotSubsystem.getPivotMotorHeight());
+      RobotContainer.climbSubsystem.getClimbMotorHeight());
       
     
     } else {
       
-      RobotContainer.pivotSubsystem.set(IntakeConstants.MOTOR_ZERO_SPEED);
+      RobotContainer.climbSubsystem.set(IntakeConstants.MOTOR_ZERO_SPEED);
 
       
 
@@ -61,7 +61,7 @@ public class PivotUp extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.pivotSubsystem.set(IntakeConstants.MOTOR_ZERO_SPEED);
+    RobotContainer.climbSubsystem.set(IntakeConstants.MOTOR_ZERO_SPEED);
   }
 
   // Returns true when the command should end.

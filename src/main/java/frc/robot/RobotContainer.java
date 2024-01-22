@@ -26,7 +26,7 @@ import frc.robot.commands.intakeCommands.PivotUp;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.LimelightSubsystem;
-import frc.robot.subsystems.PivotSubsystem;
+import frc.robot.subsystems.ClimbSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
@@ -48,7 +48,7 @@ public class RobotContainer {
   // The robot's subsystems
   public final static DriveSubsystem swerveDrive = new DriveSubsystem();
   public final static IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
-  public final static PivotSubsystem pivotSubsystem = new PivotSubsystem();
+  public final static ClimbSubsystem climbSubsystem = new ClimbSubsystem();
   public final static LimelightSubsystem limeSubsystem = new LimelightSubsystem();
   // The driver's controller
   CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
@@ -72,7 +72,7 @@ public class RobotContainer {
     configureButtonBindings();
     // autoChooser.addOption("Test Path", TestPath1);
     //SmartDashboard.putData(autoChooser);
-    SmartDashboard.putNumber("Pivot Motor Height", pivotSubsystem.getPivotMotorHeight());
+    SmartDashboard.putNumber("Pivot Motor Height", climbSubsystem.getClimbMotorHeight());
     // Configure default commands
     swerveDrive.setDefaultCommand(
         // The left stick controls translation of the robot.

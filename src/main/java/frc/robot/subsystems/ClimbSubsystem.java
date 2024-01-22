@@ -23,39 +23,39 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * @returns pivotPosition through the getPosition()
  */
 
-public class PivotSubsystem extends SubsystemBase {
+public class ClimbSubsystem extends SubsystemBase {
   /** Creates a new PivotSubsystem. */
 
-  private CANSparkFlex pivotMotor;
+  private CANSparkFlex climbMotor;
 
-  public PivotSubsystem() {
+  public ClimbSubsystem() {
    
-    pivotMotor = new CANSparkFlex(IntakeConstants.PIVOT_MOTOR, MotorType.kBrushless);
-    pivotMotor.restoreFactoryDefaults();
-    pivotMotor.setSmartCurrentLimit(IntakeConstants.MOTOR_CURRENT_LIMIT);
-    pivotMotor.setIdleMode(CANSparkFlex.IdleMode.kBrake);
-    pivotMotor.burnFlash();
-    SmartDashboard.putData("PivotSubsystem", this);
+    climbMotor = new CANSparkFlex(IntakeConstants.PIVOT_MOTOR, MotorType.kBrushless);
+    climbMotor.restoreFactoryDefaults();
+    climbMotor.setSmartCurrentLimit(IntakeConstants.MOTOR_CURRENT_LIMIT);
+    climbMotor.setIdleMode(CANSparkFlex.IdleMode.kBrake);
+    climbMotor.burnFlash();
+    SmartDashboard.putData("ClimbSubsystem", this);
 
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    SmartDashboard.putNumber("Encoder Value Subsystem", getPivotMotorHeight());
+    SmartDashboard.putNumber("Encoder Value Subsystem", getClimbMotorHeight());
   }
 
-  public double getPivotMotorHeight () {
-    return pivotMotor.getEncoder().getPosition();
+  public double getClimbMotorHeight () {
+    return climbMotor.getEncoder().getPosition();
   }
 
   public RelativeEncoder getEncoder()
   {
-    return pivotMotor.getEncoder();
+    return climbMotor.getEncoder();
   }
 
   public void set(double pivotSpeed) {
-    pivotMotor.set(pivotSpeed); 
+    climbMotor.set(pivotSpeed); 
   }
 
 
