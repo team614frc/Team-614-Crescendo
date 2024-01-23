@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 4.011408666824489,
-      "y": 7.328155479208991
+      "x": 1.0,
+      "y": 7.0
     },
     "rotation": 0
   },
@@ -14,7 +14,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "RoundnBack"
+            "pathName": "Arc"
           }
         }
       ]
