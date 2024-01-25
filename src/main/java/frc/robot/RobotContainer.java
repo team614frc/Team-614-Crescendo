@@ -5,6 +5,7 @@
 package frc.robot;
 
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
 
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj.XboxController;
@@ -57,6 +58,15 @@ public class RobotContainer {
     DriverStation.startDataLog(DataLogManager.getLog());
     // (optional) Record only DS control data by uncommenting next line.
     // DriverStation.startDataLog(DataLogManager.getLog(), false);
+
+    //Commands for pathplanner to use in autos.
+    NamedCommands.registerCommand("Score High", new Intake(IntakeConstants.SCORE_HIGH_SPEED).withTimeout(0.5));
+    NamedCommands.registerCommand("Score Middle", new Intake(IntakeConstants.SCORE_MID_SPEED).withTimeout(0.5));
+    NamedCommands.registerCommand("Score Low", new Intake(IntakeConstants.SCORE_LOW_SPEED).withTimeout(0.5));
+    NamedCommands.registerCommand("Pivot Down", new PivotDown(IntakeConstants.PIVOT_DOWN_SPEED));
+    NamedCommands.registerCommand("Pivot Up", new PivotUp(IntakeConstants.PIVOT_UP_SPEED));
+    NamedCommands.registerCommand("Long Intake", new Intake(IntakeConstants.INTAKE_SPEED).withTimeout(2));
+    NamedCommands.registerCommand("Short Intake", new Intake(IntakeConstants.INTAKE_SPEED).withTimeout(0.5));
 
     NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
     NetworkTableEntry tx = table.getEntry("tx");

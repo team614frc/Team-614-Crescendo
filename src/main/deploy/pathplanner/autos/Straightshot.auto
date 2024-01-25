@@ -14,7 +14,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "turncurve"
+            "pathName": "Straightshot"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Score High"
           }
         }
       ]
