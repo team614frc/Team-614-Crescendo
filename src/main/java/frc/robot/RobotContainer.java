@@ -23,6 +23,7 @@ import frc.robot.commands.setXCommand;
 import frc.robot.commands.intakeCommands.Intake;
 import frc.robot.commands.intakeCommands.PivotDown;
 import frc.robot.commands.intakeCommands.PivotUp;
+import frc.robot.commands.visionCommands.alignScore;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.LimelightSubsystem;
@@ -51,8 +52,8 @@ public class RobotContainer {
   public final static ClimbSubsystem climbSubsystem = new ClimbSubsystem();
   public final static LimelightSubsystem limeSubsystem = new LimelightSubsystem();
   // The driver's controller
-  CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
-  CommandXboxController m_coDriverController = new CommandXboxController(OIConstants.kCoDriverControllerPort);
+  static CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
+  static CommandXboxController m_coDriverController = new CommandXboxController(OIConstants.kCoDriverControllerPort);
   //private AutoBuilder autoBuilder = new AutoBuilder(swerveDrive, intakeSubsystem, pivotSubsystem);
 
   // SendableChooser<Command> autoChooser = new SendableChooser<>();
@@ -97,6 +98,15 @@ public class RobotContainer {
    * passing it to a
    * {@link JoystickButton}.
    */
+
+  public static CommandXboxController getDriverController() {
+    return m_driverController;
+  }
+
+  public static CommandXboxController getCoDriverController () {
+    return m_coDriverController;
+  }
+
   private void configureButtonBindings() {
     m_driverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new setXCommand());
     m_driverController.rightTrigger().whileTrue(new Intake(IntakeConstants.SCORE_HIGH_SPEED));
@@ -105,6 +115,7 @@ public class RobotContainer {
     m_driverController.leftTrigger().whileTrue(new Intake(IntakeConstants.INTAKE_SPEED));
     m_driverController.button(OIConstants.A_BUTTON).onTrue(new PivotDown(IntakeConstants.PIVOT_DOWN_SPEED));
     m_driverController.button(OIConstants.X_BUTTON).onTrue(new PivotUp(IntakeConstants.PIVOT_UP_SPEED));
+    m_driverController.button(OIConstants.Y_BUTTON).whileTrue(new alignScore());
 
     // m_coDriverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new
     // setXCommand());

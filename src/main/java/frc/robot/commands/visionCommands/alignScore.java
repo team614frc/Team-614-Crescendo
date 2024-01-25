@@ -4,7 +4,13 @@
 
 package frc.robot.commands.visionCommands;
 
+import edu.wpi.first.math.MathUtil;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.RunCommand;
+import frc.robot.Constants.OIConstants;
+import frc.robot.Constants.VisionConstants;
+import frc.robot.Robot;
 import frc.robot.RobotContainer;
 
 public class alignScore extends Command {
@@ -12,7 +18,7 @@ public class alignScore extends Command {
   private double angle;
 
   public alignScore() {
-    addRequirements(RobotContainer.limeSubsystem);
+    addRequirements(RobotContainer.swerveDrive);
   }
 
   // Called when the command is initially scheduled.
@@ -23,16 +29,36 @@ public class alignScore extends Command {
   @Override
   public void execute() {
     angle = RobotContainer.limeSubsystem.getHorizontalAngle();
-    // insert code to adjust robot angle here
+    SmartDashboard.putNumber("ANGLE VALUE IN ALIGN SCORE", angle);
+    SmartDashboard.putNumber("controller x, up down", RobotContainer.getDriverController().getLeftY());
+    SmartDashboard.putNumber("controller x left right", RobotContainer.getDriverController().getLeftX());
+    SmartDashboard.putNumber("DEADBAND", -MathUtil.applyDeadband(RobotContainer.getDriverController().getLeftY(), OIConstants.kDriveDeadband));
+    if (angle < -VisionConstants.threshold || angle > VisionConstants.threshold){
+      RobotContainer.swerveDrive.drive(
+                -MathUtil.applyDeadband(RobotContainer.getDriverController().getLeftY(), OIConstants.kDriveDeadband),
+                -MathUtil.applyDeadband(RobotContainer.getDriverController().getLeftX(), OIConstants.kDriveDeadband),
+                -(VisionConstants.simpleAlignYInput * (angle/100.0)),
+                true, true);
+    } else {
+      RobotContainer.swerveDrive.drive(
+                -MathUtil.applyDeadband(RobotContainer.getDriverController().getLeftY(), OIConstants.kDriveDeadband),
+                -MathUtil.applyDeadband(RobotContainer.getDriverController().getLeftX(), OIConstants.kDriveDeadband),
+                -MathUtil.applyDeadband(RobotContainer.getDriverController().getRightX(), OIConstants.kDriveDeadband),
+                true, true);
+    }
   }
+    // insert code to adjust robot angle here
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+
+  }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
+    SmartDashboard.putNumber("ANGLE VALUE IN ALIGN SCORE", angle);
     return false;
   }
 }
