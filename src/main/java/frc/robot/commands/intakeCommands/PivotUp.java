@@ -27,7 +27,7 @@ public class PivotUp extends Command {
   /** Creates a new Pivot. */
   public PivotUp(double climbSpeed) {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.climbSubsystem);
+    addRequirements(RobotContainer.pivotSubsystem);
     this.climbSpeed = climbSpeed;
   }
 
@@ -40,16 +40,16 @@ public class PivotUp extends Command {
   @Override
   public void execute() {
 
-    if (Math.abs(RobotContainer.climbSubsystem.getClimbMotorHeight()) > 2 ) {
-      RobotContainer.climbSubsystem.set(-climbSpeed);
+    if (Math.abs(RobotContainer.pivotSubsystem.getPivotMotorHeight()) > 2 ) {
+      RobotContainer.pivotSubsystem.set(-climbSpeed);
 
       SmartDashboard.putNumber("Encoder Position in Command",
-      RobotContainer.climbSubsystem.getClimbMotorHeight());
+      RobotContainer.pivotSubsystem.getPivotMotorHeight());
       
     
     } else {
       
-      RobotContainer.climbSubsystem.set(IntakeConstants.MOTOR_ZERO_SPEED);
+      RobotContainer.pivotSubsystem.set(IntakeConstants.MOTOR_ZERO_SPEED);
 
       
 
@@ -61,7 +61,7 @@ public class PivotUp extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.climbSubsystem.set(IntakeConstants.MOTOR_ZERO_SPEED);
+    RobotContainer.pivotSubsystem.set(IntakeConstants.MOTOR_ZERO_SPEED);
   }
 
   // Returns true when the command should end.

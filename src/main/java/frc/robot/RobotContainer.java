@@ -27,7 +27,7 @@ import frc.robot.commands.visionCommands.alignScore;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.LimelightSubsystem;
-import frc.robot.subsystems.ClimbSubsystem;
+import frc.robot.subsystems.PivotSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
@@ -49,7 +49,7 @@ public class RobotContainer {
   // The robot's subsystems
   public final static DriveSubsystem swerveDrive = new DriveSubsystem();
   public final static IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
-  public final static ClimbSubsystem climbSubsystem = new ClimbSubsystem();
+  public final static PivotSubsystem pivotSubsystem = new PivotSubsystem();
   public final static LimelightSubsystem limeSubsystem = new LimelightSubsystem();
   // The driver's controller
   static CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
@@ -73,21 +73,18 @@ public class RobotContainer {
     configureButtonBindings();
     // autoChooser.addOption("Test Path", TestPath1);
     //SmartDashboard.putData(autoChooser);
-    SmartDashboard.putNumber("Pivot Motor Height", climbSubsystem.getClimbMotorHeight());
     // Configure default commands
     swerveDrive.setDefaultCommand(
         // The left stick controls translation of the robot.
         // Turning is controlled by the X axis of the right stick.
         new RunCommand(
             () -> swerveDrive.drive(
-                -MathUtil.applyDeadband(m_driverController.getLeftY(), OIConstants.kDriveDeadband),
-                -MathUtil.applyDeadband(m_driverController.getLeftX(), OIConstants.kDriveDeadband),
-                -MathUtil.applyDeadband(m_driverController.getRightX(), OIConstants.kDriveDeadband),
+                getDriverLeftY(),
+                getDriverLeftX(),
+                getDriverRightX(),
                 true, true),
             swerveDrive));
   }
-
-  
 
   /**
    * Use this method to define your button->command mappings. Buttons can be
@@ -99,8 +96,17 @@ public class RobotContainer {
    * {@link JoystickButton}.
    */
 
-  public static CommandXboxController getDriverController() {
-    return m_driverController;
+  public static double getDriverLeftX() {
+    return -MathUtil.applyDeadband(m_driverController.getLeftX(), OIConstants.kDriveDeadband);
+  }
+
+  public static double getDriverLeftY() {
+    return -MathUtil.applyDeadband(m_driverController.getLeftY(), OIConstants.kDriveDeadband);
+  }
+
+  public static double getDriverRightX() {
+    return -MathUtil.applyDeadband(m_driverController.getRightX(), OIConstants.kDriveDeadband);
+
   }
 
   public static CommandXboxController getCoDriverController () {

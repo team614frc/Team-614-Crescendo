@@ -4,7 +4,7 @@
 
 package frc.robot.subsystems;
 
-import com.revrobotics.CANSparkFlex;
+import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
@@ -26,22 +26,22 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class IntakeSubsystem extends SubsystemBase {
   /** Creates a new IntakeSubsystem. */
   
-  private CANSparkFlex intakeMotorR;
-  private CANSparkFlex intakeMotorL;
+  private CANSparkMax intakeMotorR;
+  private CANSparkMax intakeMotorL;
   
   public IntakeSubsystem() {
     // Creates a new motor
 
-    intakeMotorR = new CANSparkFlex(IntakeConstants.INTAKE_MOTOR_RIGHT, MotorType.kBrushless);
-    intakeMotorL = new CANSparkFlex(IntakeConstants.INTAKE_MOTOR_LEFT, MotorType.kBrushless); // cjeck motor type pls when test
+    intakeMotorR = new CANSparkMax(IntakeConstants.INTAKE_MOTOR_RIGHT, MotorType.kBrushless);
+    intakeMotorL = new CANSparkMax(IntakeConstants.INTAKE_MOTOR_LEFT, MotorType.kBrushless); // cjeck motor type pls when test
     intakeMotorR.restoreFactoryDefaults();
     intakeMotorL.restoreFactoryDefaults();
     intakeMotorR.setSmartCurrentLimit(IntakeConstants.MOTOR_CURRENT_LIMIT);
     intakeMotorL.setSmartCurrentLimit(IntakeConstants.MOTOR_CURRENT_LIMIT);
     intakeMotorL.setInverted(false);
     intakeMotorR.setInverted(false);
-    intakeMotorL.setIdleMode(CANSparkFlex.IdleMode.kBrake);
-    intakeMotorR.setIdleMode(CANSparkFlex.IdleMode.kBrake);
+    intakeMotorL.setIdleMode(CANSparkMax.IdleMode.kBrake);
+    intakeMotorR.setIdleMode(CANSparkMax.IdleMode.kBrake);
     intakeMotorL.burnFlash();
     intakeMotorR.burnFlash(); 
     // intakeMotorL.setInverted(false);

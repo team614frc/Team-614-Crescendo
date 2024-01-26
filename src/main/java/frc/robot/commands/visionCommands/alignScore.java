@@ -29,21 +29,17 @@ public class alignScore extends Command {
   @Override
   public void execute() {
     angle = RobotContainer.limeSubsystem.getHorizontalAngle();
-    SmartDashboard.putNumber("ANGLE VALUE IN ALIGN SCORE", angle);
-    SmartDashboard.putNumber("controller x, up down", RobotContainer.getDriverController().getLeftY());
-    SmartDashboard.putNumber("controller x left right", RobotContainer.getDriverController().getLeftX());
-    SmartDashboard.putNumber("DEADBAND", -MathUtil.applyDeadband(RobotContainer.getDriverController().getLeftY(), OIConstants.kDriveDeadband));
     if (angle < -VisionConstants.threshold || angle > VisionConstants.threshold){
       RobotContainer.swerveDrive.drive(
-                -MathUtil.applyDeadband(RobotContainer.getDriverController().getLeftY(), OIConstants.kDriveDeadband),
-                -MathUtil.applyDeadband(RobotContainer.getDriverController().getLeftX(), OIConstants.kDriveDeadband),
+                RobotContainer.getDriverLeftY(),
+                RobotContainer.getDriverLeftX(),
                 -(VisionConstants.simpleAlignYInput * (angle/100.0)),
                 true, true);
     } else {
       RobotContainer.swerveDrive.drive(
-                -MathUtil.applyDeadband(RobotContainer.getDriverController().getLeftY(), OIConstants.kDriveDeadband),
-                -MathUtil.applyDeadband(RobotContainer.getDriverController().getLeftX(), OIConstants.kDriveDeadband),
-                -MathUtil.applyDeadband(RobotContainer.getDriverController().getRightX(), OIConstants.kDriveDeadband),
+                RobotContainer.getDriverLeftY(),
+                RobotContainer.getDriverLeftX(),
+                RobotContainer.getDriverRightX(),
                 true, true);
     }
   }
