@@ -4,13 +4,9 @@
 
 package frc.robot.commands.visionCommands;
 
-import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.RunCommand;
-import frc.robot.Constants.OIConstants;
 import frc.robot.Constants.VisionConstants;
-import frc.robot.Robot;
 import frc.robot.RobotContainer;
 
 public class alignScore extends Command {
