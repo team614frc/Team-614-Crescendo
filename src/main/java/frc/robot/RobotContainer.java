@@ -105,11 +105,6 @@ public class RobotContainer {
 
   public static double getDriverRightX() {
     return -MathUtil.applyDeadband(m_driverController.getRightX(), OIConstants.kDriveDeadband);
-
-  }
-
-  public static CommandXboxController getCoDriverController () {
-    return m_coDriverController;
   }
 
   private void configureButtonBindings() {

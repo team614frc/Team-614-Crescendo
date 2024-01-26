@@ -22,13 +22,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class PivotUp extends Command {
 
-  private double climbSpeed;
+  private double pivotSpeed;
 
   /** Creates a new Pivot. */
-  public PivotUp(double climbSpeed) {
+  public PivotUp(double pivotSpeed) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.pivotSubsystem);
-    this.climbSpeed = climbSpeed;
+    this.pivotSpeed = pivotSpeed;
   }
 
   // Called when the command is initially scheduled.
@@ -41,7 +41,7 @@ public class PivotUp extends Command {
   public void execute() {
 
     if (Math.abs(RobotContainer.pivotSubsystem.getPivotMotorHeight()) > 2 ) {
-      RobotContainer.pivotSubsystem.set(-climbSpeed);
+      RobotContainer.pivotSubsystem.set(-pivotSpeed);
 
       SmartDashboard.putNumber("Encoder Position in Command",
       RobotContainer.pivotSubsystem.getPivotMotorHeight());

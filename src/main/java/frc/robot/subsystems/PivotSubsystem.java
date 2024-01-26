@@ -4,7 +4,6 @@
 
 package frc.robot.subsystems;
 
-import com.revrobotics.CANSparkFlex;
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkLowLevel.MotorType;
@@ -33,10 +32,8 @@ public class PivotSubsystem extends SubsystemBase {
     pivotMotor = new CANSparkMax(IntakeConstants.PIVOT_MOTOR, MotorType.kBrushless);
     pivotMotor.restoreFactoryDefaults();
     pivotMotor.setSmartCurrentLimit(IntakeConstants.MOTOR_CURRENT_LIMIT);
-    pivotMotor.setIdleMode(CANSparkFlex.IdleMode.kBrake);
+    pivotMotor.setIdleMode(CANSparkMax.IdleMode.kBrake);
     pivotMotor.burnFlash();
-    SmartDashboard.putData("ClimbSubsystem", this);
-
   }
 
   @Override

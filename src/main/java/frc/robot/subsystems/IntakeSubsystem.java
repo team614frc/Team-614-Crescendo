@@ -32,7 +32,7 @@ public class IntakeSubsystem extends SubsystemBase {
     // Creates a new motor
 
     intakeMotorR = new CANSparkMax(IntakeConstants.INTAKE_MOTOR_RIGHT, MotorType.kBrushless);
-    intakeMotorL = new CANSparkMax(IntakeConstants.INTAKE_MOTOR_LEFT, MotorType.kBrushless); // cjeck motor type pls when test
+    intakeMotorL = new CANSparkMax(IntakeConstants.INTAKE_MOTOR_LEFT, MotorType.kBrushless);
     intakeMotorR.restoreFactoryDefaults();
     intakeMotorL.restoreFactoryDefaults();
     intakeMotorR.setSmartCurrentLimit(IntakeConstants.MOTOR_CURRENT_LIMIT);
