@@ -29,7 +29,7 @@ public class AlignScore extends Command {
       RobotContainer.swerveDrive.drive(
                 RobotContainer.getDriverLeftY(),
                 RobotContainer.getDriverLeftX(),
-                -(VisionConstants.simpleAlignYInput * (angle/100.0)),
+                -(VisionConstants.simpleAlignYInput * angle / 100.0),
                 true, true);
     } else {
       RobotContainer.swerveDrive.drive(
@@ -50,7 +50,6 @@ public class AlignScore extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    SmartDashboard.putNumber("ANGLE VALUE IN ALIGN SCORE", angle);
     return false;
   }
 }
