@@ -19,10 +19,10 @@ import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.IntakeConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.setXCommand;
-import frc.robot.commands.intakeCommands.Intake;
-import frc.robot.commands.intakeCommands.PivotDown;
-import frc.robot.commands.intakeCommands.PivotUp;
-import frc.robot.commands.visionCommands.alignScore;
+import frc.robot.commands.intake.Intake;
+import frc.robot.commands.intake.PivotDown;
+import frc.robot.commands.intake.PivotUp;
+import frc.robot.commands.vision.AlignScore;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.LimelightSubsystem;
@@ -115,7 +115,7 @@ public class RobotContainer {
     m_driverController.leftTrigger().whileTrue(new Intake(IntakeConstants.INTAKE_SPEED));
     m_driverController.button(OIConstants.A_BUTTON).onTrue(new PivotDown(IntakeConstants.PIVOT_DOWN_SPEED));
     m_driverController.button(OIConstants.X_BUTTON).onTrue(new PivotUp(IntakeConstants.PIVOT_UP_SPEED));
-    m_driverController.button(OIConstants.Y_BUTTON).whileTrue(new alignScore());
+    m_driverController.button(OIConstants.Y_BUTTON).whileTrue(new AlignScore());
 
     // m_coDriverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new
     // setXCommand());

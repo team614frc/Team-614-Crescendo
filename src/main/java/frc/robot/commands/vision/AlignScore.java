@@ -2,18 +2,18 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands.visionCommands;
+package frc.robot.commands.vision;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.VisionConstants;
 import frc.robot.RobotContainer;
 
-public class alignScore extends Command {
+public class AlignScore extends Command {
   /** Creates a new alignScore. */
   private double angle;
 
-  public alignScore() {
+  public AlignScore() {
     addRequirements(RobotContainer.swerveDrive);
   }
 
