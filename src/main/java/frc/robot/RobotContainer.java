@@ -16,7 +16,9 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import frc.robot.Constants.ShooterConstants;
 import frc.robot.Constants.OIConstants;
-import frc.robot.commands.Shooter;
+import frc.robot.commands.intakeCommands.Shooter;
+import frc.robot.commands.intakeCommands.PivotDown;
+import frc.robot.commands.intakeCommands.PivotUp;
 import frc.robot.commands.setXCommand;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
@@ -117,6 +119,8 @@ public class RobotContainer {
     m_driverController.button(OIConstants.RIGHT_BUMPER).whileTrue(new Shooter(ShooterConstants.SCORE_MID_SPEED));
     m_driverController.button(OIConstants.LEFT_BUMPER).whileTrue(new Shooter(ShooterConstants.SCORE_LOW_SPEED));
     m_driverController.leftTrigger().whileTrue(new Shooter(ShooterConstants.SHOOTER_SPEED));
+    m_driverController.button(OIConstants.A_BUTTON).onTrue(new PivotDown(ShooterConstants.PIVOT_DOWN_SPEED));
+    m_driverController.button(OIConstants.X_BUTTON).onTrue(new PivotUp(ShooterConstants.PIVOT_UP_SPEED));
 
     // m_coDriverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new
     // setXCommand());
@@ -125,6 +129,8 @@ public class RobotContainer {
     m_coDriverController.button(OIConstants.RIGHT_BUMPER).whileTrue(new Shooter(ShooterConstants.SCORE_MID_SPEED));
     m_coDriverController.button(OIConstants.LEFT_BUMPER).whileTrue(new Shooter(ShooterConstants.SCORE_LOW_SPEED));
     m_coDriverController.leftTrigger().whileTrue(new Shooter(ShooterConstants.SHOOTER_SPEED));
+    m_coDriverController.button(OIConstants.A_BUTTON).onTrue(new PivotDown(ShooterConstants.PIVOT_DOWN_SPEED));
+    m_coDriverController.button(OIConstants.X_BUTTON).onTrue(new PivotUp(ShooterConstants.PIVOT_UP_SPEED));
   }
 
   /**
