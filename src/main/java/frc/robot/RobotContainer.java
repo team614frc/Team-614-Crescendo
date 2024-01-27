@@ -14,14 +14,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
-import frc.robot.Constants.IntakeConstants;
+import frc.robot.Constants.ShooterConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.setXCommand;
-import frc.robot.commands.intakeCommands.Intake;
-import frc.robot.commands.intakeCommands.PivotDown;
-import frc.robot.commands.intakeCommands.PivotUp;
+import frc.robot.commands.intakeCommands.Shooter;
 import frc.robot.subsystems.DriveSubsystem;
-import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.ShooterSubsystem;
 import frc.robot.subsystems.PivotSubsystem;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
@@ -40,7 +38,7 @@ import edu.wpi.first.wpilibj.DriverStation;
 public class RobotContainer {
   // The robot's subsystems
   public final static DriveSubsystem swerveDrive = new DriveSubsystem();
-  public final static IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
+  public final static ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
   public final static PivotSubsystem pivotSubsystem = new PivotSubsystem();
   private final SendableChooser<Command> autoChooser;
 
@@ -60,13 +58,10 @@ public class RobotContainer {
     // DriverStation.startDataLog(DataLogManager.getLog(), false);
 
     //Commands for pathplanner to use in autos.
-    NamedCommands.registerCommand("Score High", new Intake(IntakeConstants.SCORE_HIGH_SPEED).withTimeout(0.5));
-    NamedCommands.registerCommand("Score Middle", new Intake(IntakeConstants.SCORE_MID_SPEED).withTimeout(0.5));
-    NamedCommands.registerCommand("Score Low", new Intake(IntakeConstants.SCORE_LOW_SPEED).withTimeout(0.5));
-    NamedCommands.registerCommand("Pivot Down", new PivotDown(IntakeConstants.PIVOT_DOWN_SPEED));
-    NamedCommands.registerCommand("Pivot Up", new PivotUp(IntakeConstants.PIVOT_UP_SPEED));
-    NamedCommands.registerCommand("Long Intake", new Intake(IntakeConstants.INTAKE_SPEED).withTimeout(2));
-    NamedCommands.registerCommand("Short Intake", new Intake(IntakeConstants.INTAKE_SPEED).withTimeout(0.5));
+    // NamedCommands.registerCommand("Score Speaker", new Shooter(ShooterConstants.SCORE_SPEAKER_SPEED).withTimeout(0.5));
+    // NamedCommands.registerCommand("Score Amp", new Shooter(ShooterConstants.SCORE_AMP_SPEED).withTimeout(0.5));
+    NamedCommands.registerCommand("Long Intake", new Shooter(ShooterConstants.SHOOTER_SPEED).withTimeout(2));
+    NamedCommands.registerCommand("Short Intake", new Shooter(ShooterConstants.SHOOTER_SPEED).withTimeout(0.5));
 
     NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
     NetworkTableEntry tx = table.getEntry("tx");
@@ -115,21 +110,18 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     m_driverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new setXCommand());
-    m_driverController.rightTrigger().whileTrue(new Intake(IntakeConstants.SCORE_HIGH_SPEED));
-    m_driverController.button(OIConstants.RIGHT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_MID_SPEED));
-    m_driverController.button(OIConstants.LEFT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_LOW_SPEED));
-    m_driverController.leftTrigger().whileTrue(new Intake(IntakeConstants.INTAKE_SPEED));
-    m_driverController.button(OIConstants.A_BUTTON).onTrue(new PivotDown(IntakeConstants.PIVOT_DOWN_SPEED));
-    m_driverController.button(OIConstants.X_BUTTON).onTrue(new PivotUp(IntakeConstants.PIVOT_UP_SPEED));
+    m_driverController.rightTrigger().whileTrue(new Shooter(ShooterConstants.SCORE_HIGH_SPEED));
+    m_driverController.button(OIConstants.RIGHT_BUMPER).whileTrue(new Shooter(ShooterConstants.SCORE_MID_SPEED));
+    m_driverController.button(OIConstants.LEFT_BUMPER).whileTrue(new Shooter(ShooterConstants.SCORE_LOW_SPEED));
+    m_driverController.leftTrigger().whileTrue(new Shooter(ShooterConstants.SHOOTER_SPEED));
 
     // m_coDriverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new
     // setXCommand());
-    m_coDriverController.rightTrigger().whileTrue(new Intake(IntakeConstants.SCORE_HIGH_SPEED));
-    m_coDriverController.button(OIConstants.RIGHT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_MID_SPEED));
-    m_coDriverController.button(OIConstants.LEFT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_LOW_SPEED));
-    m_coDriverController.leftTrigger().whileTrue(new Intake(IntakeConstants.INTAKE_SPEED));
-    m_coDriverController.button(OIConstants.A_BUTTON).onTrue(new PivotDown(IntakeConstants.PIVOT_DOWN_SPEED));
-    m_coDriverController.button(OIConstants.X_BUTTON).onTrue(new PivotUp(IntakeConstants.PIVOT_UP_SPEED));
+    m_coDriverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new setXCommand());
+    m_coDriverController.rightTrigger().whileTrue(new Shooter(ShooterConstants.SCORE_HIGH_SPEED));
+    m_coDriverController.button(OIConstants.RIGHT_BUMPER).whileTrue(new Shooter(ShooterConstants.SCORE_MID_SPEED));
+    m_coDriverController.button(OIConstants.LEFT_BUMPER).whileTrue(new Shooter(ShooterConstants.SCORE_LOW_SPEED));
+    m_coDriverController.leftTrigger().whileTrue(new Shooter(ShooterConstants.SHOOTER_SPEED));
   }
 
   /**

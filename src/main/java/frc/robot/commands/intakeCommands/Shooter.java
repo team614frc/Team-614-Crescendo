@@ -6,26 +6,26 @@ package frc.robot.commands.intakeCommands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
-import frc.robot.Constants.IntakeConstants;
+import frc.robot.Constants.ShooterConstants;
 
 /**
- * The Intake Command simply uses the IntakeSubsystem
- * to set the Intake rollers to a specific value.
- * Also sets the intake to a rest speed in order to hold the game piece
- * when there is no input on the intake.
+ * The Shooter Command simply uses the ShooterSubsystem
+ * to set the Shooter rollers to a specific value.
+ * Also sets the shooter to a rest speed in order to hold the game piece
+ * when there is no input on the shooter.
  * -
- * @param intakeSpeed,RobotContainer.intakeSubsystem this is the value that the intake will get set to
+ * @param shooterSpeed,RobotContainer.shooterSubsystem this is the value that the intake will get set to
  */
 
-public class Intake extends Command {
+public class Shooter extends Command {
   
-  public double intakeSpeed;
+  public double shooterSpeed;
 
   /** Creates a new Intake. */
-  public Intake(double intakeSpeed) {
+  public Shooter(double shooterSpeed) {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.intakeSubsystem);
-    this.intakeSpeed = intakeSpeed;
+    addRequirements(RobotContainer.shooterSubsystem);
+    this.shooterSpeed = shooterSpeed;
   }
 
   // Called when the command is initially scheduled.
@@ -35,15 +35,15 @@ public class Intake extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    RobotContainer.intakeSubsystem.set(intakeSpeed);
-    RobotContainer.intakeSubsystem.getSpeed();
+    RobotContainer.shooterSubsystem.set(shooterSpeed);
+    RobotContainer.shooterSubsystem.getSpeed();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.intakeSubsystem.set(IntakeConstants.INTAKE_REST_SPEED);
-    RobotContainer.intakeSubsystem.getSpeed();
+    RobotContainer.shooterSubsystem.set(ShooterConstants.SHOOTER_REST_SPEED);
+    RobotContainer.shooterSubsystem.getSpeed();
   }
 
   // Returns true when the command should end.

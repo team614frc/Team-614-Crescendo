@@ -9,7 +9,7 @@ import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants.IntakeConstants;
+import frc.robot.Constants.ShooterConstants;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -29,9 +29,9 @@ public class PivotSubsystem extends SubsystemBase {
 
   public PivotSubsystem() {
    
-    pivotMotor = new CANSparkMax(IntakeConstants.PIVOT_MOTOR, MotorType.kBrushless);
+    pivotMotor = new CANSparkMax(ShooterConstants.PIVOT_MOTOR, MotorType.kBrushless);
     pivotMotor.restoreFactoryDefaults();
-    pivotMotor.setSmartCurrentLimit(IntakeConstants.MOTOR_CURRENT_LIMIT);
+    pivotMotor.setSmartCurrentLimit(ShooterConstants.MOTOR_CURRENT_LIMIT);
     pivotMotor.setIdleMode(CANSparkMax.IdleMode.kBrake);
     pivotMotor.burnFlash();
     SmartDashboard.putData("PivotSubsystem", this);
