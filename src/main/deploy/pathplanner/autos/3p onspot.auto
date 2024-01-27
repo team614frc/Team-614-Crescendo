@@ -1,0 +1,67 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 1.5,
+      "y": 5.0
+    },
+    "rotation": 0.0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "Score High"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "3p 1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Pivot Up"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Score High"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "3p 2"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Pivot Up"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "3p 3"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Score High"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}

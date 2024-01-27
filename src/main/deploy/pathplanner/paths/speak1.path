@@ -1,0 +1,128 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 1.329669568430046,
+        "y": 7.015216939524788
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 1.3296695684300466,
+        "y": 6.47414967557208
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 1.329669568430046,
+        "y": 5.625233795920088
+      },
+      "prevControl": {
+        "x": 1.189738379475275,
+        "y": 5.4853026069668
+      },
+      "nextControl": {
+        "x": 1.7523554480094203,
+        "y": 6.047919675494981
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.6,
+        "y": 6.754012053476603
+      },
+      "prevControl": {
+        "x": 2.086918973837948,
+        "y": 6.296903502895866
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 1,
+      "rotationDegrees": 0,
+      "rotateFast": false
+    },
+    {
+      "waypointRelativePos": 1.6,
+      "rotationDegrees": 40.0,
+      "rotateFast": false
+    }
+  ],
+  "constraintZones": [],
+  "eventMarkers": [
+    {
+      "name": "Score",
+      "waypointRelativePos": 0.85,
+      "command": {
+        "type": "sequential",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Score High"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "pivdn",
+      "waypointRelativePos": 1.2,
+      "command": {
+        "type": "sequential",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Pivot Down"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "intake",
+      "waypointRelativePos": 1.45,
+      "command": {
+        "type": "sequential",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Long Intake"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 1.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 40.0,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "3p at speaker",
+  "previewStartingState": null,
+  "useDefaultConstraints": false
+}

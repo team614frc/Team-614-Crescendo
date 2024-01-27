@@ -1,0 +1,61 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 1.329669568430046,
+      "y": 7.015216939524788
+    },
+    "rotation": 0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "speak1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Pivot Up"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "speak2"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Pivot Up"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "speak3"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Pivot Up"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Score High"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}
