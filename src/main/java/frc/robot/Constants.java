@@ -30,8 +30,8 @@ public final class Constants {
 
   public static final class ShooterConstants {
     // CAN IDs for the Intake Motors
-    public static final int SHOOTER_MOTOR_RIGHT = 4;
-    public static final int SHOOTER_MOTOR_LEFT = 33;
+    public static final int SHOOTER_MOTOR_RIGHT = 48; //current values for testing, actual values are 4 and 33.
+    public static final int SHOOTER_MOTOR_LEFT = 47;
 
     // CAN ID for the Pivot Motors
     public static final int PIVOT_MOTOR = 13;
