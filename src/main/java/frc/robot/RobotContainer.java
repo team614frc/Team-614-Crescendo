@@ -58,8 +58,11 @@ public class RobotContainer {
     // DriverStation.startDataLog(DataLogManager.getLog(), false);
 
     //Commands for pathplanner to use in autos.
-    // NamedCommands.registerCommand("Score Speaker", new Shooter(ShooterConstants.SCORE_SPEAKER_SPEED).withTimeout(0.5));
-    // NamedCommands.registerCommand("Score Amp", new Shooter(ShooterConstants.SCORE_AMP_SPEED).withTimeout(0.5));
+    NamedCommands.registerCommand("Score High", new Intake(ShooterConstants.SCORE_HIGH_SPEED).withTimeout(0.5));
+    NamedCommands.registerCommand("Score Middle", new Intake(ShooterConstants.SCORE_MID_SPEED).withTimeout(0.5));
+    NamedCommands.registerCommand("Score Low", new Intake(ShooterConstants.SCORE_LOW_SPEED).withTimeout(0.5));
+    NamedCommands.registerCommand("Pivot Down", new PivotDown(ShooterConstants.PIVOT_DOWN_SPEED));
+    NamedCommands.registerCommand("Pivot Up", new PivotUp(ShooterConstants.PIVOT_UP_SPEED));
     NamedCommands.registerCommand("Long Intake", new Shooter(ShooterConstants.SHOOTER_SPEED).withTimeout(2));
     NamedCommands.registerCommand("Short Intake", new Shooter(ShooterConstants.SHOOTER_SPEED).withTimeout(0.5));
 
