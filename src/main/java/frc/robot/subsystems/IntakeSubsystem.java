@@ -4,12 +4,12 @@
 
 package frc.robot.subsystems;
 
-import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkLowLevel.MotorType;
+import com.revrobotics.CANSparkMax;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.IntakeConstants;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 /**
@@ -43,7 +43,6 @@ public class IntakeSubsystem extends SubsystemBase {
     intakeMotorR.setIdleMode(CANSparkMax.IdleMode.kBrake);
     intakeMotorL.burnFlash();
     intakeMotorR.burnFlash(); 
-
     // intakeMotorL.setInverted(false);
     // intakeMotorR.setInverted(true);
     //intakeMotorL.follow(intakeMotorR); // Sets the left motor to be the follow of the right intake motor
@@ -53,9 +52,6 @@ public class IntakeSubsystem extends SubsystemBase {
 @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    
-    
-    
   }
 
   public void getSpeed() {

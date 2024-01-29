@@ -34,8 +34,6 @@ public class PivotSubsystem extends SubsystemBase {
     pivotMotor.setSmartCurrentLimit(IntakeConstants.MOTOR_CURRENT_LIMIT);
     pivotMotor.setIdleMode(CANSparkMax.IdleMode.kBrake);
     pivotMotor.burnFlash();
-    SmartDashboard.putData("PivotSubsystem", this);
-
   }
 
   @Override
