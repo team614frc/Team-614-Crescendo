@@ -54,15 +54,17 @@ public class PivotSubsystem extends PIDSubsystem {
     SmartDashboard.putNumber("Encoder Value Subsystem", getPivotMotorHeight());
   }
 
+  @Override
   protected void useOutput(double output, double setpoint) {
-    if ((getPivotMotorHeight() > 21) && (setpoint > 21)) {
-      pivotMotor.set(0);
-    } else {
+    // if ((getPivotMotorHeight() > 21) && (setpoint > 21)) {
+    //   pivotMotor.set(0);
+    // } else {
+      SmartDashboard.putNumber("PID Target", setpoint);
       //tiltLeftMotor.set(-1 * (output + getController().calculate(getMeasurement(), setpoint)));
       pivotMotor.set(output + getController().calculate(getMeasurement(), setpoint));
     }
-  }
-
+  
+    @Override
   protected double getMeasurement() {
     return RobotContainer.pivotSubsystem.getPivotMotorHeight();
   }

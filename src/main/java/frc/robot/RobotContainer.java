@@ -15,7 +15,6 @@ import edu.wpi.first.networktables.NetworkTableEntry;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import frc.robot.Constants.IntakeConstants;
 import frc.robot.Constants.OIConstants;
-import frc.robot.commands.PivotPID;
 import frc.robot.commands.setXCommand;
 import frc.robot.commands.intakeCommands.Intake;
 import frc.robot.commands.intakeCommands.PivotDown;
@@ -29,6 +28,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj.DataLogManager;
 import edu.wpi.first.wpilibj.DriverStation;
+import frc.robot.commands.PivotPIDCommand;
 
 /*
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -111,7 +111,7 @@ public class RobotContainer {
     m_driverController.button(OIConstants.LEFT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_LOW_SPEED));
     m_driverController.leftTrigger().whileTrue(new Intake(IntakeConstants.INTAKE_SPEED));
     m_driverController.button(OIConstants.A_BUTTON).onTrue(new PivotDown(IntakeConstants.PIVOT_DOWN_SPEED));
-    m_driverController.button(OIConstants.X_BUTTON).onTrue(new PivotPID(0));
+    m_driverController.button(OIConstants.X_BUTTON).onTrue(new PivotPIDCommand(0));
 
     // m_coDriverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new
     // setXCommand());
@@ -120,7 +120,7 @@ public class RobotContainer {
     m_coDriverController.button(OIConstants.LEFT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_LOW_SPEED));
     m_coDriverController.leftTrigger().whileTrue(new Intake(IntakeConstants.INTAKE_SPEED));
     m_coDriverController.button(OIConstants.A_BUTTON).onTrue(new PivotDown(IntakeConstants.PIVOT_DOWN_SPEED));
-    m_coDriverController.button(OIConstants.X_BUTTON).onTrue(new PivotPID(0));
+    m_coDriverController.button(OIConstants.X_BUTTON).onTrue(new PivotPIDCommand(0));
   }
 
   /**
