@@ -50,6 +50,7 @@ public class PivotSubsystem extends PIDSubsystem {
 
   @Override
   public void periodic() {
+    super.periodic();
     // This method will be called once per scheduler run
     SmartDashboard.putNumber("Encoder Value Subsystem", getPivotMotorHeight());
   }
