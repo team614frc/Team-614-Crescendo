@@ -50,6 +50,10 @@ public final class Constants {
     public static final double PIVOT_MAX = 10;
     public static final double PIVOT_MIN = 0;
 
+    public static final double PIVOT_kP = 0.025;
+    public static final double PIVOT_kI = 0;
+    public static final double PIVOT_kD = 0;
+
     public static final int MOTOR_CURRENT_LIMIT = 40;
   }
 
