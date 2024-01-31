@@ -17,8 +17,6 @@ import frc.robot.Constants.IntakeConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.setXCommand;
 import frc.robot.commands.intakeCommands.Intake;
-import frc.robot.commands.intakeCommands.PivotDown;
-import frc.robot.commands.intakeCommands.PivotUp;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.PivotSubsystem;
@@ -110,8 +108,8 @@ public class RobotContainer {
     m_driverController.button(OIConstants.RIGHT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_MID_SPEED));
     m_driverController.button(OIConstants.LEFT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_LOW_SPEED));
     m_driverController.leftTrigger().whileTrue(new Intake(IntakeConstants.INTAKE_SPEED));
-    m_driverController.button(OIConstants.A_BUTTON).onTrue(new PivotPIDCommand(18));
-    m_driverController.button(OIConstants.X_BUTTON).onTrue(new PivotPIDCommand(0));
+    m_driverController.button(OIConstants.A_BUTTON).onTrue(new PivotPIDCommand(18));  //(Vroomba) Sets arm to lowest position
+    m_driverController.button(OIConstants.X_BUTTON).onTrue(new PivotPIDCommand(0)); //(Vroomba) Sets arm to shooting position
 
     // m_coDriverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new
     // setXCommand());
@@ -119,7 +117,7 @@ public class RobotContainer {
     m_coDriverController.button(OIConstants.RIGHT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_MID_SPEED));
     m_coDriverController.button(OIConstants.LEFT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_LOW_SPEED));
     m_coDriverController.leftTrigger().whileTrue(new Intake(IntakeConstants.INTAKE_SPEED));
-    m_coDriverController.button(OIConstants.A_BUTTON).onTrue(new PivotDown(IntakeConstants.PIVOT_DOWN_SPEED));
+    m_coDriverController.button(OIConstants.A_BUTTON).onTrue(new PivotPIDCommand(18));
     m_coDriverController.button(OIConstants.X_BUTTON).onTrue(new PivotPIDCommand(0));
   }
 

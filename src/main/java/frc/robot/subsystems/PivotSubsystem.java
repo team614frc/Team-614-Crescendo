@@ -9,10 +9,7 @@ import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj2.command.PIDSubsystem;
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants;
 import frc.robot.Constants.IntakeConstants;
-import frc.robot.Robot;
 import frc.robot.RobotContainer;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -33,10 +30,10 @@ public class PivotSubsystem extends PIDSubsystem {
   private CANSparkMax pivotMotor;
 
   public PivotSubsystem() {
-   
     super(
        // The controller that the command will use
         new PIDController(IntakeConstants.PIVOT_kP, IntakeConstants.PIVOT_kI, IntakeConstants.PIVOT_kD));
+
     getController().setTolerance(0.1);
     
     pivotMotor = new CANSparkMax(IntakeConstants.PIVOT_MOTOR, MotorType.kBrushless);
@@ -45,23 +42,17 @@ public class PivotSubsystem extends PIDSubsystem {
     pivotMotor.setIdleMode(CANSparkMax.IdleMode.kBrake);
     pivotMotor.burnFlash();
     SmartDashboard.putData("PivotSubsystem", this);
-
   }
 
   @Override
   public void periodic() {
-    super.periodic();
     // This method will be called once per scheduler run
+    super.periodic();
     SmartDashboard.putNumber("Encoder Value Subsystem", getPivotMotorHeight());
   }
 
   @Override
   protected void useOutput(double output, double setpoint) {
-    // if ((getPivotMotorHeight() > 21) && (setpoint > 21)) {
-    //   pivotMotor.set(0);
-    // } else {
-      SmartDashboard.putNumber("PID Target", setpoint);
-      //tiltLeftMotor.set(-1 * (output + getController().calculate(getMeasurement(), setpoint)));
       pivotMotor.set(output + getController().calculate(getMeasurement(), setpoint));
     }
   
