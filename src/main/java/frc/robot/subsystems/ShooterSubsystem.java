@@ -4,7 +4,7 @@
 
 package frc.robot.subsystems;
 
-import com.revrobotics.CANSparkMax;
+import com.revrobotics.CANSparkFlex;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -25,22 +25,22 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class ShooterSubsystem extends SubsystemBase {
   /** Creates a new ShooterSubsystem. */
   
-  private CANSparkMax shooterMotorR;
-  private CANSparkMax shooterMotorL;
+  private CANSparkFlex shooterMotorR;
+  private CANSparkFlex shooterMotorL;
   
   public ShooterSubsystem() {
     // Creates a new motor
 
-    shooterMotorR = new CANSparkMax(ShooterConstants.SHOOTER_MOTOR_RIGHT, MotorType.kBrushless);
-    shooterMotorL = new CANSparkMax(ShooterConstants.SHOOTER_MOTOR_LEFT, MotorType.kBrushless);
+    shooterMotorR = new CANSparkFlex(ShooterConstants.SHOOTER_MOTOR_RIGHT, MotorType.kBrushless);
+    shooterMotorL = new CANSparkFlex(ShooterConstants.SHOOTER_MOTOR_LEFT, MotorType.kBrushless);
     shooterMotorR.restoreFactoryDefaults();
     shooterMotorL.restoreFactoryDefaults();
     shooterMotorR.setSmartCurrentLimit(ShooterConstants.MOTOR_CURRENT_LIMIT);
     shooterMotorL.setSmartCurrentLimit(ShooterConstants.MOTOR_CURRENT_LIMIT);
     shooterMotorL.setInverted(false);
     shooterMotorR.setInverted(false);
-    shooterMotorL.setIdleMode(CANSparkMax.IdleMode.kBrake);
-    shooterMotorR.setIdleMode(CANSparkMax.IdleMode.kBrake);
+    shooterMotorL.setIdleMode(CANSparkFlex.IdleMode.kBrake);
+    shooterMotorR.setIdleMode(CANSparkFlex.IdleMode.kBrake);
     shooterMotorL.burnFlash();
     shooterMotorR.burnFlash(); 
 
@@ -58,7 +58,7 @@ public class ShooterSubsystem extends SubsystemBase {
 
   public void getSpeed() {
     SmartDashboard.putNumber("Shooter Speed Right", shooterMotorR.get());
-    SmartDashboard.putNumber("Shooter Speed Right", shooterMotorL.get());
+    SmartDashboard.putNumber("Shooter Speed Left", shooterMotorL.get());
   }
 
   // Sets the value of the motor to a double, at which the motor will run
