@@ -54,6 +54,9 @@ public final class Constants {
   }
 
   public static final class VisionConstants {
+
+    public static final int sensorPort1 = 0;
+
     public static final double alignSetpoint = 0.0;
     public static final double simpleAlignYInput = 1.5;
     public static final double threshold = 0.5;

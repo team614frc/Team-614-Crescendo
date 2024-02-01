@@ -5,6 +5,7 @@
 package frc.robot.commands.intake;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Robot;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.IntakeConstants;
 
@@ -35,7 +36,11 @@ public class Intake extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    RobotContainer.intakeSubsystem.set(intakeSpeed);
+    if (intakeSpeed > 0 && RobotContainer.intakeSubsystem.getSensorRange() < 85) {
+      RobotContainer.intakeSubsystem.set(0);
+    } else {
+      RobotContainer.intakeSubsystem.set(intakeSpeed);
+    }
     RobotContainer.intakeSubsystem.getSpeed();
   }
 
