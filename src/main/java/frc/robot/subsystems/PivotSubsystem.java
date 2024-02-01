@@ -18,9 +18,10 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * The PivotSubsystem has the motor objects for the motors of the
  * Pivot on the robot. It also sets them a value based on the input
  * received from a command
- * - 
+ * -
+ * 
  * @param pivotSpeed Variable represents the speed passed from a command
- * that pivot motors should be set to
+ *                   that pivot motors should be set to
  * @returns pivotPosition through the getPosition()
  */
 
@@ -31,11 +32,11 @@ public class PivotSubsystem extends PIDSubsystem {
 
   public PivotSubsystem() {
     super(
-       // The controller that the command will use
+        // The controller that the command will use
         new PIDController(IntakeConstants.PIVOT_kP, IntakeConstants.PIVOT_kI, IntakeConstants.PIVOT_kD));
 
     getController().setTolerance(0.1);
-    
+
     pivotMotor = new CANSparkMax(IntakeConstants.PIVOT_MOTOR, MotorType.kBrushless);
     pivotMotor.restoreFactoryDefaults();
     pivotMotor.setSmartCurrentLimit(IntakeConstants.MOTOR_CURRENT_LIMIT);
@@ -53,25 +54,24 @@ public class PivotSubsystem extends PIDSubsystem {
 
   @Override
   protected void useOutput(double output, double setpoint) {
-      pivotMotor.set(output + getController().calculate(getMeasurement(), setpoint));
-    }
-  
-    @Override
+    pivotMotor.set(output + getController().calculate(getMeasurement(), setpoint));
+  }
+
+  @Override
   protected double getMeasurement() {
     return RobotContainer.pivotSubsystem.getPivotMotorHeight();
   }
 
-  public double getPivotMotorHeight () {
+  public double getPivotMotorHeight() {
     return pivotMotor.getEncoder().getPosition();
   }
 
-  public RelativeEncoder getEncoder()
-  {
+  public RelativeEncoder getEncoder() {
     return pivotMotor.getEncoder();
   }
 
   public void set(double pivotSpeed) {
-    pivotMotor.set(pivotSpeed); 
+    pivotMotor.set(pivotSpeed);
   }
 
   public boolean atSetpoint() {
