@@ -5,9 +5,11 @@
 package frc.robot.commands.intake;
 
 import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants;
 import frc.robot.Robot;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.IntakeConstants;
+import frc.robot.Constants.VisionConstants;
 
 /**
  * The Intake Command simply uses the IntakeSubsystem
@@ -36,8 +38,10 @@ public class Intake extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (intakeSpeed > 0 && RobotContainer.intakeSubsystem.getSensorRange() < 85) {
-      RobotContainer.intakeSubsystem.set(0);
+    if (intakeSpeed > IntakeConstants.MOTOR_ZERO_SPEED
+      && RobotContainer.intakeSubsystem.getSensorRange() < VisionConstants.sensorThreshold) {
+      RobotContainer.intakeSubsystem.set(IntakeConstants.MOTOR_LOAD_SPEED);
+      // feeder loadback
     } else {
       RobotContainer.intakeSubsystem.set(intakeSpeed);
     }

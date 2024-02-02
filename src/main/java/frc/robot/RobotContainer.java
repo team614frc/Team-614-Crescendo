@@ -40,7 +40,7 @@ public class RobotContainer {
   public final static DriveSubsystem swerveDrive = new DriveSubsystem();
   public final static IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
   public final static PivotSubsystem pivotSubsystem = new PivotSubsystem();
-  // public final static LimelightSubsystem limeSubsystem = new LimelightSubsystem();
+  public final static LimelightSubsystem limeSubsystem = new LimelightSubsystem();
   // The driver's controller
   static CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
   static CommandXboxController m_coDriverController = new CommandXboxController(OIConstants.kCoDriverControllerPort);
