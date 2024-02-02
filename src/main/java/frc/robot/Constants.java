@@ -45,6 +45,7 @@ public final class Constants {
     public static final double PIVOT_UP_SPEED = 0.2;
     public static final double PIVOT_DOWN_SPEED = -0.2;
     public static final double MOTOR_ZERO_SPEED = 0;
+    public static final double MOTOR_LOAD_SPEED = -0.07;
 
     // Encoder Values for the Intake and Pivot
     public static final double PIVOT_MAX = 10;
@@ -54,6 +55,10 @@ public final class Constants {
   }
 
   public static final class VisionConstants {
+
+    public static final int sensorPort1 = 0;
+    public static final double sensorThreshold = 120;
+
     public static final double alignSetpoint = 0.0;
     public static final double simpleAlignYInput = 1.5;
     public static final double threshold = 0.5;

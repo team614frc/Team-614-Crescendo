@@ -7,9 +7,13 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.CANSparkFlex;
 
+import java.sql.Time;
+
+import com.playingwithfusion.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.IntakeConstants;
+import frc.robot.Constants.VisionConstants;
 
 
 /**
@@ -27,7 +31,8 @@ public class IntakeSubsystem extends SubsystemBase {
   
   private CANSparkFlex intakeMotorR;
   private CANSparkFlex intakeMotorL;
-  
+  private TimeOfFlight sensor;
+
   public IntakeSubsystem() {
     // Creates a new motor
 
@@ -35,14 +40,20 @@ public class IntakeSubsystem extends SubsystemBase {
     intakeMotorL = new CANSparkFlex(IntakeConstants.INTAKE_MOTOR_LEFT, MotorType.kBrushless);
     intakeMotorR.restoreFactoryDefaults();
     intakeMotorL.restoreFactoryDefaults();
+
     intakeMotorR.setSmartCurrentLimit(IntakeConstants.MOTOR_CURRENT_LIMIT);
     intakeMotorL.setSmartCurrentLimit(IntakeConstants.MOTOR_CURRENT_LIMIT);
+
     intakeMotorL.setInverted(false);
     intakeMotorR.setInverted(false);
     intakeMotorL.setIdleMode(CANSparkFlex.IdleMode.kBrake);
     intakeMotorR.setIdleMode(CANSparkFlex.IdleMode.kBrake);
     intakeMotorL.burnFlash();
     intakeMotorR.burnFlash(); 
+
+    sensor = new TimeOfFlight(VisionConstants.sensorPort1);
+    sensor.setRangeOfInterest(1000, 1000, 1000, 1000);
+
     // intakeMotorL.setInverted(false);
     // intakeMotorR.setInverted(true);
     //intakeMotorL.follow(intakeMotorR); // Sets the left motor to be the follow of the right intake motor
@@ -52,12 +63,17 @@ public class IntakeSubsystem extends SubsystemBase {
 @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    SmartDashboard.putNumber("Sensor Value", getSensorRange());
   }
 
   public void getSpeed() {
     //intakeMotorR.get();
     SmartDashboard.putNumber("Intake Speed Right", intakeMotorR.get());
     SmartDashboard.putNumber("Intake Speed Right", intakeMotorL.get());
+  }
+
+  public double getSensorRange() {
+    return sensor.getRange();
   }
 
   // Sets the value of the motor to a double, at which the motor will run

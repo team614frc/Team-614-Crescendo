@@ -5,7 +5,9 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.LimelightHelpers;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
 
@@ -13,6 +15,7 @@ public class LimelightSubsystem extends SubsystemBase {
   /** Creates a new LimelightSubsystem. */
   private NetworkTable limelightTable;
   private double x, y, area;
+  private Pose2d test;
   
   public LimelightSubsystem() {
     limelightTable = NetworkTableInstance.getDefault().getTable("limelight");
@@ -36,7 +39,9 @@ public class LimelightSubsystem extends SubsystemBase {
     x = limelightTable.getEntry("tx").getDouble(0.0);
     y = limelightTable.getEntry("ty").getDouble(0.0);
     area = limelightTable.getEntry("ta").getDouble(0.0);
-
+    test = LimelightHelpers.getBotPose2d("limelight");
+    
+    
     // post to smart dashboard periodically
     SmartDashboard.putNumber("LimelightX", x);
     SmartDashboard.putNumber("LimelightY", y);
