@@ -53,6 +53,12 @@ public final class Constants {
     public static final int MOTOR_CURRENT_LIMIT = 40;
   }
 
+  public static final class VisionConstants {
+    public static final double alignSetpoint = 0.0;
+    public static final double simpleAlignYInput = 1.5;
+    public static final double threshold = 0.5;
+  }
+
   public static final class DriveConstants {
     // Driving Parameters - Note that these are not the maximum capable speeds of
     // the robot, rather the allowed maximum speeds

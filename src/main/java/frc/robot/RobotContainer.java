@@ -4,40 +4,29 @@
 
 package frc.robot;
 
+import com.pathplanner.lib.auto.AutoBuilder;
+
 import edu.wpi.first.math.MathUtil;
-import edu.wpi.first.math.controller.PIDController;
-import edu.wpi.first.math.controller.ProfiledPIDController;
-import edu.wpi.first.math.geometry.Pose2d;
-import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.math.geometry.Translation2d;
-import edu.wpi.first.math.trajectory.Trajectory;
-import edu.wpi.first.math.trajectory.TrajectoryConfig;
-import edu.wpi.first.math.trajectory.TrajectoryGenerator;
+import edu.wpi.first.wpilibj.DataLogManager;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.networktables.NetworkTable;
-import edu.wpi.first.networktables.NetworkTableEntry;
-import edu.wpi.first.networktables.NetworkTableInstance;
-import frc.robot.Constants.AutoConstants;
-import frc.robot.Constants.DriveConstants;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.RunCommand;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
+import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.IntakeConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.setXCommand;
-// import frc.robot.commands.intakeCommands.Intake;
-// import frc.robot.commands.intakeCommands.PivotDown;
-// import frc.robot.commands.intakeCommands.PivotUp;
+import frc.robot.commands.intake.Intake;
+import frc.robot.commands.intake.PivotDown;
+import frc.robot.commands.intake.PivotUp;
+import frc.robot.commands.vision.AlignScore;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.LimelightSubsystem;
 import frc.robot.subsystems.PivotSubsystem;
-import edu.wpi.first.wpilibj2.command.Command;
-import edu.wpi.first.wpilibj2.command.RunCommand;
-import edu.wpi.first.wpilibj2.command.SwerveControllerCommand;
-import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
-import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import edu.wpi.first.wpilibj.DataLogManager;
-import edu.wpi.first.wpilibj.DriverStation;
-
-import java.util.List;
 
 /*
  * This class is where the bulk of the robot should be declared.  Since Command-based is a
@@ -51,14 +40,14 @@ public class RobotContainer {
   public final static DriveSubsystem swerveDrive = new DriveSubsystem();
   public final static IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
   public final static PivotSubsystem pivotSubsystem = new PivotSubsystem();
-
+  public final static LimelightSubsystem limeSubsystem = new LimelightSubsystem();
   // The driver's controller
-  CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
-  CommandXboxController m_coDriverController = new CommandXboxController(OIConstants.kCoDriverControllerPort);
-  //private AutoBuilder autoBuilder = new AutoBuilder(swerveDrive, intakeSubsystem, pivotSubsystem);
+  static CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
+  static CommandXboxController m_coDriverController = new CommandXboxController(OIConstants.kCoDriverControllerPort);
+  // private AutoBuilder autoBuilder = new AutoBuilder(swerveDrive,
+  // intakeSubsystem, pivotSubsystem);
+  private final SendableChooser<Command> autoChooser;
 
-  // SendableChooser<Command> autoChooser = new SendableChooser<>();
-  // private final Command TestPath1
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
@@ -69,41 +58,26 @@ public class RobotContainer {
     DriverStation.startDataLog(DataLogManager.getLog());
     // (optional) Record only DS control data by uncommenting next line.
     // DriverStation.startDataLog(DataLogManager.getLog(), false);
-
-    NetworkTable table = NetworkTableInstance.getDefault().getTable("limelight");
-    NetworkTableEntry tx = table.getEntry("tx");
-    NetworkTableEntry ty = table.getEntry("ty");
-    NetworkTableEntry ta = table.getEntry("ta");
-
-    //read values periodically
-    double x = tx.getDouble(0.0);
-    double y = ty.getDouble(0.0);
-    double area = ta.getDouble(0.0);
-
-    //post to smart dashboard periodically
-    SmartDashboard.putNumber("LimelightX", x);
-    SmartDashboard.putNumber("LimelightY", y);
-    SmartDashboard.putNumber("LimelightArea", area);
-
+    // limeSubsystem.enableVisionProcessing();
     // Configure the button bindings
     configureButtonBindings();
     // autoChooser.addOption("Test Path", TestPath1);
-    //SmartDashboard.putData(autoChooser);
-    SmartDashboard.putNumber("Pivot Motor Height", pivotSubsystem.getPivotMotorHeight());
+    // SmartDashboard.putData(autoChooser);
     // Configure default commands
     swerveDrive.setDefaultCommand(
         // The left stick controls translation of the robot.
         // Turning is controlled by the X axis of the right stick.
         new RunCommand(
             () -> swerveDrive.drive(
-                -MathUtil.applyDeadband(m_driverController.getLeftY(), OIConstants.kDriveDeadband),
-                -MathUtil.applyDeadband(m_driverController.getLeftX(), OIConstants.kDriveDeadband),
-                -MathUtil.applyDeadband(m_driverController.getRightX(), OIConstants.kDriveDeadband),
+                getDriverLeftY(),
+                getDriverLeftX(),
+                getDriverRightX(),
                 true, true),
             swerveDrive));
-  }
+    autoChooser = AutoBuilder.buildAutoChooser();
+    SmartDashboard.putData(autoChooser);
 
-  
+  }
 
   /**
    * Use this method to define your button->command mappings. Buttons can be
@@ -114,14 +88,30 @@ public class RobotContainer {
    * passing it to a
    * {@link JoystickButton}.
    */
+
+  public static double getDriverLeftX() {
+    return -MathUtil.applyDeadband(m_driverController.getLeftX(), OIConstants.kDriveDeadband);
+  }
+
+  public static double getDriverLeftY() {
+    return -MathUtil.applyDeadband(m_driverController.getLeftY(), OIConstants.kDriveDeadband);
+  }
+
+  public static double getDriverRightX() {
+    return -MathUtil.applyDeadband(m_driverController.getRightX(), OIConstants.kDriveDeadband);
+
+  }
+
   private void configureButtonBindings() {
-    // m_driverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new setXCommand());
-    // m_driverController.rightTrigger().whileTrue(new Intake(IntakeConstants.SCORE_HIGH_SPEED));
-    // m_driverController.button(OIConstants.RIGHT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_MID_SPEED));
-    // m_driverController.button(OIConstants.LEFT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_LOW_SPEED));
-    // m_driverController.leftTrigger().whileTrue(new Intake(IntakeConstants.INTAKE_SPEED));
-    // m_driverController.button(OIConstants.A_BUTTON).onTrue(new PivotDown(IntakeConstants.PIVOT_DOWN_SPEED));
-    // m_driverController.button(OIConstants.X_BUTTON).onTrue(new PivotUp(IntakeConstants.PIVOT_UP_SPEED));
+
+    m_driverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new setXCommand());
+    m_driverController.rightTrigger().whileTrue(new Intake(IntakeConstants.SCORE_HIGH_SPEED));
+    m_driverController.button(OIConstants.RIGHT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_MID_SPEED));
+    m_driverController.button(OIConstants.LEFT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_LOW_SPEED));
+    m_driverController.leftTrigger().whileTrue(new Intake(IntakeConstants.INTAKE_SPEED));
+    m_driverController.button(OIConstants.A_BUTTON).onTrue(new PivotDown(IntakeConstants.PIVOT_DOWN_SPEED));
+    m_driverController.button(OIConstants.X_BUTTON).onTrue(new PivotUp(IntakeConstants.PIVOT_UP_SPEED));
+    m_driverController.button(OIConstants.Y_BUTTON).whileTrue(new AlignScore());
 
     // // m_coDriverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new
     // // setXCommand());
@@ -139,50 +129,6 @@ public class RobotContainer {
    * @return the command to run in autonomous
    */
   public Command getAutonomousCommand() {
-
-    //Create config for trajectory
-    TrajectoryConfig config = new TrajectoryConfig(
-    AutoConstants.kMaxSpeedMetersPerSecond,
-    AutoConstants.kMaxAccelerationMetersPerSecondSquared)
-    // Add kinematics to ensure max speed is actually obeyed
-    .setKinematics(DriveConstants.kDriveKinematics);
-
-    // An example trajectory to follow. All units in meters.
-    Trajectory exampleTrajectory = TrajectoryGenerator.generateTrajectory(
-    // Start at the origin facing the +X direction
-    new Pose2d(0, 0, new Rotation2d(0)),
-    // Pass through these two interior waypoints, making an 's' curve path
-    List.of(new Translation2d(1, 1), new Translation2d(2, -1)),
-    // End 3 meters straight ahead of where we started, facing forward
-    new Pose2d(3, 0, new Rotation2d(0)),
-    config);
-
-    var thetaController = new ProfiledPIDController(
-    AutoConstants.kPThetaController, 0, 0,
-    AutoConstants.kThetaControllerConstraints);
-    thetaController.enableContinuousInput(-Math.PI, Math.PI);
-
-    SwerveControllerCommand swerveControllerCommand = new
-    SwerveControllerCommand(
-    exampleTrajectory,
-    swerveDrive::getPose, // Functional interface to feed supplier
-    DriveConstants.kDriveKinematics,
-
-    // Position controllers
-    new PIDController(AutoConstants.kPXController, 0, 0),
-    new PIDController(AutoConstants.kPYController, 0, 0),
-    thetaController,
-    swerveDrive::setModuleStates,
-    swerveDrive);
-
-    // Reset odometry to the starting pose of the trajectory.
-    swerveDrive.resetOdometry(exampleTrajectory.getInitialPose());
-
-    // Run path following command, then stop at the end.
-    return swerveControllerCommand.andThen(() -> swerveDrive.drive(0, 0, 0,
-    false, false));
-    }
-    //return autoBuilder.getSelectedAuto();
-  //}
-
+    return autoChooser.getSelected();
+  }
 }
