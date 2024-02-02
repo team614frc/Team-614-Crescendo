@@ -85,7 +85,6 @@ public class RobotContainer {
 
     // Configure the button bindings
     configureButtonBindings();
-    // autoChooser.addOption("Test Path", TestPath1);
     
     SmartDashboard.putNumber("Pivot Motor Height", pivotSubsystem.getPivotMotorHeight());
     // Configure default commands
