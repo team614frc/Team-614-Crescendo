@@ -11,23 +11,23 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.IntakeConstants;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-
 /**
  * The IntakeSubsystem contains all the motors for the intake
  * of the robot and sets them a value that is passed to it
  * using a command
  * -
+ * 
  * @param intakeSpeed Variable indicates the speed passed by the commans
- * that the intake motors should be set to
+ *                    that the intake motors should be set to
  * @returns through the getSpeed() returns the speed that the intake is going at
  */
 
 public class IntakeSubsystem extends SubsystemBase {
   /** Creates a new IntakeSubsystem. */
-  
+
   private CANSparkMax intakeMotorR;
   private CANSparkMax intakeMotorL;
-  
+
   public IntakeSubsystem() {
     // Creates a new motor
 
@@ -42,24 +42,22 @@ public class IntakeSubsystem extends SubsystemBase {
     intakeMotorL.setIdleMode(CANSparkMax.IdleMode.kBrake);
     intakeMotorR.setIdleMode(CANSparkMax.IdleMode.kBrake);
     intakeMotorL.burnFlash();
-    intakeMotorR.burnFlash(); 
+    intakeMotorR.burnFlash();
 
     // intakeMotorL.setInverted(false);
     // intakeMotorR.setInverted(true);
-    //intakeMotorL.follow(intakeMotorR); // Sets the left motor to be the follow of the right intake motor
+    // intakeMotorL.follow(intakeMotorR); // Sets the left motor to be the follow of
+    // the right intake motor
     SmartDashboard.putData("IntakeSubsystem", this);
   }
 
-@Override
+  @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    
-    
-    
   }
 
   public void getSpeed() {
-    //intakeMotorR.get();
+    // intakeMotorR.get();
     SmartDashboard.putNumber("Intake Speed Right", intakeMotorR.get());
     SmartDashboard.putNumber("Intake Speed Right", intakeMotorL.get());
   }

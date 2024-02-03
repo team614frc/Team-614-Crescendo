@@ -42,6 +42,7 @@ public class RobotContainer {
   public final static PivotSubsystem pivotSubsystem = new PivotSubsystem();
   private final SendableChooser<Command> autoChooser;
 
+  private double testMotorSpeeds;
   // The driver's controller
   CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
   CommandXboxController m_coDriverController = new CommandXboxController(OIConstants.kCoDriverControllerPort);
@@ -75,7 +76,7 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
     // autoChooser.addOption("Test Path", TestPath1);
-    
+
     SmartDashboard.putNumber("Pivot Motor Height", pivotSubsystem.getPivotMotorHeight());
     // Configure default commands
     swerveDrive.setDefaultCommand(
@@ -91,6 +92,8 @@ public class RobotContainer {
     autoChooser = AutoBuilder.buildAutoChooser();
     SmartDashboard.putData(autoChooser);
 
+    // Test varying motor speeds using smartdashboard inputs and using the first value inputted
+    SmartDashboard.putNumber("Test Motor Speeds", testMotorSpeeds);
   }
 
   /**
@@ -104,12 +107,12 @@ public class RobotContainer {
    */
   private void configureButtonBindings() {
     m_driverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new setXCommand());
-    m_driverController.rightTrigger().whileTrue(new Intake(IntakeConstants.SCORE_HIGH_SPEED));
+    m_driverController.rightTrigger().whileTrue(new Intake(-1 * (SmartDashboard.getNumber("Test Motor Speeds", 0))));
     m_driverController.button(OIConstants.RIGHT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_MID_SPEED));
     m_driverController.button(OIConstants.LEFT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_LOW_SPEED));
     m_driverController.leftTrigger().whileTrue(new Intake(IntakeConstants.INTAKE_SPEED));
-    m_driverController.button(OIConstants.A_BUTTON).onTrue(new PivotPIDCommand(18));  //(Vroomba) Sets arm to lowest position
-    m_driverController.button(OIConstants.X_BUTTON).onTrue(new PivotPIDCommand(0)); //(Vroomba) Sets arm to shooting position
+    m_driverController.button(OIConstants.A_BUTTON).onTrue(new PivotPIDCommand(IntakeConstants.PIVOT_MAX)); 
+    m_driverController.button(OIConstants.X_BUTTON).onTrue(new PivotPIDCommand(IntakeConstants.PIVOT_MIN)); 
 
     // m_coDriverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new
     // setXCommand());
@@ -117,8 +120,8 @@ public class RobotContainer {
     m_coDriverController.button(OIConstants.RIGHT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_MID_SPEED));
     m_coDriverController.button(OIConstants.LEFT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_LOW_SPEED));
     m_coDriverController.leftTrigger().whileTrue(new Intake(IntakeConstants.INTAKE_SPEED));
-    m_coDriverController.button(OIConstants.A_BUTTON).onTrue(new PivotPIDCommand(18));
-    m_coDriverController.button(OIConstants.X_BUTTON).onTrue(new PivotPIDCommand(0));
+    m_coDriverController.button(OIConstants.A_BUTTON).onTrue(new PivotPIDCommand(IntakeConstants.PIVOT_MAX));
+    m_coDriverController.button(OIConstants.X_BUTTON).onTrue(new PivotPIDCommand(IntakeConstants.PIVOT_MIN));
   }
 
   /**
