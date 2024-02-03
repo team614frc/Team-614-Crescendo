@@ -116,7 +116,7 @@ public class DriveSubsystem extends SubsystemBase {
             m_rearLeft.getPosition(),
             m_rearRight.getPosition()
         });
-    m_field.setRobotPose(m_odometry.getPoseMeters());
+    // m_field.setRobotPose(m_odometry.getPoseMeters());
   }
 
   /**
@@ -261,6 +261,10 @@ public class DriveSubsystem extends SubsystemBase {
     m_frontRight.setDesiredState(desiredStates[1]);
     m_rearLeft.setDesiredState(desiredStates[2]);
     m_rearRight.setDesiredState(desiredStates[3]);
+  }
+
+  public void setPoseFromVision(Pose2d visionPose) {
+    m_field.setRobotPose(visionPose);
   }
 
   /** Resets the drive encoders to currently read a position of 0. */

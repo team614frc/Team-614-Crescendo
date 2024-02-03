@@ -54,14 +54,22 @@ public final class Constants {
     public static final int MOTOR_CURRENT_LIMIT = 40;
   }
 
-  public static final class VisionConstants {
-
+  public static final class SensorConstants {
+    
     public static final int sensorPort1 = 0;
     public static final double sensorThreshold = 120;
+
+  }
+
+  public static final class VisionConstants {
 
     public static final double alignSetpoint = 0.0;
     public static final double simpleAlignYInput = 1.5;
     public static final double threshold = 0.5;
+
+    public static final double tag7X = -8.308975;
+    public static final double tag7Y =  1.442593;
+
   }
 
   public static final class DriveConstants {

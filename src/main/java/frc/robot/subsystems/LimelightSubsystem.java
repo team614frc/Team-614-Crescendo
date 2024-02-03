@@ -40,7 +40,9 @@ public class LimelightSubsystem extends SubsystemBase {
     y = limelightTable.getEntry("ty").getDouble(0.0);
     area = limelightTable.getEntry("ta").getDouble(0.0);
     test = LimelightHelpers.getBotPose2d("limelight");
-    
+
+    SmartDashboard.putNumber("POSE X", test.getX());
+    SmartDashboard.putNumber("POSE Y", test.getY());
     
     // post to smart dashboard periodically
     SmartDashboard.putNumber("LimelightX", x);
