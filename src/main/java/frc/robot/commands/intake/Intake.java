@@ -9,6 +9,7 @@ import frc.robot.Constants;
 import frc.robot.Robot;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.IntakeConstants;
+import frc.robot.Constants.SensorConstants;
 import frc.robot.Constants.VisionConstants;
 
 /**
@@ -39,7 +40,7 @@ public class Intake extends Command {
   @Override
   public void execute() {
     if (intakeSpeed > IntakeConstants.MOTOR_ZERO_SPEED
-      && RobotContainer.intakeSubsystem.getSensorRange() < VisionConstants.sensorThreshold) {
+      && RobotContainer.intakeSubsystem.getSensorRange() < SensorConstants.sensorThreshold) {
       RobotContainer.intakeSubsystem.set(IntakeConstants.MOTOR_LOAD_SPEED);
       // feeder loadback
     } else {

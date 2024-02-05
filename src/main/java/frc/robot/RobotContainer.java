@@ -47,6 +47,7 @@ public class RobotContainer {
   // private AutoBuilder autoBuilder = new AutoBuilder(swerveDrive,
   // intakeSubsystem, pivotSubsystem);
   private final SendableChooser<Command> autoChooser;
+  private double testMotorSpeeds;
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -60,6 +61,7 @@ public class RobotContainer {
     // DriverStation.startDataLog(DataLogManager.getLog(), false);
     // limeSubsystem.enableVisionProcessing();
     // Configure the button bindings
+    testMotorSpeeds = 0;
     configureButtonBindings();
     // autoChooser.addOption("Test Path", TestPath1);
     // SmartDashboard.putData(autoChooser);
@@ -105,7 +107,8 @@ public class RobotContainer {
   private void configureButtonBindings() {
 
     m_driverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new setXCommand());
-    m_driverController.rightTrigger().whileTrue(new Intake(IntakeConstants.SCORE_HIGH_SPEED));
+    // m_driverController.rightTrigger().whileTrue(new Intake(IntakeConstants.SCORE_HIGH_SPEED));
+    m_driverController.rightTrigger().whileTrue(new Intake(-(SmartDashboard.getNumber("Test Motor Speeds", 0))));
     m_driverController.button(OIConstants.RIGHT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_MID_SPEED));
     m_driverController.button(OIConstants.LEFT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_LOW_SPEED));
     m_driverController.leftTrigger().whileTrue(new Intake(IntakeConstants.INTAKE_SPEED));

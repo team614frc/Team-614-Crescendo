@@ -13,6 +13,7 @@ import com.playingwithfusion.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.IntakeConstants;
+import frc.robot.Constants.SensorConstants;
 import frc.robot.Constants.VisionConstants;
 
 
@@ -51,7 +52,7 @@ public class IntakeSubsystem extends SubsystemBase {
     intakeMotorL.burnFlash();
     intakeMotorR.burnFlash(); 
 
-    sensor = new TimeOfFlight(VisionConstants.sensorPort1);
+    sensor = new TimeOfFlight(SensorConstants.sensorPort1);
     sensor.setRangeOfInterest(1000, 1000, 1000, 1000);
 
     // intakeMotorL.setInverted(false);
