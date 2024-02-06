@@ -5,12 +5,9 @@
 package frc.robot.commands.manipulator;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Constants;
-import frc.robot.Robot;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.SensorConstants;
-import frc.robot.Constants.VisionConstants;
 
 /**
  * The Intake Command simply uses the IntakeSubsystem
