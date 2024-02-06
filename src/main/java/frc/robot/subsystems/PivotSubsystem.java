@@ -9,7 +9,7 @@ import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants.IntakeConstants;
+import frc.robot.Constants.ManipulatorConstants;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -25,35 +25,46 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class PivotSubsystem extends SubsystemBase {
   /** Creates a new PivotSubsystem. */
 
-  private CANSparkFlex pivotMotor;
+  private CANSparkFlex pivotMotorR;
+  private CANSparkFlex pivotMotorL;
 
   public PivotSubsystem() {
    
-    pivotMotor = new CANSparkFlex(IntakeConstants.PIVOT_MOTOR, MotorType.kBrushless);
-    pivotMotor.restoreFactoryDefaults();
-    pivotMotor.setSmartCurrentLimit(IntakeConstants.MOTOR_CURRENT_LIMIT);
-    pivotMotor.setIdleMode(CANSparkFlex.IdleMode.kBrake);
-    pivotMotor.burnFlash();
+    pivotMotorR = new CANSparkFlex(ManipulatorConstants.PIVOT_MOTOR_RIGHT, MotorType.kBrushless);
+    pivotMotorR.restoreFactoryDefaults();
+    pivotMotorR.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
+    pivotMotorR.setIdleMode(CANSparkFlex.IdleMode.kBrake);
+    pivotMotorR.burnFlash();
+
+    pivotMotorL = new CANSparkFlex(ManipulatorConstants.PIVOT_MOTOR_LEFT, MotorType.kBrushless);
+    pivotMotorL.restoreFactoryDefaults();
+    pivotMotorL.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
+    pivotMotorL.setIdleMode(CANSparkFlex.IdleMode.kBrake);
+    pivotMotorL.burnFlash();
+
   }
 
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    SmartDashboard.putNumber("Encoder Value Subsystem", getPivotMotorHeight());
+    SmartDashboard.putNumber("PivotLHeight", getPivotMotorLHeight());
   }
 
-  public double getPivotMotorHeight () {
-    return pivotMotor.getEncoder().getPosition();
+  public double getPivotMotorRHeight () {
+    return pivotMotorR.getEncoder().getPosition();
   }
 
-  public RelativeEncoder getEncoder()
+  public double getPivotMotorLHeight () {
+    return pivotMotorL.getEncoder().getPosition();
+  }
+
+  public RelativeEncoder getPivotLEncoder()
   {
-    return pivotMotor.getEncoder();
+    return pivotMotorL.getEncoder();
   }
 
   public void set(double pivotSpeed) {
-    pivotMotor.set(pivotSpeed); 
+    pivotMotorR.set(-pivotSpeed);
+    pivotMotorL.set(pivotSpeed); 
   }
-
-
 }

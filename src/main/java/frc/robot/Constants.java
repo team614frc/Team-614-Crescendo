@@ -28,17 +28,19 @@ import edu.wpi.first.wpilibj2.command.Command;
  */
 public final class Constants {
 
-  public static final class IntakeConstants {
+  public static final class ManipulatorConstants {
     // CAN IDs for the Intake Motors
-    public static final int INTAKE_MOTOR_RIGHT = 48;
-    public static final int INTAKE_MOTOR_LEFT = 47;
+    public static final int INTAKE_MOTOR = 17;
+    public static final int SHOOTER_MOTOR_RIGHT = 15;
+    public static final int SHOOTER_MOTOR_LEFT = 16;
 
     // CAN ID for the Pivot Motors
-    public static final int PIVOT_MOTOR = 13;
+    public static final int PIVOT_MOTOR_RIGHT = 13;
+    public static final int PIVOT_MOTOR_LEFT = 14;
 
     // Speed Constants for Intake and Pivot
     public static final double INTAKE_SPEED = 0.6;
-    public static final double SCORE_HIGH_SPEED = -0.6; //UNTESTED VALUES PLEASE SET ACCORDING TO TEST
+    public static final double SCORE_HIGH_SPEED = -0.6;
     public static final double SCORE_MID_SPEED = -0.3;
     public static final double SCORE_LOW_SPEED = -0.15;
     public static final double INTAKE_REST_SPEED = 0.00;
@@ -99,15 +101,15 @@ public final class Constants {
     public static final double kBackLeftChassisAngularOffset = Math.PI;
     public static final double kBackRightChassisAngularOffset = Math.PI / 2;
 
-    // SPARK MAX CAN IDs
+    // SPARK FLEX CAN IDs
     public static final int kFrontLeftDrivingCanId = 10;
     public static final int kRearLeftDrivingCanId = 18;
-    public static final int kFrontRightDrivingCanId = 9;
-    public static final int kRearRightDrivingCanId = 1;
+    public static final int kFrontRightDrivingCanId = 8;
+    public static final int kRearRightDrivingCanId = 0;
 
     public static final int kFrontLeftTurningCanId = 11;
     public static final int kRearLeftTurningCanId = 19;
-    public static final int kFrontRightTurningCanId = 8;
+    public static final int kFrontRightTurningCanId = 9;
     public static final int kRearRightTurningCanId = 62;
 
     public static final boolean kGyroReversed = false;

@@ -2,13 +2,13 @@
 // // Open Source Software; you can modify and/or share it under the terms of
 // // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands.intake;
+package frc.robot.commands.manipulator;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
 import frc.robot.Robot;
 import frc.robot.RobotContainer;
-import frc.robot.Constants.IntakeConstants;
+import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.SensorConstants;
 import frc.robot.Constants.VisionConstants;
 
@@ -39,9 +39,9 @@ public class Intake extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    if (intakeSpeed > IntakeConstants.MOTOR_ZERO_SPEED
+    if (intakeSpeed > ManipulatorConstants.MOTOR_ZERO_SPEED
       && RobotContainer.intakeSubsystem.getSensorRange() < SensorConstants.sensorThreshold) {
-      RobotContainer.intakeSubsystem.set(IntakeConstants.MOTOR_LOAD_SPEED);
+      RobotContainer.intakeSubsystem.set(ManipulatorConstants.MOTOR_LOAD_SPEED);
       // feeder loadback
     } else {
       RobotContainer.intakeSubsystem.set(intakeSpeed);
@@ -52,7 +52,7 @@ public class Intake extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.intakeSubsystem.set(IntakeConstants.INTAKE_REST_SPEED);
+    RobotContainer.intakeSubsystem.set(ManipulatorConstants.INTAKE_REST_SPEED);
     RobotContainer.intakeSubsystem.getSpeed();
   }
 

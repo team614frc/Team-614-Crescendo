@@ -12,7 +12,7 @@ import java.sql.Time;
 import com.playingwithfusion.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants.IntakeConstants;
+import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.SensorConstants;
 import frc.robot.Constants.VisionConstants;
 
@@ -30,27 +30,18 @@ import frc.robot.Constants.VisionConstants;
 public class IntakeSubsystem extends SubsystemBase {
   /** Creates a new IntakeSubsystem. */
   
-  private CANSparkFlex intakeMotorR;
-  private CANSparkFlex intakeMotorL;
+  private CANSparkFlex intakeMotor;
   private TimeOfFlight sensor;
 
   public IntakeSubsystem() {
     // Creates a new motor
 
-    intakeMotorR = new CANSparkFlex(IntakeConstants.INTAKE_MOTOR_RIGHT, MotorType.kBrushless);
-    intakeMotorL = new CANSparkFlex(IntakeConstants.INTAKE_MOTOR_LEFT, MotorType.kBrushless);
-    intakeMotorR.restoreFactoryDefaults();
-    intakeMotorL.restoreFactoryDefaults();
-
-    intakeMotorR.setSmartCurrentLimit(IntakeConstants.MOTOR_CURRENT_LIMIT);
-    intakeMotorL.setSmartCurrentLimit(IntakeConstants.MOTOR_CURRENT_LIMIT);
-
-    intakeMotorL.setInverted(false);
-    intakeMotorR.setInverted(false);
-    intakeMotorL.setIdleMode(CANSparkFlex.IdleMode.kBrake);
-    intakeMotorR.setIdleMode(CANSparkFlex.IdleMode.kBrake);
-    intakeMotorL.burnFlash();
-    intakeMotorR.burnFlash(); 
+    intakeMotor = new CANSparkFlex(ManipulatorConstants.INTAKE_MOTOR, MotorType.kBrushless);
+    intakeMotor.restoreFactoryDefaults();
+    intakeMotor.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
+    intakeMotor.setInverted(false);
+    intakeMotor.setIdleMode(CANSparkFlex.IdleMode.kBrake);
+    intakeMotor.burnFlash(); 
 
     sensor = new TimeOfFlight(SensorConstants.sensorPort1);
     sensor.setRangeOfInterest(1000, 1000, 1000, 1000);
@@ -69,8 +60,7 @@ public class IntakeSubsystem extends SubsystemBase {
 
   public void getSpeed() {
     //intakeMotorR.get();
-    SmartDashboard.putNumber("Intake Speed Right", intakeMotorR.get());
-    SmartDashboard.putNumber("Intake Speed Right", intakeMotorL.get());
+    SmartDashboard.putNumber("Intake Speed Right", intakeMotor.get());
   }
 
   public double getSensorRange() {
@@ -79,8 +69,6 @@ public class IntakeSubsystem extends SubsystemBase {
 
   // Sets the value of the motor to a double, at which the motor will run
   public void set(double intakeSpeed) {
-    intakeMotorR.set(-intakeSpeed);
-    intakeMotorL.set(intakeSpeed);
+    intakeMotor.set(intakeSpeed);
   }
-
 }
