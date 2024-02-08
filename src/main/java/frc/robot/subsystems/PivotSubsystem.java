@@ -37,7 +37,7 @@ public class PivotSubsystem extends PIDSubsystem {
         // The controller that the command will use
         new PIDController(ManipulatorConstants.PIVOT_kP, ManipulatorConstants.PIVOT_kI, ManipulatorConstants.PIVOT_kD));
 
-    getController().setTolerance(0.1);
+    getController().setTolerance(-2);
 
     pivotMotorR = new CANSparkFlex(ManipulatorConstants.PIVOT_MOTOR_RIGHT, MotorType.kBrushless);
     pivotMotorR.restoreFactoryDefaults();
@@ -65,7 +65,7 @@ public class PivotSubsystem extends PIDSubsystem {
 
   @Override
   protected void useOutput(double output, double setpoint) {
-    pivotMotorR.set(-output + getController().calculate(getMeasurement(), setpoint));
+    pivotMotorR.set(-(output + getController().calculate(getMeasurement(), setpoint)));
     pivotMotorL.set((output + getController().calculate(getMeasurement(), setpoint)));
   }
 
@@ -76,6 +76,10 @@ public class PivotSubsystem extends PIDSubsystem {
 
   public double getPivotMotorLHeight() {
     return pivotMotorL.getEncoder().getPosition();
+  }
+
+  public double getPivotMotorRHeight() {
+    return pivotMotorR.getEncoder().getPosition();
   }
 
   public RelativeEncoder getEncoder() {

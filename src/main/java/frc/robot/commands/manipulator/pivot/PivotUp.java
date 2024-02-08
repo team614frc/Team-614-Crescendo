@@ -41,11 +41,11 @@ public class PivotUp extends Command {
   public void execute() {
 
     if (Math.abs(RobotContainer.pivotSubsystem.getPivotMotorLHeight()) < 10.9) { // 2 = pivot max height I think
-      RobotContainer.pivotSubsystem.set(-pivotSpeed);
+      RobotContainer.pivotSubsystem.set(pivotSpeed);
       SmartDashboard.putNumber("Encoder Position in Command",
       RobotContainer.pivotSubsystem.getPivotMotorLHeight());
     } else {
-      RobotContainer.pivotSubsystem.set(-ManipulatorConstants.MOTOR_GRAV_SPEED);
+      RobotContainer.pivotSubsystem.set(ManipulatorConstants.MOTOR_GRAV_SPEED);
     }
   }
 

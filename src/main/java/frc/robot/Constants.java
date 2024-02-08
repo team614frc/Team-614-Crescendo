@@ -46,7 +46,7 @@ public final class Constants {
     // Speed Constants for Intake and Pivot
     public static final double INTAKE_SPEED = 0.45;
     public static final double FEED_SPEED = 0.6;
-    public static final double SCORE_HIGH_SPEED = -0.6;
+    public static final double SCORE_HIGH_SPEED = -0.9;
     public static final double SCORE_MID_SPEED = -0.3;
     public static final double SCORE_LOW_SPEED = -0.15;
     public static final double INTAKE_REST_SPEED = 0.00;
@@ -58,7 +58,7 @@ public final class Constants {
     public static final double MOTOR_LOADING_SPEED = 0.07;
 
     // Encoder Values for the Intake and Pivot
-    public static final double PIVOT_MAX = 10.9;
+    public static final double PIVOT_MAX = -6; // -8.5 for 5 FEET score
     public static final double PIVOT_MIN = 0;
 
     public static final int MOTOR_CURRENT_LIMIT = 40;

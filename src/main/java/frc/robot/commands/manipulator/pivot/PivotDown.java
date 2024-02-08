@@ -41,7 +41,7 @@ public class PivotDown extends Command {
   public void execute() {
 
     if (Math.abs(RobotContainer.pivotSubsystem.getPivotMotorLHeight()) > 0 ) { //18 = pivot min height i think
-      RobotContainer.pivotSubsystem.set(-pivotSpeed);
+      RobotContainer.pivotSubsystem.set(pivotSpeed);
       SmartDashboard.putNumber("Encoder Position in Command",
       RobotContainer.pivotSubsystem.getPivotMotorLHeight());
     } else {
