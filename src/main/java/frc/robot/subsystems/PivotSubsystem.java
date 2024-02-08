@@ -43,12 +43,14 @@ public class PivotSubsystem extends PIDSubsystem {
     pivotMotorR.restoreFactoryDefaults();
     pivotMotorR.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
     pivotMotorR.setIdleMode(CANSparkFlex.IdleMode.kBrake);
+    pivotMotorR.getEncoder().setPosition(0);
     pivotMotorR.burnFlash();
 
     pivotMotorL = new CANSparkFlex(ManipulatorConstants.PIVOT_MOTOR_LEFT, MotorType.kBrushless);
     pivotMotorL.restoreFactoryDefaults();
     pivotMotorL.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
     pivotMotorL.setIdleMode(CANSparkFlex.IdleMode.kBrake);
+    pivotMotorL.getEncoder().setPosition(0);
     pivotMotorL.burnFlash();
 
     // SmartDashboard.putData("PivotSubsystem", this);
@@ -63,7 +65,8 @@ public class PivotSubsystem extends PIDSubsystem {
 
   @Override
   protected void useOutput(double output, double setpoint) {
-    pivotMotorR.set(output + getController().calculate(getMeasurement(), setpoint));
+    pivotMotorR.set(-output + getController().calculate(getMeasurement(), setpoint));
+    pivotMotorL.set((output + getController().calculate(getMeasurement(), setpoint)));
   }
 
   @Override

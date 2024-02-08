@@ -26,7 +26,7 @@ public class Feeder extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    RobotContainer.intakeSubsystem.set(0.6);
+    RobotContainer.intakeSubsystem.set(ManipulatorConstants.FEED_SPEED);
   }
 
   // Called once the command ends or is interrupted.

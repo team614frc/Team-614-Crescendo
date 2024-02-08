@@ -4,6 +4,7 @@
 
 package frc.robot.commands.manipulator;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.ManipulatorConstants;
@@ -11,6 +12,7 @@ import frc.robot.Constants.ManipulatorConstants;
 public class Shooter extends Command {
 
   public double shootSpeed;
+  public Timer commandTimer;
 
   /** Creates a new shooter. */
   public Shooter(double shootSpeed) {
@@ -21,23 +23,34 @@ public class Shooter extends Command {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    commandTimer.reset();
+    commandTimer.start();
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     RobotContainer.shooterSubsystem.set(shootSpeed);
+    if (commandTimer.get() > 2.5) {
+      RobotContainer.intakeSubsystem.set(ManipulatorConstants.FEED_SPEED);
+    }
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
     RobotContainer.shooterSubsystem.set(ManipulatorConstants.MOTOR_ZERO_SPEED);
+    RobotContainer.intakeSubsystem.set(ManipulatorConstants.INTAKE_REST_SPEED);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    if (commandTimer.get() > 4){
+      return true;
+    } else {
+      return false;
+    }
   }
 }

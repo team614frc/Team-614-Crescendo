@@ -45,14 +45,14 @@ public class PivotDown extends Command {
       SmartDashboard.putNumber("Encoder Position in Command",
       RobotContainer.pivotSubsystem.getPivotMotorLHeight());
     } else {
-      RobotContainer.pivotSubsystem.set(ManipulatorConstants.MOTOR_ZERO_SPEED);
+      RobotContainer.pivotSubsystem.set(ManipulatorConstants.MOTOR_GRAV_SPEED);
     }
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.pivotSubsystem.set(ManipulatorConstants.MOTOR_ZERO_SPEED);
+    RobotContainer.pivotSubsystem.set(ManipulatorConstants.MOTOR_GRAV_SPEED);
   }
 
   // Returns true when the command should end.
