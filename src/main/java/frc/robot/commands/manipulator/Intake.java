@@ -38,7 +38,7 @@ public class Intake extends Command {
   public void execute() {
     if (intakeSpeed > ManipulatorConstants.MOTOR_ZERO_SPEED
       && RobotContainer.intakeSubsystem.getSensorRange() < SensorConstants.sensorThreshold) {
-      RobotContainer.intakeSubsystem.set(ManipulatorConstants.MOTOR_LOAD_SPEED);
+      RobotContainer.intakeSubsystem.set(ManipulatorConstants.MOTOR_LOADBACK_SPEED);
       // feeder loadback
     } else {
       RobotContainer.intakeSubsystem.set(intakeSpeed);
