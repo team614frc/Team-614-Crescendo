@@ -38,6 +38,11 @@ public final class Constants {
     public static final int PIVOT_MOTOR_RIGHT = 13;
     public static final int PIVOT_MOTOR_LEFT = 14;
 
+    // PID constants for pivot
+    public static final double PIVOT_kP = 0.025;
+    public static final double PIVOT_kI = 0;
+    public static final double PIVOT_kD = 0;
+
     // Speed Constants for Intake and Pivot
     public static final double INTAKE_SPEED = 0.6;
     public static final double SCORE_HIGH_SPEED = -0.6;
@@ -50,7 +55,7 @@ public final class Constants {
     public static final double MOTOR_LOAD_SPEED = -0.07;
 
     // Encoder Values for the Intake and Pivot
-    public static final double PIVOT_MAX = 10;
+    public static final double PIVOT_MAX = 10.9;
     public static final double PIVOT_MIN = 0;
 
     public static final int MOTOR_CURRENT_LIMIT = 40;

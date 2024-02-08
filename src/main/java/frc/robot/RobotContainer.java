@@ -22,6 +22,7 @@ import frc.robot.commands.setXCommand;
 import frc.robot.commands.manipulator.Intake;
 import frc.robot.commands.manipulator.Shooter;
 import frc.robot.commands.manipulator.pivot.PivotDown;
+import frc.robot.commands.manipulator.pivot.PivotPIDCommand;
 import frc.robot.commands.manipulator.pivot.PivotUp;
 import frc.robot.commands.vision.AlignScore;
 import frc.robot.subsystems.DriveSubsystem;
@@ -114,8 +115,8 @@ public class RobotContainer {
     m_driverController.button(OIConstants.RIGHT_BUMPER).whileTrue(new Shooter(ManipulatorConstants.SCORE_MID_SPEED));
     m_driverController.button(OIConstants.LEFT_BUMPER).whileTrue(new Shooter(ManipulatorConstants.SCORE_LOW_SPEED));
     m_driverController.leftTrigger().whileTrue(new Intake(ManipulatorConstants.INTAKE_SPEED));
-    m_driverController.button(OIConstants.A_BUTTON).onTrue(new PivotDown(ManipulatorConstants.PIVOT_DOWN_SPEED));
-    m_driverController.button(OIConstants.X_BUTTON).onTrue(new PivotUp(ManipulatorConstants.PIVOT_UP_SPEED));
+    m_driverController.button(OIConstants.A_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MIN));
+    m_driverController.button(OIConstants.X_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MAX));
     // m_driverController.button(OIConstants.Y_BUTTON).whileTrue(new AlignScore());
 
     // // m_coDriverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new
