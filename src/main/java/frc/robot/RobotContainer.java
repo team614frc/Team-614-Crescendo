@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.setXCommand;
+import frc.robot.commands.manipulator.Feeder;
 import frc.robot.commands.manipulator.Intake;
 import frc.robot.commands.manipulator.Shooter;
 import frc.robot.commands.manipulator.pivot.PivotDown;
@@ -115,9 +116,9 @@ public class RobotContainer {
     m_driverController.button(OIConstants.RIGHT_BUMPER).whileTrue(new Shooter(ManipulatorConstants.SCORE_MID_SPEED));
     m_driverController.button(OIConstants.LEFT_BUMPER).whileTrue(new Shooter(ManipulatorConstants.SCORE_LOW_SPEED));
     m_driverController.leftTrigger().whileTrue(new Intake(ManipulatorConstants.INTAKE_SPEED));
-    m_driverController.button(OIConstants.A_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MIN));
-    m_driverController.button(OIConstants.X_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MAX));
-    // m_driverController.button(OIConstants.Y_BUTTON).whileTrue(new AlignScore());
+    m_driverController.button(OIConstants.A_BUTTON).whileTrue(new PivotDown(ManipulatorConstants.PIVOT_DOWN_SPEED));
+    m_driverController.button(OIConstants.X_BUTTON).whileTrue(new PivotUp(ManipulatorConstants.PIVOT_UP_SPEED));
+    m_driverController.button(OIConstants.Y_BUTTON).whileTrue(new Feeder());
 
     // // m_coDriverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new
     // // setXCommand());

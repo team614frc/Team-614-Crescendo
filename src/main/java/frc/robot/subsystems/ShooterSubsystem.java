@@ -22,14 +22,14 @@ public class ShooterSubsystem extends SubsystemBase {
     shooterMotorL.restoreFactoryDefaults();
     shooterMotorL.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
     shooterMotorL.setInverted(false);
-    shooterMotorL.setIdleMode(CANSparkFlex.IdleMode.kBrake);
+    shooterMotorL.setIdleMode(CANSparkFlex.IdleMode.kCoast);
     shooterMotorL.burnFlash();
 
     shooterMotorR = new CANSparkFlex(ManipulatorConstants.SHOOTER_MOTOR_RIGHT, MotorType.kBrushless);
     shooterMotorR.restoreFactoryDefaults();
     shooterMotorR.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
     shooterMotorR.setInverted(false);
-    shooterMotorR.setIdleMode(CANSparkFlex.IdleMode.kBrake);
+    shooterMotorR.setIdleMode(CANSparkFlex.IdleMode.kCoast);
     shooterMotorR.burnFlash(); 
 
   }
@@ -40,7 +40,7 @@ public class ShooterSubsystem extends SubsystemBase {
   }
 
   public void set(double shoot) {
-    shooterMotorL.set(shoot);
+    shooterMotorL.set(-shoot);
     shooterMotorR.set(-shoot);
   }
 

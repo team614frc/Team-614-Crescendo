@@ -40,28 +40,19 @@ public class PivotUp extends Command {
   @Override
   public void execute() {
 
-    if (Math.abs(RobotContainer.pivotSubsystem.getPivotMotorLHeight()) > 2 ) { // 2 = pivot max height I think
+    if (Math.abs(RobotContainer.pivotSubsystem.getPivotMotorLHeight()) < 10.9) { // 2 = pivot max height I think
       RobotContainer.pivotSubsystem.set(-pivotSpeed);
-
       SmartDashboard.putNumber("Encoder Position in Command",
       RobotContainer.pivotSubsystem.getPivotMotorLHeight());
-      
-    
     } else {
-      
-      RobotContainer.pivotSubsystem.set(ManipulatorConstants.MOTOR_ZERO_SPEED);
-
-      
-
+      RobotContainer.pivotSubsystem.set(-ManipulatorConstants.MOTOR_GRAV_SPEED);
     }
-
-
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.pivotSubsystem.set(ManipulatorConstants.MOTOR_ZERO_SPEED);
+    RobotContainer.pivotSubsystem.set(-ManipulatorConstants.MOTOR_GRAV_SPEED);
   }
 
   // Returns true when the command should end.
