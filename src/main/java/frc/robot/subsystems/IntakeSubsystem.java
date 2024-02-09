@@ -40,7 +40,7 @@ public class IntakeSubsystem extends SubsystemBase {
     intakeMotor.setIdleMode(CANSparkFlex.IdleMode.kBrake);
     intakeMotor.burnFlash(); 
 
-    sensor = new TimeOfFlight(SensorConstants.sensorPort1);
+    sensor = new TimeOfFlight(SensorConstants.TOFIntakeSensorPort);
     sensor.setRangeOfInterest(1000, 1000, 1000, 1000);
 
     // intakeMotorL.setInverted(false);
