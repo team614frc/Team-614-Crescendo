@@ -33,7 +33,7 @@ public class Shooter extends Command {
   @Override
   public void execute() {
     RobotContainer.shooterSubsystem.set(shootSpeed);
-    if (commandTimer.get() > 2.5) {
+    if (commandTimer.get() > ManipulatorConstants.FEED_WAIT) {
       RobotContainer.intakeSubsystem.set(ManipulatorConstants.FEED_SPEED);
     }
   }
@@ -48,10 +48,6 @@ public class Shooter extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (commandTimer.get() > 4){
-      return true;
-    } else {
-      return false;
-    }
+    return commandTimer.get() > ManipulatorConstants.FEED_WAIT;
   }
 }

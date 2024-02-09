@@ -38,27 +38,37 @@ public final class Constants {
     public static final int PIVOT_MOTOR_RIGHT = 13;
     public static final int PIVOT_MOTOR_LEFT = 14;
 
-    // PID constants for pivot
-    public static final double PIVOT_kP = 0.025;
+    // Encoder constants for pivot
+    public static final double PIVOT_kP = 0.02;
     public static final double PIVOT_kI = 0;
     public static final double PIVOT_kD = 0;
+    public static final double PIVOT_kTolerance = 2;
 
-    // Speed Constants for Intake and Pivot
+    // Feedforward Constraints
+    public static final double MaxArmVelocity = 3;
+    public static final double MaxArmAccel = 10;
+
+    // Constants for Intake and Pivot
     public static final double INTAKE_SPEED = 0.45;
+    public static final double INTAKE_REST_SPEED = 0.0;
     public static final double FEED_SPEED = 0.6;
+    public static final double FEED_WAIT = 2.5;
+
     public static final double SCORE_HIGH_SPEED = -0.9;
     public static final double SCORE_MID_SPEED = -0.3;
     public static final double SCORE_LOW_SPEED = -0.15;
-    public static final double INTAKE_REST_SPEED = 0.00;
+    public static final double SCORE_END_WAIT = 4;
+    
     public static final double PIVOT_UP_SPEED = 0.1;
     public static final double PIVOT_DOWN_SPEED = -0.1;
+
     public static final double MOTOR_ZERO_SPEED = 0;
     public static final double MOTOR_GRAV_SPEED = 0.02;
     public static final double MOTOR_LOADBACK_SPEED = -0.07;
     public static final double MOTOR_LOADING_SPEED = 0.07;
 
     // Encoder Values for the Intake and Pivot
-    public static final double PIVOT_MAX = -6; // -8.5 for 5 FEET score
+    public static final double PIVOT_MAX = -11; // -8.5 for 5 FEET score
     public static final double PIVOT_MIN = 0;
 
     public static final int MOTOR_CURRENT_LIMIT = 40;
@@ -66,7 +76,7 @@ public final class Constants {
 
   public static final class SensorConstants {
     
-    public static final int sensorPort1 = 0;
+    public static final int TOFIntakeSensorPort = 0;
     public static final double sensorThreshold = 120;
 
   }
