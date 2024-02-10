@@ -10,6 +10,7 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
 import edu.wpi.first.math.controller.ArmFeedforward;
 import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.ProfiledPIDSubsystem;
 import frc.robot.Constants.ManipulatorConstants;
 
@@ -18,7 +19,7 @@ public class PivotPIDSub extends ProfiledPIDSubsystem {
   private CANSparkFlex pivotMotorR;
   private CANSparkFlex pivotMotorL;
   private final ArmFeedforward pivotfeedforward=
-      new ArmFeedforward(1,1,0.5,0.1);
+      new ArmFeedforward(1,1,.5,0.1);
 
   public PivotPIDSub() {
     super(
@@ -45,6 +46,8 @@ public class PivotPIDSub extends ProfiledPIDSubsystem {
     pivotMotorL.getEncoder().setPosition(0);
     pivotMotorL.burnFlash();
 
+    SmartDashboard.putNumber("PIVOT ENCODER", getMeasurement());
+
   }
 
   @Override
@@ -52,13 +55,13 @@ public class PivotPIDSub extends ProfiledPIDSubsystem {
     // Use the output (and optionally the setpoint) here
     double feedforward = pivotfeedforward.calculate(setpoint.position, setpoint.velocity);
     // Add the feedforward to the PID output to get the motor output
-    pivotMotorR.set(-(output + feedforward));
-    pivotMotorL.set((output + feedforward));
+    pivotMotorR.set((output + feedforward));
+    pivotMotorL.set(-(output + feedforward));
   }
 
   @Override
   public double getMeasurement() {
     // Return the process variable measurement here
-    return pivotMotorL.getEncoder().getPosition();
+    return pivotMotorR.getEncoder().getPosition();
   }
 }

@@ -21,9 +21,9 @@ import frc.robot.Constants.OIConstants;
 import frc.robot.commands.setXCommand;
 import frc.robot.commands.manipulator.Intake;
 import frc.robot.commands.manipulator.Shooter;
-import frc.robot.commands.manipulator.pivot.PivotDown;
+// import frc.robot.commands.manipulator.pivot.PivotDown;
 import frc.robot.commands.manipulator.pivot.PivotPIDCommand;
-import frc.robot.commands.manipulator.pivot.PivotUp;
+// import frc.robot.commands.manipulator.pivot.PivotUp;
 import frc.robot.commands.vision.AlignScore;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
@@ -44,7 +44,7 @@ public class RobotContainer {
   public final static DriveSubsystem swerveDrive = new DriveSubsystem();
   public final static IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
   public final static ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
-  public final static PivotSubsystem pivotSubsystem = new PivotSubsystem();
+  // public final static PivotSubsystem pivotSubsystem = new PivotSubsystem();
   public final static PivotPIDSub pivotPIDSubsystem = new PivotPIDSub();
   public final static LimelightSubsystem limeSubsystem = new LimelightSubsystem();
   // The driver's controller

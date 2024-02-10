@@ -45,7 +45,7 @@ public final class Constants {
     public static final double PIVOT_kTolerance = 2;
 
     // Feedforward Constraints
-    public static final double MaxArmVelocity = 3;
+    public static final double MaxArmVelocity = 1.5;
     public static final double MaxArmAccel = 10;
 
     // Constants for Intake and Pivot
@@ -68,7 +68,7 @@ public final class Constants {
     public static final double MOTOR_LOADING_SPEED = 0.07;
 
     // Encoder Values for the Intake and Pivot
-    public static final double PIVOT_MAX = -11; // -8.5 for 5 FEET score
+    public static final double PIVOT_MAX = 11; // 8.5 for 5 FEET score
     public static final double PIVOT_MIN = 0;
 
     public static final int MOTOR_CURRENT_LIMIT = 40;

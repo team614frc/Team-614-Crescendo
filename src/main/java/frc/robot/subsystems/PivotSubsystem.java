@@ -78,7 +78,8 @@ public class PivotSubsystem extends PIDSubsystem {
 
   @Override
   protected double getMeasurement() {
-    return RobotContainer.pivotSubsystem.getPivotMotorLHeight();
+    // return RobotContainer.pivotSubsystem.getPivotMotorLHeight();
+    return 0;
   }
 
   public double getPivotMotorLHeight() {
