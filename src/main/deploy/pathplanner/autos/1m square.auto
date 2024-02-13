@@ -1,0 +1,43 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 2.0,
+      "y": 6.0
+    },
+    "rotation": 0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "1msq1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "1msq2"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "1msq3"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "1msq4"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}

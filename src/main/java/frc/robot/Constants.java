@@ -58,7 +58,7 @@ public final class Constants {
     public static final double MOTOR_LOADING_SPEED = 0.07;
 
     // Encoder Values for the Intake and Pivot
-    public static final double PIVOT_MAX = -6; // -8.5 for 5 FEET score
+    public static final double PIVOT_MAX = -8; // -8.5 for 5 FEET score
     public static final double PIVOT_MIN = 0;
 
     public static final int MOTOR_CURRENT_LIMIT = 40;

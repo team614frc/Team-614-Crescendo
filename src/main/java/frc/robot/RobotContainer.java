@@ -5,6 +5,7 @@
 package frc.robot;
 
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
 
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj.DataLogManager;
@@ -64,8 +65,16 @@ public class RobotContainer {
     DriverStation.startDataLog(DataLogManager.getLog());
     // (optional) Record only DS control data by uncommenting next line.
     // DriverStation.startDataLog(DataLogManager.getLog(), false);
-    // limeSubsystem.enableVisionProcessing();
-    // Configure the button bindings
+
+    //Commands for pathplanner to use in autos.
+    NamedCommands.registerCommand("Score High", new Shooter(ManipulatorConstants.SCORE_HIGH_SPEED).withTimeout(4));
+    NamedCommands.registerCommand("Score Middle", new Shooter(ManipulatorConstants.SCORE_MID_SPEED).withTimeout(0.5));
+    NamedCommands.registerCommand("Score Low", new Shooter(ManipulatorConstants.SCORE_LOW_SPEED).withTimeout(0.5));
+    NamedCommands.registerCommand("Pivot Down", new PivotPIDCommand(ManipulatorConstants.PIVOT_MIN).withTimeout(2));
+    NamedCommands.registerCommand("Pivot Up", new PivotPIDCommand(ManipulatorConstants.PIVOT_MAX).withTimeout(2));
+    NamedCommands.registerCommand("Long Intake", new Intake(ManipulatorConstants.INTAKE_SPEED).withTimeout(2));
+    NamedCommands.registerCommand("Short Intake", new Intake(ManipulatorConstants.INTAKE_SPEED).withTimeout(0.5));
+
     testMotorSpeeds = 0;
     configureButtonBindings();
     // autoChooser.addOption("Test Path", TestPath1);
