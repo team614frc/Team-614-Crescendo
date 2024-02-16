@@ -16,16 +16,19 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
-import frc.robot.Constants.IntakeConstants;
+import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.setXCommand;
-import frc.robot.commands.intake.Intake;
-import frc.robot.commands.intake.PivotDown;
-import frc.robot.commands.intake.PivotUp;
+import frc.robot.commands.manipulator.Intake;
+// import frc.robot.commands.manipulator.pivot.PivotDown;
+import frc.robot.commands.manipulator.pivot.PivotPIDCommand;
+// import frc.robot.commands.manipulator.pivot.PivotUp;
+import frc.robot.commands.vision.AlignScore;
 // import frc.robot.commands.vision.AlignScore;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.LimelightSubsystem;
+// import frc.robot.subsystems.PivotPIDSub;
 import frc.robot.subsystems.PivotSubsystem;
 
 /*
@@ -39,6 +42,7 @@ public class RobotContainer {
   // The robot's subsystems
   public final static DriveSubsystem swerveDrive = new DriveSubsystem();
   public final static IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
+  // public final static PivotPIDSub pivotPIDSubsystem = new PivotPIDSub();
   public final static PivotSubsystem pivotSubsystem = new PivotSubsystem();
   public final static LimelightSubsystem limeSubsystem = new LimelightSubsystem();
   // The driver's controller
@@ -76,7 +80,6 @@ public class RobotContainer {
             swerveDrive));
     autoChooser = AutoBuilder.buildAutoChooser();
     SmartDashboard.putData(autoChooser);
-
   }
 
   /**
@@ -105,22 +108,22 @@ public class RobotContainer {
   private void configureButtonBindings() {
 
     m_driverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new setXCommand());
-    m_driverController.rightTrigger().whileTrue(new Intake(IntakeConstants.SCORE_HIGH_SPEED));
-    m_driverController.button(OIConstants.RIGHT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_MID_SPEED));
-    m_driverController.button(OIConstants.LEFT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_LOW_SPEED));
-    m_driverController.leftTrigger().whileTrue(new Intake(IntakeConstants.INTAKE_SPEED));
-    m_driverController.button(OIConstants.A_BUTTON).onTrue(new PivotDown(IntakeConstants.PIVOT_DOWN_SPEED));
-    m_driverController.button(OIConstants.X_BUTTON).onTrue(new PivotUp(IntakeConstants.PIVOT_UP_SPEED));
-    // m_driverController.button(OIConstants.Y_BUTTON).whileTrue(new AlignScore());
+    m_driverController.rightTrigger().whileTrue(new Intake(ManipulatorConstants.SCORE_HIGH_SPEED));
+    m_driverController.button(OIConstants.RIGHT_BUMPER).whileTrue(new Intake(ManipulatorConstants.SCORE_MID_SPEED));
+    m_driverController.button(OIConstants.LEFT_BUMPER).whileTrue(new Intake(ManipulatorConstants.SCORE_LOW_SPEED));
+    m_driverController.leftTrigger().whileTrue(new Intake(ManipulatorConstants.INTAKE_SPEED));
+    m_driverController.button(OIConstants.A_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MIN));
+    m_driverController.button(OIConstants.X_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MAX));
+    m_driverController.button(OIConstants.Y_BUTTON).whileTrue(new AlignScore());
 
     // m_coDriverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new
     // setXCommand());
-    m_coDriverController.rightTrigger().whileTrue(new Intake(IntakeConstants.SCORE_HIGH_SPEED));
-    m_coDriverController.button(OIConstants.RIGHT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_MID_SPEED));
-    m_coDriverController.button(OIConstants.LEFT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_LOW_SPEED));
-    m_coDriverController.leftTrigger().whileTrue(new Intake(IntakeConstants.INTAKE_SPEED));
-    m_coDriverController.button(OIConstants.A_BUTTON).onTrue(new PivotDown(IntakeConstants.PIVOT_DOWN_SPEED));
-    m_coDriverController.button(OIConstants.X_BUTTON).onTrue(new PivotUp(IntakeConstants.PIVOT_UP_SPEED));
+    // m_coDriverController.rightTrigger().whileTrue(new Intake(IntakeConstants.SCORE_HIGH_SPEED));
+    // m_coDriverController.button(OIConstants.RIGHT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_MID_SPEED));
+    // m_coDriverController.button(OIConstants.LEFT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_LOW_SPEED));
+    // m_coDriverController.leftTrigger().whileTrue(new Intake(IntakeConstants.INTAKE_SPEED));
+    // m_coDriverController.button(OIConstants.A_BUTTON).onTrue(new PivotDown(IntakeConstants.PIVOT_DOWN_SPEED));
+    // m_coDriverController.button(OIConstants.X_BUTTON).onTrue(new PivotUp(IntakeConstants.PIVOT_UP_SPEED));
   }
 
   /**

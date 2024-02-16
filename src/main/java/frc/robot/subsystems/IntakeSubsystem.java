@@ -9,7 +9,7 @@ import com.revrobotics.CANSparkMax;
 import com.playingwithfusion.*;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.Constants.IntakeConstants;
+import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.VisionConstants;
 
 
@@ -34,14 +34,14 @@ public class IntakeSubsystem extends SubsystemBase {
   public IntakeSubsystem() {
     // Creates a new motor
 
-    intakeMotorR = new CANSparkMax(IntakeConstants.INTAKE_MOTOR_RIGHT, MotorType.kBrushless);
-    intakeMotorL = new CANSparkMax(IntakeConstants.INTAKE_MOTOR_LEFT, MotorType.kBrushless);
+    intakeMotorR = new CANSparkMax(ManipulatorConstants.INTAKE_MOTOR_RIGHT, MotorType.kBrushless);
+    intakeMotorL = new CANSparkMax(ManipulatorConstants.INTAKE_MOTOR_LEFT, MotorType.kBrushless);
 
     intakeMotorR.restoreFactoryDefaults();
     intakeMotorL.restoreFactoryDefaults();
 
-    intakeMotorR.setSmartCurrentLimit(IntakeConstants.MOTOR_CURRENT_LIMIT);
-    intakeMotorL.setSmartCurrentLimit(IntakeConstants.MOTOR_CURRENT_LIMIT);
+    intakeMotorR.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
+    intakeMotorL.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
 
     intakeMotorL.setInverted(false);
     intakeMotorR.setInverted(false);

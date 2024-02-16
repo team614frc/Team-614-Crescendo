@@ -28,7 +28,7 @@ import edu.wpi.first.wpilibj2.command.Command;
  */
 public final class Constants {
 
-  public static final class IntakeConstants {
+  public static final class ManipulatorConstants {
     // CAN IDs for the Intake Motors
     public static final int INTAKE_MOTOR_RIGHT = 48;
     public static final int INTAKE_MOTOR_LEFT = 47;
@@ -47,11 +47,24 @@ public final class Constants {
     public static final double MOTOR_ZERO_SPEED = 0;
     public static final double MOTOR_LOAD_SPEED = -0.07;
 
+    // PID constants for pivot
+    public static final double PIVOT_kP = 0.03;
+    public static final double PIVOT_kI = 0;
+    public static final double PIVOT_kD = 0;
+    public static final double PIVOT_kS = 0.0;
+    public static final double PIVOT_kG = 1.09/12;
+    public static final double PIVOT_kV = 1.18/12;
+    public static final double PIVOT_kA = 0.04/12;
+
     // Encoder Values for the Intake and Pivot
-    public static final double PIVOT_MAX = 10;
-    public static final double PIVOT_MIN = 0;
+    public static final double PIVOT_MAX = 1;
+    public static final double PIVOT_MIN = 12;
+    public static final double PIVOT_WEIGHT = 4.9; //kgs, dust 9.55, roomba 4.9
+    public static final double pivotMaxVelocity = 3;
+    public static final double pivotMaxAccel = 5;
 
     public static final int MOTOR_CURRENT_LIMIT = 40;
+    
   }
 
   public static final class VisionConstants {
