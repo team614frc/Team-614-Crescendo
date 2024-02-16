@@ -6,6 +6,7 @@ package frc.robot;
 
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
+import com.pathplanner.lib.path.PathPlannerPath;
 
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj.DataLogManager;
@@ -91,8 +92,8 @@ public class RobotContainer {
                 true, true),
             swerveDrive));
     autoChooser = AutoBuilder.buildAutoChooser();
+    autoChooser.addOption("Choreo", AutoBuilder.followPath(PathPlannerPath.fromChoreoTrajectory("NewPath")));
     SmartDashboard.putData(autoChooser);
-
   }
 
   /**
