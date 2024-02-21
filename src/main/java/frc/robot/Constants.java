@@ -48,20 +48,20 @@ public final class Constants {
     public static final double MOTOR_LOAD_SPEED = -0.07;
 
     // PID constants for pivot
-    public static final double PIVOT_kP = 0.03;
+    public static final double PIVOT_kP = 0.23; //VOLTS
     public static final double PIVOT_kI = 0;
-    public static final double PIVOT_kD = 0;
-    public static final double PIVOT_kS = 0.0;
-    public static final double PIVOT_kG = 1.09/12;
-    public static final double PIVOT_kV = 1.18/12;
-    public static final double PIVOT_kA = 0.04/12;
+    public static final double PIVOT_kD = 0.0;
+    public static final double PIVOT_kS = 0.5;
+    public static final double PIVOT_kG = 0.25;
+    public static final double PIVOT_kV = 0.0; //3.45
+    public static final double PIVOT_kA = 0.01;
 
     // Encoder Values for the Intake and Pivot
-    public static final double PIVOT_MAX = 1;
-    public static final double PIVOT_MIN = 12;
+    public static final double PIVOT_MAX = -(Math.PI/2);
+    public static final double PIVOT_MIN = -0.05;
     public static final double PIVOT_WEIGHT = 4.9; //kgs, dust 9.55, roomba 4.9
-    public static final double pivotMaxVelocity = 3;
-    public static final double pivotMaxAccel = 5;
+    public static final double pivotMaxVelocity = 4;
+    public static final double pivotMaxAccel = 10;
 
     public static final int MOTOR_CURRENT_LIMIT = 40;
     

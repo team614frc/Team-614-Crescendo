@@ -31,7 +31,7 @@ public class PivotPIDCommand extends Command {
     // } else {
     //   RobotContainer.pivotSubsystem.setPivotP(ManipulatorConstants.PIVOT_kP);
     // }
-    RobotContainer.pivotSubsystem.setSetpoint(setpoint);
+    RobotContainer.pivotSubsystem.setGoal(setpoint);
   }
 
   // Called once the command ends or is interrupted.
@@ -41,6 +41,6 @@ public class PivotPIDCommand extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return RobotContainer.pivotSubsystem.atSetpoint();
+    return false;
   }
 }
