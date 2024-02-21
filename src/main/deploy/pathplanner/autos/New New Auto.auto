@@ -20,6 +20,6 @@
       ]
     }
   },
-  "folder": null,
+  "folder": "testing",
   "choreoAuto": true
 }
