@@ -26,13 +26,14 @@ public class Shooter extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    RobotContainer.shooterSubsystem.set(shootSpeed);
+    RobotContainer.shooterSubsystem.set(-shootSpeed);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
     RobotContainer.shooterSubsystem.set(ManipulatorConstants.MOTOR_ZERO_SPEED);
+    RobotContainer.intakeSubsystem.set(ManipulatorConstants.MOTOR_LOADING_SPEED);
   }
 
   // Returns true when the command should end.

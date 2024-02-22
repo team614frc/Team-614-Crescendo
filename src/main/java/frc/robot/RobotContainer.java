@@ -112,7 +112,7 @@ public class RobotContainer {
   private void configureButtonBindings() {
 
     m_driverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new setXCommand());
-    m_driverController.rightTrigger().whileTrue(new Intake(ManipulatorConstants.SCORE_HIGH_SPEED));
+    m_driverController.rightTrigger().whileTrue(new Shooter(ManipulatorConstants.SCORE_HIGH_SPEED));
     m_driverController.button(OIConstants.RIGHT_BUMPER).whileTrue(new Intake(ManipulatorConstants.SCORE_MID_SPEED));
     m_driverController.button(OIConstants.LEFT_BUMPER).whileTrue(new Intake(ManipulatorConstants.SCORE_LOW_SPEED));
     m_driverController.leftTrigger().whileTrue(new Intake(ManipulatorConstants.INTAKE_SPEED));

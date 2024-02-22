@@ -30,7 +30,8 @@ public final class Constants {
 
   public static final class ManipulatorConstants {
     // CAN IDs for the Intake Motors
-    public static final int INTAKE_MOTOR = 17;
+    public static final int FEEDER_MOTOR = 17;
+    public static final int INTAKE_MOTOR = 25;
     public static final int SHOOTER_MOTOR_RIGHT = 15;
     public static final int SHOOTER_MOTOR_LEFT = 16;
 
@@ -39,7 +40,7 @@ public final class Constants {
     public static final int PIVOT_MOTOR_LEFT = 14;
 
     // Speed Constants for Intake and Pivot
-    public static final double INTAKE_SPEED = 0.45;
+    public static final double INTAKE_SPEED = 0.8;
     public static final double SCORE_HIGH_SPEED = -0.6;
     public static final double SCORE_MID_SPEED = -0.3;
     public static final double SCORE_LOW_SPEED = -0.15;
@@ -57,11 +58,11 @@ public final class Constants {
     public static final double PIVOT_kD = 0.0;
     public static final double PIVOT_kS = 0.5;
     public static final double PIVOT_kG = 0.25;
-    public static final double PIVOT_kV = 0.0; //3.45
+    public static final double PIVOT_kV = 0.25; //3.45
     public static final double PIVOT_kA = 0.01;
 
     // Encoder Values for the Intake and Pivot
-    public static final double PIVOT_MAX = -(Math.PI/2);
+    public static final double PIVOT_MAX = -1;
     public static final double PIVOT_MIN = -0.05;
     public static final double PIVOT_WEIGHT = 4.9; //kgs, dust 9.55, roomba 4.9
     public static final double pivotMaxVelocity = 4;

@@ -4,26 +4,22 @@
 
 package frc.robot.subsystems;
 
-<<<<<<< HEAD
 import com.revrobotics.CANSparkFlex;
 import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ManipulatorConstants;
-=======
 import com.revrobotics.CANSparkMax;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
 import edu.wpi.first.math.controller.ArmFeedforward;
 import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
->>>>>>> zabz-profpidtest
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.ProfiledPIDSubsystem;
 import frc.robot.Constants.ManipulatorConstants;
 
-<<<<<<< HEAD
 /**
  * The PivotSubsystem has the motor objects for the motors of the
  * Pivot on the robot. It also sets them a value based on the input
@@ -34,15 +30,11 @@ import frc.robot.Constants.ManipulatorConstants;
  * @returns pivotPosition through the getPosition()
  */
 
-public class PivotSubsystem extends SubsystemBase {
+public class PivotSubsystem extends ProfiledPIDSubsystem {
   /** Creates a new PivotSubsystem. */
 
   private CANSparkFlex pivotMotorR;
   private CANSparkFlex pivotMotorL;
-=======
-public class PivotSubsystem extends ProfiledPIDSubsystem {
-  private CANSparkMax pivotMotor;
->>>>>>> zabz-profpidtest
 
   private ArmFeedforward feedforward = new ArmFeedforward(
     ManipulatorConstants.PIVOT_kS,
@@ -52,45 +44,6 @@ public class PivotSubsystem extends ProfiledPIDSubsystem {
 
   /** Creates a new PivotSubsystem. */
   public PivotSubsystem() {
-<<<<<<< HEAD
-   
-    pivotMotorR = new CANSparkFlex(ManipulatorConstants.PIVOT_MOTOR_RIGHT, MotorType.kBrushless);
-    pivotMotorR.restoreFactoryDefaults();
-    pivotMotorR.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
-    pivotMotorR.setIdleMode(CANSparkFlex.IdleMode.kBrake);
-    pivotMotorR.burnFlash();
-
-    pivotMotorL = new CANSparkFlex(ManipulatorConstants.PIVOT_MOTOR_LEFT, MotorType.kBrushless);
-    pivotMotorL.restoreFactoryDefaults();
-    pivotMotorL.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
-    pivotMotorL.setIdleMode(CANSparkFlex.IdleMode.kBrake);
-    pivotMotorL.burnFlash();
-
-  }
-
-  @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
-    SmartDashboard.putNumber("PivotLHeight", getPivotMotorLHeight());
-  }
-
-  public double getPivotMotorRHeight () {
-    return pivotMotorR.getEncoder().getPosition();
-  }
-
-  public double getPivotMotorLHeight () {
-    return pivotMotorL.getEncoder().getPosition();
-  }
-
-  public RelativeEncoder getPivotLEncoder()
-  {
-    return pivotMotorL.getEncoder();
-  }
-
-  public void set(double pivotSpeed) {
-    pivotMotorR.set(-pivotSpeed);
-    pivotMotorL.set(pivotSpeed); 
-=======
     super(
         // The ProfiledPIDController used by the subsystem
         new ProfiledPIDController(
@@ -99,35 +52,54 @@ public class PivotSubsystem extends ProfiledPIDSubsystem {
             ManipulatorConstants.PIVOT_kD,
             // The motion profile constraints
             new TrapezoidProfile.Constraints(ManipulatorConstants.pivotMaxVelocity, ManipulatorConstants.pivotMaxAccel)));
-    pivotMotor = new CANSparkMax(ManipulatorConstants.PIVOT_MOTOR, MotorType.kBrushless);
-    pivotMotor.restoreFactoryDefaults();
-    pivotMotor.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
-    pivotMotor.setIdleMode(CANSparkMax.IdleMode.kBrake);
-    pivotMotor.getEncoder().setPosition(0);
-    pivotMotor.burnFlash();
+    pivotMotorR = new CANSparkFlex(ManipulatorConstants.PIVOT_MOTOR_RIGHT, MotorType.kBrushless);
+    pivotMotorR.restoreFactoryDefaults();
+    pivotMotorR.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
+    pivotMotorR.setIdleMode(CANSparkFlex.IdleMode.kBrake);
+    pivotMotorR.getEncoder().setPosition(0);
+    pivotMotorR.setInverted(true);
+    pivotMotorR.burnFlash();
+
+    pivotMotorL = new CANSparkFlex(ManipulatorConstants.PIVOT_MOTOR_LEFT, MotorType.kBrushless);
+    pivotMotorL.restoreFactoryDefaults();
+    pivotMotorL.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
+    pivotMotorL.setIdleMode(CANSparkFlex.IdleMode.kBrake);
+    pivotMotorL.getEncoder().setPosition(0);
+    pivotMotorL.burnFlash();
   }
 
   @Override
   public void useOutput(double output, TrapezoidProfile.State setpoint) {
     // Use the output (and optionally the setpoint) here
     SmartDashboard.putNumber("PivotSubsystem", getMeasurement());  
-    SmartDashboard.putNumber("ENCODER", getEncoderinDegrees());  
+    SmartDashboard.putNumber("ENCODER Ticks", pivotMotorL.getEncoder().getCountsPerRevolution());  
+    //SmartDashboard.putNumber("Encoder", pivotMotorL.getEncoder().getMeasurementPeriod());
     double feed = feedforward.calculate(setpoint.position, setpoint.velocity);
-    pivotMotor.set(output + getController().calculate(getMeasurement() + feed));
+    pivotMotorL.set(output + getController().calculate(getMeasurement() + feed));
+    pivotMotorR.set(output + getController().calculate(getMeasurement() + feed));
   }
 
   @Override
   public double getMeasurement() {
     // Return the process variable measurement here
-    return getEncoderinDegrees();
+    return getEncoderinRadians();
+  }
+
+  public double getPivotLEncoder() {
+    return pivotMotorL.getEncoder().getPosition();
   }
 
   public double getEncoderinDegrees() {
-    return (pivotMotor.getEncoder().getPosition()/7.0);
+    double val = 100/360.0; //7168 ticks per rev, 100:1 gear ratio, ticks per full rotation in degrees
+    return (getPivotLEncoder()/val);
   }
 
   public double getEncoderinRadians() {
-    return (getEncoderinDegrees()*(Math.PI/180));
->>>>>>> zabz-profpidtest
+    return (getEncoderinDegrees()*(Math.PI/180.0));
+  }
+
+  public void set(double speed) {
+    pivotMotorL.set(speed);
+    pivotMotorR.set(-speed);
   }
 }
