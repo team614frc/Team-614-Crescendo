@@ -39,10 +39,12 @@ public class Intake extends Command {
   public void execute() {
     if (intakeSpeed > ManipulatorConstants.MOTOR_ZERO_SPEED
       && RobotContainer.intakeSubsystem.getSensorRange() < SensorConstants.sensorThreshold) {
-      RobotContainer.intakeSubsystem.set(ManipulatorConstants.MOTOR_LOADBACK_SPEED);
+      RobotContainer.intakeSubsystem.setFeed(ManipulatorConstants.MOTOR_LOADBACK_SPEED);
+      RobotContainer.shooterSubsystem.set(-0.5);
       // feeder loadback
     } else {
-      RobotContainer.intakeSubsystem.set(intakeSpeed);
+      RobotContainer.intakeSubsystem.setIntake(intakeSpeed);
+      RobotContainer.intakeSubsystem.setFeed(intakeSpeed);
     }
     RobotContainer.intakeSubsystem.getSpeed();
   }
@@ -50,7 +52,9 @@ public class Intake extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.intakeSubsystem.set(ManipulatorConstants.INTAKE_REST_SPEED);
+    RobotContainer.intakeSubsystem.setIntake(ManipulatorConstants.INTAKE_REST_SPEED);
+    RobotContainer.intakeSubsystem.setFeed(0);
+    RobotContainer.shooterSubsystem.set(0);
     RobotContainer.intakeSubsystem.getSpeed();
   }
 

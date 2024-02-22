@@ -28,19 +28,19 @@ import frc.robot.Constants.VisionConstants;
 public class IntakeSubsystem extends SubsystemBase {
   /** Creates a new IntakeSubsystem. */
   
-  private CANSparkFlex ManipulatorMotor;
+  private CANSparkFlex feedMotor;
   private CANSparkFlex intakeMotor;
   private TimeOfFlight sensor;
 
   public IntakeSubsystem() {
     // Creates a new motor
 
-    ManipulatorMotor = new CANSparkFlex(ManipulatorConstants.FEEDER_MOTOR, MotorType.kBrushless);
-    ManipulatorMotor.restoreFactoryDefaults();
-    ManipulatorMotor.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
-    ManipulatorMotor.setInverted(false);
-    ManipulatorMotor.setIdleMode(CANSparkFlex.IdleMode.kBrake);
-    ManipulatorMotor.burnFlash(); 
+    feedMotor = new CANSparkFlex(ManipulatorConstants.FEEDER_MOTOR, MotorType.kBrushless);
+    feedMotor.restoreFactoryDefaults();
+    feedMotor.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
+    feedMotor.setInverted(false);
+    feedMotor.setIdleMode(CANSparkFlex.IdleMode.kCoast);
+    feedMotor.burnFlash(); 
 
     intakeMotor = new CANSparkFlex(ManipulatorConstants.INTAKE_MOTOR, MotorType.kBrushless);
     intakeMotor.restoreFactoryDefaults();
@@ -66,7 +66,7 @@ public class IntakeSubsystem extends SubsystemBase {
 
   public void getSpeed() {
     //intakeMotorR.get();
-    SmartDashboard.putNumber("Intake Speed Right", ManipulatorMotor.get());
+    SmartDashboard.putNumber("Intake Speed Right", feedMotor.get());
   }
 
   public double getSensorRange() {
@@ -74,8 +74,11 @@ public class IntakeSubsystem extends SubsystemBase {
   }
 
   // Sets the value of the motor to a double, at which the motor will run
-  public void set(double intakeSpeed) {
-    ManipulatorMotor.set(-intakeSpeed);
+  public void setIntake(double intakeSpeed) {
     intakeMotor.set(-intakeSpeed);
+  }
+
+  public void setFeed (double feedSpeed) {
+    feedMotor.set(-feedSpeed);
   }
 }

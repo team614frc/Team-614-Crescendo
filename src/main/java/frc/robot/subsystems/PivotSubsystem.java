@@ -98,6 +98,15 @@ public class PivotSubsystem extends ProfiledPIDSubsystem {
     return (getEncoderinDegrees()*(Math.PI/180.0));
   }
 
+  public boolean atGoal(double goal) {
+    if ((getMeasurement()>(goal-ManipulatorConstants.PIVOT_THRESHOLD)) && 
+          (getMeasurement()<(goal+ManipulatorConstants.PIVOT_THRESHOLD))) {
+            return true;
+    } else {
+        return false;
+    }
+  }
+
   public void set(double speed) {
     pivotMotorL.set(speed);
     pivotMotorR.set(-speed);
