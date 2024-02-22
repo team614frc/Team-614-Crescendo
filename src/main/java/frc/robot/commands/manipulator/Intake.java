@@ -7,7 +7,11 @@ package frc.robot.commands.manipulator;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.ManipulatorConstants;
+<<<<<<< HEAD
 import frc.robot.Constants.SensorConstants;
+=======
+import frc.robot.Constants.VisionConstants;
+>>>>>>> zabz-profpidtest
 
 /**
  * The Intake Command simply uses the IntakeSubsystem
@@ -37,8 +41,13 @@ public class Intake extends Command {
   @Override
   public void execute() {
     if (intakeSpeed > ManipulatorConstants.MOTOR_ZERO_SPEED
+<<<<<<< HEAD
       && RobotContainer.intakeSubsystem.getSensorRange() < SensorConstants.sensorThreshold) {
       RobotContainer.intakeSubsystem.set(ManipulatorConstants.MOTOR_LOADBACK_SPEED);
+=======
+      && RobotContainer.intakeSubsystem.getSensorRange() < VisionConstants.sensorThreshold) {
+      RobotContainer.intakeSubsystem.set(ManipulatorConstants.MOTOR_LOAD_SPEED);
+>>>>>>> zabz-profpidtest
       // feeder loadback
     } else {
       RobotContainer.intakeSubsystem.set(intakeSpeed);
