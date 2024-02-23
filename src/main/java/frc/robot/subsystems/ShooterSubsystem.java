@@ -44,4 +44,9 @@ public class ShooterSubsystem extends SubsystemBase {
     shooterMotorR.set(-shoot);
   }
 
+  public void getShooterVelocity () {
+    shooterMotorL.getEncoder().getVelocity();
+    shooterMotorR.getEncoder().getVelocity();
+  }
+
 }

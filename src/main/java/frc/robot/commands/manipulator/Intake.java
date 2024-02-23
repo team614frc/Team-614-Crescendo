@@ -27,6 +27,7 @@ public class Intake extends Command {
   public Intake(double intakeSpeed) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.intakeSubsystem);
+    // intakeSpeed = ManipulatorConstants.INTAKE_SPEED;
     this.intakeSpeed = intakeSpeed;
   }
 
@@ -40,11 +41,11 @@ public class Intake extends Command {
     if (intakeSpeed > ManipulatorConstants.MOTOR_ZERO_SPEED
       && RobotContainer.intakeSubsystem.getSensorRange() < SensorConstants.sensorThreshold) {
       RobotContainer.intakeSubsystem.setFeed(ManipulatorConstants.MOTOR_LOADBACK_SPEED);
-      RobotContainer.shooterSubsystem.set(-0.5);
+      RobotContainer.shooterSubsystem.set(-0.1);
       // feeder loadback
     } else {
       RobotContainer.intakeSubsystem.setIntake(intakeSpeed);
-      RobotContainer.intakeSubsystem.setFeed(intakeSpeed);
+      RobotContainer.intakeSubsystem.setFeed(0.4);
     }
     RobotContainer.intakeSubsystem.getSpeed();
   }
