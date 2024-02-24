@@ -9,17 +9,17 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.ManipulatorConstants;
 
-public class CloseScore extends Command {
+public class ScoreGoal extends Command {
   /** Creates a new CloseScore. */
   public double shootSpeed;
   public double pivotGoal;
   public Timer scoreTimer;
 
-  public CloseScore() {
+  public ScoreGoal(double pivotGoal) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.pivotSubsystem);
-    shootSpeed = ManipulatorConstants.SCORE_HIGH_SPEED;
-    pivotGoal = ManipulatorConstants.PIVOT_CLOSE_SCORE;
+    shootSpeed = 6630 * 0.8;
+    this.pivotGoal = pivotGoal;
     scoreTimer = new Timer();
   }
 
@@ -35,20 +35,25 @@ public class CloseScore extends Command {
   @Override
   public void execute() {
     RobotContainer.pivotSubsystem.setGoal(pivotGoal);
-    RobotContainer.shooterSubsystem.set(shootSpeed);
-    if (scoreTimer.get()>=2.5 && (RobotContainer.pivotSubsystem.atGoal(pivotGoal))) {
-      RobotContainer.intakeSubsystem.setFeed(ManipulatorConstants.FEEDER_MOTOR);
+    RobotContainer.shooterSubsystem.setSetpoint(shootSpeed);
+    if (scoreTimer.get()>=1.35) {
+      RobotContainer.intakeSubsystem.setFeed(ManipulatorConstants.MOTOR_LOADING_SPEED);
     }
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    RobotContainer.shooterSubsystem.set(0);
+    RobotContainer.intakeSubsystem.setFeed(0);
+    RobotContainer.pivotSubsystem.setGoal(ManipulatorConstants.PIVOT_MIN);
+
+  }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (scoreTimer.get() > 4){
+    if (scoreTimer.get() > 2){
       return true;
     } else {
       return false;

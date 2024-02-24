@@ -19,12 +19,14 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.setXCommand;
+import frc.robot.commands.commandgroup.AmpTrapScore;
+import frc.robot.commands.commandgroup.ScoreGoal;
 import frc.robot.commands.manipulator.Feeder;
 import frc.robot.commands.manipulator.Intake;
 import frc.robot.commands.manipulator.Shooter;
 import frc.robot.commands.manipulator.pivot.PivotDown;
 import frc.robot.commands.manipulator.pivot.PivotUp;
-import frc.robot.commands.vision.AlignScore;
+// import frc.robot.commands.vision.AlignScore;
 import frc.robot.commands.manipulator.pivot.PivotPIDCommand;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
@@ -46,7 +48,7 @@ public class RobotContainer {
   public final static IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
   public final static ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
   public final static PivotSubsystem pivotSubsystem = new PivotSubsystem();
-  public final static LimelightSubsystem limeSubsystem = new LimelightSubsystem();
+  // public final static LimelightSubsystem limeSubsystem = new LimelightSubsystem();
   // The driver's controller
   static CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
   static CommandXboxController m_coDriverController = new CommandXboxController(OIConstants.kCoDriverControllerPort);
@@ -112,13 +114,15 @@ public class RobotContainer {
   private void configureButtonBindings() {
 
     m_driverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new setXCommand());
-    m_driverController.rightTrigger().whileTrue(new Shooter(ManipulatorConstants.SCORE_HIGH_SPEED));
-    m_driverController.button(OIConstants.RIGHT_BUMPER).whileTrue(new Intake(ManipulatorConstants.SCORE_MID_SPEED));
-    m_driverController.button(OIConstants.LEFT_BUMPER).whileTrue(new Intake(0.07));
-    m_driverController.leftTrigger().whileTrue(new Intake(0.5));
+    m_driverController.rightTrigger().onTrue(new AmpTrapScore(ManipulatorConstants.PIVOT_AMP_GOAL));
+    // m_driverController.rightTrigger().whileTrue(new Shooter(ManipulatorConstants.SCORE_HIGH_SPEED));
+    m_driverController.button(OIConstants.RIGHT_BUMPER).onTrue(new ScoreGoal(ManipulatorConstants.PIVOT_FAR_SCORE));
+    m_driverController.button(OIConstants.LEFT_BUMPER).onTrue(new ScoreGoal(ManipulatorConstants.PIVOT_CLOSE_SCORE));
+    m_driverController.leftTrigger().whileTrue(new Intake(ManipulatorConstants.INTAKE_SPEED));
     m_driverController.button(OIConstants.A_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MIN));
     m_driverController.button(OIConstants.X_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MAX));
-    m_driverController.button(OIConstants.Y_BUTTON).whileTrue(new AlignScore());
+    m_driverController.button(OIConstants.Y_BUTTON).whileTrue(new Intake(ManipulatorConstants.OUTTAKE_SPEED));
+    // m_driverController.button(OIConstants.Y_BUTTON).whileTrue(new AlignScore());
 
     // m_coDriverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new
     // setXCommand());

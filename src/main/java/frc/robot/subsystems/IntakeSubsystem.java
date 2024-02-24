@@ -46,7 +46,7 @@ public class IntakeSubsystem extends SubsystemBase {
     intakeMotor.restoreFactoryDefaults();
     intakeMotor.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
     intakeMotor.setInverted(false);
-    intakeMotor.setIdleMode(CANSparkFlex.IdleMode.kBrake);
+    intakeMotor.setIdleMode(CANSparkFlex.IdleMode.kCoast);
     intakeMotor.burnFlash(); 
 
     sensor = new TimeOfFlight(SensorConstants.sensorPort1);

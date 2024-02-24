@@ -29,6 +29,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 public final class Constants {
 
   public static final class ManipulatorConstants {
+
     // CAN IDs for the Intake Motors
     public static final int FEEDER_MOTOR = 17;
     public static final int INTAKE_MOTOR = 25;
@@ -39,13 +40,15 @@ public final class Constants {
     public static final int PIVOT_MOTOR_RIGHT = 13;
     public static final int PIVOT_MOTOR_LEFT = 14;
 
-    // Speed Constants for Intake
-    public static final double INTAKE_SPEED = 0.8;
-    public static final double SCORE_HIGH_SPEED = 0.6;
-    public static final double SCORE_MID_SPEED = 0.3;
-    public static final double SCORE_LOW_SPEED = 0.15;
+    // Speed Constants for wheels
+    public static final double SHOOT_MAX_VEL_SET = 6630.0;
+    public static final double OUTTAKE_SPEED = -0.5;
+    public static final double INTAKE_SPEED = 0.5;
+    public static final double SCORE_HIGH_SPEED = SHOOT_MAX_VEL_SET * 0.6; //0.6
+    public static final double SCORE_MID_SPEED = SHOOT_MAX_VEL_SET * 0.3; //0.3
+    public static final double SCORE_LOW_SPEED = SHOOT_MAX_VEL_SET * 0.15; //0.15
     public static final double INTAKE_REST_SPEED = 0.00;
-    public static final double SHOOT_MAX_VEL_SET = 0;
+    public static final double SHOOTER_kFF = 0.000082;
 
     // Constants for Pivot
     public static final double PIVOT_UP_SPEED = 0.1;
@@ -53,10 +56,7 @@ public final class Constants {
     public static final double MOTOR_ZERO_SPEED = 0;
     public static final double MOTOR_GRAV_SPEED = 0.02;
     public static final double MOTOR_LOADBACK_SPEED = -0.1; //-0.07
-    public static final double MOTOR_LOADING_SPEED = 0.1; //0.07
-    public static final double PIVOT_CLOSE_SCORE = 0.1;
-    public static final double PIVOT_FAR_SCORE = 0.75;
-    public static final double PIVOT_TRAP_GOAL = 1.35;
+    public static final double MOTOR_LOADING_SPEED = 1; //0.07
 
     // PID constants for pivot
     public static final double PIVOT_kP = 0.23; //VOLTS
@@ -64,12 +64,16 @@ public final class Constants {
     public static final double PIVOT_kD = 0.0;
     public static final double PIVOT_kS = 0.5;
     public static final double PIVOT_kG = 0.25;
-    public static final double PIVOT_kV = 0.25; //3.45
+    public static final double PIVOT_kV = 0.25; //3.45 default
     public static final double PIVOT_kA = 0.01;
 
     // Encoder Values for the Intake and Pivot
     public static final double PIVOT_MAX = -(Math.PI/2);
     public static final double PIVOT_MIN = 0.08;
+    public static final double PIVOT_CLOSE_SCORE = -0.2;
+    public static final double PIVOT_FAR_SCORE = -0.56;
+    public static final double PIVOT_AMP_GOAL = -(Math.PI/2);
+    public static final double PIVOT_TRAP_SCORE = -0.15;
     public static final double PIVOT_WEIGHT = 4.9; //kgs, dust 9.55, roomba 4.9
     public static final double PIVOT_THRESHOLD = 0.03;
     public static final double pivotMaxVelocity = 4;

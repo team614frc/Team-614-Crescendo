@@ -7,22 +7,28 @@ package frc.robot.subsystems;
 import com.revrobotics.CANSparkFlex;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.PIDSubsystem;
 import frc.robot.Constants.ManipulatorConstants;
 
-public class ShooterSubsystem extends SubsystemBase {
+public class ShooterSubsystem extends PIDSubsystem {
   /** Creates a new ShooterSubsystem. */
-
+  
   CANSparkFlex shooterMotorR;
   CANSparkFlex shooterMotorL;
 
   public ShooterSubsystem() {
+    super(
+        // The PIDController used by the subsystem
+        new PIDController(0.001, 0, 0));
 
     shooterMotorL = new CANSparkFlex(ManipulatorConstants.SHOOTER_MOTOR_LEFT, MotorType.kBrushless);
     shooterMotorL.restoreFactoryDefaults();
     shooterMotorL.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
     shooterMotorL.setInverted(false);
     shooterMotorL.setIdleMode(CANSparkFlex.IdleMode.kCoast);
+    shooterMotorL.getPIDController().setFF(0.000082);
     shooterMotorL.burnFlash();
 
     shooterMotorR = new CANSparkFlex(ManipulatorConstants.SHOOTER_MOTOR_RIGHT, MotorType.kBrushless);
@@ -30,23 +36,39 @@ public class ShooterSubsystem extends SubsystemBase {
     shooterMotorR.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
     shooterMotorR.setInverted(false);
     shooterMotorR.setIdleMode(CANSparkFlex.IdleMode.kCoast);
-    shooterMotorR.burnFlash(); 
-
+    shooterMotorL.getPIDController().setFF(0.000082);
+    shooterMotorR.burnFlash();
   }
 
   @Override
-  public void periodic() {
-    // This method will be called once per scheduler run
+  public void useOutput(double output, double setpoint) {
+    // Use the output here
+    shooterMotorL.set(-(output + getController().calculate(getMeasurement(), setpoint)));
+    shooterMotorR.set(-(output + getController().calculate(getMeasurementR(), setpoint)));
   }
 
-  public void set(double shoot) {
-    shooterMotorL.set(-shoot);
-    shooterMotorR.set(-shoot);
+  @Override
+  public double getMeasurement() {
+    // Return the process variable measurement here
+    SmartDashboard.putNumber("SHOOTER RPM", getShooterLVelocity());
+    return getShooterLVelocity();
   }
 
-  public void getShooterVelocity () {
-    shooterMotorL.getEncoder().getVelocity();
-    shooterMotorR.getEncoder().getVelocity();
+  public double getMeasurementR() {
+    // return the right motor
+    return getShooterRVelocity();
   }
 
+  public double getShooterLVelocity() {
+    return shooterMotorL.getEncoder().getVelocity();
+  }
+
+  public double getShooterRVelocity() {
+    return shooterMotorR.getEncoder().getVelocity();
+  }
+
+  public void set(double speed) {
+    shooterMotorL.set(-speed);
+    shooterMotorR.set(-speed);
+  }
 }
