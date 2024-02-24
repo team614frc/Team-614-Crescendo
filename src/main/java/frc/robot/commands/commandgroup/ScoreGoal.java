@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.ManipulatorConstants;
+import frc.robot.commands.manipulator.pivot.PivotPIDCommand;
 
 public class ScoreGoal extends Command {
   /** Creates a new CloseScore. */
@@ -18,7 +19,7 @@ public class ScoreGoal extends Command {
   public ScoreGoal(double pivotGoal) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.pivotSubsystem);
-    shootSpeed = 6630 * 0.8;
+    shootSpeed = 0.8;
     this.pivotGoal = pivotGoal;
     scoreTimer = new Timer();
   }
@@ -35,8 +36,8 @@ public class ScoreGoal extends Command {
   @Override
   public void execute() {
     RobotContainer.pivotSubsystem.setGoal(pivotGoal);
-    RobotContainer.shooterSubsystem.setSetpoint(shootSpeed);
-    if (scoreTimer.get()>=1.35) {
+    RobotContainer.shooterSubsystem.set(shootSpeed);
+    if (scoreTimer.get()>=2) {
       RobotContainer.intakeSubsystem.setFeed(ManipulatorConstants.MOTOR_LOADING_SPEED);
     }
   }
@@ -53,7 +54,7 @@ public class ScoreGoal extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (scoreTimer.get() > 2){
+    if (scoreTimer.get() > 2.7){
       return true;
     } else {
       return false;

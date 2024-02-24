@@ -120,18 +120,20 @@ public class RobotContainer {
     m_driverController.button(OIConstants.LEFT_BUMPER).onTrue(new ScoreGoal(ManipulatorConstants.PIVOT_CLOSE_SCORE));
     m_driverController.leftTrigger().whileTrue(new Intake(ManipulatorConstants.INTAKE_SPEED));
     m_driverController.button(OIConstants.A_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MIN));
-    m_driverController.button(OIConstants.X_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MAX));
+    m_driverController.button(OIConstants.X_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_FAR_SCORE));
     m_driverController.button(OIConstants.Y_BUTTON).whileTrue(new Intake(ManipulatorConstants.OUTTAKE_SPEED));
     // m_driverController.button(OIConstants.Y_BUTTON).whileTrue(new AlignScore());
 
-    // m_coDriverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new
-    // setXCommand());
-    // m_coDriverController.rightTrigger().whileTrue(new Intake(IntakeConstants.SCORE_HIGH_SPEED));
-    // m_coDriverController.button(OIConstants.RIGHT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_MID_SPEED));
-    // m_coDriverController.button(OIConstants.LEFT_BUMPER).whileTrue(new Intake(IntakeConstants.SCORE_LOW_SPEED));
-    // m_coDriverController.leftTrigger().whileTrue(new Intake(IntakeConstants.INTAKE_SPEED));
-    // m_coDriverController.button(OIConstants.A_BUTTON).onTrue(new PivotDown(IntakeConstants.PIVOT_DOWN_SPEED));
-    // m_coDriverController.button(OIConstants.X_BUTTON).onTrue(new PivotUp(IntakeConstants.PIVOT_UP_SPEED));
+    m_coDriverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new setXCommand());
+    m_coDriverController.rightTrigger().onTrue(new AmpTrapScore(ManipulatorConstants.PIVOT_AMP_GOAL));
+    // m_driverController.rightTrigger().whileTrue(new Shooter(ManipulatorConstants.SCORE_HIGH_SPEED));
+    m_coDriverController.button(OIConstants.RIGHT_BUMPER).onTrue(new ScoreGoal(ManipulatorConstants.PIVOT_FAR_SCORE));
+    m_coDriverController.button(OIConstants.LEFT_BUMPER).onTrue(new ScoreGoal(ManipulatorConstants.PIVOT_CLOSE_SCORE));
+    m_coDriverController.leftTrigger().whileTrue(new Intake(ManipulatorConstants.INTAKE_SPEED));
+    m_coDriverController.button(OIConstants.A_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MIN));
+    m_coDriverController.button(OIConstants.X_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_FAR_SCORE));
+    m_coDriverController.button(OIConstants.Y_BUTTON).whileTrue(new Intake(ManipulatorConstants.OUTTAKE_SPEED));
+    // m_driverController.button(OIConstants.Y_BUTTON).whileTrue(new AlignScore());
   }
 
   /**

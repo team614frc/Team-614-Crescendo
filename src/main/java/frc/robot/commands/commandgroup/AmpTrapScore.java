@@ -18,7 +18,7 @@ public class AmpTrapScore extends Command {
   public AmpTrapScore(double pivotGoal) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.pivotSubsystem);
-    shootSpeed = 6630 * 0.4;
+    shootSpeed = 0.4;
     this.pivotGoal = pivotGoal;
     scoreTimer = new Timer();
   }
@@ -26,7 +26,6 @@ public class AmpTrapScore extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    RobotContainer.pivotSubsystem.enable();
     scoreTimer.reset();
     scoreTimer.start();
   }
@@ -35,7 +34,7 @@ public class AmpTrapScore extends Command {
   @Override
   public void execute() {
     RobotContainer.pivotSubsystem.setGoal(pivotGoal);
-    RobotContainer.shooterSubsystem.setSetpoint(shootSpeed);
+    RobotContainer.shooterSubsystem.set(shootSpeed);
     if (scoreTimer.get()>=1.35) {
       RobotContainer.intakeSubsystem.setFeed(ManipulatorConstants.MOTOR_LOADING_SPEED);
     }
