@@ -80,6 +80,14 @@ public class RobotContainer {
     configureButtonBindings();
     // autoChooser.addOption("Test Path", TestPath1);
     // SmartDashboard.putData(autoChooser);
+
+    //Commands for pathplanner to use in autos.
+    NamedCommands.registerCommand("Score High", new Intake(ManipulatorConstants.SCORE_HIGH_SPEED).withTimeout(0.5));
+    NamedCommands.registerCommand("Pivot Down", new PivotPIDCommand(ManipulatorConstants.PIVOT_MIN).withTimeout(1));
+    NamedCommands.registerCommand("Pivot Up", new PivotPIDCommand(ManipulatorConstants.PIVOT_MAX).withTimeout(1));
+    NamedCommands.registerCommand("Long Intake", new Intake(ManipulatorConstants.INTAKE_SPEED).withTimeout(2));
+    NamedCommands.registerCommand("Short Intake", new Intake(ManipulatorConstants.INTAKE_SPEED).withTimeout(0.5));
+
     // Configure default commands
     swerveDrive.setDefaultCommand(
         // The left stick controls translation of the robot.

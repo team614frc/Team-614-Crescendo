@@ -1,0 +1,75 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 1.249,
+      "y": 4.285
+    },
+    "rotation": -1.6738539033345603e-15
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "Pivot Up"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Score High"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "MiddleRecker.1"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Pivot Down"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "MiddleRecker.2"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Long Intake"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Pivot Up"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": true
+}
