@@ -18,6 +18,8 @@ public class AmpTrapScore extends Command {
   public AmpTrapScore(double pivotGoal) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.pivotSubsystem);
+    addRequirements(RobotContainer.intakeSubsystem);
+    addRequirements(RobotContainer.shooterSubsystem);
     shootSpeed = 0.4;
     this.pivotGoal = pivotGoal;
     scoreTimer = new Timer();

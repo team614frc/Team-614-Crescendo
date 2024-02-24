@@ -19,6 +19,8 @@ public class ScoreGoal extends Command {
   public ScoreGoal(double pivotGoal) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.pivotSubsystem);
+    addRequirements(RobotContainer.shooterSubsystem);
+    addRequirements(RobotContainer.intakeSubsystem);
     shootSpeed = 0.8;
     this.pivotGoal = pivotGoal;
     scoreTimer = new Timer();
@@ -48,7 +50,7 @@ public class ScoreGoal extends Command {
     RobotContainer.shooterSubsystem.set(0);
     RobotContainer.intakeSubsystem.setFeed(0);
     RobotContainer.pivotSubsystem.setGoal(ManipulatorConstants.PIVOT_MIN);
-
+    scoreTimer.stop();
   }
 
   // Returns true when the command should end.
