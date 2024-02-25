@@ -5,6 +5,7 @@
 package frc.robot;
 
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
 
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj.DataLogManager;
@@ -71,9 +72,11 @@ public class RobotContainer {
     // Configure the button bindings
     testMotorSpeeds = 0;
     configureButtonBindings();
-    // autoChooser.addOption("Test Path", TestPath1);
-    // SmartDashboard.putData(autoChooser);
-    // Configure default commands
+    
+    // Pathplanner Commands
+    NamedCommands.registerCommand("Score Close", new ScoreGoal(ManipulatorConstants.PIVOT_CLOSE_SCORE));
+    NamedCommands.registerCommand("Intake", new Intake(ManipulatorConstants.INTAKE_REST_SPEED));
+
     swerveDrive.setDefaultCommand(
         // The left stick controls translation of the robot.
         // Turning is controlled by the X axis of the right stick.
