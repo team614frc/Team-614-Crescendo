@@ -49,6 +49,7 @@ public final class Constants {
     public static final double SCORE_LOW_SPEED = SHOOT_MAX_VEL_SET * 0.15; //0.15
     public static final double INTAKE_REST_SPEED = 0.00;
     public static final double SHOOTER_kFF = 0.000082;
+    public static final double AMP_SPEED = 0.2;
 
     // Constants for Pivot
     public static final double PIVOT_UP_SPEED = 0.1;

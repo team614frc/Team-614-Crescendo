@@ -18,6 +18,7 @@ public class Shooter extends Command {
   public Shooter(double shootSpeed) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.shooterSubsystem);
+    addRequirements(RobotContainer.intakeSubsystem);
     commandTimer = new Timer();
     this.shootSpeed = shootSpeed;
   }

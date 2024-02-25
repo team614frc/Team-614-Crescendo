@@ -127,6 +127,8 @@ public class RobotContainer {
     m_coDriverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new setXCommand());
     m_coDriverController.rightTrigger().onTrue(new AmpTrapScore(ManipulatorConstants.PIVOT_AMP_GOAL));
     // m_driverController.rightTrigger().whileTrue(new Shooter(ManipulatorConstants.SCORE_HIGH_SPEED));
+
+    
     m_coDriverController.button(OIConstants.RIGHT_BUMPER).onTrue(new ScoreGoal(ManipulatorConstants.PIVOT_FAR_SCORE));
     m_coDriverController.button(OIConstants.LEFT_BUMPER).onTrue(new ScoreGoal(ManipulatorConstants.PIVOT_CLOSE_SCORE));
     m_coDriverController.leftTrigger().whileTrue(new Intake(ManipulatorConstants.INTAKE_SPEED));
