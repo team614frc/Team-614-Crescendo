@@ -1,0 +1,160 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 1.5,
+      "y": 5.57
+    },
+    "rotation": 2.287589519123076e-28
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "Pivot Up"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Score High"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Pivot Down"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "3p good.1"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "3p good.2"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Short Intake"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Pivot Up"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Score High"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Pivot Down"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "3p good.3"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "3p good.4"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Short Intake"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Pivot Up"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Score High"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Pivot Down"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "3p good.5"
+          }
+        },
+        {
+          "type": "parallel",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "3p good.6"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Short Intake"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Pivot Up"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Score High"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": true
+}

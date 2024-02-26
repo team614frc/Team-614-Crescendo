@@ -75,6 +75,8 @@ public class RobotContainer {
     
     // Pathplanner Commands
     NamedCommands.registerCommand("Score Close", new ScoreGoal(ManipulatorConstants.PIVOT_CLOSE_SCORE));
+    NamedCommands.registerCommand("Score Far", new ScoreGoal(ManipulatorConstants.PIVOT_FAR_SCORE));
+    NamedCommands.registerCommand("Score Amp", new AmpTrapScore(ManipulatorConstants.PIVOT_AMP_GOAL));
     NamedCommands.registerCommand("Intake", new Intake(ManipulatorConstants.INTAKE_REST_SPEED));
 
     swerveDrive.setDefaultCommand(
