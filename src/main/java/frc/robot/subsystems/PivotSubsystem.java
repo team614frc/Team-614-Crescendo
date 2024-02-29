@@ -53,7 +53,7 @@ public class PivotSubsystem extends ProfiledPIDSubsystem {
             // The motion profile constraints
             new TrapezoidProfile.Constraints(ManipulatorConstants.pivotMaxVelocity, ManipulatorConstants.pivotMaxAccel)));
     pivotMotorR = new CANSparkFlex(ManipulatorConstants.PIVOT_MOTOR_RIGHT, MotorType.kBrushless);
-    pivotMotorR.restoreFactoryDefaults();
+    // pivotMotorR.restoreFactoryDefaults();
     pivotMotorR.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
     pivotMotorR.setIdleMode(CANSparkFlex.IdleMode.kBrake);
     pivotMotorR.getEncoder().setPosition(0);
@@ -61,7 +61,7 @@ public class PivotSubsystem extends ProfiledPIDSubsystem {
     pivotMotorR.burnFlash();
 
     pivotMotorL = new CANSparkFlex(ManipulatorConstants.PIVOT_MOTOR_LEFT, MotorType.kBrushless);
-    pivotMotorL.restoreFactoryDefaults();
+    // pivotMotorL.restoreFactoryDefaults();
     pivotMotorL.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
     pivotMotorL.setIdleMode(CANSparkFlex.IdleMode.kBrake);
     pivotMotorL.getEncoder().setPosition(0);
