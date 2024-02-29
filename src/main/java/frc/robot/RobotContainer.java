@@ -77,7 +77,7 @@ public class RobotContainer {
     NamedCommands.registerCommand("Score Close", new ScoreGoal(ManipulatorConstants.PIVOT_CLOSE_SCORE));
     NamedCommands.registerCommand("Score Far", new ScoreGoal(ManipulatorConstants.PIVOT_FAR_SCORE));
     NamedCommands.registerCommand("Score Amp", new AmpTrapScore(ManipulatorConstants.PIVOT_AMP_GOAL));
-    NamedCommands.registerCommand("Intake", new Intake(ManipulatorConstants.INTAKE_REST_SPEED));
+    NamedCommands.registerCommand("Intake", new Intake(ManipulatorConstants.INTAKE_SPEED).withTimeout(2.5));
 
     swerveDrive.setDefaultCommand(
         // The left stick controls translation of the robot.

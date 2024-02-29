@@ -14,25 +14,13 @@
         {
           "type": "named",
           "data": {
-            "name": "Pivot Up"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Score High"
+            "name": "Score Close"
           }
         },
         {
           "type": "path",
           "data": {
             "pathName": "3 piece.1"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Pivot Down"
           }
         },
         {
@@ -48,7 +36,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Short Intake"
+                  "name": "Intake"
                 }
               }
             ]
@@ -57,25 +45,13 @@
         {
           "type": "named",
           "data": {
-            "name": "Pivot Up"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Score High"
+            "name": "Score Far"
           }
         },
         {
           "type": "path",
           "data": {
             "pathName": "3 piece.3"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Pivot Down"
           }
         },
         {
@@ -91,7 +67,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Short Intake"
+                  "name": "Intake"
                 }
               }
             ]
@@ -100,25 +76,13 @@
         {
           "type": "named",
           "data": {
-            "name": "Pivot Up"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Score High"
+            "name": "Score Far"
           }
         },
         {
           "type": "path",
           "data": {
             "pathName": "3 piece.5"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Pivot Down"
           }
         },
         {
@@ -134,7 +98,7 @@
               {
                 "type": "named",
                 "data": {
-                  "name": "Short Intake"
+                  "name": "Intake"
                 }
               }
             ]
@@ -143,18 +107,12 @@
         {
           "type": "named",
           "data": {
-            "name": "Pivot Up"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Score High"
+            "name": "Score Far"
           }
         }
       ]
     }
   },
-  "folder": null,
+  "folder": "Choreo Autos",
   "choreoAuto": true
 }

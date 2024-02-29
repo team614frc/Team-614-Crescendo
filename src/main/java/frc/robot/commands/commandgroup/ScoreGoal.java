@@ -47,7 +47,7 @@ public class ScoreGoal extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.shooterSubsystem.set(0);
+    RobotContainer.shooterSubsystem.set(-0.03);
     RobotContainer.intakeSubsystem.setFeed(0);
     RobotContainer.pivotSubsystem.setGoal(ManipulatorConstants.PIVOT_MIN);
     scoreTimer.stop();

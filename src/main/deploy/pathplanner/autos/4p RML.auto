@@ -1,0 +1,67 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 0.9635373773460029,
+      "y": 4.120977732009714
+    },
+    "rotation": 0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "4p RML1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Score Far"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "4p RML2"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Score Far"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "4p RML3"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Score Far"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "4p RML4"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Score Far"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}
