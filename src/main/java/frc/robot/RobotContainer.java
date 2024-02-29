@@ -25,6 +25,7 @@ import frc.robot.commands.manipulator.Intake;
 import frc.robot.commands.manipulator.Shooter;
 import frc.robot.commands.manipulator.pivot.PivotDown;
 import frc.robot.commands.manipulator.pivot.PivotUp;
+import frc.robot.commands.vision.AlignScore;
 import frc.robot.commands.manipulator.pivot.PivotPIDCommand;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
@@ -71,9 +72,9 @@ public class RobotContainer {
         // Turning is controlled by the X axis of the right stick.
         new RunCommand(
             () -> swerveDrive.drive(
-                getDriverLeftY(),
-                getDriverLeftX(),
-                getDriverRightX(),
+                (.5)*Math.pow(getDriverLeftY(), 5) + (.5)*getDriverLeftY(),
+                (.5)*Math.pow(getDriverLeftX(), 5) + (.5)*getDriverLeftX(),
+                (.5)*Math.pow(getDriverRightX(), 5) + (.5)*getDriverRightX(),
                 true, true),
             swerveDrive));
             
@@ -114,7 +115,7 @@ public class RobotContainer {
     m_driverController.button(OIConstants.A_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MIN));
     m_driverController.button(OIConstants.X_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_FAR_SCORE));
     m_driverController.button(OIConstants.Y_BUTTON).whileTrue(new Intake(ManipulatorConstants.OUTTAKE_SPEED));
-    m_driverController.button(OIConstants.Y_BUTTON).whileTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MAX));
+    m_driverController.button(OIConstants.B_BUTTON).whileTrue(new AlignScore());
 
     m_coDriverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new setXCommand());
     m_coDriverController.rightTrigger().onTrue(new AmpTrapScore(ManipulatorConstants.PIVOT_AMP_GOAL));
@@ -124,7 +125,8 @@ public class RobotContainer {
     m_coDriverController.button(OIConstants.A_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MIN));
     m_coDriverController.button(OIConstants.X_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_FAR_SCORE));
     m_coDriverController.button(OIConstants.Y_BUTTON).whileTrue(new Intake(ManipulatorConstants.OUTTAKE_SPEED));
-    m_coDriverController.button(OIConstants.Y_BUTTON).whileTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MAX));
+    m_coDriverController.button(OIConstants.B_BUTTON).whileTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MAX));
+
   }
 
   /**

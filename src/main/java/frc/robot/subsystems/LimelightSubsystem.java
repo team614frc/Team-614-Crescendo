@@ -6,6 +6,7 @@ package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.LimelightHelpers;
+import frc.robot.RobotContainer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.networktables.NetworkTable;
@@ -14,8 +15,8 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 public class LimelightSubsystem extends SubsystemBase {
   /** Creates a new LimelightSubsystem. */
   private NetworkTable limelightTable;
-  private double x, y, area;
-  private Pose2d test;
+  private double x, y, area, angle;
+  private Pose2d limePose, roboPose;
   
   public LimelightSubsystem() {
     limelightTable = NetworkTableInstance.getDefault().getTable("limelight");
@@ -30,7 +31,10 @@ public class LimelightSubsystem extends SubsystemBase {
   }
 
   public double getHorizontalAngle() {
-    return x;
+    // roboPose = RobotContainer.swerveDrive.getPose();
+    // angle = 1/Math.tan(roboPose.getX()/roboPose.getY());
+    angle = x;
+    return angle;
   }
 
   @Override
@@ -39,10 +43,11 @@ public class LimelightSubsystem extends SubsystemBase {
     x = limelightTable.getEntry("tx").getDouble(0.0);
     y = limelightTable.getEntry("ty").getDouble(0.0);
     area = limelightTable.getEntry("ta").getDouble(0.0);
-    test = LimelightHelpers.getBotPose2d("limelight");
+    limePose = LimelightHelpers.getBotPose2d("limelight");
+    RobotContainer.swerveDrive.setPoseFromVision(limePose);
 
-    SmartDashboard.putNumber("POSE X", test.getX());
-    SmartDashboard.putNumber("POSE Y", test.getY());
+    // SmartDashboard.putNumber("POSE X", roboPose.getX());
+    // SmartDashboard.putNumber("POSE Y", roboPose.getY());
     
     // post to smart dashboard periodically
     SmartDashboard.putNumber("LimelightX", x);
