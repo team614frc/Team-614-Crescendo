@@ -41,23 +41,26 @@ public final class Constants {
     public static final int PIVOT_MOTOR_LEFT = 14;
 
     // Constants for Shooter and Intake
-    public static final double SHOOT_MAX_VEL_SET = 6630.0; // Max velocity considered for the shooter wheels
+    public static final double SHOOT_MAX_VEL_SET = 6630.0;
     public static final double SCORE_HIGH_SPEED = SHOOT_MAX_VEL_SET * 0.6; 
     public static final double SCORE_MID_SPEED = SHOOT_MAX_VEL_SET * 0.3; 
     public static final double SCORE_LOW_SPEED = SHOOT_MAX_VEL_SET * 0.15; 
+    public static final double SCORE_SIMPLE = 0.8;
+    public static final double SHOOTER_FEED = 0.2;
     public static final double AMP_SPEED = 0.2;
     public static final double SHOOTER_kFF = 0.000082;
     public static final double OUTTAKE_SPEED = -0.5;
     public static final double INTAKE_SPEED = 0.5;
     public static final double INTAKE_REST_SPEED = 0.00;
+    public static final double LOADBACK_SPEED = -0.1; 
+    public static final double LOADING_SPEED = 1; 
+    public static final double AMP_LOAD = 0.5;
 
     // Constants for Pivot
     public static final double PIVOT_UP_SPEED = 0.1;
     public static final double PIVOT_DOWN_SPEED = -0.1;
     public static final double MOTOR_GRAV_SPEED = 0.02;
-    public static final double MOTOR_LOADBACK_SPEED = -0.1; 
-    public static final double MOTOR_LOADING_SPEED = 1; 
-
+    
     // PID constants for pivot
     public static final double PIVOT_kP = 0.23; // VOLTS
     public static final double PIVOT_kI = 0;
@@ -74,7 +77,7 @@ public final class Constants {
     public static final double PIVOT_FAR_SCORE = -0.56;
     public static final double PIVOT_AMP_GOAL = -(Math.PI/2);
     public static final double PIVOT_TRAP_SCORE = -0.15;
-    public static final double PIVOT_WEIGHT = 9.55; // kgs, dust 9.55, roomba 4.9
+    public static final double PIVOT_WEIGHT = 9.55; 
     public static final double PIVOT_THRESHOLD = 0.03;
     public static final double pivotMaxVelocity = 4;
     public static final double pivotMaxAccel = 10;
@@ -88,6 +91,16 @@ public final class Constants {
     
     public static final int sensorPort1 = 0;
     public static final double sensorThreshold = 120;
+
+  }
+
+  public static final class TimeConstants {
+    
+    // Timers
+    public static final double SpeakerFeed = 2;
+    public static final double SpeakerEnd = 2.7;
+    public static final double AmpFeed = 1.35;
+    public static final double AmpEnd = 2;
 
   }
 

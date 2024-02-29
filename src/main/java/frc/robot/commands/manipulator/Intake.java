@@ -1,6 +1,6 @@
-// // Copyright (c) FIRST and other WPILib contributors.
-// // Open Source Software; you can modify and/or share it under the terms of
-// // the WPILib BSD license file in the root directory of this project.
+// Copyright (c) FIRST and other WPILib contributors.
+// Open Source Software; you can modify and/or share it under the terms of
+// the WPILib BSD license file in the root directory of this project.
 
 package frc.robot.commands.manipulator;
 
@@ -40,12 +40,12 @@ public class Intake extends Command {
   public void execute() {
     if (intakeSpeed > ManipulatorConstants.MOTOR_ZERO_SPEED
       && RobotContainer.intakeSubsystem.getSensorRange() < SensorConstants.sensorThreshold) {
-      RobotContainer.intakeSubsystem.setFeed(ManipulatorConstants.MOTOR_LOADBACK_SPEED);
-      RobotContainer.shooterSubsystem.setSetpoint(0.1);
+      RobotContainer.intakeSubsystem.setFeed(ManipulatorConstants.LOADBACK_SPEED);
+      RobotContainer.shooterSubsystem.set(-ManipulatorConstants.LOADBACK_SPEED);
       // feeder loadback
     } else {
       RobotContainer.intakeSubsystem.setIntake(intakeSpeed);
-      RobotContainer.intakeSubsystem.setFeed(0.2);
+      RobotContainer.intakeSubsystem.setFeed(ManipulatorConstants.SHOOTER_FEED);
     }
     RobotContainer.intakeSubsystem.getSpeed();
   }

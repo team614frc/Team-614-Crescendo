@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.ManipulatorConstants;
+import frc.robot.Constants.TimeConstants;
 
 public class Shooter extends Command {
 
@@ -27,16 +28,15 @@ public class Shooter extends Command {
   @Override
   public void initialize() {
     RobotContainer.shooterSubsystem.enable();
-    commandTimer.reset();
-    commandTimer.start();
+    commandTimer.restart();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     RobotContainer.shooterSubsystem.setSetpoint(shootSpeed);
-    if (commandTimer.get() > 2) {
-      RobotContainer.intakeSubsystem.setFeed(ManipulatorConstants.MOTOR_LOADING_SPEED);
+    if (commandTimer.get() > TimeConstants.SpeakerFeed) {
+      RobotContainer.intakeSubsystem.setFeed(ManipulatorConstants.LOADING_SPEED);
     }
   }
 
@@ -50,10 +50,6 @@ public class Shooter extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (commandTimer.get() > 3){
-      return true;
-    } else {
-      return false;
-    }
+    return commandTimer.get() > TimeConstants.SpeakerEnd;
   }
 }

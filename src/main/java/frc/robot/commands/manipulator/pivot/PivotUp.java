@@ -1,6 +1,6 @@
-// // Copyright (c) FIRST and other WPILib contributors.
-// // Open Source Software; you can modify and/or share it under the terms of
-// // the WPILib BSD license file in the root directory of this project.
+// Copyright (c) FIRST and other WPILib contributors.
+// Open Source Software; you can modify and/or share it under the terms of
+// the WPILib BSD license file in the root directory of this project.
 
 package frc.robot.commands.manipulator.pivot;
 
@@ -40,7 +40,7 @@ public class PivotUp extends Command {
   @Override
   public void execute() {
 
-    if (Math.abs(RobotContainer.pivotSubsystem.getPivotLEncoder()) < Math.PI/2) { // 2 = pivot max height I think
+    if (Math.abs(RobotContainer.pivotSubsystem.getPivotLEncoder()) < ManipulatorConstants.PIVOT_MAX) { 
       RobotContainer.pivotSubsystem.set(-pivotSpeed);
       SmartDashboard.putNumber("Encoder Position in Command",
       RobotContainer.pivotSubsystem.getPivotLEncoder());

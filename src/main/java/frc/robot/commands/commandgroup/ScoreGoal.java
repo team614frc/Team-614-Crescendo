@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.ManipulatorConstants;
-import frc.robot.commands.manipulator.pivot.PivotPIDCommand;
+import frc.robot.Constants.TimeConstants;
 
 public class ScoreGoal extends Command {
   /** Creates a new CloseScore. */
@@ -21,7 +21,7 @@ public class ScoreGoal extends Command {
     addRequirements(RobotContainer.pivotSubsystem);
     addRequirements(RobotContainer.shooterSubsystem);
     addRequirements(RobotContainer.intakeSubsystem);
-    shootSpeed = 0.8;
+    shootSpeed = ManipulatorConstants.SCORE_SIMPLE;
     this.pivotGoal = pivotGoal;
     scoreTimer = new Timer();
   }
@@ -30,8 +30,7 @@ public class ScoreGoal extends Command {
   @Override
   public void initialize() {
     RobotContainer.pivotSubsystem.enable();
-    scoreTimer.reset();
-    scoreTimer.start();
+    scoreTimer.restart();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -39,8 +38,8 @@ public class ScoreGoal extends Command {
   public void execute() {
     RobotContainer.pivotSubsystem.setGoal(pivotGoal);
     RobotContainer.shooterSubsystem.set(shootSpeed);
-    if (scoreTimer.get()>=2) {
-      RobotContainer.intakeSubsystem.setFeed(ManipulatorConstants.MOTOR_LOADING_SPEED);
+    if (scoreTimer.get() >= TimeConstants.SpeakerFeed) {
+      RobotContainer.intakeSubsystem.setFeed(ManipulatorConstants.LOADING_SPEED);
     }
   }
 
@@ -56,10 +55,6 @@ public class ScoreGoal extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (scoreTimer.get() > 2.7){
-      return true;
-    } else {
-      return false;
-    }
+    return scoreTimer.get() > TimeConstants.SpeakerEnd;
   }
 }

@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.ManipulatorConstants;
+import frc.robot.Constants.TimeConstants;
 
 public class AmpTrapScore extends Command {
   /** Creates a new AmpTrapScore. */
@@ -29,8 +30,7 @@ public class AmpTrapScore extends Command {
   @Override
   public void initialize() {
     RobotContainer.pivotSubsystem.enable();
-    scoreTimer.reset();
-    scoreTimer.start();
+    scoreTimer.restart();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -38,8 +38,8 @@ public class AmpTrapScore extends Command {
   public void execute() {
     RobotContainer.pivotSubsystem.setGoal(pivotGoal);
     RobotContainer.shooterSubsystem.set(shootSpeed);
-    if (scoreTimer.get()>=1.35) {
-      RobotContainer.intakeSubsystem.setFeed(0.5);
+    if (scoreTimer.get() >= TimeConstants.AmpFeed) {
+      RobotContainer.intakeSubsystem.setFeed(ManipulatorConstants.AMP_LOAD);
     }
   }
 
@@ -54,10 +54,6 @@ public class AmpTrapScore extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    if (scoreTimer.get() > 2){
-      return true;
-    } else {
-      return false;
-    }
+    return scoreTimer.get() > TimeConstants.AmpEnd;
   }
 }
