@@ -28,35 +28,91 @@ import edu.wpi.first.wpilibj2.command.Command;
  */
 public final class Constants {
 
-  public static final class IntakeConstants {
-    // CAN IDs for the Intake Motors
-    public static final int INTAKE_MOTOR_RIGHT = 48;
-    public static final int INTAKE_MOTOR_LEFT = 47;
+  public static final class ManipulatorConstants {
+
+    // CAN IDs for the Intake and Shooter Motors
+    public static final int FEEDER_MOTOR = 17;
+    public static final int INTAKE_MOTOR = 25;
+    public static final int SHOOTER_MOTOR_RIGHT = 15;
+    public static final int SHOOTER_MOTOR_LEFT = 16;
 
     // CAN ID for the Pivot Motors
-    public static final int PIVOT_MOTOR = 13;
+    public static final int PIVOT_MOTOR_RIGHT = 13;
+    public static final int PIVOT_MOTOR_LEFT = 14;
 
-    // Speed Constants for Intake and Pivot
-    public static final double INTAKE_SPEED = 0.6;
-    public static final double SCORE_HIGH_SPEED = -0.6; //UNTESTED VALUES PLEASE SET ACCORDING TO TEST
-    public static final double SCORE_MID_SPEED = -0.3;
-    public static final double SCORE_LOW_SPEED = -0.15;
+    // Constants for Shooter and Intake
+    public static final double SHOOT_MAX_VEL_SET = 6630.0;
+    public static final double SCORE_HIGH_SPEED = SHOOT_MAX_VEL_SET * 0.6; 
+    public static final double SCORE_MID_SPEED = SHOOT_MAX_VEL_SET * 0.3; 
+    public static final double SCORE_LOW_SPEED = SHOOT_MAX_VEL_SET * 0.15; 
+    public static final double SCORE_SIMPLE = 0.8;
+    public static final double SHOOTER_FEED = 0.2;
+    public static final double AMP_SPEED = 0.2;
+    public static final double SHOOTER_kFF = 0.000082;
+    public static final double OUTTAKE_SPEED = -0.5;
+    public static final double INTAKE_SPEED = 0.5;
     public static final double INTAKE_REST_SPEED = 0.00;
-    public static final double PIVOT_UP_SPEED = 0.2;
-    public static final double PIVOT_DOWN_SPEED = -0.2;
-    public static final double MOTOR_ZERO_SPEED = 0;
+    public static final double LOADBACK_SPEED = -0.1; 
+    public static final double LOADING_SPEED = 1; 
+    public static final double AMP_LOAD = 0.5;
 
-    // Encoder Values for the Intake and Pivot
-    public static final double PIVOT_MAX = 10;
-    public static final double PIVOT_MIN = 0;
+    // Constants for Pivot
+    public static final double PIVOT_UP_SPEED = 0.1;
+    public static final double PIVOT_DOWN_SPEED = -0.1;
+    public static final double MOTOR_GRAV_SPEED = 0.02;
+    
+    // PID constants for pivot
+    public static final double PIVOT_kP = 0.23; // VOLTS
+    public static final double PIVOT_kI = 0;
+    public static final double PIVOT_kD = 0.0;
+    public static final double PIVOT_kS = 0.5;
+    public static final double PIVOT_kG = 0.25;
+    public static final double PIVOT_kV = 0.25; 
+    public static final double PIVOT_kA = 0.01;
+
+    // Encoder Values for the Pivot
+    public static final double PIVOT_MAX = -(Math.PI/2);
+    public static final double PIVOT_MIN = 0.08;
+    public static final double PIVOT_CLOSE_SCORE = -0.2;
+    public static final double PIVOT_FAR_SCORE = -0.56;
+    public static final double PIVOT_AMP_GOAL = -(Math.PI/2);
+    public static final double PIVOT_TRAP_SCORE = -0.15;
+    public static final double PIVOT_WEIGHT = 9.55; 
+    public static final double PIVOT_THRESHOLD = 0.03;
+    public static final double pivotMaxVelocity = 4;
+    public static final double pivotMaxAccel = 10;
 
     public static final int MOTOR_CURRENT_LIMIT = 40;
+    public static final double MOTOR_ZERO_SPEED = 0;
+    
+  }
+
+  public static final class SensorConstants {
+    
+    public static final int sensorPort1 = 0;
+    public static final double sensorThreshold = 120;
+
+  }
+
+  public static final class TimeConstants {
+    
+    // Timers
+    public static final double SpeakerFeed = 2;
+    public static final double SpeakerEnd = 2.7;
+    public static final double AmpFeed = 1.35;
+    public static final double AmpEnd = 2;
+
   }
 
   public static final class VisionConstants {
+
     public static final double alignSetpoint = 0.0;
     public static final double simpleAlignYInput = 1.5;
     public static final double threshold = 0.5;
+
+    public static final double tag7X = -8.308975;
+    public static final double tag7Y =  1.442593;
+
   }
 
   public static final class DriveConstants {
@@ -86,15 +142,15 @@ public final class Constants {
     public static final double kBackLeftChassisAngularOffset = Math.PI;
     public static final double kBackRightChassisAngularOffset = Math.PI / 2;
 
-    // SPARK MAX CAN IDs
+    // SPARK FLEX CAN IDs
     public static final int kFrontLeftDrivingCanId = 10;
     public static final int kRearLeftDrivingCanId = 18;
-    public static final int kFrontRightDrivingCanId = 9;
+    public static final int kFrontRightDrivingCanId = 8;
     public static final int kRearRightDrivingCanId = 1;
 
     public static final int kFrontLeftTurningCanId = 11;
     public static final int kRearLeftTurningCanId = 19;
-    public static final int kFrontRightTurningCanId = 8;
+    public static final int kFrontRightTurningCanId = 9;
     public static final int kRearRightTurningCanId = 62;
 
     public static final boolean kGyroReversed = false;

@@ -263,6 +263,10 @@ public class DriveSubsystem extends SubsystemBase {
     m_rearRight.setDesiredState(desiredStates[3]);
   }
 
+  public void setPoseFromVision(Pose2d visionPose) {
+    m_field.setRobotPose(visionPose);
+  }
+
   /** Resets the drive encoders to currently read a position of 0. */
   public void resetEncoders() {
     m_frontLeft.resetEncoders();

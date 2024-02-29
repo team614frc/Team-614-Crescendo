@@ -2,11 +2,13 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands.intake;
+package frc.robot.commands.manipulator;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
-import frc.robot.Constants.IntakeConstants;
+import frc.robot.Constants.ManipulatorConstants;
+import frc.robot.Constants.SensorConstants;
+import frc.robot.Constants.VisionConstants;
 
 /**
  * The Intake Command simply uses the IntakeSubsystem
@@ -25,6 +27,7 @@ public class Intake extends Command {
   public Intake(double intakeSpeed) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.intakeSubsystem);
+    // intakeSpeed = ManipulatorConstants.INTAKE_SPEED;
     this.intakeSpeed = intakeSpeed;
   }
 
@@ -35,14 +38,24 @@ public class Intake extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    RobotContainer.intakeSubsystem.set(intakeSpeed);
+    if (intakeSpeed > ManipulatorConstants.MOTOR_ZERO_SPEED
+      && RobotContainer.intakeSubsystem.getSensorRange() < SensorConstants.sensorThreshold) {
+      RobotContainer.intakeSubsystem.setFeed(ManipulatorConstants.LOADBACK_SPEED);
+      RobotContainer.shooterSubsystem.set(-ManipulatorConstants.LOADBACK_SPEED);
+      // feeder loadback
+    } else {
+      RobotContainer.intakeSubsystem.setIntake(intakeSpeed);
+      RobotContainer.intakeSubsystem.setFeed(ManipulatorConstants.SHOOTER_FEED);
+    }
     RobotContainer.intakeSubsystem.getSpeed();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.intakeSubsystem.set(IntakeConstants.INTAKE_REST_SPEED);
+    RobotContainer.intakeSubsystem.setIntake(ManipulatorConstants.INTAKE_REST_SPEED);
+    RobotContainer.intakeSubsystem.setFeed(0);
+    RobotContainer.shooterSubsystem.setSetpoint(0);
     RobotContainer.intakeSubsystem.getSpeed();
   }
 
