@@ -84,9 +84,9 @@ public class RobotContainer {
         // Turning is controlled by the X axis of the right stick.
         new RunCommand(
             () -> swerveDrive.drive(
-                getDriverLeftY(),
-                getDriverLeftX(),
-                getDriverRightX(),
+                (.5)*Math.pow(getDriverLeftY(), 5) + (.5)*getDriverLeftY(),
+                (.5)*Math.pow(getDriverLeftX(), 5) + (.5)*getDriverLeftX(),
+                (.5)*Math.pow(getDriverRightX(), 5) + (.5)*getDriverRightX(),
                 true, true),
             swerveDrive));
     autoChooser = AutoBuilder.buildAutoChooser();

@@ -29,8 +29,7 @@ public class AmpTrapScore extends Command {
   @Override
   public void initialize() {
     RobotContainer.pivotSubsystem.enable();
-    scoreTimer.reset();
-    scoreTimer.start();
+    scoreTimer.restart();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
