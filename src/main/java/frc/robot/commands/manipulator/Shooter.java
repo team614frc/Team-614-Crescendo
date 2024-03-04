@@ -46,7 +46,6 @@ public class Shooter extends Command {
   public void end(boolean interrupted) {
     RobotContainer.shooterSubsystem.setSetpoint(ManipulatorConstants.MOTOR_ZERO_SPEED);
     RobotContainer.intakeSubsystem.setFeed(ManipulatorConstants.INTAKE_REST_SPEED);
-    SmartDashboard.putNumber("SHOOTER", RobotContainer.shooterSubsystem.getShooterLVelocity());
   }
 
   // Returns true when the command should end.

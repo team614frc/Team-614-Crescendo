@@ -113,8 +113,7 @@ public class RobotContainer {
     m_driverController.leftTrigger().whileTrue(new Intake(ManipulatorConstants.INTAKE_SPEED));
     m_driverController.button(OIConstants.A_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MIN));
     m_driverController.button(OIConstants.X_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_FAR_SCORE));
-    m_driverController.button(OIConstants.Y_BUTTON).whileTrue(new Shooter(5000));
-    //m_driverController.button(OIConstants.Y_BUTTON).whileTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MAX));
+    m_driverController.button(OIConstants.Y_BUTTON).whileTrue(new Intake(ManipulatorConstants.OUTTAKE_SPEED));
 
 
 
@@ -126,7 +125,6 @@ public class RobotContainer {
     m_coDriverController.button(OIConstants.A_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MIN));
     m_coDriverController.button(OIConstants.X_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_FAR_SCORE));
     m_coDriverController.button(OIConstants.Y_BUTTON).whileTrue(new Intake(ManipulatorConstants.OUTTAKE_SPEED));
-    m_coDriverController.button(OIConstants.Y_BUTTON).whileTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MAX));
   }
 
   /**
