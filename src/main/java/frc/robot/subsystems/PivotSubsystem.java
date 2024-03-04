@@ -81,7 +81,7 @@ public class PivotSubsystem extends ProfiledPIDSubsystem {
   }
 
   public double getEncoderinDegrees() {
-    double val = 100/360.0; //7168 ticks per rev, 100:1 gear ratio, ticks per full rotation in degrees
+    double val = 180/360.0; //7168 ticks per rev, 100:1 gear ratio, ticks per full rotation in degrees
     return (getPivotLEncoder()/val);
   }
 

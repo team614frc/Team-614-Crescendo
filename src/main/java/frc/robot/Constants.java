@@ -55,7 +55,7 @@ public final class Constants {
     public static final double INTAKE_REST_SPEED = 0.00;
 
     // Constants for Feeder
-    public static final double LOADBACK_SPEED = -0.08; 
+    public static final double LOADBACK_SPEED = -0.03; 
     public static final double LOADING_SPEED = 1; 
     public static final double AMP_LOAD = 0.5;
     public static final double SHOOTER_FEED = 0.2;

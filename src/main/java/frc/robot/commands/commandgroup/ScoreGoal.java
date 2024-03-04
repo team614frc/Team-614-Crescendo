@@ -21,6 +21,7 @@ public class ScoreGoal extends Command {
     addRequirements(RobotContainer.pivotSubsystem);
     addRequirements(RobotContainer.shooterSubsystem);
     addRequirements(RobotContainer.intakeSubsystem);
+    addRequirements(RobotContainer.limeSubsystem);
     shootSpeed = ManipulatorConstants.SCORE_SIMPLE;
     this.pivotGoal = pivotGoal;
     scoreTimer = new Timer();
@@ -40,6 +41,7 @@ public class ScoreGoal extends Command {
     RobotContainer.shooterSubsystem.set(shootSpeed);
     if (scoreTimer.get() >= TimeConstants.SpeakerFeed) {
       RobotContainer.intakeSubsystem.setFeed(ManipulatorConstants.LOADING_SPEED);
+      RobotContainer.limeSubsystem.turnOffLEDs();
     }
   }
 

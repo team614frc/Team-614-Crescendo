@@ -85,37 +85,37 @@ public class RobotContainer {
    * {@link JoystickButton}.
    */
 
-  public static double getLeftXwithDeadband() {
+  public static double getLeftXWithDeadband() {
     return -MathUtil.applyDeadband(m_driverController.getLeftX(),
       OIConstants.kDriveDeadband);
   }
 
   public static double getDriverLeftX() {
     return (.5)*Math.pow(
-      (getLeftXwithDeadband()), 5) + 
-      (.5)*(getLeftXwithDeadband());
+      (getLeftXWithDeadband()), 5) + 
+      (.5)*(getLeftXWithDeadband());
   }
 
-  public static double getLeftYwithDeadband() {
+  public static double getLeftYWithDeadband() {
     return -MathUtil.applyDeadband(m_driverController.getLeftY(), 
         OIConstants.kDriveDeadband);
   }
 
   public static double getDriverLeftY() {
     return (.5)*Math.pow(
-      (getLeftYwithDeadband()), 5) + 
-      (.5)*(getLeftYwithDeadband());
+      (getLeftYWithDeadband()), 5) + 
+      (.5)*(getLeftYWithDeadband());
   }
 
-  public static double getRightXwithDeadband() {
+  public static double getRightXWithDeadband() {
     return -MathUtil.applyDeadband(m_driverController.getRightX(), 
         OIConstants.kDriveDeadband);
   }
 
   public static double getDriverRightX() {
     return (.5)*Math.pow(
-      (getRightXwithDeadband()), 5) + 
-      (.5)*(getRightXwithDeadband());
+      (getRightXWithDeadband()), 5) + 
+      (.5)*(getRightXWithDeadband());
   }
 
   private void configureButtonBindings() {

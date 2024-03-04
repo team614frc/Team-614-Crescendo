@@ -7,6 +7,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.LimelightHelpers;
 import frc.robot.RobotContainer;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.networktables.NetworkTable;
@@ -17,6 +18,7 @@ public class LimelightSubsystem extends SubsystemBase {
   private NetworkTable limelightTable;
   private double x, y, area, angle;
   private Pose2d limePose, roboPose;
+  private Timer blinkTimer;
   
   public LimelightSubsystem() {
     limelightTable = NetworkTableInstance.getDefault().getTable("limelight");
@@ -28,6 +30,14 @@ public class LimelightSubsystem extends SubsystemBase {
 
   public void turnOnLEDs() {
     limelightTable.getEntry("ledMode").setNumber(3); // Turn on Limelight LEDs
+  }
+
+  public void blinkLEDs() {
+      limelightTable.getEntry("ledMode").setNumber(2); // Blink Limelight LEDs
+  }
+
+  public void turnOffLEDs() {
+    limelightTable.getEntry("ledMode").setNumber(1); // Turn off Limelight LEDs
   }
 
   public double getHorizontalAngle() {
