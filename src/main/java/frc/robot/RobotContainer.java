@@ -117,7 +117,7 @@ public class RobotContainer {
     // m_driverController.button(OIConstants.Y_BUTTON).whileTrue(new Intake(ManipulatorConstants.OUTTAKE_SPEED));
     // m_driverController.button(OIConstants.Y_BUTTON).whileTrue(new AlignScore(270));
     // m_driverController.button(OIConstants.B_BUTTON).whileTrue(new AlignScore(90));
-    m_driverController.y().whileTrue(new PivotDown(-0.85,-0.35));
+    m_driverController.y().whileTrue(new PivotDown(-0.5,-0.35));
     // m_driverController.start().whileTrue(swerveDrive.resetHeading());
 
     m_coDriverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new setXCommand());
