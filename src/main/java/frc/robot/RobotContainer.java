@@ -5,6 +5,7 @@
 package frc.robot;
 
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
 
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj.DataLogManager;
@@ -22,13 +23,9 @@ import frc.robot.commands.setXCommand;
 import frc.robot.commands.commandgroup.AmpTrapScore;
 import frc.robot.commands.commandgroup.ScoreGoal;
 import frc.robot.commands.manipulator.Intake;
-import frc.robot.commands.manipulator.Shooter;
-import frc.robot.commands.manipulator.pivot.PivotDown;
-import frc.robot.commands.manipulator.pivot.PivotUp;
 import frc.robot.commands.manipulator.pivot.PivotPIDCommand;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
-import frc.robot.subsystems.LimelightSubsystem;
 import frc.robot.subsystems.PivotSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
 
@@ -45,12 +42,10 @@ public class RobotContainer {
   public final static IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
   public final static ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
   public final static PivotSubsystem pivotSubsystem = new PivotSubsystem();
-  public final static LimelightSubsystem limeSubsystem = new LimelightSubsystem();
   // The driver's controller
   static CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
   static CommandXboxController m_coDriverController = new CommandXboxController(OIConstants.kCoDriverControllerPort);
-  // private AutoBuilder autoBuilder = new AutoBuilder(swerveDrive,
-  // intakeSubsystem, pivotSubsystem);
+
   private final SendableChooser<Command> autoChooser;
 
   /**
@@ -63,20 +58,27 @@ public class RobotContainer {
     DriverStation.startDataLog(DataLogManager.getLog());
     // (optional) Record only DS control data by uncommenting next line.
     // DriverStation.startDataLog(DataLogManager.getLog(), false);
-
+  
+    // Configure the button bindings
     configureButtonBindings();
-    // Configure default commands
+    
+    // Pathplanner Commands for use in auto. Name is what you type into pathplanner,
+    // and the commands are "borrowed" from the controller
+    NamedCommands.registerCommand("Score Close", new ScoreGoal(ManipulatorConstants.PIVOT_CLOSE_SCORE));
+    NamedCommands.registerCommand("Score Far", new ScoreGoal(ManipulatorConstants.PIVOT_FAR_SCORE));
+    NamedCommands.registerCommand("Score Amp", new AmpTrapScore(ManipulatorConstants.PIVOT_AMP_GOAL));
+    NamedCommands.registerCommand("Intake", new Intake(ManipulatorConstants.INTAKE_SPEED).withTimeout(2.5));
+
     swerveDrive.setDefaultCommand(
         // The left stick controls translation of the robot.
         // Turning is controlled by the X axis of the right stick.
         new RunCommand(
             () -> swerveDrive.drive(
-                getDriverLeftY(),
-                getDriverLeftX(),
-                getDriverRightX(),
+                (.5)*Math.pow(getDriverLeftY(), 5) + (.5)*getDriverLeftY(),
+                (.5)*Math.pow(getDriverLeftX(), 5) + (.5)*getDriverLeftX(),
+                (.5)*Math.pow(getDriverRightX(), 5) + (.5)*getDriverRightX(),
                 true, true),
             swerveDrive));
-            
     autoChooser = AutoBuilder.buildAutoChooser();
     SmartDashboard.putData(autoChooser);
   }
@@ -114,7 +116,6 @@ public class RobotContainer {
     m_driverController.button(OIConstants.A_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MIN));
     m_driverController.button(OIConstants.X_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_FAR_SCORE));
     m_driverController.button(OIConstants.Y_BUTTON).whileTrue(new Intake(ManipulatorConstants.OUTTAKE_SPEED));
-    // m_driverController.button(OIConstants.Y_BUTTON).whileTrue(new AlignScore());
 
     m_coDriverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new setXCommand());
     m_coDriverController.rightTrigger().onTrue(new AmpTrapScore(ManipulatorConstants.PIVOT_AMP_GOAL));
@@ -124,7 +125,6 @@ public class RobotContainer {
     m_coDriverController.button(OIConstants.A_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MIN));
     m_coDriverController.button(OIConstants.X_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_FAR_SCORE));
     m_coDriverController.button(OIConstants.Y_BUTTON).whileTrue(new Intake(ManipulatorConstants.OUTTAKE_SPEED));
-    // m_coDriverController.button(OIConstants.Y_BUTTON).whileTrue(new AlignScore());
   }
 
   /**
