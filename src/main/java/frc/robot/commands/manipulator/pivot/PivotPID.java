@@ -1,6 +1,5 @@
 package frc.robot.commands.manipulator.pivot;
 
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 
@@ -12,7 +11,6 @@ public class PivotPID extends Command {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.pivotSubsystem);
     setpoint = set;
-    SmartDashboard.putData("PivotPIDCommand", this);
   }
 
   // Called when the command is initially scheduled.
