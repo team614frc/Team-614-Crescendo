@@ -3,59 +3,53 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.3,
-        "y": 6.23
+        "x": 1.43,
+        "y": 5.5
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.4658534669691403,
-        "y": 6.48727402337264
+        "x": 1.456099942611335,
+        "y": 3.304278522689425
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.70337379734434,
-        "y": 6.8880895808807905
+        "x": 2.6603258931025917,
+        "y": 3.8476487686427974
       },
       "prevControl": {
-        "x": 2.332248281133091,
-        "y": 6.50211904402109
+        "x": 4.231482884915542,
+        "y": 3.8772932401864377
       },
       "nextControl": {
-        "x": 3.1472433474010577,
-        "y": 7.349713912939778
+        "x": 1.8819847299801944,
+        "y": 3.8329630863197335
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.0947279507578913,
-        "y": 6.63572422985714
+        "x": 1.43,
+        "y": 5.5
       },
       "prevControl": {
-        "x": 2.1109856597651717,
-        "y": 6.383358878833491
+        "x": 1.441414260288271,
+        "y": 4.963760625195669
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.65,
-      "rotationDegrees": 40.00362942766165,
-      "rotateFast": false
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.1,
+      "waypointRelativePos": 0.35,
       "command": {
         "type": "parallel",
         "data": {
@@ -69,23 +63,40 @@
           ]
         }
       }
+    },
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 0.75,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Score Close"
+              }
+            }
+          ]
+        }
+      }
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 4.2,
-    "maxAcceleration": 15.0,
+    "maxVelocity": 4.0,
+    "maxAcceleration": 2.0,
     "maxAngularVelocity": 572.0,
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 42.3974377975002,
+    "rotation": 0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "4p RML",
+  "folder": "4p noturn",
   "previewStartingState": {
-    "rotation": 17.316128538603788,
+    "rotation": 0,
     "velocity": 0
   },
   "useDefaultConstraints": true

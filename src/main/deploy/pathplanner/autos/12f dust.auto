@@ -3,7 +3,7 @@
   "startingPose": {
     "position": {
       "x": 1.0,
-      "y": 4.0
+      "y": 5.0
     },
     "rotation": 0
   },
@@ -14,12 +14,12 @@
         {
           "type": "path",
           "data": {
-            "pathName": "New Path"
+            "pathName": "New New Path"
           }
         }
       ]
     }
   },
-  "folder": null,
+  "folder": "testing",
   "choreoAuto": false
 }

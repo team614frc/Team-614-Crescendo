@@ -3,13 +3,15 @@
   "robotLength": 0.84,
   "holonomicMode": true,
   "pathFolders": [
-    "4p RML"
+    "4p noturn",
+    "Testing"
   ],
   "autoFolders": [
-    "Choreo Autos"
+    "Choreo Autos",
+    "testing"
   ],
-  "defaultMaxVel": 4.2,
-  "defaultMaxAccel": 15.0,
+  "defaultMaxVel": 4.0,
+  "defaultMaxAccel": 2.0,
   "defaultMaxAngVel": 572.0,
   "defaultMaxAngAccel": 720.0,
   "maxModuleSpeed": 4.27

@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.9271652578771465,
-      "y": 2.075361131015774
+      "x": 1.0,
+      "y": 4.0
     },
     "rotation": 0
   },
@@ -14,12 +14,12 @@
         {
           "type": "path",
           "data": {
-            "pathName": "4p understage1"
+            "pathName": "New Path"
           }
         }
       ]
     }
   },
-  "folder": null,
+  "folder": "testing",
   "choreoAuto": false
 }

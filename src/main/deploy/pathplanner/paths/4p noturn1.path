@@ -3,67 +3,61 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.5,
-        "y": 6.5
+        "x": 1.4259367928917284,
+        "y": 5.507130871149041
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.9572952989272305,
-        "y": 6.170827804957638
+        "x": 2.025692216302399,
+        "y": 5.507130871149041
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.6,
-        "y": 5.7
+        "x": 3.0421536335022585,
+        "y": 5.507130871149041
       },
       "prevControl": {
-        "x": 2.6255812526564606,
-        "y": 5.6795116666151015
+        "x": 2.7631256693640407,
+        "y": 5.507130871149041
       },
       "nextControl": {
-        "x": 2.507769423130871,
-        "y": 5.7738685799539615
+        "x": 3.5414668324864382,
+        "y": 5.507130871149041
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.1570205785209025,
-        "y": 6.029845254656224
+        "x": 1.4259367928917284,
+        "y": 5.507130871149041
       },
       "prevControl": {
-        "x": 2.145272032662451,
-        "y": 6.023970981726999
+        "x": 2.0256922163023967,
+        "y": 5.521816553472107
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.3,
-      "rotationDegrees": -31.61624048752716,
-      "rotateFast": false
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.65,
+      "waypointRelativePos": 0.3,
       "command": {
-        "type": "sequential",
+        "type": "parallel",
         "data": {
           "commands": [
             {
               "type": "named",
               "data": {
-                "name": "Pivot Down"
+                "name": "Intake"
               }
             }
           ]
@@ -72,21 +66,21 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 1.0,
-    "maxAcceleration": 3.0,
-    "maxAngularVelocity": 540.0,
+    "maxVelocity": 4.0,
+    "maxAcceleration": 2.0,
+    "maxAngularVelocity": 572.0,
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -33.69006752597982,
+    "rotation": 0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": null,
+  "folder": "4p noturn",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.9635373773460029,
-      "y": 4.120977732009714
+      "x": 1.4259367928917284,
+      "y": 5.507130871149041
     },
     "rotation": 0
   },
@@ -12,51 +12,33 @@
     "data": {
       "commands": [
         {
-          "type": "path",
-          "data": {
-            "pathName": "4p RML1"
-          }
-        },
-        {
           "type": "named",
           "data": {
-            "name": "Score Far"
+            "name": "Score Close"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "4p RML2"
+            "pathName": "4p noturn1"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "Score Far"
+            "name": "Score Close"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "4p RML3"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Score Far"
+            "pathName": "4p noturn2"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "4p RML4"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Score Far"
+            "pathName": "4p noturn3"
           }
         }
       ]
