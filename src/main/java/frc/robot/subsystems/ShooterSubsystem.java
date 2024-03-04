@@ -8,6 +8,7 @@ import com.revrobotics.CANSparkFlex;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.PIDSubsystem;
 import frc.robot.Constants.ManipulatorConstants;
@@ -17,11 +18,12 @@ public class ShooterSubsystem extends PIDSubsystem {
   
   CANSparkFlex shooterMotorR;
   CANSparkFlex shooterMotorL;
+  SimpleMotorFeedforward feedforward = new SimpleMotorFeedforward(0, .001);
 
   public ShooterSubsystem() {
     super(
         // The PIDController used by the subsystem
-        new PIDController(0.001, 0, 0));
+        new PIDController(0.00045, 0, 0));
 
     shooterMotorL = new CANSparkFlex(ManipulatorConstants.SHOOTER_MOTOR_LEFT, MotorType.kBrushless);
     // shooterMotorL.restoreFactoryDefaults();
@@ -31,26 +33,37 @@ public class ShooterSubsystem extends PIDSubsystem {
     // shooterMotorL.getPIDController().setFF(0.000082);
     shooterMotorL.burnFlash();
 
+
     shooterMotorR = new CANSparkFlex(ManipulatorConstants.SHOOTER_MOTOR_RIGHT, MotorType.kBrushless);
     // shooterMotorR.restoreFactoryDefaults();
     shooterMotorR.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
     shooterMotorR.setInverted(false);
     shooterMotorR.setIdleMode(CANSparkFlex.IdleMode.kCoast);
-    // shooterMotorL.getPIDController().setFF(0.000082);
+    shooterMotorR.follow(shooterMotorL);
+    // shooterMotorL.getPIDCon
+    //troller().setFF(0.000082);
     shooterMotorR.burnFlash();
+  }
+
+  @Override
+  public void periodic() {
+    // This method will be called once per scheduler run
+    super.periodic();
   }
 
   @Override
   public void useOutput(double output, double setpoint) {
     // Use the output here
-    shooterMotorL.set(-(output + getController().calculate(getMeasurement(), setpoint)));
-    shooterMotorR.set(-(output + getController().calculate(getMeasurementR(), setpoint)));
+    double ff = feedforward.calculate((setpoint*(Math.PI)*(.1))/60);
+    shooterMotorL.setVoltage(-(output + getController().calculate(getMeasurement(), setpoint)));
+    //shooterMotorR.setVoltage(-(output + getController().calculate(getMeasurementR(), setpoint))+ff);
   }
 
   @Override
   public double getMeasurement() {
     // Return the process variable measurement here
     SmartDashboard.putNumber("SHOOTER RPM", getShooterLVelocity());
+    //SmartDashboard.putNumber("SHOOTER RPM", getShooterRVelocity());
     return getShooterLVelocity();
   }
 
