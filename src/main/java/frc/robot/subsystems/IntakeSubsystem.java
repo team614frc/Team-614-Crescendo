@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.SensorConstants;
-import frc.robot.Constants.VisionConstants;
 
 
 /**
@@ -61,12 +60,10 @@ public class IntakeSubsystem extends SubsystemBase {
 @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    SmartDashboard.putNumber("Sensor Value", getSensorRange());
   }
 
-  public void getSpeed() {
-    //intakeMotorR.get();
-    SmartDashboard.putNumber("Intake Speed Right", feedMotor.get());
+  public double getSpeed() {
+    return intakeMotor.get();
   }
 
   public double getSensorRange() {

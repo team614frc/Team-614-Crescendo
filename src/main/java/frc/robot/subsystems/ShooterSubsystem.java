@@ -28,7 +28,6 @@ public class ShooterSubsystem extends PIDSubsystem {
     shooterMotorL.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
     shooterMotorL.setInverted(false);
     shooterMotorL.setIdleMode(CANSparkFlex.IdleMode.kCoast);
-    // shooterMotorL.getPIDController().setFF(0.000082);
     shooterMotorL.burnFlash();
 
     shooterMotorR = new CANSparkFlex(ManipulatorConstants.SHOOTER_MOTOR_RIGHT, MotorType.kBrushless);
@@ -36,7 +35,6 @@ public class ShooterSubsystem extends PIDSubsystem {
     shooterMotorR.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
     shooterMotorR.setInverted(false);
     shooterMotorR.setIdleMode(CANSparkFlex.IdleMode.kCoast);
-    // shooterMotorL.getPIDController().setFF(0.000082);
     shooterMotorR.burnFlash();
   }
 
@@ -55,7 +53,6 @@ public class ShooterSubsystem extends PIDSubsystem {
   }
 
   public double getMeasurementR() {
-    // return the right motor
     return getShooterRVelocity();
   }
 

@@ -31,45 +31,40 @@ public final class Constants {
   public static final class ManipulatorConstants {
 
     // CAN IDs for the Intake and Shooter Motors
-    public static final int FEEDER_MOTOR = 17;
-    public static final int INTAKE_MOTOR = 25;
     public static final int SHOOTER_MOTOR_RIGHT = 15;
     public static final int SHOOTER_MOTOR_LEFT = 16;
+    public static final int FEEDER_MOTOR = 17;
+    public static final int INTAKE_MOTOR = 25;
 
     // CAN ID for the Pivot Motors
     public static final int PIVOT_MOTOR_RIGHT = 13;
     public static final int PIVOT_MOTOR_LEFT = 14;
 
-    // Constants for Shooter and Intake
+    // Constants for Shooter
     public static final double SHOOT_MAX_VEL_SET = 6630.0;
     public static final double SCORE_HIGH_SPEED = SHOOT_MAX_VEL_SET * 0.6; 
     public static final double SCORE_MID_SPEED = SHOOT_MAX_VEL_SET * 0.3; 
     public static final double SCORE_LOW_SPEED = SHOOT_MAX_VEL_SET * 0.15; 
     public static final double SCORE_SIMPLE = 0.8;
-    public static final double SHOOTER_FEED = 0.2;
     public static final double AMP_SPEED = 0.2;
     public static final double SHOOTER_kFF = 0.000082;
+    
+    // Constants for Intake
     public static final double OUTTAKE_SPEED = -0.5;
     public static final double INTAKE_SPEED = 0.5;
     public static final double INTAKE_REST_SPEED = 0.00;
-    public static final double LOADBACK_SPEED = -0.1; 
+
+    // Constants for Feeder
+    public static final double LOADBACK_SPEED = -0.08; 
     public static final double LOADING_SPEED = 1; 
     public static final double AMP_LOAD = 0.5;
+    public static final double SHOOTER_FEED = 0.2;
 
-    // Constants for Pivot
+    // Speed Constants for Pivot
     public static final double PIVOT_UP_SPEED = 0.1;
     public static final double PIVOT_DOWN_SPEED = -0.1;
     public static final double MOTOR_GRAV_SPEED = 0.02;
     
-    // PID constants for pivot
-    public static final double PIVOT_kP = 0.23; // VOLTS
-    public static final double PIVOT_kI = 0;
-    public static final double PIVOT_kD = 0.0;
-    public static final double PIVOT_kS = 0.5;
-    public static final double PIVOT_kG = 0.25;
-    public static final double PIVOT_kV = 0.25; 
-    public static final double PIVOT_kA = 0.01;
-
     // Encoder Values for the Pivot
     public static final double PIVOT_MAX = -(Math.PI/2)-0.02;
     public static final double PIVOT_MIN = 0.08;
@@ -77,13 +72,14 @@ public final class Constants {
     public static final double PIVOT_FAR_SCORE = -0.56;
     public static final double PIVOT_AMP_GOAL = -(Math.PI/2);
     public static final double PIVOT_TRAP_SCORE = -0.15;
-    public static final double PIVOT_WEIGHT = 9.55; 
     public static final double PIVOT_THRESHOLD = 0.03;
+    
+    // Others
     public static final double pivotMaxVelocity = 4;
     public static final double pivotMaxAccel = 10;
-
-    public static final int MOTOR_CURRENT_LIMIT = 40;
+    public static final double PIVOT_WEIGHT = 9.55; 
     public static final double MOTOR_ZERO_SPEED = 0;
+    public static final int MOTOR_CURRENT_LIMIT = 40;
     
   }
 
@@ -92,6 +88,19 @@ public final class Constants {
     public static final int sensorPort1 = 0;
     public static final double sensorThreshold = 120;
 
+  }
+
+  public static final class PIDConstants {
+
+    // PID constants for pivot
+    public static final double PIVOT_kP = 0.23; // VOLTS
+    public static final double PIVOT_kI = 0;
+    public static final double PIVOT_kD = 0.0;
+    public static final double PIVOT_kS = 0.5;
+    public static final double PIVOT_kG = 0.25;
+    public static final double PIVOT_kV = 0.25;
+    public static final double PIVOT_kA = 0.01;
+    
   }
 
   public static final class TimeConstants {

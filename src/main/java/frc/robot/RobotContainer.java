@@ -47,18 +47,14 @@ public class RobotContainer {
   public final static ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
   public final static PivotSubsystem pivotSubsystem = new PivotSubsystem();
   public final static LimelightSubsystem limeSubsystem = new LimelightSubsystem();
-  // The driver's controller
   static CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
   static CommandXboxController m_coDriverController = new CommandXboxController(OIConstants.kCoDriverControllerPort);
-  // private AutoBuilder autoBuilder = new AutoBuilder(swerveDrive,
-  // intakeSubsystem, pivotSubsystem);
   private final SendableChooser<Command> autoChooser;
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
   public RobotContainer() {
-    // Starts recording to data log
     DataLogManager.start();
     // Record both DS control and joystick data
     DriverStation.startDataLog(DataLogManager.getLog());
@@ -66,10 +62,7 @@ public class RobotContainer {
     // DriverStation.startDataLog(DataLogManager.getLog(), false);
 
     configureButtonBindings();
-    // Configure default commands
     swerveDrive.setDefaultCommand(
-        // The left stick controls translation of the robot.
-        // Turning is controlled by the X axis of the right stick.
         new RunCommand(
             () -> swerveDrive.drive(
                 (.5)*Math.pow(getDriverLeftY(), 5) + (.5)*getDriverLeftY(),
@@ -107,25 +100,25 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
 
-    m_driverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new setXCommand());
+    m_driverController.rightStick().whileTrue(new setXCommand());
     m_driverController.rightTrigger().onTrue(new AmpTrapScore(ManipulatorConstants.PIVOT_AMP_GOAL));
-    m_driverController.button(OIConstants.RIGHT_BUMPER).onTrue(new ScoreGoal(ManipulatorConstants.PIVOT_FAR_SCORE));
-    m_driverController.button(OIConstants.LEFT_BUMPER).onTrue(new ScoreGoal(ManipulatorConstants.PIVOT_CLOSE_SCORE));
+    m_driverController.rightBumper().onTrue(new ScoreGoal(ManipulatorConstants.PIVOT_FAR_SCORE));
+    m_driverController.leftBumper().onTrue(new ScoreGoal(ManipulatorConstants.PIVOT_CLOSE_SCORE));
     m_driverController.leftTrigger().whileTrue(new Intake(ManipulatorConstants.INTAKE_SPEED));
-    m_driverController.button(OIConstants.A_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MIN));
-    m_driverController.button(OIConstants.X_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_FAR_SCORE));
-    m_driverController.button(OIConstants.Y_BUTTON).whileTrue(new Intake(ManipulatorConstants.OUTTAKE_SPEED));
-    m_driverController.button(OIConstants.B_BUTTON).whileTrue(new AlignScore());
+    m_driverController.a().onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MIN));
+    m_driverController.x().onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_FAR_SCORE));
+    m_driverController.y().whileTrue(new Intake(ManipulatorConstants.OUTTAKE_SPEED));
+    m_driverController.b().whileTrue(new AlignScore());
 
-    m_coDriverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new setXCommand());
+    m_coDriverController.rightStick().whileTrue(new setXCommand());
     m_coDriverController.rightTrigger().onTrue(new AmpTrapScore(ManipulatorConstants.PIVOT_AMP_GOAL));
-    m_coDriverController.button(OIConstants.RIGHT_BUMPER).onTrue(new ScoreGoal(ManipulatorConstants.PIVOT_FAR_SCORE));
-    m_coDriverController.button(OIConstants.LEFT_BUMPER).onTrue(new ScoreGoal(ManipulatorConstants.PIVOT_CLOSE_SCORE));
+    m_coDriverController.rightBumper().onTrue(new ScoreGoal(ManipulatorConstants.PIVOT_FAR_SCORE));
+    m_coDriverController.leftBumper().onTrue(new ScoreGoal(ManipulatorConstants.PIVOT_CLOSE_SCORE));
     m_coDriverController.leftTrigger().whileTrue(new Intake(ManipulatorConstants.INTAKE_SPEED));
-    m_coDriverController.button(OIConstants.A_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MIN));
-    m_coDriverController.button(OIConstants.X_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_FAR_SCORE));
-    m_coDriverController.button(OIConstants.Y_BUTTON).whileTrue(new Intake(ManipulatorConstants.OUTTAKE_SPEED));
-    m_coDriverController.button(OIConstants.B_BUTTON).whileTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MAX));
+    m_coDriverController.a().onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MIN));
+    m_coDriverController.x().onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_FAR_SCORE));
+    m_coDriverController.y().whileTrue(new Intake(ManipulatorConstants.OUTTAKE_SPEED));
+    m_coDriverController.b().whileTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MAX));
 
   }
 
