@@ -11,6 +11,7 @@ import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.PIDSubsystem;
+import frc.robot.Constants;
 import frc.robot.Constants.ManipulatorConstants;
 
 public class ShooterSubsystem extends PIDSubsystem {
@@ -18,12 +19,11 @@ public class ShooterSubsystem extends PIDSubsystem {
   
   CANSparkFlex shooterMotorR;
   CANSparkFlex shooterMotorL;
-  SimpleMotorFeedforward feedforward = new SimpleMotorFeedforward(0, .001);
 
   public ShooterSubsystem() {
     super(
         // The PIDController used by the subsystem
-        new PIDController(0.00045, 0, 0));
+        new PIDController(Constants.ManipulatorConstants.SHOOTER_kP, 0, 0));
 
     shooterMotorL = new CANSparkFlex(ManipulatorConstants.SHOOTER_MOTOR_LEFT, MotorType.kBrushless);
     // shooterMotorL.restoreFactoryDefaults();
@@ -54,16 +54,13 @@ public class ShooterSubsystem extends PIDSubsystem {
   @Override
   public void useOutput(double output, double setpoint) {
     // Use the output here
-    double ff = feedforward.calculate((setpoint*(Math.PI)*(.1))/60);
     shooterMotorL.setVoltage(-(output + getController().calculate(getMeasurement(), setpoint)));
-    //shooterMotorR.setVoltage(-(output + getController().calculate(getMeasurementR(), setpoint))+ff);
   }
 
   @Override
   public double getMeasurement() {
     // Return the process variable measurement here
     SmartDashboard.putNumber("SHOOTER RPM", getShooterLVelocity());
-    //SmartDashboard.putNumber("SHOOTER RPM", getShooterRVelocity());
     return getShooterLVelocity();
   }
 
