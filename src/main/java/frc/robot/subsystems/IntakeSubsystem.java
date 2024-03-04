@@ -36,14 +36,14 @@ public class IntakeSubsystem extends SubsystemBase {
     // Creates a new motor
 
     feedMotor = new CANSparkFlex(ManipulatorConstants.FEEDER_MOTOR, MotorType.kBrushless);
-    feedMotor.restoreFactoryDefaults();
+    // feedMotor.restoreFactoryDefaults();
     feedMotor.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
     feedMotor.setInverted(false);
     feedMotor.setIdleMode(CANSparkFlex.IdleMode.kCoast);
     feedMotor.burnFlash(); 
 
     intakeMotor = new CANSparkFlex(ManipulatorConstants.INTAKE_MOTOR, MotorType.kBrushless);
-    intakeMotor.restoreFactoryDefaults();
+    // intakeMotor.restoreFactoryDefaults();
     intakeMotor.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
     intakeMotor.setInverted(false);
     intakeMotor.setIdleMode(CANSparkFlex.IdleMode.kCoast);
