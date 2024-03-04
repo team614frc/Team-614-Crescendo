@@ -104,7 +104,7 @@ public class PivotSubsystem extends ProfiledPIDSubsystem {
   }
 
   public void set(double speed) {
-    pivotMotorL.set(-speed);
+    pivotMotorL.set(speed);
     pivotMotorR.set(speed);
   }
 }

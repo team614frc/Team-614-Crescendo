@@ -5,6 +5,7 @@
 package frc.robot.commands.commandgroup;
 
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.ManipulatorConstants;
@@ -21,6 +22,7 @@ public class ScoreGoal extends Command {
     addRequirements(RobotContainer.pivotSubsystem);
     addRequirements(RobotContainer.shooterSubsystem);
     addRequirements(RobotContainer.intakeSubsystem);
+    addRequirements(RobotContainer.limeSubsystem);
     shootSpeed = ManipulatorConstants.SCORE_SIMPLE;
     this.pivotGoal = pivotGoal;
     scoreTimer = new Timer();
@@ -40,7 +42,9 @@ public class ScoreGoal extends Command {
     RobotContainer.shooterSubsystem.set(shootSpeed);
     if (scoreTimer.get() >= TimeConstants.SpeakerFeed) {
       RobotContainer.intakeSubsystem.setFeed(ManipulatorConstants.LOADING_SPEED);
+      RobotContainer.limeSubsystem.turnOffLEDs();
     }
+    SmartDashboard.putNumber("SHOOTER RPM", RobotContainer.shooterSubsystem.getShooterLVelocity());
   }
 
   // Called once the command ends or is interrupted.

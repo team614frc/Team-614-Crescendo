@@ -59,9 +59,9 @@ public class RobotContainer {
    */
   public RobotContainer() {
     // Starts recording to data log
-    DataLogManager.start();
+    // DataLogManager.start();
     // Record both DS control and joystick data
-    DriverStation.startDataLog(DataLogManager.getLog());
+    // DriverStation.startDataLog(DataLogManager.getLog());
     // (optional) Record only DS control data by uncommenting next line.
     // DriverStation.startDataLog(DataLogManager.getLog(), false);
 
@@ -113,9 +113,12 @@ public class RobotContainer {
     m_driverController.button(OIConstants.LEFT_BUMPER).onTrue(new ScoreGoal(ManipulatorConstants.PIVOT_CLOSE_SCORE));
     m_driverController.leftTrigger().whileTrue(new Intake(ManipulatorConstants.INTAKE_SPEED));
     m_driverController.button(OIConstants.A_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MIN));
-    m_driverController.button(OIConstants.X_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_FAR_SCORE));
-    m_driverController.button(OIConstants.Y_BUTTON).whileTrue(new Intake(ManipulatorConstants.OUTTAKE_SPEED));
-    m_driverController.button(OIConstants.B_BUTTON).whileTrue(new AlignScore());
+    m_driverController.button(OIConstants.X_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MAX));
+    // m_driverController.button(OIConstants.Y_BUTTON).whileTrue(new Intake(ManipulatorConstants.OUTTAKE_SPEED));
+    // m_driverController.button(OIConstants.Y_BUTTON).whileTrue(new AlignScore(270));
+    // m_driverController.button(OIConstants.B_BUTTON).whileTrue(new AlignScore(90));
+    m_driverController.y().whileTrue(new PivotDown(-0.85,-0.35));
+    // m_driverController.start().whileTrue(swerveDrive.resetHeading());
 
     m_coDriverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new setXCommand());
     m_coDriverController.rightTrigger().onTrue(new AmpTrapScore(ManipulatorConstants.PIVOT_AMP_GOAL));

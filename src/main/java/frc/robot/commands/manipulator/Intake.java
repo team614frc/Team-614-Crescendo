@@ -27,13 +27,16 @@ public class Intake extends Command {
   public Intake(double intakeSpeed) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.intakeSubsystem);
+    addRequirements(RobotContainer.limeSubsystem);
     // intakeSpeed = ManipulatorConstants.INTAKE_SPEED;
     this.intakeSpeed = intakeSpeed;
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    RobotContainer.limeSubsystem.turnOffLEDs();
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
@@ -42,6 +45,7 @@ public class Intake extends Command {
       && RobotContainer.intakeSubsystem.getSensorRange() < SensorConstants.sensorThreshold) {
       RobotContainer.intakeSubsystem.setFeed(ManipulatorConstants.LOADBACK_SPEED);
       RobotContainer.shooterSubsystem.set(-ManipulatorConstants.LOADBACK_SPEED);
+      RobotContainer.limeSubsystem.blinkLEDs();
       // feeder loadback
     } else {
       RobotContainer.intakeSubsystem.setIntake(intakeSpeed);
@@ -55,8 +59,8 @@ public class Intake extends Command {
   public void end(boolean interrupted) {
     RobotContainer.intakeSubsystem.setIntake(ManipulatorConstants.INTAKE_REST_SPEED);
     RobotContainer.intakeSubsystem.setFeed(0);
-    RobotContainer.shooterSubsystem.setSetpoint(0);
     RobotContainer.intakeSubsystem.getSpeed();
+    RobotContainer.shooterSubsystem.set(0);
   }
 
   // Returns true when the command should end.
