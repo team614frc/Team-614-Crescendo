@@ -30,7 +30,6 @@ public class ShooterSubsystem extends PIDSubsystem {
     shooterMotorL.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
     shooterMotorL.setInverted(false);
     shooterMotorL.setIdleMode(CANSparkFlex.IdleMode.kCoast);
-    // shooterMotorL.getPIDController().setFF(0.000082);
     shooterMotorL.burnFlash();
 
 
@@ -40,8 +39,6 @@ public class ShooterSubsystem extends PIDSubsystem {
     shooterMotorR.setInverted(false);
     shooterMotorR.setIdleMode(CANSparkFlex.IdleMode.kCoast);
     shooterMotorR.follow(shooterMotorL);
-    // shooterMotorL.getPIDCon
-    //troller().setFF(0.000082);
     shooterMotorR.burnFlash();
   }
 
