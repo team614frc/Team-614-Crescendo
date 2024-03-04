@@ -26,7 +26,7 @@ import frc.robot.commands.manipulator.Shooter;
 import frc.robot.commands.manipulator.pivot.PivotDown;
 import frc.robot.commands.manipulator.pivot.PivotUp;
 import frc.robot.commands.vision.AlignScore;
-import frc.robot.commands.manipulator.pivot.PivotPIDCommand;
+import frc.robot.commands.manipulator.pivot.PivotPID;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.LimelightSubsystem;
@@ -105,8 +105,8 @@ public class RobotContainer {
     m_driverController.rightBumper().onTrue(new ScoreGoal(ManipulatorConstants.PIVOT_FAR_SCORE));
     m_driverController.leftBumper().onTrue(new ScoreGoal(ManipulatorConstants.PIVOT_CLOSE_SCORE));
     m_driverController.leftTrigger().whileTrue(new Intake(ManipulatorConstants.INTAKE_SPEED));
-    m_driverController.a().onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MIN));
-    m_driverController.x().onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_FAR_SCORE));
+    m_driverController.a().onTrue(new PivotPID(ManipulatorConstants.PIVOT_MIN));
+    m_driverController.x().onTrue(new PivotPID(ManipulatorConstants.PIVOT_FAR_SCORE));
     m_driverController.y().whileTrue(new Intake(ManipulatorConstants.OUTTAKE_SPEED));
     m_driverController.b().whileTrue(new AlignScore());
 
@@ -115,10 +115,10 @@ public class RobotContainer {
     m_coDriverController.rightBumper().onTrue(new ScoreGoal(ManipulatorConstants.PIVOT_FAR_SCORE));
     m_coDriverController.leftBumper().onTrue(new ScoreGoal(ManipulatorConstants.PIVOT_CLOSE_SCORE));
     m_coDriverController.leftTrigger().whileTrue(new Intake(ManipulatorConstants.INTAKE_SPEED));
-    m_coDriverController.a().onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MIN));
-    m_coDriverController.x().onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_FAR_SCORE));
+    m_coDriverController.a().onTrue(new PivotPID(ManipulatorConstants.PIVOT_MIN));
+    m_coDriverController.x().onTrue(new PivotPID(ManipulatorConstants.PIVOT_FAR_SCORE));
     m_coDriverController.y().whileTrue(new Intake(ManipulatorConstants.OUTTAKE_SPEED));
-    m_coDriverController.b().whileTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MAX));
+    m_coDriverController.b().whileTrue(new PivotPID(ManipulatorConstants.PIVOT_MAX));
 
   }
 
