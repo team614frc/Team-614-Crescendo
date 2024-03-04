@@ -85,28 +85,37 @@ public class RobotContainer {
    * {@link JoystickButton}.
    */
 
+  public static double getLeftXwithDeadband() {
+    return -MathUtil.applyDeadband(m_driverController.getLeftX(),
+      OIConstants.kDriveDeadband);
+  }
+
   public static double getDriverLeftX() {
     return (.5)*Math.pow(
-      (-MathUtil.applyDeadband(m_driverController.getLeftX(),
-        OIConstants.kDriveDeadband)), 5) + 
-      (.5)*(-MathUtil.applyDeadband(m_driverController.getLeftX(),
-        OIConstants.kDriveDeadband));
+      (getLeftXwithDeadband()), 5) + 
+      (.5)*(getLeftXwithDeadband());
+  }
+
+  public static double getLeftYwithDeadband() {
+    return -MathUtil.applyDeadband(m_driverController.getLeftY(), 
+        OIConstants.kDriveDeadband);
   }
 
   public static double getDriverLeftY() {
     return (.5)*Math.pow(
-      (-MathUtil.applyDeadband(m_driverController.getLeftY(), 
-        OIConstants.kDriveDeadband)), 5) + 
-      (.5)*(-MathUtil.applyDeadband(m_driverController.getLeftY(), 
-        OIConstants.kDriveDeadband));
+      (getLeftYwithDeadband()), 5) + 
+      (.5)*(getLeftYwithDeadband());
+  }
+
+  public static double getRightXwithDeadband() {
+    return -MathUtil.applyDeadband(m_driverController.getRightX(), 
+        OIConstants.kDriveDeadband);
   }
 
   public static double getDriverRightX() {
     return (.5)*Math.pow(
-      (-MathUtil.applyDeadband(m_driverController.getRightX(), 
-        OIConstants.kDriveDeadband)), 5) + 
-      (.5)*(-MathUtil.applyDeadband(m_driverController.getRightX(), 
-        OIConstants.kDriveDeadband));
+      (getRightXwithDeadband()), 5) + 
+      (.5)*(getRightXwithDeadband());
   }
 
   private void configureButtonBindings() {
