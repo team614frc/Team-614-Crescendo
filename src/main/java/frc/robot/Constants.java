@@ -46,15 +46,18 @@ public final class Constants {
     public static final double SCORE_MID_SPEED = SHOOT_MAX_VEL_SET * 0.3; 
     public static final double SCORE_LOW_SPEED = SHOOT_MAX_VEL_SET * 0.15; 
     public static final double SCORE_SIMPLE = 0.8;
+    public static final double SCORE_SIMPLE_PID = 5000;
     public static final double SHOOTER_FEED = 0.2;
     public static final double AMP_SPEED = 0.2;
     public static final double SHOOTER_kFF = 0.000082;
+    public static final double SHOOTER_kP = 0.00045;
     public static final double OUTTAKE_SPEED = -0.5;
     public static final double INTAKE_SPEED = 0.5;
     public static final double INTAKE_REST_SPEED = 0.00;
     public static final double LOADBACK_SPEED = -0.1; 
     public static final double LOADING_SPEED = 1; 
     public static final double AMP_LOAD = 0.5;
+    
 
     // Constants for Pivot
     public static final double PIVOT_UP_SPEED = 0.1;
@@ -71,7 +74,7 @@ public final class Constants {
     public static final double PIVOT_kA = 0.01;
 
     // Encoder Values for the Pivot
-    public static final double PIVOT_MAX = -(Math.PI/2);
+    public static final double PIVOT_MAX = -(Math.PI/2)-0.02;
     public static final double PIVOT_MIN = 0.08;
     public static final double PIVOT_CLOSE_SCORE = -0.2;
     public static final double PIVOT_FAR_SCORE = -0.56;

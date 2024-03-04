@@ -114,7 +114,8 @@ public class RobotContainer {
     m_driverController.button(OIConstants.A_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MIN));
     m_driverController.button(OIConstants.X_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_FAR_SCORE));
     m_driverController.button(OIConstants.Y_BUTTON).whileTrue(new Intake(ManipulatorConstants.OUTTAKE_SPEED));
-    // m_driverController.button(OIConstants.Y_BUTTON).whileTrue(new AlignScore());
+
+
 
     m_coDriverController.button(OIConstants.RIGHT_STICK_PRESS).whileTrue(new setXCommand());
     m_coDriverController.rightTrigger().onTrue(new AmpTrapScore(ManipulatorConstants.PIVOT_AMP_GOAL));
@@ -124,7 +125,6 @@ public class RobotContainer {
     m_coDriverController.button(OIConstants.A_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_MIN));
     m_coDriverController.button(OIConstants.X_BUTTON).onTrue(new PivotPIDCommand(ManipulatorConstants.PIVOT_FAR_SCORE));
     m_coDriverController.button(OIConstants.Y_BUTTON).whileTrue(new Intake(ManipulatorConstants.OUTTAKE_SPEED));
-    // m_coDriverController.button(OIConstants.Y_BUTTON).whileTrue(new AlignScore());
   }
 
   /**

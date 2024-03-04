@@ -5,6 +5,7 @@
 package frc.robot.commands.manipulator;
 
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.ManipulatorConstants;
@@ -43,7 +44,7 @@ public class Shooter extends Command {
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.shooterSubsystem.set(ManipulatorConstants.MOTOR_ZERO_SPEED);
+    RobotContainer.shooterSubsystem.setSetpoint(ManipulatorConstants.MOTOR_ZERO_SPEED);
     RobotContainer.intakeSubsystem.setFeed(ManipulatorConstants.INTAKE_REST_SPEED);
   }
 
