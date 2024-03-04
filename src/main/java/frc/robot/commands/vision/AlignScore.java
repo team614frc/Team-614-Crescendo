@@ -25,21 +25,20 @@ public class AlignScore extends Command {
   public void execute() {
     // angle = (RobotContainer.limeSubsystem.getHorizontalAngle()-(Math.PI/2)) + RobotContainer.swerveDrive.getHeading().getRadians();
     angle = RobotContainer.limeSubsystem.getHorizontalAngle();
-    if (angle < -VisionConstants.threshold || angle > VisionConstants.threshold){
+    if (Math.abs(angle) > VisionConstants.threshold){
       RobotContainer.swerveDrive.drive(
-        (.5)*Math.pow(RobotContainer.getDriverLeftY(), 5) + (.5)*RobotContainer.getDriverLeftY(),
-        (.5)*Math.pow(RobotContainer.getDriverLeftX(), 5) + (.5)*RobotContainer.getDriverLeftX(),
+        RobotContainer.getDriverLeftY(),
+        RobotContainer.getDriverLeftX(),
         -(VisionConstants.simpleAlignYInput * angle / 100.0),
             true, true);
     } else {
       RobotContainer.swerveDrive.drive(
-        (.5)*Math.pow(RobotContainer.getDriverLeftY(), 5) + (.5)*RobotContainer.getDriverLeftY(),
-        (.5)*Math.pow(RobotContainer.getDriverLeftX(), 5) + (.5)*RobotContainer.getDriverLeftX(),
-        (.5)*Math.pow(RobotContainer.getDriverRightX(), 5) + (.5)*RobotContainer.getDriverRightX(),
+        RobotContainer.getDriverLeftY(),
+        RobotContainer.getDriverLeftX(),
+        RobotContainer.getDriverRightX(),
             true, true);
     }
   }
-    // insert code to adjust robot angle here
 
   // Called once the command ends or is interrupted.
   @Override

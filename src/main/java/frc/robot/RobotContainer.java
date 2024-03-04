@@ -65,9 +65,9 @@ public class RobotContainer {
     swerveDrive.setDefaultCommand(
         new RunCommand(
             () -> swerveDrive.drive(
-                (.5)*Math.pow(getDriverLeftY(), 5) + (.5)*getDriverLeftY(),
-                (.5)*Math.pow(getDriverLeftX(), 5) + (.5)*getDriverLeftX(),
-                (.5)*Math.pow(getDriverRightX(), 5) + (.5)*getDriverRightX(),
+                getDriverLeftY(),
+                getDriverLeftX(),
+                getDriverRightX(),
                 true, true),
             swerveDrive));
             
@@ -86,16 +86,27 @@ public class RobotContainer {
    */
 
   public static double getDriverLeftX() {
-    return -MathUtil.applyDeadband(m_driverController.getLeftX(), OIConstants.kDriveDeadband);
+    return (.5)*Math.pow(
+      (-MathUtil.applyDeadband(m_driverController.getLeftX(),
+        OIConstants.kDriveDeadband)), 5) + 
+      (.5)*(-MathUtil.applyDeadband(m_driverController.getLeftX(),
+        OIConstants.kDriveDeadband));
   }
 
   public static double getDriverLeftY() {
-    return -MathUtil.applyDeadband(m_driverController.getLeftY(), OIConstants.kDriveDeadband);
+    return (.5)*Math.pow(
+      (-MathUtil.applyDeadband(m_driverController.getLeftY(), 
+        OIConstants.kDriveDeadband)), 5) + 
+      (.5)*(-MathUtil.applyDeadband(m_driverController.getLeftY(), 
+        OIConstants.kDriveDeadband));
   }
 
   public static double getDriverRightX() {
-    return -MathUtil.applyDeadband(m_driverController.getRightX(), OIConstants.kDriveDeadband);
-
+    return (.5)*Math.pow(
+      (-MathUtil.applyDeadband(m_driverController.getRightX(), 
+        OIConstants.kDriveDeadband)), 5) + 
+      (.5)*(-MathUtil.applyDeadband(m_driverController.getRightX(), 
+        OIConstants.kDriveDeadband));
   }
 
   private void configureButtonBindings() {

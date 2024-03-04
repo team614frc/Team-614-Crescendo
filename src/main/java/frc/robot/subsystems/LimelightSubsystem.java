@@ -33,8 +33,7 @@ public class LimelightSubsystem extends SubsystemBase {
   public double getHorizontalAngle() {
     // roboPose = RobotContainer.swerveDrive.getPose();
     // angle = 1/Math.tan(roboPose.getX()/roboPose.getY());
-    angle = x;
-    return angle;
+    return x;
   }
 
   @Override

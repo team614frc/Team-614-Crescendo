@@ -43,8 +43,8 @@ public class PivotSubsystem extends ProfiledPIDSubsystem {
             PIDConstants.PIVOT_kI,
             PIDConstants.PIVOT_kD,
             new TrapezoidProfile.Constraints(
-              ManipulatorConstants.pivotMaxVelocity, 
-              ManipulatorConstants.pivotMaxAccel)));
+              ManipulatorConstants.PIVOT_MAX_VEL, 
+              ManipulatorConstants.PIVOT_MAX_ACCEL)));
 
     pivotMotorR = new CANSparkFlex(ManipulatorConstants.PIVOT_MOTOR_RIGHT, MotorType.kBrushless);
     // pivotMotorR.restoreFactoryDefaults();
