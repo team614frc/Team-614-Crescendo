@@ -5,6 +5,7 @@
 package frc.robot;
 
 import com.pathplanner.lib.auto.AutoBuilder;
+import com.pathplanner.lib.auto.NamedCommands;
 
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj.DataLogManager;
@@ -57,8 +58,17 @@ public class RobotContainer {
     // DriverStation.startDataLog(DataLogManager.getLog());
     // (optional) Record only DS control data by uncommenting next line.
     // DriverStation.startDataLog(DataLogManager.getLog(), false);
-
+  
+    // Configure the button bindings
     configureButtonBindings();
+    
+    // Pathplanner Commands for use in auto. Name is what you type into pathplanner,
+    // and the commands are "borrowed" from the controller
+    NamedCommands.registerCommand("Score Close", new ScoreGoal(ManipulatorConstants.PIVOT_CLOSE_SCORE));
+    NamedCommands.registerCommand("Score Far", new ScoreGoal(ManipulatorConstants.PIVOT_FAR_SCORE));
+    NamedCommands.registerCommand("Score Amp", new AmpTrapScore(ManipulatorConstants.PIVOT_AMP_GOAL));
+    NamedCommands.registerCommand("Intake", new Intake(ManipulatorConstants.INTAKE_SPEED).withTimeout(2.5));
+
     swerveDrive.setDefaultCommand(
         new RunCommand(
             () -> swerveDrive.drive(
@@ -67,7 +77,6 @@ public class RobotContainer {
                 getDriverRightX(),
                 true, true),
             swerveDrive));
-
     autoChooser = AutoBuilder.buildAutoChooser();
     SmartDashboard.putData(autoChooser);
   }
