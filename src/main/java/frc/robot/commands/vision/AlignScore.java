@@ -30,12 +30,10 @@ public class AlignScore extends Command {
   }
 
   public double getPositionBasedAngle() {
-    if (RobotContainer.swerveDrive.getHeading().getDegrees()>0) {
-        poseAngle = ((RobotContainer.swerveDrive.getHeading().getDegrees()%360) - turn);
-      } else  {
-        turn = -turn;
-        poseAngle = ((RobotContainer.swerveDrive.getHeading().getDegrees()%360) - turn);
-      }
+    if (RobotContainer.swerveDrive.getHeading().getDegrees() <= 0) {
+      turn = -turn;
+    }
+    poseAngle = RobotContainer.swerveDrive.getHeading().getDegrees() % 360 - turn;
     return poseAngle;
   }
 
@@ -54,7 +52,7 @@ public class AlignScore extends Command {
       rightX = 0.25;
     }
 
-    if (angle < -VisionConstants.threshold || angle > VisionConstants.threshold){
+    if (Math.abs(angle) > VisionConstants.threshold){
       RobotContainer.swerveDrive.drive(
         RobotContainer.getDriverLeftY(),
         RobotContainer.getDriverLeftX(),
