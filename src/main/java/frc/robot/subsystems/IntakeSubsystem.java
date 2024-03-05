@@ -28,29 +28,16 @@ import frc.robot.RobotContainer;
 public class IntakeSubsystem extends SubsystemBase {
   /** Creates a new IntakeSubsystem. */
   
-  private CANSparkFlex feedMotor;
   private CANSparkFlex intakeMotor;
-  private TimeOfFlight sensor;
 
   public IntakeSubsystem() {
     // Creates a new motor
-
-    feedMotor = new CANSparkFlex(ManipulatorConstants.FEEDER_MOTOR, MotorType.kBrushless);
-    // feedMotor.restoreFactoryDefaults();
-    feedMotor.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
-    feedMotor.setInverted(false);
-    feedMotor.setIdleMode(CANSparkFlex.IdleMode.kCoast);
-    feedMotor.burnFlash(); 
-
     intakeMotor = new CANSparkFlex(ManipulatorConstants.INTAKE_MOTOR, MotorType.kBrushless);
     // intakeMotor.restoreFactoryDefaults();
     intakeMotor.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
     intakeMotor.setInverted(false);
     intakeMotor.setIdleMode(CANSparkFlex.IdleMode.kCoast);
     intakeMotor.burnFlash(); 
-
-    sensor = new TimeOfFlight(SensorConstants.sensorPort1);
-    sensor.setRangeOfInterest(1000, 1000, 1000, 1000);
 
     // intakeMotorL.setInverted(false);
     // intakeMotorR.setInverted(true);
@@ -67,20 +54,8 @@ public class IntakeSubsystem extends SubsystemBase {
     return intakeMotor.get();
   }
 
-  public double getSensorRange() {
-    return sensor.getRange();
-  }
-
   // Sets the value of the motor to a double, at which the motor will run
   public void setIntake(double intakeSpeed) {
     intakeMotor.set(-intakeSpeed);
-  }
-
-  public void setFeed (double feedSpeed) {
-    feedMotor.set(-feedSpeed);
-  }
-
-  public boolean isSensorTripped() {
-    return RobotContainer.intakeSubsystem.getSensorRange() < SensorConstants.sensorThreshold;
   }
 }
