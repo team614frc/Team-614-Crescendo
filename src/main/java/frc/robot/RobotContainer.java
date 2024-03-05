@@ -91,9 +91,7 @@ public class RobotContainer {
   }
 
   public static double getDriverLeftX() {
-    return (.5)*Math.pow(
-      (getLeftXWithDeadband()), 5) + 
-      (.5)*(getLeftXWithDeadband());
+    return (.5)*Math.pow((getLeftXWithDeadband()), 5) + (.5)*(getLeftXWithDeadband());
   }
 
   public static double getLeftYWithDeadband() {
@@ -102,9 +100,7 @@ public class RobotContainer {
   }
 
   public static double getDriverLeftY() {
-    return (.5)*Math.pow(
-      (getLeftYWithDeadband()), 5) + 
-      (.5)*(getLeftYWithDeadband());
+    return (.5)*Math.pow((getLeftYWithDeadband()), 5) + (.5)*(getLeftYWithDeadband());
   }
 
   public static double getRightXWithDeadband() {
@@ -113,9 +109,7 @@ public class RobotContainer {
   }
 
   public static double getDriverRightX() {
-    return (.5)*Math.pow(
-      (getRightXWithDeadband()), 5) + 
-      (.5)*(getRightXWithDeadband());
+    return (.5)*Math.pow((getRightXWithDeadband()), 5) + (.5)*(getRightXWithDeadband());
   }
 
   private void configureButtonBindings() {
