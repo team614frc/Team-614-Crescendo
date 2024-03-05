@@ -8,7 +8,6 @@ import com.revrobotics.CANSparkFlex;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
 import edu.wpi.first.math.controller.PIDController;
-import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.PIDSubsystem;
 import frc.robot.Constants;
@@ -62,7 +61,6 @@ public class ShooterSubsystem extends PIDSubsystem {
   }
 
   public double getMeasurementR() {
-    // return the right motor
     return getShooterRVelocity();
   }
 
