@@ -18,7 +18,7 @@ public class ShooterSubsystem extends PIDSubsystem {
   
   CANSparkFlex shooterMotorR;
   CANSparkFlex shooterMotorL;
-  double goal;
+  private double goal;
 
   public ShooterSubsystem() {
     super(
@@ -80,6 +80,6 @@ public class ShooterSubsystem extends PIDSubsystem {
   }
 
   public boolean atGoal() {
-    return Math.abs(getMeasurement()) >= Math.abs(goal - 100);
+    return Math.abs(getMeasurement() - goal) >= 100;
   }
 }
