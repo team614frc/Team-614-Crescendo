@@ -72,9 +72,9 @@ public class RobotContainer {
     swerveDrive.setDefaultCommand(
         new RunCommand(
             () -> swerveDrive.drive(
-                (.5)*Math.pow(getDriverLeftY(), 5) + (.5)*getDriverLeftY(),
-                (.5)*Math.pow(getDriverLeftX(), 5) + (.5)*getDriverLeftX(),
-                (.5)*Math.pow(getDriverRightX(), 5) + (.5)*getDriverRightX(),
+                getDriverLeftY(),
+                getDriverLeftX(),
+                getDriverRightX(),
                 true, true),
             swerveDrive));
     autoChooser = AutoBuilder.buildAutoChooser();
