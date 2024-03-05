@@ -34,7 +34,7 @@ public class Shooter extends Command {
   @Override
   public void execute() {
     RobotContainer.shooterSubsystem.setSetpoint(shootSpeed);
-    if (RobotContainer.shooterSubsystem.getMeasurement() >= shootSpeed - 150) {
+    if (Math.abs(RobotContainer.shooterSubsystem.getMeasurement()) >= Math.abs(shootSpeed - 150)) {
       RobotContainer.intakeSubsystem.setFeed(ManipulatorConstants.LOADING_SPEED);
     }
   }

@@ -80,6 +80,6 @@ public class ShooterSubsystem extends PIDSubsystem {
   }
 
   public boolean atGoal() {
-    return getMeasurement() >= goal - 100;
+    return Math.abs(getMeasurement()) >= Math.abs(goal - 100);
   }
 }
