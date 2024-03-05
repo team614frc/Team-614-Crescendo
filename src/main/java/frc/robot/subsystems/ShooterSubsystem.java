@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.PIDSubsystem;
 import frc.robot.Constants;
 import frc.robot.Constants.ManipulatorConstants;
+import frc.robot.Constants.TimeConstants;
 
 public class ShooterSubsystem extends PIDSubsystem {
   /** Creates a new ShooterSubsystem. */
@@ -51,7 +52,7 @@ public class ShooterSubsystem extends PIDSubsystem {
   @Override
   public void useOutput(double output, double setpoint) {
     // Use the output here
-    goal= setpoint;
+    goal = setpoint;
     shooterMotorL.setVoltage(-(output + getController().calculate(getMeasurement(), setpoint)));
   }
 
@@ -80,6 +81,6 @@ public class ShooterSubsystem extends PIDSubsystem {
   }
 
   public boolean atGoal() {
-    return Math.abs(getMeasurement() - goal) >= 100;
+    return Math.abs(getMeasurement() - goal) >= ManipulatorConstants.SHOOTER_THRESHOLD;
   }
 }
