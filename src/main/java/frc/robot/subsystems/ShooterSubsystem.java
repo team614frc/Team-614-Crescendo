@@ -18,6 +18,7 @@ public class ShooterSubsystem extends PIDSubsystem {
   
   CANSparkFlex shooterMotorR;
   CANSparkFlex shooterMotorL;
+  double goal;
 
   public ShooterSubsystem() {
     super(
@@ -50,6 +51,7 @@ public class ShooterSubsystem extends PIDSubsystem {
   @Override
   public void useOutput(double output, double setpoint) {
     // Use the output here
+    goal= setpoint;
     shooterMotorL.setVoltage(-(output + getController().calculate(getMeasurement(), setpoint)));
   }
 
@@ -75,5 +77,9 @@ public class ShooterSubsystem extends PIDSubsystem {
   public void set(double speed) {
     shooterMotorL.set(-speed);
     shooterMotorR.set(-speed);
+  }
+
+  public boolean atGoal() {
+    return getMeasurement() >= goal - 100;
   }
 }

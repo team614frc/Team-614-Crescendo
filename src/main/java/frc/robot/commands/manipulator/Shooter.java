@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.ManipulatorConstants;
-import frc.robot.Constants.TimeConstants;
+//import frc.robot.Constants.TimeConstants;
 
 public class Shooter extends Command {
 
@@ -49,6 +49,6 @@ public class Shooter extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return RobotContainer.shooterSubsystem.getMeasurement() >= shootSpeed - 100;
+    return RobotContainer.shooterSubsystem.atGoal();
   }
 }
