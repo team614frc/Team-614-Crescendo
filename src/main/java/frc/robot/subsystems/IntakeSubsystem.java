@@ -12,7 +12,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.SensorConstants;
-import frc.robot.Constants.VisionConstants;
 
 
 /**
@@ -36,14 +35,14 @@ public class IntakeSubsystem extends SubsystemBase {
     // Creates a new motor
 
     feedMotor = new CANSparkFlex(ManipulatorConstants.FEEDER_MOTOR, MotorType.kBrushless);
-    feedMotor.restoreFactoryDefaults();
+    // feedMotor.restoreFactoryDefaults();
     feedMotor.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
     feedMotor.setInverted(false);
     feedMotor.setIdleMode(CANSparkFlex.IdleMode.kCoast);
     feedMotor.burnFlash(); 
 
     intakeMotor = new CANSparkFlex(ManipulatorConstants.INTAKE_MOTOR, MotorType.kBrushless);
-    intakeMotor.restoreFactoryDefaults();
+    // intakeMotor.restoreFactoryDefaults();
     intakeMotor.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
     intakeMotor.setInverted(false);
     intakeMotor.setIdleMode(CANSparkFlex.IdleMode.kCoast);
@@ -61,12 +60,10 @@ public class IntakeSubsystem extends SubsystemBase {
 @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    SmartDashboard.putNumber("Sensor Value", getSensorRange());
   }
 
-  public void getSpeed() {
-    //intakeMotorR.get();
-    SmartDashboard.putNumber("Intake Speed Right", feedMotor.get());
+  public double getSpeed() {
+    return intakeMotor.get();
   }
 
   public double getSensorRange() {

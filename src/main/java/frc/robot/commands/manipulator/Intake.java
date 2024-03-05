@@ -8,7 +8,6 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.SensorConstants;
-import frc.robot.Constants.VisionConstants;
 
 /**
  * The Intake Command simply uses the IntakeSubsystem
@@ -27,6 +26,8 @@ public class Intake extends Command {
   public Intake(double intakeSpeed) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.intakeSubsystem);
+    addRequirements(RobotContainer.shooterSubsystem);
+    addRequirements(RobotContainer.limeSubsystem);
     // intakeSpeed = ManipulatorConstants.INTAKE_SPEED;
     this.intakeSpeed = intakeSpeed;
   }
@@ -42,6 +43,7 @@ public class Intake extends Command {
       && RobotContainer.intakeSubsystem.getSensorRange() < SensorConstants.sensorThreshold) {
       RobotContainer.intakeSubsystem.setFeed(ManipulatorConstants.LOADBACK_SPEED);
       RobotContainer.shooterSubsystem.set(-ManipulatorConstants.LOADBACK_SPEED);
+      RobotContainer.limeSubsystem.blinkLEDs();
       // feeder loadback
     } else {
       RobotContainer.intakeSubsystem.setIntake(intakeSpeed);
@@ -55,7 +57,7 @@ public class Intake extends Command {
   public void end(boolean interrupted) {
     RobotContainer.intakeSubsystem.setIntake(ManipulatorConstants.INTAKE_REST_SPEED);
     RobotContainer.intakeSubsystem.setFeed(0);
-    RobotContainer.shooterSubsystem.setSetpoint(0);
+    RobotContainer.shooterSubsystem.set(0);
     RobotContainer.intakeSubsystem.getSpeed();
   }
 
