@@ -2,7 +2,7 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands.manipulator;
+package frc.robot.commands.manipulator.commandgroup;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -12,22 +12,27 @@ import frc.robot.Constants.TimeConstants;
 
 public class Shooter extends Command {
 
-  public double shootSpeed;
+  public double shootSpeed, pivotGoal;
   public Timer commandTimer;
 
   /** Creates a new shooter. */
-  public Shooter(double shootSpeed) {
+  public Shooter(double shootSpeed, double pivotGoal) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.shooterSubsystem);
     addRequirements(RobotContainer.intakeSubsystem);
+    addRequirements(RobotContainer.pivotSubsystem);
+    addRequirements(RobotContainer.pivotSubsystem);
     commandTimer = new Timer();
     this.shootSpeed = shootSpeed;
+    this.pivotGoal = pivotGoal;
+
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
     RobotContainer.shooterSubsystem.enable();
+    RobotContainer.pivotSubsystem.enable();
     commandTimer.restart();
   }
 
@@ -35,7 +40,8 @@ public class Shooter extends Command {
   @Override
   public void execute() {
     RobotContainer.shooterSubsystem.setSetpoint(shootSpeed);
-    if (commandTimer.get() > TimeConstants.SpeakerFeed) {
+    RobotContainer.pivotSubsystem.setGoal(pivotGoal);
+    if (RobotContainer.pivotSubsystem.atGoal(ManipulatorConstants.SCORE_SIMPLE_PID) && RobotContainer.shooterSubsystem.atGoal()) {
       RobotContainer.intakeSubsystem.setFeed(ManipulatorConstants.LOADING_SPEED);
     }
   }
@@ -45,11 +51,12 @@ public class Shooter extends Command {
   public void end(boolean interrupted) {
     RobotContainer.shooterSubsystem.setSetpoint(ManipulatorConstants.MOTOR_ZERO_SPEED);
     RobotContainer.intakeSubsystem.setFeed(ManipulatorConstants.INTAKE_REST_SPEED);
+    RobotContainer.pivotSubsystem.setGoal(ManipulatorConstants.PIVOT_MIN);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return commandTimer.get() > TimeConstants.SpeakerEnd;
+    return !RobotContainer.intakeSubsystem.isSensorTripped();
   }
 }

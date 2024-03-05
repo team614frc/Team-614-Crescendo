@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.SensorConstants;
+import frc.robot.RobotContainer;
 
 
 /**
@@ -77,5 +78,9 @@ public class IntakeSubsystem extends SubsystemBase {
 
   public void setFeed (double feedSpeed) {
     feedMotor.set(-feedSpeed);
+  }
+
+  public boolean isSensorTripped() {
+    return RobotContainer.intakeSubsystem.getSensorRange() < SensorConstants.sensorThreshold;
   }
 }

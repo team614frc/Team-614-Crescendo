@@ -90,7 +90,7 @@ public class PivotSubsystem extends ProfiledPIDSubsystem {
   }
 
   public boolean atGoal(double goal) {
-    return (getMeasurement() > (goal-ManipulatorConstants.PIVOT_THRESHOLD)) && (getMeasurement() < (goal+ManipulatorConstants.PIVOT_THRESHOLD)); 
+    return (getMeasurement() > Math.abs(goal-ManipulatorConstants.PIVOT_THRESHOLD)); 
   }
 
   public void set(double speed) {

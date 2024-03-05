@@ -2,7 +2,7 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands.manipulator;
+package frc.robot.commands.manipulator.commandgroup;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
@@ -42,7 +42,7 @@ public class Intake extends Command {
   @Override
   public void execute() {
     if (intakeSpeed > ManipulatorConstants.MOTOR_ZERO_SPEED
-      && RobotContainer.intakeSubsystem.getSensorRange() < SensorConstants.sensorThreshold) {
+      && RobotContainer.intakeSubsystem.isSensorTripped()) {
       RobotContainer.intakeSubsystem.setFeed(ManipulatorConstants.LOADBACK_SPEED);
       RobotContainer.shooterSubsystem.set(-ManipulatorConstants.LOADBACK_SPEED);
       RobotContainer.limeSubsystem.blinkLEDs();

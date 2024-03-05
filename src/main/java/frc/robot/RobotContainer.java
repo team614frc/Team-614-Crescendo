@@ -20,9 +20,8 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.setXCommand;
-import frc.robot.commands.commandgroup.AmpTrapScore;
-import frc.robot.commands.commandgroup.ScoreGoal;
-import frc.robot.commands.manipulator.Intake;
+import frc.robot.commands.manipulator.commandgroup.Intake;
+import frc.robot.commands.manipulator.commandgroup.Shooter;
 import frc.robot.commands.vision.AlignScore;
 import frc.robot.commands.manipulator.pivot.PivotPID;
 import frc.robot.subsystems.DriveSubsystem;
@@ -64,9 +63,9 @@ public class RobotContainer {
     
     // Pathplanner Commands for use in auto. Name is what you type into pathplanner,
     // and the commands are "borrowed" from the controller
-    NamedCommands.registerCommand("Score Close", new ScoreGoal(ManipulatorConstants.PIVOT_CLOSE_SCORE));
-    NamedCommands.registerCommand("Score Far", new ScoreGoal(ManipulatorConstants.PIVOT_FAR_SCORE));
-    NamedCommands.registerCommand("Score Amp", new AmpTrapScore(ManipulatorConstants.PIVOT_AMP_GOAL));
+    NamedCommands.registerCommand("Score Close", new Shooter(ManipulatorConstants.SCORE_SIMPLE_PID, ManipulatorConstants.PIVOT_CLOSE_SCORE));
+    NamedCommands.registerCommand("Score Far", new Shooter(ManipulatorConstants.SCORE_SIMPLE_PID,ManipulatorConstants.PIVOT_FAR_SCORE));
+    NamedCommands.registerCommand("Score Amp", new Shooter(ManipulatorConstants.SCORE_SIMPLE_PID, ManipulatorConstants.PIVOT_AMP_GOAL));
     NamedCommands.registerCommand("Intake", new Intake(ManipulatorConstants.INTAKE_SPEED).withTimeout(2.5));
 
     swerveDrive.setDefaultCommand(
@@ -121,9 +120,15 @@ public class RobotContainer {
   private void configureButtonBindings() {
 
     m_driverController.rightStick().whileTrue(new setXCommand());
-    m_driverController.rightTrigger().onTrue(new AmpTrapScore(ManipulatorConstants.PIVOT_AMP_GOAL));
-    m_driverController.rightBumper().onTrue(new ScoreGoal(ManipulatorConstants.PIVOT_FAR_SCORE));
-    m_driverController.leftBumper().onTrue(new ScoreGoal(ManipulatorConstants.PIVOT_CLOSE_SCORE));
+    m_driverController.rightTrigger().onTrue(new Shooter(
+      ManipulatorConstants.SCORE_SIMPLE_PID, 
+      ManipulatorConstants.PIVOT_AMP_GOAL));
+    m_driverController.rightBumper().onTrue(new Shooter(
+      ManipulatorConstants.SCORE_SIMPLE_PID, 
+      ManipulatorConstants.PIVOT_FAR_SCORE));
+    m_driverController.leftBumper().onTrue(new Shooter(
+      ManipulatorConstants.SCORE_SIMPLE_PID, 
+      ManipulatorConstants.PIVOT_CLOSE_SCORE));
     m_driverController.leftTrigger().whileTrue(new Intake(ManipulatorConstants.INTAKE_SPEED));
     m_driverController.a().onTrue(new PivotPID(ManipulatorConstants.PIVOT_MIN));
     m_driverController.x().onTrue(new PivotPID(ManipulatorConstants.PIVOT_FAR_SCORE));
@@ -131,9 +136,15 @@ public class RobotContainer {
     m_driverController.b().whileTrue(new AlignScore());
 
     m_coDriverController.rightStick().whileTrue(new setXCommand());
-    m_coDriverController.rightTrigger().onTrue(new AmpTrapScore(ManipulatorConstants.PIVOT_AMP_GOAL));
-    m_coDriverController.rightBumper().onTrue(new ScoreGoal(ManipulatorConstants.PIVOT_FAR_SCORE));
-    m_coDriverController.leftBumper().onTrue(new ScoreGoal(ManipulatorConstants.PIVOT_CLOSE_SCORE));
+    m_coDriverController.rightTrigger().onTrue(new Shooter(
+      ManipulatorConstants.SCORE_SIMPLE_PID, 
+      ManipulatorConstants.PIVOT_AMP_GOAL));
+    m_coDriverController.rightBumper().onTrue(new Shooter(
+      ManipulatorConstants.SCORE_SIMPLE_PID, 
+      ManipulatorConstants.PIVOT_FAR_SCORE));
+    m_coDriverController.leftBumper().onTrue(new Shooter(
+      ManipulatorConstants.SCORE_SIMPLE_PID, 
+      ManipulatorConstants.PIVOT_CLOSE_SCORE));
     m_coDriverController.leftTrigger().whileTrue(new Intake(ManipulatorConstants.INTAKE_SPEED));
     m_coDriverController.a().onTrue(new PivotPID(ManipulatorConstants.PIVOT_MIN));
     m_coDriverController.x().onTrue(new PivotPID(ManipulatorConstants.PIVOT_FAR_SCORE));
