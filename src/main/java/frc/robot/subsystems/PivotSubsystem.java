@@ -5,20 +5,13 @@
 package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkFlex;
-import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkLowLevel.MotorType;
-
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ManipulatorConstants;
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkLowLevel.MotorType;
-
+import frc.robot.Constants.PIDConstants;
 import edu.wpi.first.math.controller.ArmFeedforward;
 import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.ProfiledPIDSubsystem;
-import frc.robot.Constants.ManipulatorConstants;
 
 /**
  * The PivotSubsystem has the motor objects for the motors of the
@@ -37,21 +30,22 @@ public class PivotSubsystem extends ProfiledPIDSubsystem {
   private CANSparkFlex pivotMotorL;
 
   private ArmFeedforward feedforward = new ArmFeedforward(
-    ManipulatorConstants.PIVOT_kS,
-    ManipulatorConstants.PIVOT_kG,
-    ManipulatorConstants.PIVOT_kV,
-    ManipulatorConstants.PIVOT_kA);
+    PIDConstants.PIVOT_kS,
+    PIDConstants.PIVOT_kG,
+    PIDConstants.PIVOT_kV,
+    PIDConstants.PIVOT_kA);
 
   /** Creates a new PivotSubsystem. */
   public PivotSubsystem() {
     super(
-        // The ProfiledPIDController used by the subsystem
         new ProfiledPIDController(
-            ManipulatorConstants.PIVOT_kP,
-            ManipulatorConstants.PIVOT_kI,
-            ManipulatorConstants.PIVOT_kD,
-            // The motion profile constraints
-            new TrapezoidProfile.Constraints(ManipulatorConstants.pivotMaxVelocity, ManipulatorConstants.pivotMaxAccel)));
+            PIDConstants.PIVOT_kP,
+            PIDConstants.PIVOT_kI,
+            PIDConstants.PIVOT_kD,
+            new TrapezoidProfile.Constraints(
+              ManipulatorConstants.PIVOT_MAX_VEL, 
+              ManipulatorConstants.PIVOT_MAX_ACCEL)));
+
     pivotMotorR = new CANSparkFlex(ManipulatorConstants.PIVOT_MOTOR_RIGHT, MotorType.kBrushless);
     // pivotMotorR.restoreFactoryDefaults();
     pivotMotorR.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
@@ -71,9 +65,6 @@ public class PivotSubsystem extends ProfiledPIDSubsystem {
   @Override
   public void useOutput(double output, TrapezoidProfile.State setpoint) {
     // Use the output (and optionally the setpoint) here
-    SmartDashboard.putNumber("PivotSubsystem", getMeasurement());  
-    SmartDashboard.putNumber("ENCODER Ticks", pivotMotorL.getEncoder().getCountsPerRevolution());  
-    //SmartDashboard.putNumber("Encoder", pivotMotorL.getEncoder().getMeasurementPeriod());
     double feed = feedforward.calculate(setpoint.position, setpoint.velocity);
     pivotMotorL.set(output + getController().calculate(getMeasurement() + feed));
     pivotMotorR.set(output + getController().calculate(getMeasurement() + feed));
@@ -90,7 +81,7 @@ public class PivotSubsystem extends ProfiledPIDSubsystem {
   }
 
   public double getEncoderinDegrees() {
-    double val = 180.0/360.0;  // 7168 ticks per rev, 100:1 gear ratio, ticks per full rotation in degrees
+    double val = 180.0/360.0;  // 7168 ticks per rev, 180:1 gear ratio
     return (getPivotLEncoder()/val);
   }
 
@@ -100,7 +91,6 @@ public class PivotSubsystem extends ProfiledPIDSubsystem {
 
   public boolean atGoal(double goal) {
     return (getMeasurement() > (goal-ManipulatorConstants.PIVOT_THRESHOLD)) && (getMeasurement() < (goal+ManipulatorConstants.PIVOT_THRESHOLD)); 
-    
   }
 
   public void set(double speed) {

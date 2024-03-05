@@ -27,6 +27,7 @@ public class Intake extends Command {
   public Intake(double intakeSpeed) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.intakeSubsystem);
+    addRequirements(RobotContainer.shooterSubsystem);
     addRequirements(RobotContainer.limeSubsystem);
     // intakeSpeed = ManipulatorConstants.INTAKE_SPEED;
     this.intakeSpeed = intakeSpeed;
@@ -59,8 +60,8 @@ public class Intake extends Command {
   public void end(boolean interrupted) {
     RobotContainer.intakeSubsystem.setIntake(ManipulatorConstants.INTAKE_REST_SPEED);
     RobotContainer.intakeSubsystem.setFeed(0);
-    RobotContainer.intakeSubsystem.getSpeed();
     RobotContainer.shooterSubsystem.set(0);
+    RobotContainer.intakeSubsystem.getSpeed();
   }
 
   // Returns true when the command should end.

@@ -5,9 +5,6 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.LimelightHelpers;
-import frc.robot.RobotContainer;
-import frc.robot.Constants.VisionConstants;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.networktables.NetworkTable;
@@ -41,12 +38,11 @@ public class LimelightSubsystem extends SubsystemBase {
   }
 
   public double getHorizontalAngle() {
-    // roboPose = RobotContainer.swerveDrive.getPose(); YOU SHOULD GET THE DISTANCE FROM
+    // roboPose = RobotContainer.swerveDrive.getPose();
     // angle = 1/Math.tan(
     //   roboPose.getX()-VisionConstants.tag7X/
-    //   roboPose.getY()-VisionConstants.tag7Y); // APRILTAG NOT THE ACTUAL POSITION DIMWIT IN THE ROBPOSE.GETX();
-    angle = x;
-    return angle;
+    //   roboPose.getY()-VisionConstants.tag7Y);
+    return x;
   }
 
   @Override

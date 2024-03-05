@@ -11,18 +11,32 @@ import frc.robot.RobotContainer;
 
 public class AlignScore extends Command {
   /** Creates a new alignScore. */
-  private double angle, turn, rightX;
-  private boolean picker;
+  private double angle, turn, rightX, poseAngle;
+  private boolean isVisionBased;
 
   public AlignScore() {
     addRequirements(RobotContainer.swerveDrive);
-    picker = false;
+    isVisionBased = false;
   }
 
   public AlignScore (double set) {
     addRequirements(RobotContainer.swerveDrive);
     turn = set;
-    picker = true;
+    isVisionBased = true;
+  }
+
+  public double getVisionBasedAngle() {
+    return RobotContainer.limeSubsystem.getHorizontalAngle();
+  }
+
+  public double getPositionBasedAngle() {
+    if (RobotContainer.swerveDrive.getHeading().getDegrees()>0) {
+        poseAngle = ((RobotContainer.swerveDrive.getHeading().getDegrees()%360) - turn);
+      } else  {
+        turn = -turn;
+        poseAngle = ((RobotContainer.swerveDrive.getHeading().getDegrees()%360) - turn);
+      }
+    return poseAngle;
   }
 
   // Called when the command is initially scheduled.
@@ -32,41 +46,28 @@ public class AlignScore extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    // angle = (RobotContainer.limeSubsystem.getHorizontalAngle()-(Math.PI/2)) + RobotContainer.swerveDrive.getHeading().getRadians();
-    if (picker) {
-      if (RobotContainer.swerveDrive.getHeading().getDegrees()>0) {
-        angle = ((RobotContainer.swerveDrive.getHeading().getDegrees()%360) - turn);
-      } else  {
-        turn = -turn;
-        angle = ((RobotContainer.swerveDrive.getHeading().getDegrees()%360) - turn);
-      }
-    }   else    {
-        angle = RobotContainer.limeSubsystem.getHorizontalAngle();
-    }
+    angle = isVisionBased ? getVisionBasedAngle() : getPositionBasedAngle();
 
-    if (Math.abs(angle)<20 && turn > 0) {
+    if (Math.abs(angle) < 20 && turn > 0) {
       rightX = 0.7 * angle / 100.0;
     } else if (turn < 0) {
       rightX = 0.25;
     }
 
-    SmartDashboard.putNumber("HEADING", RobotContainer.swerveDrive.getHeading().getDegrees());
-
     if (angle < -VisionConstants.threshold || angle > VisionConstants.threshold){
       RobotContainer.swerveDrive.drive(
-        (.5)*Math.pow(RobotContainer.getDriverLeftY(), 5) + (.5)*RobotContainer.getDriverLeftY(),
-        (.5)*Math.pow(RobotContainer.getDriverLeftX(), 5) + (.5)*RobotContainer.getDriverLeftX(),
+        RobotContainer.getDriverLeftY(),
+        RobotContainer.getDriverLeftX(),
         -(rightX), //VisionConstants.simpleAlignYInput * angle / 100.0
             true, true);
     } else {
       RobotContainer.swerveDrive.drive(
-        (.5)*Math.pow(RobotContainer.getDriverLeftY(), 5) + (.5)*RobotContainer.getDriverLeftY(),
-        (.5)*Math.pow(RobotContainer.getDriverLeftX(), 5) + (.5)*RobotContainer.getDriverLeftX(),
-        (.5)*Math.pow(RobotContainer.getDriverRightX(), 5) + (.5)*RobotContainer.getDriverRightX(),
+        RobotContainer.getDriverLeftY(),
+        RobotContainer.getDriverLeftX(),
+        RobotContainer.getDriverRightX(),
             true, true);
     }
   }
-    // insert code to adjust robot angle here
 
   // Called once the command ends or is interrupted.
   @Override
