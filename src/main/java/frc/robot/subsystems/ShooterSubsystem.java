@@ -10,6 +10,7 @@ import com.revrobotics.CANSparkLowLevel.MotorType;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.PIDSubsystem;
+import frc.robot.Constants;
 import frc.robot.Constants.ManipulatorConstants;
 
 public class ShooterSubsystem extends PIDSubsystem {
@@ -21,7 +22,7 @@ public class ShooterSubsystem extends PIDSubsystem {
   public ShooterSubsystem() {
     super(
         // The PIDController used by the subsystem
-        new PIDController(0.001, 0, 0));
+        new PIDController(Constants.ManipulatorConstants.SHOOTER_kP, 0, 0));
 
     shooterMotorL = new CANSparkFlex(ManipulatorConstants.SHOOTER_MOTOR_LEFT, MotorType.kBrushless);
     // shooterMotorL.restoreFactoryDefaults();
@@ -30,19 +31,26 @@ public class ShooterSubsystem extends PIDSubsystem {
     shooterMotorL.setIdleMode(CANSparkFlex.IdleMode.kCoast);
     shooterMotorL.burnFlash();
 
+
     shooterMotorR = new CANSparkFlex(ManipulatorConstants.SHOOTER_MOTOR_RIGHT, MotorType.kBrushless);
     // shooterMotorR.restoreFactoryDefaults();
     shooterMotorR.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
     shooterMotorR.setInverted(false);
     shooterMotorR.setIdleMode(CANSparkFlex.IdleMode.kCoast);
+    shooterMotorR.follow(shooterMotorL);
     shooterMotorR.burnFlash();
+  }
+
+  @Override
+  public void periodic() {
+    // This method will be called once per scheduler run
+    super.periodic();
   }
 
   @Override
   public void useOutput(double output, double setpoint) {
     // Use the output here
-    shooterMotorL.set(-(output + getController().calculate(getMeasurement(), setpoint)));
-    shooterMotorR.set(-(output + getController().calculate(getMeasurementR(), setpoint)));
+    shooterMotorL.setVoltage(-(output + getController().calculate(getMeasurement(), setpoint)));
   }
 
   @Override
