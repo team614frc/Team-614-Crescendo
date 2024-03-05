@@ -70,7 +70,7 @@ public class RobotContainer {
                 getDriverRightX(),
                 true, true),
             swerveDrive));
-            
+
     autoChooser = AutoBuilder.buildAutoChooser();
     SmartDashboard.putData(autoChooser);
   }
@@ -87,29 +87,29 @@ public class RobotContainer {
 
   public static double getLeftXWithDeadband() {
     return -MathUtil.applyDeadband(m_driverController.getLeftX(),
-      OIConstants.kDriveDeadband);
+        OIConstants.kDriveDeadband);
   }
 
   public static double getDriverLeftX() {
-    return (.5)*Math.pow((getLeftXWithDeadband()), 5) + (.5)*(getLeftXWithDeadband());
+    return .5 * Math.pow(getLeftXWithDeadband(), 5) + .5 * getLeftXWithDeadband();
   }
 
   public static double getLeftYWithDeadband() {
-    return -MathUtil.applyDeadband(m_driverController.getLeftY(), 
+    return -MathUtil.applyDeadband(m_driverController.getLeftY(),
         OIConstants.kDriveDeadband);
   }
 
   public static double getDriverLeftY() {
-    return (.5)*Math.pow((getLeftYWithDeadband()), 5) + (.5)*(getLeftYWithDeadband());
+    return .5 * Math.pow(getLeftYWithDeadband(), 5) + .5 * getLeftYWithDeadband();
   }
 
   public static double getRightXWithDeadband() {
-    return -MathUtil.applyDeadband(m_driverController.getRightX(), 
+    return -MathUtil.applyDeadband(m_driverController.getRightX(),
         OIConstants.kDriveDeadband);
   }
 
   public static double getDriverRightX() {
-    return (.5)*Math.pow((getRightXWithDeadband()), 5) + (.5)*(getRightXWithDeadband());
+    return .5 * Math.pow(getRightXWithDeadband(), 5) + .5 * getRightXWithDeadband();
   }
 
   private void configureButtonBindings() {
