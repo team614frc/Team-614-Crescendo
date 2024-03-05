@@ -1,0 +1,49 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 1.4259367928917284,
+      "y": 5.507130871149041
+    },
+    "rotation": 0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "Score Close"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "4p noturn1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Score Close"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "4p noturn3"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "4p noturn2"
+          }
+        }
+      ]
+    }
+  },
+  "folder": "Scorers",
+  "choreoAuto": false
+}

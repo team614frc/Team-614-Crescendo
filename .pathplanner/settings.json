@@ -4,14 +4,17 @@
   "holonomicMode": true,
   "pathFolders": [
     "4p noturn",
-    "Testing"
+    "get middle right",
+    "Straight Lines",
+    "end straight"
   ],
   "autoFolders": [
-    "Choreo Autos",
-    "testing"
+    "Scorers",
+    "Other Stuff",
+    "Straight Lines"
   ],
-  "defaultMaxVel": 4.0,
-  "defaultMaxAccel": 2.0,
+  "defaultMaxVel": 4.8,
+  "defaultMaxAccel": 3.0,
   "defaultMaxAngVel": 572.0,
   "defaultMaxAngAccel": 720.0,
   "maxModuleSpeed": 4.27

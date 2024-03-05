@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.4259367928917284,
-      "y": 5.507130871149041
+      "x": 1.1431832839912723,
+      "y": 4.192396033248124
     },
     "rotation": 0
   },
@@ -12,6 +12,18 @@
     "data": {
       "commands": [
         {
+          "type": "path",
+          "data": {
+            "pathName": "get middle right"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "leave middle right"
+          }
+        },
+        {
           "type": "named",
           "data": {
             "name": "Score Close"
@@ -20,30 +32,24 @@
         {
           "type": "path",
           "data": {
-            "pathName": "4p noturn1"
+            "pathName": "get middle middle right"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "leave middle middle right"
           }
         },
         {
           "type": "named",
           "data": {
             "name": "Score Close"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "4p noturn3"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "4p noturn2"
           }
         }
       ]
     }
   },
-  "folder": null,
+  "folder": "Scorers",
   "choreoAuto": false
 }
