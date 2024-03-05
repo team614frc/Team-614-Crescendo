@@ -54,7 +54,7 @@ public class RobotContainer {
   public RobotContainer() {
     DataLogManager.start();
     // Record both DS control and joystick data
-    DriverStation.startDataLog(DataLogManager.getLog());
+    // DriverStation.startDataLog(DataLogManager.getLog());
     // (optional) Record only DS control data by uncommenting next line.
     // DriverStation.startDataLog(DataLogManager.getLog(), false);
 

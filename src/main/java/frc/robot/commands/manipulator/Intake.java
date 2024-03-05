@@ -35,7 +35,9 @@ public class Intake extends Command {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    RobotContainer.limeSubsystem.turnOffLEDs();
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override

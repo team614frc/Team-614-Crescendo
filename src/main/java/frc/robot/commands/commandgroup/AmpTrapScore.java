@@ -21,6 +21,7 @@ public class AmpTrapScore extends Command {
     addRequirements(RobotContainer.pivotSubsystem);
     addRequirements(RobotContainer.intakeSubsystem);
     addRequirements(RobotContainer.shooterSubsystem);
+    addRequirements(RobotContainer.limeSubsystem);
     shootSpeed = ManipulatorConstants.AMP_SPEED;
     this.pivotGoal = pivotGoal;
     scoreTimer = new Timer();
@@ -40,6 +41,7 @@ public class AmpTrapScore extends Command {
     RobotContainer.shooterSubsystem.set(shootSpeed);
     if (scoreTimer.get() >= TimeConstants.AmpFeed) {
       RobotContainer.intakeSubsystem.setFeed(ManipulatorConstants.AMP_LOAD);
+      RobotContainer.limeSubsystem.blinkLEDs();
     }
   }
 

@@ -23,24 +23,27 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class PivotDown extends Command {
 
   private double pivotSpeed;
+  private double set;
 
   /** Creates a new Pivot. */
-  public PivotDown(double pivotSpeed) {
+  public PivotDown(double pivotSpeed, double set) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.pivotSubsystem);
     this.pivotSpeed = pivotSpeed;
+    this.set = set;
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    RobotContainer.pivotSubsystem.disable();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
 
-    if (Math.abs(RobotContainer.pivotSubsystem.getPivotLEncoder()) > 0 ) {
+    if (RobotContainer.pivotSubsystem.getEncoderinRadians() < set) {
       RobotContainer.pivotSubsystem.set(-pivotSpeed);
       SmartDashboard.putNumber("Encoder Position in Command",
       RobotContainer.pivotSubsystem.getPivotLEncoder());
