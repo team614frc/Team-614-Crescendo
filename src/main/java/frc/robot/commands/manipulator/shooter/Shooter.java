@@ -21,7 +21,6 @@ public class Shooter extends Command {
     addRequirements(RobotContainer.shooterSubsystem);
     addRequirements(RobotContainer.intakeSubsystem);
     addRequirements(RobotContainer.pivotSubsystem);
-    addRequirements(RobotContainer.pivotSubsystem);
     commandTimer = new Timer();
     this.shootSpeed = shootSpeed;
     this.pivotGoal = pivotGoal;
@@ -41,7 +40,7 @@ public class Shooter extends Command {
   public void execute() {
     RobotContainer.shooterSubsystem.setSetpoint(shootSpeed);
     RobotContainer.pivotSubsystem.setGoal(pivotGoal);
-    if (RobotContainer.pivotSubsystem.atGoal(ManipulatorConstants.SCORE_SIMPLE_PID) && RobotContainer.shooterSubsystem.atGoal()) {
+    if (RobotContainer.pivotSubsystem.atGoal(pivotGoal) && RobotContainer.shooterSubsystem.atGoal()) {
       RobotContainer.intakeSubsystem.setFeed(ManipulatorConstants.LOADING_SPEED);
     }
   }

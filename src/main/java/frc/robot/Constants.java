@@ -46,7 +46,7 @@ public final class Constants {
     public static final double SCORE_MID_SPEED = SHOOT_MAX_VEL_SET * 0.3; 
     public static final double SCORE_LOW_SPEED = SHOOT_MAX_VEL_SET * 0.15; 
     public static final double SCORE_SIMPLE = 0.8;
-    public static final double SCORE_SIMPLE_PID = 5000;
+    public static final double SCORE_SIMPLE_RPM = 5000;
     public static final double SHOOTER_FEED = 0.2;
     public static final double AMP_SPEED = 0.2;
     public static final double SHOOTER_kFF = 0.000082;
@@ -54,6 +54,8 @@ public final class Constants {
     public static final double OUTTAKE_SPEED = -0.5;
     public static final double INTAKE_SPEED = 0.5;
     public static final double INTAKE_REST_SPEED = 0.00;
+    public static final double SHOOTER_THRESHOLD = 100;
+
 
     // Constants for Feeder
     public static final double LOADBACK_SPEED = -0.03; 

@@ -63,9 +63,9 @@ public class RobotContainer {
     
     // Pathplanner Commands for use in auto. Name is what you type into pathplanner,
     // and the commands are "borrowed" from the controller
-    NamedCommands.registerCommand("Score Close", new Shooter(ManipulatorConstants.SCORE_SIMPLE_PID, ManipulatorConstants.PIVOT_CLOSE_SCORE));
-    NamedCommands.registerCommand("Score Far", new Shooter(ManipulatorConstants.SCORE_SIMPLE_PID,ManipulatorConstants.PIVOT_FAR_SCORE));
-    NamedCommands.registerCommand("Score Amp", new Shooter(ManipulatorConstants.SCORE_SIMPLE_PID, ManipulatorConstants.PIVOT_AMP_GOAL));
+    NamedCommands.registerCommand("Score Close", new Shooter(ManipulatorConstants.SCORE_SIMPLE_RPM, ManipulatorConstants.PIVOT_CLOSE_SCORE));
+    NamedCommands.registerCommand("Score Far", new Shooter(ManipulatorConstants.SCORE_SIMPLE_RPM,ManipulatorConstants.PIVOT_FAR_SCORE));
+    NamedCommands.registerCommand("Score Amp", new Shooter(ManipulatorConstants.SCORE_SIMPLE_RPM, ManipulatorConstants.PIVOT_AMP_GOAL));
     NamedCommands.registerCommand("Intake", new Intake(ManipulatorConstants.INTAKE_SPEED).withTimeout(2.5));
 
     swerveDrive.setDefaultCommand(
@@ -121,13 +121,13 @@ public class RobotContainer {
 
     m_driverController.rightStick().whileTrue(new setXCommand());
     m_driverController.rightTrigger().onTrue(new Shooter(
-      ManipulatorConstants.SCORE_SIMPLE_PID, 
+      ManipulatorConstants.SCORE_SIMPLE_RPM, 
       ManipulatorConstants.PIVOT_AMP_GOAL));
     m_driverController.rightBumper().onTrue(new Shooter(
-      ManipulatorConstants.SCORE_SIMPLE_PID, 
+      ManipulatorConstants.SCORE_SIMPLE_RPM, 
       ManipulatorConstants.PIVOT_FAR_SCORE));
     m_driverController.leftBumper().onTrue(new Shooter(
-      ManipulatorConstants.SCORE_SIMPLE_PID, 
+      ManipulatorConstants.SCORE_SIMPLE_RPM, 
       ManipulatorConstants.PIVOT_CLOSE_SCORE));
     m_driverController.leftTrigger().whileTrue(new Intake(ManipulatorConstants.INTAKE_SPEED));
     m_driverController.a().onTrue(new PivotPID(ManipulatorConstants.PIVOT_MIN));
@@ -137,13 +137,13 @@ public class RobotContainer {
 
     m_coDriverController.rightStick().whileTrue(new setXCommand());
     m_coDriverController.rightTrigger().onTrue(new Shooter(
-      ManipulatorConstants.SCORE_SIMPLE_PID, 
+      ManipulatorConstants.SCORE_SIMPLE_RPM, 
       ManipulatorConstants.PIVOT_AMP_GOAL));
     m_coDriverController.rightBumper().onTrue(new Shooter(
-      ManipulatorConstants.SCORE_SIMPLE_PID, 
+      ManipulatorConstants.SCORE_SIMPLE_RPM, 
       ManipulatorConstants.PIVOT_FAR_SCORE));
     m_coDriverController.leftBumper().onTrue(new Shooter(
-      ManipulatorConstants.SCORE_SIMPLE_PID, 
+      ManipulatorConstants.SCORE_SIMPLE_RPM, 
       ManipulatorConstants.PIVOT_CLOSE_SCORE));
     m_coDriverController.leftTrigger().whileTrue(new Intake(ManipulatorConstants.INTAKE_SPEED));
     m_coDriverController.a().onTrue(new PivotPID(ManipulatorConstants.PIVOT_MIN));
