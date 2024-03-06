@@ -25,6 +25,7 @@ import frc.robot.commands.manipulator.intake.Intake;
 import frc.robot.commands.manipulator.pivot.PivotPID;
 import frc.robot.commands.manipulator.shooter.Shooter;
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.FeederSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.LimelightSubsystem;
 import frc.robot.subsystems.PivotSubsystem;
@@ -40,6 +41,7 @@ import frc.robot.subsystems.ShooterSubsystem;
 public class RobotContainer {
   // The robot's subsystems
   public final static DriveSubsystem swerveDrive = new DriveSubsystem();
+  public final static FeederSubsystem feederSubsystem = new FeederSubsystem();
   public final static IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
   public final static ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
   public final static PivotSubsystem pivotSubsystem = new PivotSubsystem();
