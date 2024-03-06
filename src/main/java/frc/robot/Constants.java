@@ -54,11 +54,11 @@ public final class Constants {
     public static final double OUTTAKE_SPEED = -0.5;
     public static final double INTAKE_SPEED = 0.5;
     public static final double INTAKE_REST_SPEED = 0.00;
-    public static final double SHOOTER_THRESHOLD = 100;
+    public static final double SHOOTER_THRESHOLD = 150;
 
     // Constants for Feeder
-    public static final double LOADBACK_SPEED = -0.03; 
-    public static final double LOADING_SPEED = 1; 
+    public static final double LOADBACK_SPEED = -0.08; // MAYBE BACK AND FORTH WAS THE MOVE 
+    public static final double LOADING_SPEED = 1; // (Note fixed its deformity)
     public static final double AMP_LOAD = 0.5;
     
 
