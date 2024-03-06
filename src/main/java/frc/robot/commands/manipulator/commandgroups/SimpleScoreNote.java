@@ -5,7 +5,6 @@
 package frc.robot.commands.manipulator.commandgroups;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.commands.manipulator.commandgroups.independantgroups.ScoreReset;
 import frc.robot.commands.manipulator.commandgroups.independantgroups.ShootPrep;
 import frc.robot.commands.manipulator.feeder.ShooterFeed;

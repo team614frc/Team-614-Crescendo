@@ -4,11 +4,8 @@
 
 package frc.robot.commands.manipulator.shooter;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
-import frc.robot.Constants.ManipulatorConstants;
-import frc.robot.Constants.TimeConstants;
 import frc.robot.subsystems.ShooterSubsystem;
 
 public class Shooter extends Command {
