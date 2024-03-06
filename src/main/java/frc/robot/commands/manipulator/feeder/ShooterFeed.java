@@ -13,13 +13,13 @@ import frc.robot.subsystems.LimelightSubsystem;
 
 public class ShooterFeed extends Command {
   /** Creates a new shootFeed. */
-    private final FeederSubsystem sub;
+    private final FeederSubsystem feeder;
     private final LimelightSubsystem lime;
 
   public ShooterFeed() {
     addRequirements(RobotContainer.feederSubsystem);
     addRequirements(RobotContainer.limeSubsystem);
-    sub = RobotContainer.feederSubsystem;
+    feeder = RobotContainer.feederSubsystem;
     lime = RobotContainer.limeSubsystem;
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -31,18 +31,19 @@ public class ShooterFeed extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    sub.setFeed(ManipulatorConstants.LOADING_SPEED);
+    feeder.setFeed(ManipulatorConstants.LOADING_SPEED);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    sub.setFeed(0);
+    feeder.setFeed(0);
+    lime.turnOffLEDs();
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return !sub.isSensorTripped();
+    return !feeder.isSensorTripped();
   }
 }

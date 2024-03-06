@@ -12,13 +12,13 @@ import frc.robot.subsystems.LimelightSubsystem;
 
 public class IntakeFeed extends Command {
   /** Creates a new intakeFeed */
-  private final FeederSubsystem sub;
+  private final FeederSubsystem feeder;
   private final LimelightSubsystem lime;
 
   public IntakeFeed() {
     addRequirements(RobotContainer.feederSubsystem);
     addRequirements(RobotContainer.limeSubsystem);
-    sub = RobotContainer.feederSubsystem;
+    feeder = RobotContainer.feederSubsystem;
     lime = RobotContainer.limeSubsystem;
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -30,19 +30,19 @@ public class IntakeFeed extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    sub.setFeed(ManipulatorConstants.INTAKE_SPEED);
+    feeder.setFeed(ManipulatorConstants.INTAKE_SPEED);
     lime.blinkLEDs();
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    sub.setFeed(0);
+    feeder.setFeed(0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return sub.isSensorTripped();
+    return feeder.isSensorTripped();
   }
 }
