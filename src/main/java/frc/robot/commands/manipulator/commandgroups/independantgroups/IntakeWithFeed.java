@@ -2,7 +2,7 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands.manipulator.commandgroup.independantGroups;
+package frc.robot.commands.manipulator.commandgroups.independantgroups;
 
 import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
 import frc.robot.commands.manipulator.feeder.IntakeFeed;
