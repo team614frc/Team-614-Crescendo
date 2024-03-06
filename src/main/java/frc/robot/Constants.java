@@ -56,7 +56,6 @@ public final class Constants {
     public static final double INTAKE_REST_SPEED = 0.00;
     public static final double SHOOTER_THRESHOLD = 100;
 
-
     // Constants for Feeder
     public static final double LOADBACK_SPEED = -0.03; 
     public static final double LOADING_SPEED = 1; 
@@ -75,7 +74,7 @@ public final class Constants {
     public static final double PIVOT_FAR_SCORE = -0.56;
     public static final double PIVOT_AMP_GOAL = -(Math.PI/2);
     public static final double PIVOT_TRAP_SCORE = -0.15;
-    public static final double PIVOT_THRESHOLD = 0.03;
+    public static final double PIVOT_THRESHOLD = 0.09;
     
     // Others
     public static final double PIVOT_MAX_VEL = 4;
