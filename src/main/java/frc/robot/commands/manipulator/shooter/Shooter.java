@@ -9,53 +9,40 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.TimeConstants;
+import frc.robot.subsystems.ShooterSubsystem;
 
 public class Shooter extends Command {
 
-  public double shootSpeed, pivotGoal;
-  public Timer commandTimer;
+  public double shooterSpeed;
+  ShooterSubsystem sub;
 
   /** Creates a new shooter. */
-  public Shooter(double shootSpeed, double pivotGoal) {
+  public Shooter(double shooterSpeed) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.shooterSubsystem);
-    addRequirements(RobotContainer.intakeSubsystem);
-    addRequirements(RobotContainer.pivotSubsystem);
-    commandTimer = new Timer();
-    this.shootSpeed = shootSpeed;
-    this.pivotGoal = pivotGoal;
-
+    sub = RobotContainer.shooterSubsystem;
+    this.shooterSpeed = shooterSpeed;
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    RobotContainer.shooterSubsystem.enable();
-    RobotContainer.pivotSubsystem.enable();
-    commandTimer.restart();
+    sub.enable();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    RobotContainer.shooterSubsystem.setSetpoint(shootSpeed);
-    RobotContainer.pivotSubsystem.setGoal(pivotGoal);
-    if (RobotContainer.pivotSubsystem.atGoal(pivotGoal) && RobotContainer.shooterSubsystem.atGoal()) {
-      RobotContainer.intakeSubsystem.setFeed(ManipulatorConstants.LOADING_SPEED);
-    }
+    sub.setSetpoint(shooterSpeed);
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
-    RobotContainer.shooterSubsystem.setSetpoint(ManipulatorConstants.MOTOR_ZERO_SPEED);
-    RobotContainer.intakeSubsystem.setFeed(ManipulatorConstants.INTAKE_REST_SPEED);
-    RobotContainer.pivotSubsystem.setGoal(ManipulatorConstants.PIVOT_MIN);
-  }
+  public void end(boolean interrupted) {}
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return !RobotContainer.intakeSubsystem.isSensorTripped();
+    return sub.atGoal();
   }
 }
