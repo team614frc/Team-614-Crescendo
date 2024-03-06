@@ -4,7 +4,6 @@
 
 package frc.robot.commands.manipulator.commandgroup.independantGroups;
 
-import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
 import frc.robot.commands.manipulator.feeder.IntakeFeed;
 import frc.robot.commands.manipulator.intake.SimpleIntake;

@@ -5,6 +5,9 @@
 package frc.robot.commands.manipulator.commandgroup;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.Constants.ManipulatorConstants;
+import frc.robot.commands.manipulator.commandgroup.independantGroups.IntakeWithFeed;
+import frc.robot.commands.manipulator.pivot.PivotPID;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
@@ -14,6 +17,9 @@ public class IntakeNote extends SequentialCommandGroup {
   public IntakeNote() {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands();
+    addCommands(
+      new PivotPID(ManipulatorConstants.PIVOT_MIN),
+      new IntakeWithFeed()
+    );
   }
 }
