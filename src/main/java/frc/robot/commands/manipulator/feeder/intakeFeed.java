@@ -37,7 +37,6 @@ public class IntakeFeed extends Command {
   @Override
   public void end(boolean interrupted) {
     sub.setFeed(0);
-
   }
 
   // Returns true when the command should end.
