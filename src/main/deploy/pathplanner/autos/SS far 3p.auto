@@ -1,0 +1,31 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 0.8539869673657066,
+      "y": 4.420390379242297
+    },
+    "rotation": -55.84030545433057
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "fullright"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Score Close"
+          }
+        }
+      ]
+    }
+  },
+  "folder": "Source Side",
+  "choreoAuto": false
+}
