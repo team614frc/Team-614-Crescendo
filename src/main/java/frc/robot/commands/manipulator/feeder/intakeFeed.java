@@ -12,11 +12,12 @@ import frc.robot.subsystems.LimelightSubsystem;
 
 public class IntakeFeed extends Command {
   /** Creates a new intakeFeed */
-  FeederSubsystem sub;
-  LimelightSubsystem lime;
+  private final FeederSubsystem sub;
+  private final LimelightSubsystem lime;
 
   public IntakeFeed() {
     addRequirements(RobotContainer.feederSubsystem);
+    addRequirements(RobotContainer.limeSubsystem);
     sub = RobotContainer.feederSubsystem;
     lime = RobotContainer.limeSubsystem;
     // Use addRequirements() here to declare subsystem dependencies.

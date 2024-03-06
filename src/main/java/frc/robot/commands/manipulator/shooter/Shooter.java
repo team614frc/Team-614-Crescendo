@@ -11,26 +11,26 @@ import frc.robot.subsystems.ShooterSubsystem;
 public class Shooter extends Command {
 
   public double shooterSpeed;
-  ShooterSubsystem sub;
+  private final ShooterSubsystem shooter;
 
   /** Creates a new shooter. */
   public Shooter(double shooterSpeed) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.shooterSubsystem);
-    sub = RobotContainer.shooterSubsystem;
+    shooter = RobotContainer.shooterSubsystem;
     this.shooterSpeed = shooterSpeed;
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    sub.enable();
+    shooter.enable();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    sub.setSetpoint(shooterSpeed);
+    shooter.setSetpoint(shooterSpeed);
   }
 
   // Called once the command ends or is interrupted.
@@ -40,6 +40,6 @@ public class Shooter extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return sub.atGoal();
+    return shooter.atGoal();
   }
 }
