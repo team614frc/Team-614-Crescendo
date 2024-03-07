@@ -5,6 +5,8 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.VisionConstants;
+import frc.robot.RobotContainer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.networktables.NetworkTable;
@@ -38,10 +40,10 @@ public class LimelightSubsystem extends SubsystemBase {
   }
 
   public double getHorizontalAngle() {
-    // roboPose = RobotContainer.swerveDrive.getPose();
-    // angle = 1/Math.tan(
-    //   roboPose.getX()-VisionConstants.tag7X/
-    //   roboPose.getY()-VisionConstants.tag7Y);
+    roboPose = RobotContainer.swerveDrive.getPose();
+    angle = Math.atan2(
+      roboPose.getY()-VisionConstants.tag7Y,
+      roboPose.getX()-VisionConstants.tag7X);
     return x;
   }
 
