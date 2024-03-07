@@ -25,7 +25,7 @@ public class AlignScore extends Command {
   }
 
   public double getVisionBasedAngle() {
-    return RobotContainer.limeSubsystem.getHorizontalAngle();
+    return RobotContainer.limeSubsystem.getAngleOffset();
   }
 
   public double getPositionBasedAngle() {
