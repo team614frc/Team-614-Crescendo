@@ -46,8 +46,8 @@ public class LimelightSubsystem extends SubsystemBase {
 
   public double getTargetAngle(double Y, double X) { // Gets the target angle from where the robot in relation to starting heading
     angle = Math.atan2(
-      roboPose.getY()-Y,
-      roboPose.getX()-X);
+      roboPose.getY() - Y,
+      roboPose.getX() - X);
     return angle;
   }
 
