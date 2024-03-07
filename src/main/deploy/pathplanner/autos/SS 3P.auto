@@ -2,25 +2,25 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.8539869673657066,
-      "y": 4.420390379242297
+      "x": 0.8393012850426425,
+      "y": 4.317590602980848
     },
-    "rotation": -55.84030545433057
+    "rotation": -54.360531487797054
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
         {
-          "type": "path",
-          "data": {
-            "pathName": "fullright"
-          }
-        },
-        {
           "type": "named",
           "data": {
             "name": "Score Close"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "SS 3P"
           }
         }
       ]

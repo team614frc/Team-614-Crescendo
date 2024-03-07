@@ -4,9 +4,11 @@
   "holonomicMode": true,
   "pathFolders": [
     "4p noturn",
+    "AS 3P",
+    "FS 6P",
     "Other",
-    "get middle right",
-    "rightside"
+    "SS 3P",
+    "get middle right"
   ],
   "autoFolders": [
     "Front Side",
