@@ -130,7 +130,7 @@ public class RobotContainer {
     m_driverController.leftBumper().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_CLOSE_SCORE));
     m_driverController.leftTrigger().whileTrue(new IntakeNote());
     m_driverController.a().onTrue(new PivotPID(ManipulatorConstants.PIVOT_MIN));
-    m_driverController.x().onTrue(new PivotPID(ManipulatorConstants.PIVOT_FAR_SCORE));
+    m_driverController.x().onTrue(new PivotPID(ManipulatorConstants.PIVOT_MAX));
     m_driverController.y().whileTrue(new IntakeNote());
     m_driverController.b().whileTrue(new AlignScore());
 
