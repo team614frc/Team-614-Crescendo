@@ -22,6 +22,7 @@ import frc.robot.commands.setXCommand;
 import frc.robot.commands.vision.AlignScore;
 import frc.robot.commands.manipulator.commandgroups.IntakeNote;
 import frc.robot.commands.manipulator.commandgroups.SimpleScoreNote;
+import frc.robot.commands.manipulator.pivot.PivotDown;
 import frc.robot.commands.manipulator.pivot.PivotPID;
 import frc.robot.commands.manipulator.shooter.Shooter;
 import frc.robot.subsystems.DriveSubsystem;
@@ -129,7 +130,7 @@ public class RobotContainer {
     m_driverController.a().onTrue(new PivotPID(ManipulatorConstants.PIVOT_MIN));
     m_driverController.x().onTrue(new PivotPID(ManipulatorConstants.PIVOT_FAR_SCORE));
     m_driverController.y().whileTrue(new IntakeNote());
-    m_driverController.b().whileTrue(new AlignScore());
+    m_driverController.b().whileTrue(new PivotDown(-0.5, -0.35));
 
     m_coDriverController.rightStick().whileTrue(new setXCommand());
     m_coDriverController.rightTrigger().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_AMP_GOAL));
