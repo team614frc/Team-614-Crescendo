@@ -20,6 +20,7 @@ import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.setXCommand;
 import frc.robot.commands.vision.AlignScore;
+import frc.robot.commands.manipulator.commandgroups.AutoFirstShot;
 import frc.robot.commands.manipulator.commandgroups.AutoScore;
 import frc.robot.commands.manipulator.commandgroups.IntakeNote;
 import frc.robot.commands.manipulator.commandgroups.SimpleScoreNote;
@@ -71,6 +72,7 @@ public class RobotContainer {
     NamedCommands.registerCommand("Score Far", new AutoScore(ManipulatorConstants.PIVOT_FAR_SCORE));
     NamedCommands.registerCommand("Score Amp", new AutoScore(ManipulatorConstants.PIVOT_AMP_GOAL));
     NamedCommands.registerCommand("Intake", new IntakeNote());
+    NamedCommands.registerCommand("Firstshot", new AutoFirstShot());
     NamedCommands.registerCommand("Prespool", new ShootPrep(ManipulatorConstants.PIVOT_CLOSE_SCORE));
 
     swerveDrive.setDefaultCommand(
