@@ -63,6 +63,9 @@ public class DriveSubsystem extends SubsystemBase {
   private SlewRateLimiter m_rotLimiter = new SlewRateLimiter(DriveConstants.kRotationalSlewRate);
   private double m_prevTime = WPIUtilJNI.now() * 1e-6;
 
+  // Heading variables
+  private double correctAngle;
+
   // Odometry class for tracking robot pose
   SwerveDriveOdometry m_odometry = new SwerveDriveOdometry(
       DriveConstants.kDriveKinematics,
@@ -287,6 +290,22 @@ public class DriveSubsystem extends SubsystemBase {
    */
   public Rotation2d getHeading() {
     return Rotation2d.fromDegrees(-m_gyro.getAngle());
+  }
+
+  public double getHeadingDirection() {
+    return getHeading().getDegrees() >= 0 ? 1 : -1;
+  }
+
+  public int getNumberOfRotations() {
+    return (int) getHeading().getDegrees()/360;
+  }
+
+  public double getCorrectAngleToTarget(double x) {
+    correctAngle = x;
+    if (getHeadingDirection() >= 0) {
+      
+    }
+    return correctAngle;
   }
 
   /**

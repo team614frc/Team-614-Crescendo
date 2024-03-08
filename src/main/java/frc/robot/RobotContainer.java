@@ -22,8 +22,13 @@ import frc.robot.commands.setXCommand;
 import frc.robot.commands.vision.AlignScore;
 import frc.robot.commands.manipulator.commandgroups.IntakeNote;
 import frc.robot.commands.manipulator.commandgroups.SimpleScoreNote;
+import frc.robot.commands.manipulator.commandgroups.independantgroups.ScoreReset;
+import frc.robot.commands.manipulator.feeder.IntakeFeed;
+import frc.robot.commands.manipulator.feeder.ShooterFeed;
+import frc.robot.commands.manipulator.intake.SimpleIntake;
 import frc.robot.commands.manipulator.pivot.PivotDown;
 import frc.robot.commands.manipulator.pivot.PivotPID;
+import frc.robot.commands.manipulator.pivot.PivotUp;
 import frc.robot.commands.manipulator.shooter.Shooter;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.FeederSubsystem;
@@ -130,16 +135,16 @@ public class RobotContainer {
     m_driverController.a().onTrue(new PivotPID(ManipulatorConstants.PIVOT_MIN));
     m_driverController.x().onTrue(new PivotPID(ManipulatorConstants.PIVOT_FAR_SCORE));
     m_driverController.y().whileTrue(new IntakeNote());
-    m_driverController.b().whileTrue(new PivotDown(-0.5, -0.35));
+    m_driverController.b().whileTrue(new PivotDown(0.5, -0.35));
 
     m_coDriverController.rightStick().whileTrue(new setXCommand());
-    m_coDriverController.rightTrigger().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_AMP_GOAL));
-    m_coDriverController.rightBumper().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_FAR_SCORE));
-    m_coDriverController.leftBumper().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_CLOSE_SCORE));
-    m_coDriverController.leftTrigger().whileTrue(new IntakeNote());
-    m_coDriverController.a().onTrue(new PivotPID(ManipulatorConstants.PIVOT_MIN));
-    m_coDriverController.x().onTrue(new PivotPID(ManipulatorConstants.PIVOT_FAR_SCORE));
-    m_coDriverController.y().whileTrue(new IntakeNote());
+    m_coDriverController.rightTrigger().whileTrue(new Shooter(ManipulatorConstants.SCORE_SIMPLE_RPM));
+    m_coDriverController.rightBumper().whileTrue(new IntakeFeed());
+    m_coDriverController.leftBumper().whileTrue(new ShooterFeed());
+    m_coDriverController.leftTrigger().whileTrue(new SimpleIntake());
+    m_coDriverController.a().whileTrue(new PivotDown(0.2, -0.35));
+    m_coDriverController.x().whileTrue(new PivotUp(-0.2));
+    m_coDriverController.y().whileTrue(new ScoreReset());
     m_coDriverController.b().whileTrue(new PivotPID(ManipulatorConstants.PIVOT_MAX));
   }
 
