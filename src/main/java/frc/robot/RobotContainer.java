@@ -25,7 +25,13 @@ import frc.robot.commands.manipulator.commandgroups.AutoScore;
 import frc.robot.commands.manipulator.commandgroups.IntakeNote;
 import frc.robot.commands.manipulator.commandgroups.SimpleScoreNote;
 import frc.robot.commands.manipulator.commandgroups.independantgroups.ShootPrep;
+import frc.robot.commands.manipulator.commandgroups.independantgroups.ScoreReset;
+import frc.robot.commands.manipulator.feeder.IntakeFeed;
+import frc.robot.commands.manipulator.feeder.ShooterFeed;
+import frc.robot.commands.manipulator.intake.SimpleIntake;
+import frc.robot.commands.manipulator.pivot.PivotDown;
 import frc.robot.commands.manipulator.pivot.PivotPID;
+import frc.robot.commands.manipulator.pivot.PivotUp;
 import frc.robot.commands.manipulator.shooter.Shooter;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.FeederSubsystem;
@@ -73,7 +79,6 @@ public class RobotContainer {
     NamedCommands.registerCommand("Score Amp", new AutoScore(ManipulatorConstants.PIVOT_AMP_GOAL));
     NamedCommands.registerCommand("Intake", new IntakeNote());
     NamedCommands.registerCommand("Firstshot", new AutoFirstShot());
-    NamedCommands.registerCommand("Prespool", new ShootPrep(ManipulatorConstants.PIVOT_CLOSE_SCORE));
 
     swerveDrive.setDefaultCommand(
         new RunCommand(
@@ -127,24 +132,16 @@ public class RobotContainer {
   private void configureButtonBindings() {
 
     m_driverController.rightStick().whileTrue(new setXCommand());
-    m_driverController.rightTrigger().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_AMP_GOAL));
-    m_driverController.rightBumper().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_FAR_SCORE));
-    m_driverController.leftBumper().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_CLOSE_SCORE));
     m_driverController.leftTrigger().whileTrue(new IntakeNote());
-    m_driverController.a().onTrue(new PivotPID(ManipulatorConstants.PIVOT_MIN));
     m_driverController.x().onTrue(new PivotPID(ManipulatorConstants.PIVOT_MAX));
-    m_driverController.y().whileTrue(new IntakeNote());
-    m_driverController.b().whileTrue(new AlignScore());
+    m_driverController.a().whileTrue(new PivotDown(0.5, -0.1));
 
     m_coDriverController.rightStick().whileTrue(new setXCommand());
-    m_coDriverController.rightTrigger().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_AMP_GOAL));
-    m_coDriverController.rightBumper().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_FAR_SCORE));
-    m_coDriverController.leftBumper().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_CLOSE_SCORE));
-    m_coDriverController.leftTrigger().whileTrue(new IntakeNote());
-    m_coDriverController.a().onTrue(new PivotPID(ManipulatorConstants.PIVOT_MIN));
-    m_coDriverController.x().onTrue(new PivotPID(ManipulatorConstants.PIVOT_FAR_SCORE));
-    m_coDriverController.y().whileTrue(new IntakeNote());
-    m_coDriverController.b().whileTrue(new PivotPID(ManipulatorConstants.PIVOT_MAX));
+    m_coDriverController.rightTrigger().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_AMP_GOAL, 2000));
+    m_coDriverController.rightBumper().whileTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_FAR_SCORE, 5000));
+    m_coDriverController.leftBumper().whileTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_CLOSE_SCORE, 2000));
+    m_coDriverController.y().whileTrue(new ScoreReset());
+    m_coDriverController.b().whileTrue(new Shooter(ManipulatorConstants.SCORE_SIMPLE_RPM));
   }
 
   /**

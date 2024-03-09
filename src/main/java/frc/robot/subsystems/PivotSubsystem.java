@@ -11,6 +11,7 @@ import frc.robot.Constants.PIDConstants;
 import edu.wpi.first.math.controller.ArmFeedforward;
 import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.ProfiledPIDSubsystem;
 
 /**
@@ -60,6 +61,8 @@ public class PivotSubsystem extends ProfiledPIDSubsystem {
     pivotMotorL.setIdleMode(CANSparkFlex.IdleMode.kBrake);
     pivotMotorL.getEncoder().setPosition(0);
     pivotMotorL.burnFlash();
+
+    SmartDashboard.putNumber("Pivot Height", getMeasurement());
   }
 
   @Override

@@ -74,7 +74,7 @@ public final class Constants {
     public static final double PIVOT_FAR_SCORE = -0.56;
     public static final double PIVOT_AMP_GOAL = -(Math.PI/2);
     public static final double PIVOT_TRAP_SCORE = -0.15;
-    public static final double PIVOT_THRESHOLD = 0.09;
+    public static final double PIVOT_THRESHOLD = 0.2;
     
     // Others
     public static final double PIVOT_MAX_VEL = 4;
@@ -88,7 +88,7 @@ public final class Constants {
   public static final class SensorConstants {
     
     public static final int sensorPort1 = 0;
-    public static final double sensorThreshold = 120;
+    public static final double sensorThreshold = 350;
 
   }
 
