@@ -8,6 +8,8 @@ import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.commands.manipulator.feeder.SimpleFeed;
 import frc.robot.commands.manipulator.intake.SimpleIntake;
+import frc.robot.commands.manipulator.pivot.PivotDown;
+import frc.robot.commands.manipulator.pivot.PivotPID;
 import frc.robot.commands.manipulator.shooter.Shooter;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
@@ -21,7 +23,8 @@ public class EmptyStomach extends ParallelCommandGroup {
     addCommands(
       new SimpleFeed(-ManipulatorConstants.INTAKE_SPEED),
       new SimpleIntake(-ManipulatorConstants.INTAKE_SPEED),
-      new Shooter(-ManipulatorConstants.SCORE_LOW_SPEED)
+      new Shooter(-ManipulatorConstants.SCORE_LOW_SPEED),
+      new PivotPID(ManipulatorConstants.PIVOT_AMP_GOAL)
     );
   }
 }
