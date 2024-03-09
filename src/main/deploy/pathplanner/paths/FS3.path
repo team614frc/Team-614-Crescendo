@@ -3,53 +3,59 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.43,
-        "y": 5.5
+        "x": 3.39,
+        "y": 7.25
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.456099942611335,
-        "y": 3.304278522689425
+        "x": 4.363865042578029,
+        "y": 7.298784114562863
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.6603258931025917,
-        "y": 3.8476487686427974
+        "x": 8.343684952128402,
+        "y": 7.445640937793504
       },
       "prevControl": {
-        "x": 4.231482884915542,
-        "y": 3.8772932401864377
+        "x": 7.343684952128402,
+        "y": 7.445640937793504
       },
       "nextControl": {
-        "x": 1.8819847299801944,
-        "y": 3.8329630863197335
+        "x": 9.343684952128402,
+        "y": 7.445640937793504
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.43,
-        "y": 5.5
+        "x": 3.39,
+        "y": 5.404331094887593
       },
       "prevControl": {
-        "x": 1.441414260288271,
-        "y": 4.963760625195669
+        "x": 4.892549606208337,
+        "y": 6.711356821640298
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.75,
+      "rotationDegrees": 0,
+      "rotateFast": false
+    }
+  ],
   "constraintZones": [],
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.35,
+      "waypointRelativePos": 0.95,
       "command": {
         "type": "parallel",
         "data": {
@@ -58,23 +64,6 @@
               "type": "named",
               "data": {
                 "name": "Intake"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "New Event Marker",
-      "waypointRelativePos": 0.75,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "Score Close"
               }
             }
           ]
@@ -94,7 +83,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "4p noturn",
+  "folder": "FS 6P",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

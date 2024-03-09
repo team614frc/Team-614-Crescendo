@@ -25,6 +25,11 @@ import frc.robot.commands.manipulator.commandgroups.IntakeNote;
 import frc.robot.commands.manipulator.commandgroups.SimpleScoreNote;
 import frc.robot.commands.manipulator.commandgroups.independantgroups.EmptyStomach;
 import frc.robot.commands.manipulator.commandgroups.independantgroups.ResetWheels;
+import frc.robot.commands.manipulator.commandgroups.AutoFirstShot;
+import frc.robot.commands.manipulator.commandgroups.AutoScore;
+import frc.robot.commands.manipulator.commandgroups.IntakeNote;
+import frc.robot.commands.manipulator.commandgroups.SimpleScoreNote;
+import frc.robot.commands.manipulator.commandgroups.independantgroups.ShootPrep;
 import frc.robot.commands.manipulator.commandgroups.independantgroups.ScoreReset;
 import frc.robot.commands.manipulator.feeder.IntakeFeed;
 import frc.robot.commands.manipulator.feeder.ShooterFeed;
@@ -74,10 +79,11 @@ public class RobotContainer {
     
     // Pathplanner Commands for use in auto. Name is what you type into pathplanner,
     // and the commands are "borrowed" from the controller
-    // NamedCommands.registerCommand("Score Close", new SimpleScoreNote(ManipulatorConstants.PIVOT_CLOSE_SCORE));
-    // NamedCommands.registerCommand("Score Far", new SimpleScoreNote(ManipulatorConstants.PIVOT_FAR_SCORE));
-    // NamedCommands.registerCommand("Score Amp", new SimpleScoreNote(ManipulatorConstants.PIVOT_AMP_GOAL));
+    NamedCommands.registerCommand("Score Close", new AutoScore(ManipulatorConstants.PIVOT_CLOSE_SCORE));
+    NamedCommands.registerCommand("Score Far", new AutoScore(ManipulatorConstants.PIVOT_FAR_SCORE));
+    NamedCommands.registerCommand("Score Amp", new AutoScore(ManipulatorConstants.PIVOT_AMP_GOAL));
     NamedCommands.registerCommand("Intake", new IntakeNote());
+    NamedCommands.registerCommand("Firstshot", new AutoFirstShot());
 
     swerveDrive.setDefaultCommand(
         new RunCommand(

@@ -14,12 +14,12 @@
         {
           "type": "path",
           "data": {
-            "pathName": "forwardresdet"
+            "pathName": "6ft"
           }
         }
       ]
     }
   },
-  "folder": "testing",
+  "folder": "Other Stuff",
   "choreoAuto": false
 }

@@ -14,13 +14,13 @@
         {
           "type": "named",
           "data": {
-            "name": "Score Close"
+            "name": "Firstshot"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "4p noturn1"
+            "pathName": "FS1"
           }
         },
         {
@@ -32,18 +32,18 @@
         {
           "type": "path",
           "data": {
-            "pathName": "4p noturn3"
+            "pathName": "FS2"
           }
         },
         {
-          "type": "path",
+          "type": "named",
           "data": {
-            "pathName": "4p noturn2"
+            "name": "Score Far"
           }
         }
       ]
     }
   },
-  "folder": null,
+  "folder": "Front Side",
   "choreoAuto": false
 }
