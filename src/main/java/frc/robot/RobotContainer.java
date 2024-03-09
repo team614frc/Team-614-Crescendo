@@ -22,8 +22,9 @@ import frc.robot.commands.drivetrain.vision.AlignScore;
 import frc.robot.commands.drivetrain.ResetRobotHeading;
 import frc.robot.commands.drivetrain.setXCommand;
 import frc.robot.commands.manipulator.commandgroups.IntakeNote;
-import frc.robot.commands.manipulator.commandgroups.Puke;
 import frc.robot.commands.manipulator.commandgroups.SimpleScoreNote;
+import frc.robot.commands.manipulator.commandgroups.independantgroups.EmptyStomach;
+import frc.robot.commands.manipulator.commandgroups.independantgroups.ResetWheels;
 import frc.robot.commands.manipulator.commandgroups.independantgroups.ScoreReset;
 import frc.robot.commands.manipulator.feeder.IntakeFeed;
 import frc.robot.commands.manipulator.feeder.ShooterFeed;
@@ -131,10 +132,10 @@ public class RobotContainer {
 
     m_driverController.rightStick().whileTrue(new setXCommand());
     m_driverController.leftTrigger().whileTrue(new IntakeNote());
+    m_driverController.rightTrigger().whileTrue(new EmptyStomach()).onFalse(new ResetWheels());
     m_driverController.x().onTrue(new PivotPID(ManipulatorConstants.PIVOT_MAX));
     m_driverController.a().whileTrue(new PivotDown(0.5, -0.1));
     m_driverController.start().whileTrue(new ResetRobotHeading());
-    m_driverController.rightTrigger().whileTrue(new Puke());
 
     m_coDriverController.rightStick().whileTrue(new setXCommand());
     m_coDriverController.rightTrigger().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_AMP_GOAL, 2000));

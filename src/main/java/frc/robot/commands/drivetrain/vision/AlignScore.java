@@ -15,13 +15,13 @@ public class AlignScore extends Command {
 
   public AlignScore() {
     addRequirements(RobotContainer.swerveDrive);
-    isVisionBased = false;
+    isVisionBased = true;
   }
 
   public AlignScore (double set) {
     addRequirements(RobotContainer.swerveDrive);
     turn = set;
-    isVisionBased = true;
+    isVisionBased = false;
   }
 
   public double getVisionBasedAngle() {
