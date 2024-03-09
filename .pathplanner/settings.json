@@ -7,8 +7,7 @@
     "AS 3P",
     "FS 6P",
     "Other",
-    "SS 3P",
-    "get middle right"
+    "SS 3P"
   ],
   "autoFolders": [
     "Front Side",
@@ -16,7 +15,7 @@
     "Other Stuff",
     "Source Side"
   ],
-  "defaultMaxVel": 3.0,
+  "defaultMaxVel": 2.0,
   "defaultMaxAccel": 5.0,
   "defaultMaxAngVel": 572.0,
   "defaultMaxAngAccel": 720.0,
