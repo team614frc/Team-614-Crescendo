@@ -317,8 +317,6 @@ public class DriveSubsystem extends SubsystemBase {
             true, true);
   }
   
-
-
   /**
    * Returns the turn rate of the robot.
    *
