@@ -22,11 +22,11 @@ public class SimpleIntake extends Command {
   public double intakeSpeed;
 
   /** Creates a new Intake. */
-  public SimpleIntake() {
+  public SimpleIntake(double intakeSpeed) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.intakeSubsystem);
     // intakeSpeed = ManipulatorConstants.INTAKE_SPEED;
-    intakeSpeed = ManipulatorConstants.INTAKE_SPEED;
+    this.intakeSpeed = intakeSpeed;
   }
 
   // Called when the command is initially scheduled.

@@ -5,6 +5,7 @@
 package frc.robot.commands.manipulator.commandgroups.independantgroups;
 
 import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
+import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.commands.manipulator.feeder.IntakeFeed;
 import frc.robot.commands.manipulator.intake.SimpleIntake;
 
@@ -18,7 +19,7 @@ public class IntakeWithFeed extends ParallelDeadlineGroup {
     // addCommands().
     super(new IntakeFeed());
     addCommands(
-      new SimpleIntake()
+      new SimpleIntake(ManipulatorConstants.INTAKE_SPEED)
     );
   }
 }
