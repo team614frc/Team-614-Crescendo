@@ -8,6 +8,7 @@ import com.playingwithfusion.TimeOfFlight;
 import com.revrobotics.CANSparkFlex;
 import com.revrobotics.CANSparkLowLevel.MotorType;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.SensorConstants;
@@ -24,8 +25,8 @@ public class FeederSubsystem extends SubsystemBase {
     feedMotor = new CANSparkFlex(ManipulatorConstants.FEEDER_MOTOR, MotorType.kBrushless);
     // feedMotor.restoreFactoryDefaults();
     feedMotor.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
-    feedMotor.setInverted(false);
-    feedMotor.setIdleMode(CANSparkFlex.IdleMode.kCoast);
+    feedMotor.setInverted(true);
+    feedMotor.setIdleMode(CANSparkFlex.IdleMode.kBrake);
     feedMotor.burnFlash(); 
 
   }
@@ -33,6 +34,7 @@ public class FeederSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
+    SmartDashboard.putNumber("SENSORE", getSensorRange());
   }
 
   public double getSensorRange() {
