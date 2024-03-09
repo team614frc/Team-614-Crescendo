@@ -21,7 +21,8 @@ public class AutoScore extends SequentialCommandGroup {
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
       new ShootPrep(pivotGoal, ManipulatorConstants.SCORE_SIMPLE_RPM),
-      new ShooterFeed()
+      new ShooterFeed(),
+      new PivotPID(ManipulatorConstants.PIVOT_MIN)
     );
   }
 }
