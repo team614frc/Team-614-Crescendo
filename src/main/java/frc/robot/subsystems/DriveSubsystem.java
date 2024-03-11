@@ -296,11 +296,7 @@ public class DriveSubsystem extends SubsystemBase {
   public int getNumberOfRotations() {
     return (int) getHeading().getDegrees()/360;
   }
-
-  public double getClosestAngle(double close) {
-    
-  }
-
+  
   public double getAngleModifier(double angle) {
     double least = angle;
     if (Math.abs(getHeading() - least) > Math.abs(getHeading() - (angle + 360))) least = angle + 360;
