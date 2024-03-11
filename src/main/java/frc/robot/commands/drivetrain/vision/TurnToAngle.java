@@ -22,9 +22,7 @@ public class TurnToAngle extends PIDCommand {
         // This should return the setpoint (can also be a constant)
         () -> RobotContainer.swerveDrive.getCorrectAngleTarget(angle),
         // This uses the output
-        output -> {
-          RobotContainer.swerveDrive.turnToAngle(output);
-        });
+        output -> RobotContainer.swerveDrive.turnToAngle(output));
     addRequirements(RobotContainer.swerveDrive);
   }
 
