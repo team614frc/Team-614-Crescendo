@@ -20,7 +20,7 @@ public class TurnToAngle extends PIDCommand {
         // This should return the measurement
         () -> RobotContainer.swerveDrive.getHeading().getDegrees(),
         // This should return the setpoint (can also be a constant)
-        () -> RobotContainer.swerveDrive.getCorrectAngleToTarget(angle),
+        () -> RobotContainer.swerveDrive.getCorrectAngleTarget(angle),
         // This uses the output
         output -> {
           RobotContainer.swerveDrive.turnToAngle(output);
