@@ -3,53 +3,59 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.43,
-        "y": 5.5
+        "x": 3.39,
+        "y": 7.25
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.6185563183648735,
-        "y": 6.1826722580099895
+        "x": 4.363865042578029,
+        "y": 7.298784114562863
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.542840434518079,
-        "y": 7.019756150424644
+        "x": 8.343684952128402,
+        "y": 7.445640937793504
       },
       "prevControl": {
-        "x": 1.8379573466864616,
-        "y": 7.013289333105089
+        "x": 7.343684952128402,
+        "y": 7.445640937793504
       },
       "nextControl": {
-        "x": 4.143579807732067,
-        "y": 7.034441832747708
+        "x": 9.343684952128402,
+        "y": 7.445640937793504
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.43,
-        "y": 5.5
+        "x": 3.39,
+        "y": 5.404331094887593
       },
       "prevControl": {
-        "x": 1.9710126941184123,
-        "y": 6.021129752456285
+        "x": 4.892549606208337,
+        "y": 6.711356821640298
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": null
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.75,
+      "rotationDegrees": 0,
+      "rotateFast": false
+    }
+  ],
   "constraintZones": [],
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.6,
+      "waypointRelativePos": 0.95,
       "command": {
         "type": "parallel",
         "data": {
@@ -63,28 +69,11 @@
           ]
         }
       }
-    },
-    {
-      "name": "New Event Marker",
-      "waypointRelativePos": 1.05,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "Score Close"
-              }
-            }
-          ]
-        }
-      }
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 4.0,
-    "maxAcceleration": 2.0,
+    "maxVelocity": 2.0,
+    "maxAcceleration": 5.0,
     "maxAngularVelocity": 572.0,
     "maxAngularAcceleration": 720.0
   },
@@ -94,7 +83,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "4p noturn",
+  "folder": "FS 6P",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

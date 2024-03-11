@@ -2,24 +2,30 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.0,
-      "y": 5.0
+      "x": 0.7703033187607442,
+      "y": 6.730682250526229
     },
-    "rotation": 0
+    "rotation": 59.42685765820634
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
         {
+          "type": "named",
+          "data": {
+            "name": "Firstshot"
+          }
+        },
+        {
           "type": "path",
           "data": {
-            "pathName": "12ft"
+            "pathName": "AS1"
           }
         }
       ]
     }
   },
-  "folder": "testing",
+  "folder": "Amp Side",
   "choreoAuto": false
 }

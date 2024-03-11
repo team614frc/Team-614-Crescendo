@@ -3,41 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.43,
-        "y": 5.5
+        "x": 3.392,
+        "y": 5.4
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.456099942611335,
-        "y": 3.304278522689425
+        "x": 6.019603572684467,
+        "y": 7.284142084482872
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.6603258931025917,
-        "y": 3.8476487686427974
+        "x": 8.417113363743722,
+        "y": 5.786158835287259
       },
       "prevControl": {
-        "x": 4.231482884915542,
-        "y": 3.8772932401864377
-      },
-      "nextControl": {
-        "x": 1.8819847299801944,
-        "y": 3.8329630863197335
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 1.43,
-        "y": 5.5
-      },
-      "prevControl": {
-        "x": 1.441414260288271,
-        "y": 4.963760625195669
+        "x": 7.403801283452299,
+        "y": 5.580559282764362
       },
       "nextControl": null,
       "isLocked": false,
@@ -49,7 +33,7 @@
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.35,
+      "waypointRelativePos": 0.8,
       "command": {
         "type": "parallel",
         "data": {
@@ -63,28 +47,11 @@
           ]
         }
       }
-    },
-    {
-      "name": "New Event Marker",
-      "waypointRelativePos": 0.75,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "Score Close"
-              }
-            }
-          ]
-        }
-      }
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 4.0,
-    "maxAcceleration": 2.0,
+    "maxVelocity": 2.0,
+    "maxAcceleration": 5.0,
     "maxAngularVelocity": 572.0,
     "maxAngularAcceleration": 720.0
   },
@@ -94,7 +61,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "4p noturn",
+  "folder": "FS 6P",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

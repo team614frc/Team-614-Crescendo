@@ -34,6 +34,7 @@ public class PivotUp extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
+    RobotContainer.pivotSubsystem.disable();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -41,18 +42,18 @@ public class PivotUp extends Command {
   public void execute() {
 
     if (Math.abs(RobotContainer.pivotSubsystem.getPivotLEncoder()) < ManipulatorConstants.PIVOT_MAX) { 
-      RobotContainer.pivotSubsystem.set(-pivotSpeed);
+      RobotContainer.pivotSubsystem.set(pivotSpeed);
       SmartDashboard.putNumber("Encoder Position in Command",
       RobotContainer.pivotSubsystem.getPivotLEncoder());
     } else {
-      RobotContainer.pivotSubsystem.set(-ManipulatorConstants.MOTOR_GRAV_SPEED);
+      RobotContainer.pivotSubsystem.set(ManipulatorConstants.MOTOR_ZERO_SPEED);
     }
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    RobotContainer.pivotSubsystem.set(-ManipulatorConstants.MOTOR_GRAV_SPEED);
+    RobotContainer.pivotSubsystem.set(ManipulatorConstants.MOTOR_ZERO_SPEED);
   }
 
   // Returns true when the command should end.

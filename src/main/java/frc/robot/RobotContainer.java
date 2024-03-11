@@ -9,7 +9,6 @@ import com.pathplanner.lib.auto.NamedCommands;
 
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj.DataLogManager;
-import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -19,13 +18,27 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.OIConstants;
-import frc.robot.commands.setXCommand;
-import frc.robot.commands.commandgroup.AmpTrapScore;
-import frc.robot.commands.commandgroup.ScoreGoal;
-import frc.robot.commands.manipulator.Intake;
-import frc.robot.commands.vision.AlignScore;
+import frc.robot.commands.drivetrain.vision.AlignScore;
+import frc.robot.commands.drivetrain.vision.TurnToAngle;
+import frc.robot.commands.drivetrain.ResetRobotHeading;
+import frc.robot.commands.drivetrain.setXCommand;
+import frc.robot.commands.manipulator.commandgroup.AutoFirstShot;
+import frc.robot.commands.manipulator.commandgroup.AutoScore;
+import frc.robot.commands.manipulator.commandgroup.IntakeNote;
+import frc.robot.commands.manipulator.commandgroup.SimpleScoreNote;
+import frc.robot.commands.manipulator.commandgroup.helpergroup.EmptyStomach;
+import frc.robot.commands.manipulator.commandgroup.helpergroup.ResetWheels;
+import frc.robot.commands.manipulator.commandgroup.helpergroup.ScoreReset;
+import frc.robot.commands.manipulator.commandgroup.helpergroup.ShootPrep;
+import frc.robot.commands.manipulator.feeder.IntakeFeed;
+import frc.robot.commands.manipulator.feeder.ShooterFeed;
+import frc.robot.commands.manipulator.intake.SimpleIntake;
+import frc.robot.commands.manipulator.pivot.PivotDown;
 import frc.robot.commands.manipulator.pivot.PivotPID;
+import frc.robot.commands.manipulator.pivot.PivotUp;
+import frc.robot.commands.manipulator.shooter.Shooter;
 import frc.robot.subsystems.DriveSubsystem;
+import frc.robot.subsystems.FeederSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.LimelightSubsystem;
 import frc.robot.subsystems.PivotSubsystem;
@@ -42,6 +55,7 @@ public class RobotContainer {
   // The robot's subsystems
   public final static DriveSubsystem swerveDrive = new DriveSubsystem();
   public final static IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
+  public final static FeederSubsystem feederSubsystem = new FeederSubsystem();
   public final static ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
   public final static PivotSubsystem pivotSubsystem = new PivotSubsystem();
   public final static LimelightSubsystem limeSubsystem = new LimelightSubsystem();
@@ -64,10 +78,11 @@ public class RobotContainer {
     
     // Pathplanner Commands for use in auto. Name is what you type into pathplanner,
     // and the commands are "borrowed" from the controller
-    NamedCommands.registerCommand("Score Close", new ScoreGoal(ManipulatorConstants.PIVOT_CLOSE_SCORE));
-    NamedCommands.registerCommand("Score Far", new ScoreGoal(ManipulatorConstants.PIVOT_FAR_SCORE));
-    NamedCommands.registerCommand("Score Amp", new AmpTrapScore(ManipulatorConstants.PIVOT_AMP_GOAL));
-    NamedCommands.registerCommand("Intake", new Intake(ManipulatorConstants.INTAKE_SPEED).withTimeout(2.5));
+    NamedCommands.registerCommand("Score Close", new AutoScore(ManipulatorConstants.PIVOT_CLOSE_SCORE));
+    NamedCommands.registerCommand("Score Far", new AutoScore(ManipulatorConstants.PIVOT_FAR_SCORE));
+    NamedCommands.registerCommand("Score Amp", new AutoScore(ManipulatorConstants.PIVOT_AMP_GOAL));
+    NamedCommands.registerCommand("Intake", new IntakeNote());
+    NamedCommands.registerCommand("Firstshot", new AutoFirstShot());
 
     swerveDrive.setDefaultCommand(
         new RunCommand(
@@ -79,6 +94,14 @@ public class RobotContainer {
             swerveDrive));
     autoChooser = AutoBuilder.buildAutoChooser();
     SmartDashboard.putData(autoChooser);
+  }
+
+  public static CommandXboxController getDriverController() {
+    return m_driverController;
+  }
+
+  public static CommandXboxController getCoDriverController() {
+    return m_coDriverController;
   }
 
   /**
@@ -121,25 +144,20 @@ public class RobotContainer {
   private void configureButtonBindings() {
 
     m_driverController.rightStick().whileTrue(new setXCommand());
-    m_driverController.rightTrigger().onTrue(new AmpTrapScore(ManipulatorConstants.PIVOT_AMP_GOAL));
-    m_driverController.rightBumper().onTrue(new ScoreGoal(ManipulatorConstants.PIVOT_FAR_SCORE));
-    m_driverController.leftBumper().onTrue(new ScoreGoal(ManipulatorConstants.PIVOT_CLOSE_SCORE));
-    m_driverController.leftTrigger().whileTrue(new Intake(ManipulatorConstants.INTAKE_SPEED));
-    m_driverController.a().onTrue(new PivotPID(ManipulatorConstants.PIVOT_MIN));
-    m_driverController.x().onTrue(new PivotPID(ManipulatorConstants.PIVOT_FAR_SCORE));
-    m_driverController.y().whileTrue(new Intake(ManipulatorConstants.OUTTAKE_SPEED));
-    m_driverController.b().whileTrue(new AlignScore());
+    m_driverController.leftTrigger().whileTrue(new IntakeNote());
+    m_driverController.rightTrigger().whileTrue(new EmptyStomach()).onFalse(new ResetWheels());
+    m_driverController.y().onTrue(new PivotPID(SmartDashboard.getNumber("Test Pivot", ManipulatorConstants.PIVOT_MAX)));
+    m_driverController.a().whileTrue(new PivotDown(0.5, -0.1));
+    m_driverController.start().whileTrue(new ResetRobotHeading());
+    m_driverController.x().whileTrue(new TurnToAngle(90));
+    m_driverController.b().whileTrue(new TurnToAngle(-90));
 
     m_coDriverController.rightStick().whileTrue(new setXCommand());
-    m_coDriverController.rightTrigger().onTrue(new AmpTrapScore(ManipulatorConstants.PIVOT_AMP_GOAL));
-    m_coDriverController.rightBumper().onTrue(new ScoreGoal(ManipulatorConstants.PIVOT_FAR_SCORE));
-    m_coDriverController.leftBumper().onTrue(new ScoreGoal(ManipulatorConstants.PIVOT_CLOSE_SCORE));
-    m_coDriverController.leftTrigger().whileTrue(new Intake(ManipulatorConstants.INTAKE_SPEED));
-    m_coDriverController.a().onTrue(new PivotPID(ManipulatorConstants.PIVOT_MIN));
-    m_coDriverController.x().onTrue(new PivotPID(ManipulatorConstants.PIVOT_FAR_SCORE));
-    m_coDriverController.y().whileTrue(new Intake(ManipulatorConstants.OUTTAKE_SPEED));
-    m_coDriverController.b().whileTrue(new PivotPID(ManipulatorConstants.PIVOT_MAX));
-
+    m_coDriverController.rightTrigger().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_AMP_GOAL, 2000));
+    m_coDriverController.rightBumper().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_FAR_SCORE, 5000));
+    m_coDriverController.leftBumper().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_CLOSE_SCORE, 5000));
+    m_coDriverController.y().whileTrue(new ScoreReset());
+    m_coDriverController.b().whileTrue(new Shooter(ManipulatorConstants.SCORE_SIMPLE_RPM));
   }
 
   /**

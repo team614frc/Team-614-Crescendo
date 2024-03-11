@@ -5,6 +5,8 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.VisionConstants;
+import frc.robot.RobotContainer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.networktables.NetworkTable;
@@ -18,6 +20,7 @@ public class LimelightSubsystem extends SubsystemBase {
   
   public LimelightSubsystem() {
     limelightTable = NetworkTableInstance.getDefault().getTable("limelight");
+    roboPose = RobotContainer.swerveDrive.getPose();
     this.turnOffLEDs();
   }
 
@@ -37,13 +40,18 @@ public class LimelightSubsystem extends SubsystemBase {
     limelightTable.getEntry("ledMode").setNumber(3); // Turn on Limelight LEDs
   }
 
-  public double getHorizontalAngle() {
-    // roboPose = RobotContainer.swerveDrive.getPose();
-    // angle = 1/Math.tan(
-    //   roboPose.getX()-VisionConstants.tag7X/
-    //   roboPose.getY()-VisionConstants.tag7Y);
+  public double getAngleOffset() { // Get the angle offset for the AprilTag in view
     return x;
   }
+
+  public double getTargetAngle(double Y, double X) { // Gets the target angle from where the robot in relation to starting heading
+    angle = Math.atan2(
+      roboPose.getY() - Y,
+      roboPose.getX() - X);
+    return angle;
+  }
+
+  
 
   @Override
   public void periodic() {

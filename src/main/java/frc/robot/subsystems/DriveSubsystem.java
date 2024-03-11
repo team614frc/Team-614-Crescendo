@@ -24,6 +24,7 @@ import edu.wpi.first.wpilibj.SPI;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.RobotContainer;
 import frc.robot.Constants.DriveConstants;
 import frc.utils.SwerveUtils;
 
@@ -63,6 +64,9 @@ public class DriveSubsystem extends SubsystemBase {
   private SlewRateLimiter m_rotLimiter = new SlewRateLimiter(DriveConstants.kRotationalSlewRate);
   private double m_prevTime = WPIUtilJNI.now() * 1e-6;
 
+  // Heading variables
+  private double correctAngle;
+
   // Odometry class for tracking robot pose
   SwerveDriveOdometry m_odometry = new SwerveDriveOdometry(
       DriveConstants.kDriveKinematics,
@@ -82,10 +86,10 @@ public class DriveSubsystem extends SubsystemBase {
         this::getRobotRelativeSpeeds, // ChassisSpeeds supplier. MUST BE ROBOT RELATIVE
         this::driveRobotRelative, // Method that will drive the robot given ROBOT RELATIVE ChassisSpeeds
         new HolonomicPathFollowerConfig( // HolonomicPathFollowerConfig, this should likely live in your Constants class
-            new PIDConstants(5.0, 0.0, 0.0), // Translation PID constants
+            new PIDConstants(0.3, 0.0, 0.08), // Translation PID constants
             new PIDConstants(5.0, 0.0, 0.0), // Rotation PID constants
             4.5, // Max module speed, in m/s
-            0.4, // Drive base radius in meters. Distance from robot center to furthest module.
+            0.47, // Drive base radius in meters. Distance from robot center to furthest module.
             new ReplanningConfig() // Default path replanning config. See the API for the options here
         ),
         () -> {
@@ -116,7 +120,7 @@ public class DriveSubsystem extends SubsystemBase {
             m_rearLeft.getPosition(),
             m_rearRight.getPosition()
         });
-    // m_field.setRobotPose(m_odometry.getPoseMeters());
+    m_field.setRobotPose(m_odometry.getPoseMeters());
   }
 
   /**
@@ -289,6 +293,34 @@ public class DriveSubsystem extends SubsystemBase {
     return Rotation2d.fromDegrees(-m_gyro.getAngle());
   }
 
+  public int getNumberOfRotations() {
+    return (int) getHeading().getDegrees()/360;
+  }
+  
+  public double getAngleModifier(double angle) {
+    double least = angle;
+    if (Math.abs(getHeading().getDegrees() - least) > Math.abs(getHeading().getDegrees() - (angle + 360))) least = angle + 360;
+    if (Math.abs(getHeading().getDegrees() - least) > Math.abs(getHeading().getDegrees() - (angle - 360))) least = angle - 360;
+    return least;
+  }
+
+  public double getCorrectAngleTarget(double x) {
+    correctAngle = x;
+    if (Math.abs(getNumberOfRotations()) >= 1) {
+      correctAngle = correctAngle + (360 * (getNumberOfRotations()));
+    }
+    correctAngle = getAngleModifier(correctAngle);
+    return correctAngle;
+  }
+
+  public void turnToAngle(double turn) {
+    drive(
+        RobotContainer.getDriverLeftY(),
+        RobotContainer.getDriverLeftX(),
+        -(turn),
+            true, true);
+  }
+  
   /**
    * Returns the turn rate of the robot.
    *
