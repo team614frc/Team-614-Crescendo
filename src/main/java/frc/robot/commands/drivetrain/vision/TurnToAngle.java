@@ -16,7 +16,7 @@ public class TurnToAngle extends PIDCommand {
   public TurnToAngle(double angle) {
     super(
         // The controller that the command will use
-        new PIDController(0.3, 0, 0),
+        new PIDController(0.0017, 0, 0.001),
         // This should return the measurement
         () -> RobotContainer.swerveDrive.getHeading().getDegrees(),
         // This should return the setpoint (can also be a constant)
