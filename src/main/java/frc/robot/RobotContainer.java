@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.drivetrain.vision.AlignScore;
+import frc.robot.commands.drivetrain.vision.TurnToAngle;
 import frc.robot.commands.drivetrain.ResetRobotHeading;
 import frc.robot.commands.drivetrain.setXCommand;
 import frc.robot.commands.manipulator.commandgroup.AutoFirstShot;
@@ -137,9 +138,11 @@ public class RobotContainer {
     m_driverController.rightStick().whileTrue(new setXCommand());
     m_driverController.leftTrigger().whileTrue(new IntakeNote());
     m_driverController.rightTrigger().whileTrue(new EmptyStomach()).onFalse(new ResetWheels());
-    m_driverController.x().onTrue(new PivotPID(ManipulatorConstants.PIVOT_MAX));
+    m_driverController.y().onTrue(new PivotPID(ManipulatorConstants.PIVOT_MAX));
     m_driverController.a().whileTrue(new PivotDown(0.5, -0.1));
     m_driverController.start().whileTrue(new ResetRobotHeading());
+    m_driverController.x().whileTrue(new TurnToAngle(90));
+    m_driverController.b().whileTrue(new TurnToAngle(-90));
 
     m_coDriverController.rightStick().whileTrue(new setXCommand());
     m_coDriverController.rightTrigger().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_AMP_GOAL, 2000));
