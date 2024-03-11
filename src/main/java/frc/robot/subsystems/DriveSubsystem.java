@@ -293,19 +293,27 @@ public class DriveSubsystem extends SubsystemBase {
     return Rotation2d.fromDegrees(-m_gyro.getAngle());
   }
 
-  public double getHeadingDirection() {
-    return getHeading().getDegrees() >= 0 ? 1 : -1;
-  }
-
   public int getNumberOfRotations() {
     return (int) getHeading().getDegrees()/360;
   }
 
+  public double getClosestAngle(double close) {
+    
+  }
+
+  public double getAngleModifier(double angle) {
+    double least = angle;
+    if (Math.abs(getHeading() - least) > Math.abs(getHeading() - (angle + 360))) least = angle + 360;
+    if (Math.abs(getHeading() - least) > Math.abs(getHeading() - (angle - 360))) least = angle - 360;
+    return least;
+  }
+
   public double getCorrectAngleToTarget(double x) {
     correctAngle = x;
-    if (getHeadingDirection() >= 0) {
-      
+    if (Math.abs(getNumberOfRotations) >= 1) {
+      correctAngle = correctAngle + (360 * (getNumberOfRotations()));
     }
+    correctAngle = getAngleModifier(correctAngle);
     return correctAngle;
   }
 
