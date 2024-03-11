@@ -5,8 +5,8 @@
 package frc.robot.commands.manipulator.commandgroup;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
-import frc.robot.commands.manipulator.commandgroup.independentgroup.ScoreReset;
-import frc.robot.commands.manipulator.commandgroup.independentgroup.ShootPrep;
+import frc.robot.commands.manipulator.commandgroup.helpergroup.ScoreReset;
+import frc.robot.commands.manipulator.commandgroup.helpergroup.ShootPrep;
 import frc.robot.commands.manipulator.feeder.ShooterFeed;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more

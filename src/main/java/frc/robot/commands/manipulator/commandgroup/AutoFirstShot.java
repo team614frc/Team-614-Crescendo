@@ -6,7 +6,7 @@ package frc.robot.commands.manipulator.commandgroup;
 
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import frc.robot.Constants.ManipulatorConstants;
-import frc.robot.commands.manipulator.commandgroup.independentgroup.ShootPrep;
+import frc.robot.commands.manipulator.commandgroup.helpergroup.ShootPrep;
 import frc.robot.commands.manipulator.feeder.ShooterFeed;
 import frc.robot.commands.manipulator.pivot.PivotPID;
 
