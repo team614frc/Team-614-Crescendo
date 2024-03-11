@@ -308,7 +308,7 @@ public class DriveSubsystem extends SubsystemBase {
     return least;
   }
 
-  public double getCorrectAngleToTarget(double x) {
+  public double getCorrectAngleTarget(double x) {
     correctAngle = x;
     if (Math.abs(getNumberOfRotations) >= 1) {
       correctAngle = correctAngle + (360 * (getNumberOfRotations()));
