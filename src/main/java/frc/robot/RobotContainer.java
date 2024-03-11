@@ -96,6 +96,14 @@ public class RobotContainer {
     SmartDashboard.putData(autoChooser);
   }
 
+  public static CommandXboxController getDriverController() {
+    return m_driverController;
+  }
+
+  public static CommandXboxController getCoDriverController() {
+    return m_coDriverController;
+  }
+
   /**
    * Use this method to define your button->command mappings. Buttons can be
    * created by
@@ -138,7 +146,7 @@ public class RobotContainer {
     m_driverController.rightStick().whileTrue(new setXCommand());
     m_driverController.leftTrigger().whileTrue(new IntakeNote());
     m_driverController.rightTrigger().whileTrue(new EmptyStomach()).onFalse(new ResetWheels());
-    m_driverController.y().onTrue(new PivotPID(ManipulatorConstants.PIVOT_MAX));
+    m_driverController.y().onTrue(new PivotPID(SmartDashboard.getNumber("Test Pivot", ManipulatorConstants.PIVOT_MAX)));
     m_driverController.a().whileTrue(new PivotDown(0.5, -0.1));
     m_driverController.start().whileTrue(new ResetRobotHeading());
     m_driverController.x().whileTrue(new TurnToAngle(90));
