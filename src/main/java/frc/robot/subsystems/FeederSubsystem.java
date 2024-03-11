@@ -34,7 +34,7 @@ public class FeederSubsystem extends SubsystemBase {
   @Override
   public void periodic() {
     // This method will be called once per scheduler run
-    SmartDashboard.putNumber("SENSORE", getSensorRange());
+    SmartDashboard.putNumber("SENSOR", getSensorRange());
   }
 
   public double getSensorRange() {
