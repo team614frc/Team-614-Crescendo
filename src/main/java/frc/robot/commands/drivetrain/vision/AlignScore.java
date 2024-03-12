@@ -11,15 +11,26 @@ import frc.robot.RobotContainer;
 
 public class AlignScore extends Command {
   /** Creates a new alignScore. */
-  private double angle, turn, rightX;
+  private double angle, rightX;
+  private boolean isVisionBased;
 
   public AlignScore() {
     addRequirements(RobotContainer.swerveDrive);
+    isVisionBased = true;
   }
 
   public AlignScore (double set) {
     addRequirements(RobotContainer.swerveDrive);
     angle = set;
+    isVisionBased = false;
+  }
+
+  public double getVisionBased() {
+    return RobotContainer.limeSubsystem.getAngleOffset();
+  }
+
+  public double getPositionBased() {
+    return RobotContainer.swerveDrive.getHeading().getDegrees() - angle;
   }
 
   // Called when the command is initially scheduled.
@@ -29,12 +40,17 @@ public class AlignScore extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    angle = RobotContainer.swerveDrive.getCorrectAngleTarget(angle);
-    turn = RobotContainer.swerveDrive.getHeading().getDegrees() - angle;
+    angle = isVisionBased ? getVisionBased() : getPositionBased();
     
-    if 
+    if (Math.abs(angle) < 10) {
+      rightX = VisionConstants.simpleAlignYInput * angle / 100.0; // Formula for turn value when the distance to angle is less than 10 degrees
+    } else if (Math.abs(angle) < 20) {
+      rightX = angle < 0 ? -.15 : .15;  // Turn value when the distance to angle is less than 20 degrees
+    } else {
+      rightX = angle < 0 ? -.23 : .23; // Turn value when the distance to angle is greater than 20 degrees
+    }
 
-    if (Math.abs(turn) > VisionConstants.threshold){
+    if (Math.abs(angle) > VisionConstants.threshold){
       RobotContainer.swerveDrive.turnToAngle(rightX);
     } else {
       RobotContainer.swerveDrive.drive(
