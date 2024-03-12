@@ -5,7 +5,6 @@
 package frc.robot.commands.manipulator.commandgroup.helpergroup;
 
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
-import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.commands.manipulator.feeder.SimpleFeed;
 import frc.robot.commands.manipulator.intake.SimpleIntake;
 import frc.robot.commands.manipulator.shooter.Shooter;

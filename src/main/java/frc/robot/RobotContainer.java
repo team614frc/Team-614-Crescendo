@@ -149,8 +149,8 @@ public class RobotContainer {
     m_driverController.y().onTrue(new PivotPID(SmartDashboard.getNumber("Test Pivot", ManipulatorConstants.PIVOT_MAX)));
     m_driverController.a().whileTrue(new PivotDown(0.5, -0.1));
     m_driverController.start().whileTrue(new ResetRobotHeading());
-    m_driverController.x().whileTrue(new TurnToAngle(90));
-    m_driverController.b().whileTrue(new TurnToAngle(-90));
+    m_driverController.x().whileTrue(new AlignScore(90));
+    m_driverController.b().whileTrue(new AlignScore(-90));
 
     m_coDriverController.rightStick().whileTrue(new setXCommand());
     m_coDriverController.rightTrigger().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_AMP_GOAL, 2000));
