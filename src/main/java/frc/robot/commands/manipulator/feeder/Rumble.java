@@ -21,10 +21,7 @@ import frc.robot.RobotContainer;
 public class Rumble extends Command {
   
   /** Creates a new Intake. */
-  public Rumble() {
-    // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(RobotContainer.feederSubsystem);
-  }
+  public Rumble() {}
 
   // Called when the command is initially scheduled.
   @Override
