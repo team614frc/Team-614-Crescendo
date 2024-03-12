@@ -8,15 +8,17 @@ import frc.robot.Constants.ManipulatorConstants;
 public class PivotPID extends Command {
   /** Creates a new TiltPIDCommand. */
   public double setpoint;
+  private boolean test = false;
 
   public PivotPID() {
     addRequirements(RobotContainer.pivotSubsystem);
-    setpoint = SmartDashboard.getNumber("Test Pivot", ManipulatorConstants.PIVOT_MAX);
+    test = true;
   }
 
   public PivotPID(double set) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.pivotSubsystem);
+    test = false;
     setpoint = set;
   }
 
@@ -24,6 +26,8 @@ public class PivotPID extends Command {
   @Override
   public void initialize() {
     RobotContainer.pivotSubsystem.enable();
+    if (test)
+      setpoint = SmartDashboard.getNumber("Test Pivot", ManipulatorConstants.PIVOT_MAX);
   }
 
   // Called every time the scheduler runs while the command is scheduled.

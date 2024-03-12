@@ -21,4 +21,13 @@ public class ShootPrep extends ParallelCommandGroup {
       new Shooter(shooterSpeed)
     );
   }
+
+  public ShootPrep() {
+    // Add your commands in the addCommands() call, e.g.
+    // addCommands(new FooCommand(), new BarCommand());
+    addCommands(
+      new PivotPID(),
+      new Shooter()
+    );
+  } 
 }

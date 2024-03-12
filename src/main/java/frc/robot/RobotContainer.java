@@ -25,6 +25,7 @@ import frc.robot.commands.manipulator.commandgroup.AutoFirstShot;
 import frc.robot.commands.manipulator.commandgroup.AutoScore;
 import frc.robot.commands.manipulator.commandgroup.IntakeNote;
 import frc.robot.commands.manipulator.commandgroup.SimpleScoreNote;
+import frc.robot.commands.manipulator.commandgroup.SimpleScoreTest;
 import frc.robot.commands.manipulator.commandgroup.helpergroup.EmptyStomach;
 import frc.robot.commands.manipulator.commandgroup.helpergroup.ResetWheels;
 import frc.robot.commands.manipulator.commandgroup.helpergroup.ScoreReset;
@@ -147,7 +148,7 @@ public class RobotContainer {
     m_driverController.b().whileTrue(new TurnToAngle(-90));
 
     m_coDriverController.rightStick().whileTrue(new setXCommand());
-    m_coDriverController.rightTrigger().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_AMP_GOAL, 2000));
+    m_coDriverController.rightTrigger().onTrue(new SimpleScoreTest());  //originally amp score
     m_coDriverController.rightBumper().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_FAR_SCORE, 5000));
     m_coDriverController.leftBumper().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_CLOSE_SCORE, 5000));
     m_coDriverController.y().whileTrue(new ScoreReset());
