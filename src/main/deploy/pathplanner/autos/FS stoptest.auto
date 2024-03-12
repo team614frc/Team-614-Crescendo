@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.4259367928917284,
-      "y": 5.507130871149041
+      "x": 1.456099942611335,
+      "y": 5.565873600441298
     },
     "rotation": 0
   },
@@ -20,7 +20,19 @@
         {
           "type": "path",
           "data": {
-            "pathName": "FS1"
+            "pathName": "cit1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Score Far"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "cit2"
           }
         },
         {
@@ -32,31 +44,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "FS2"
+            "pathName": "cit3"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "Score Far"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "FS3"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Score Far"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "FS4"
+            "name": "Score Close"
           }
         }
       ]

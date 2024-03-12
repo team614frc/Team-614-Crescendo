@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.8393012850426425,
-      "y": 4.317590602980848
+      "x": 0.7703033187607442,
+      "y": 6.730682250526229
     },
-    "rotation": -54.360531487797054
+    "rotation": 59.42685765820634
   },
   "command": {
     "type": "sequential",
@@ -14,18 +14,18 @@
         {
           "type": "named",
           "data": {
-            "name": "Firstshot"
+            "name": "First Shot"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "SS 3P"
+            "pathName": "AS1"
           }
         }
       ]
     }
   },
-  "folder": "Source Side",
+  "folder": "Amp Side",
   "choreoAuto": false
 }
