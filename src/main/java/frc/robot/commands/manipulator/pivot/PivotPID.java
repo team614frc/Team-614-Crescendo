@@ -1,11 +1,18 @@
 package frc.robot.commands.manipulator.pivot;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
+import frc.robot.Constants.ManipulatorConstants;
 
 public class PivotPID extends Command {
   /** Creates a new TiltPIDCommand. */
   public double setpoint;
+
+  public PivotPID() {
+    addRequirements(RobotContainer.pivotSubsystem);
+    setpoint = SmartDashboard.getNumber("Test Pivot", ManipulatorConstants.PIVOT_MAX);
+  }
 
   public PivotPID(double set) {
     // Use addRequirements() here to declare subsystem dependencies.
