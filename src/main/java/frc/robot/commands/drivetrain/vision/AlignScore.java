@@ -6,7 +6,6 @@ package frc.robot.commands.drivetrain.vision;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.VisionConstants;
-import frc.robot.Robot;
 import frc.robot.RobotContainer;
 
 public class AlignScore extends Command {
