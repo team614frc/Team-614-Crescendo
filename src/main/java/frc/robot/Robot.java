@@ -19,7 +19,6 @@ import frc.robot.Constants.ManipulatorConstants;
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
   private RobotContainer m_robotContainer;
-  //public static double x = ManipulatorConstants.PIVOT_MIN;
 
   /**
    * This function is run when the robot is first started up and should be used for any
