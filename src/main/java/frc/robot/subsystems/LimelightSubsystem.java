@@ -59,15 +59,5 @@ public class LimelightSubsystem extends SubsystemBase {
     x = limelightTable.getEntry("tx").getDouble(0.0);
     y = limelightTable.getEntry("ty").getDouble(0.0);
     area = limelightTable.getEntry("ta").getDouble(0.0);
-    // limePose = LimelightHelpers.getBotPose2d("limelight");
-    // RobotContainer.swerveDrive.setPoseFromVision(limePose);
-
-    // SmartDashboard.putNumber("POSE X", roboPose.getX());
-    // SmartDashboard.putNumber("POSE Y", roboPose.getY());
-    
-    // post to smart dashboard periodically
-    SmartDashboard.putNumber("LimelightX", x);
-    SmartDashboard.putNumber("LimelightY", y);
-    SmartDashboard.putNumber("LimelightArea", area);
   }
 }

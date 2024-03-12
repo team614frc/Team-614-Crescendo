@@ -6,34 +6,20 @@ package frc.robot.commands.drivetrain.vision;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.VisionConstants;
+import frc.robot.Robot;
 import frc.robot.RobotContainer;
 
 public class AlignScore extends Command {
   /** Creates a new alignScore. */
-  private double angle, turn, rightX, poseAngle;
-  private boolean isVisionBased;
+  private double angle, turn, rightX;
 
   public AlignScore() {
     addRequirements(RobotContainer.swerveDrive);
-    isVisionBased = true;
   }
 
   public AlignScore (double set) {
     addRequirements(RobotContainer.swerveDrive);
-    turn = set;
-    isVisionBased = false;
-  }
-
-  public double getVisionBasedAngle() {
-    return RobotContainer.limeSubsystem.getAngleOffset();
-  }
-
-  public double getPositionBasedAngle() {
-    if (RobotContainer.swerveDrive.getHeading().getDegrees() <= 0) {
-      turn = -turn;
-    }
-    poseAngle = RobotContainer.swerveDrive.getHeading().getDegrees() % 360 - turn;
-    return poseAngle;
+    angle = set;
   }
 
   // Called when the command is initially scheduled.
@@ -43,20 +29,13 @@ public class AlignScore extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    angle = isVisionBased ? getVisionBasedAngle() : getPositionBasedAngle();
+    angle = RobotContainer.swerveDrive.getCorrectAngleTarget(angle);
+    turn = RobotContainer.swerveDrive.getHeading().getDegrees() - angle;
+    
+    if 
 
-    if (Math.abs(angle) < 20 && turn > 0) {
-      rightX = 0.7 * angle / 100.0;
-    } else if (turn < 0) {
-      rightX = 0.25;
-    }
-
-    if (Math.abs(angle) > VisionConstants.threshold){
-      RobotContainer.swerveDrive.drive(
-        RobotContainer.getDriverLeftY(),
-        RobotContainer.getDriverLeftX(),
-        -(rightX), //VisionConstants.simpleAlignYInput * angle / 100.0
-            true, true);
+    if (Math.abs(turn) > VisionConstants.threshold){
+      RobotContainer.swerveDrive.turnToAngle(rightX);
     } else {
       RobotContainer.swerveDrive.drive(
         RobotContainer.getDriverLeftY(),
