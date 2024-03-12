@@ -82,7 +82,7 @@ public class RobotContainer {
     NamedCommands.registerCommand("Score Far", new AutoScore(ManipulatorConstants.PIVOT_FAR_SCORE));
     NamedCommands.registerCommand("Score Amp", new AutoScore(ManipulatorConstants.PIVOT_AMP_GOAL));
     NamedCommands.registerCommand("Intake", new IntakeNote());
-    NamedCommands.registerCommand("Firstshot", new AutoFirstShot());
+    NamedCommands.registerCommand("First Shot", new AutoFirstShot());
 
     swerveDrive.setDefaultCommand(
         new RunCommand(
