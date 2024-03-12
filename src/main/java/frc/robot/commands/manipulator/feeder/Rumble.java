@@ -21,13 +21,10 @@ import frc.robot.RobotContainer;
 
 public class Rumble extends Command {
   
-  public double intakeSpeed;
-  public Timer commandTimer;
-
   /** Creates a new Intake. */
   public Rumble() {
     // Use addRequirements() here to declare subsystem dependencies.
-    commandTimer = new Timer();
+    addRequirements(RobotContainer.feederSubsystem);
   }
 
   // Called when the command is initially scheduled.
@@ -55,6 +52,6 @@ public class Rumble extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return commandTimer.get() > 2;
+    return !RobotContainer.feederSubsystem.isSensorTripped();
   }
 }

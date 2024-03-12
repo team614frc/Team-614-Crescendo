@@ -20,7 +20,7 @@ public class IntakeWithFeed extends ParallelDeadlineGroup {
     // addCommands().
     super(new IntakeFeed());
     addCommands(
-      new SimpleIntake(ManipulatorConstants.INTAKE_SPEED).andThen(new Rumble())
+      new SimpleIntake(ManipulatorConstants.INTAKE_SPEED).andThen(new Rumble().withTimeout(2))
     );
   }
 }
