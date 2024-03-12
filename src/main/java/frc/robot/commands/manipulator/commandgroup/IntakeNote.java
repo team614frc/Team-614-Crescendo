@@ -4,9 +4,11 @@
 
 package frc.robot.commands.manipulator.commandgroup;
 
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.commands.manipulator.commandgroup.helpergroup.IntakeWithFeed;
+import frc.robot.commands.manipulator.feeder.Rumble;
 import frc.robot.commands.manipulator.intake.SimpleIntake;
 import frc.robot.commands.manipulator.pivot.PivotPID;
 
@@ -19,9 +21,10 @@ public class IntakeNote extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new PivotPID(ManipulatorConstants.PIVOT_MIN),
-      new IntakeWithFeed(),
-      new SimpleIntake(ManipulatorConstants.LOADBACK_SPEED)
-    );
+        new PivotPID(ManipulatorConstants.PIVOT_MIN),
+        new IntakeWithFeed(),
+        new ParallelCommandGroup(
+            new SimpleIntake(ManipulatorConstants.LOADBACK_SPEED),
+            new Rumble().withTimeout(ManipulatorConstants.RUMBLE_TIMER)));
   }
 }

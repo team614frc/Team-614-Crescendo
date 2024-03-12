@@ -7,7 +7,6 @@ package frc.robot.commands.manipulator.commandgroup.helpergroup;
 import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
 import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.commands.manipulator.feeder.IntakeFeed;
-import frc.robot.commands.manipulator.feeder.Rumble;
 import frc.robot.commands.manipulator.intake.SimpleIntake;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
@@ -20,7 +19,6 @@ public class IntakeWithFeed extends ParallelDeadlineGroup {
     // addCommands().
     super(new IntakeFeed());
     addCommands(
-      new IntakeFeed().andThen(new Rumble().withTimeout(2)), 
       new SimpleIntake(ManipulatorConstants.INTAKE_SPEED)
     );
   }
