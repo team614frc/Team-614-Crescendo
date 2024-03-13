@@ -44,9 +44,9 @@ public class AlignScore extends Command {
     if (Math.abs(angle) < 10) {
       rightX = VisionConstants.simpleAlignYInput * angle / 100.0; // Formula for turn value when the distance to angle is less than 10 degrees
     } else if (Math.abs(angle) < 20) {
-      rightX = angle < 0 ? -.15 : .15;  // Turn value when the distance to angle is less than 20 degrees
+      rightX = angle < 0 ? -0.15 : 0.15;  // Turn value when the distance to angle is less than 20 degrees
     } else {
-      rightX = angle < 0 ? -.23 : .23; // Turn value when the distance to angle is greater than 20 degrees
+      rightX = angle < 0 ? -0.23 : 0.23; // Turn value when the distance to angle is greater than 20 degrees
     }
 
     if (Math.abs(angle) > VisionConstants.threshold){
