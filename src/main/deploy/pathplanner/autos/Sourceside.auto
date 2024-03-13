@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.8393012850426425,
-      "y": 4.317590602980848
+      "x": 0.765872873427322,
+      "y": 4.361647649950041
     },
-    "rotation": -56.821488340607225
+    "rotation": -63.88608736970931
   },
   "command": {
     "type": "sequential",
@@ -20,7 +20,19 @@
         {
           "type": "path",
           "data": {
-            "pathName": "SS 3P"
+            "pathName": "SStest1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Score Close"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "SStest2"
           }
         }
       ]
