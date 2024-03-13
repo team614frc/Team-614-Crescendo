@@ -13,11 +13,11 @@ import frc.robot.commands.manipulator.shooter.Shooter;
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class ShootPrep extends ParallelCommandGroup {
   /** Creates a new ShootPrep. */
-  public ShootPrep(double pivotGoal, double shooterSpeed) {
+  public ShootPrep(double pivotGoal, double shooterSpeed, double threshold) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new PivotPID(pivotGoal),
+      new PivotPID(pivotGoal, threshold),
       new Shooter(shooterSpeed)
     );
   }

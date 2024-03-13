@@ -23,7 +23,7 @@ public class EmptyStomach extends ParallelCommandGroup {
       new SimpleFeed(-ManipulatorConstants.INTAKE_SPEED),
       new SimpleIntake(-ManipulatorConstants.INTAKE_SPEED),
       new Shooter(-ManipulatorConstants.SCORE_LOW_SPEED),
-      new PivotPID(ManipulatorConstants.PIVOT_AMP_GOAL)
+      new PivotPID(ManipulatorConstants.PIVOT_AMP_GOAL, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD)
     );
   }
 }

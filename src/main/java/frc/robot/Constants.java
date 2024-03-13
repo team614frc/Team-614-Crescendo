@@ -46,7 +46,7 @@ public final class Constants {
     public static final double SCORE_MID_SPEED = SHOOT_MAX_VEL_SET * 0.3; 
     public static final double SCORE_LOW_SPEED = SHOOT_MAX_VEL_SET * 0.15; 
     public static final double SCORE_SIMPLE = 0.8;
-    public static final double SCORE_SIMPLE_RPM = 5000;
+    public static final double SCORE_SIMPLE_RPM = 2000;
     public static final double SHOOTER_FEED = 0.2;
     public static final double AMP_SPEED = 0.2;
     public static final double SHOOTER_kFF = 0.000082;
@@ -76,7 +76,8 @@ public final class Constants {
     public static final double PIVOT_FAR_SCORE = -0.56;
     public static final double PIVOT_AMP_GOAL = -(Math.PI/2);
     public static final double PIVOT_TRAP_SCORE = -0.15;
-    public static final double PIVOT_THRESHOLD = 0.1;
+    public static final double PIVOT_INTAKE_THRESHOLD = 0.2;
+    public static final double PIVOT_SHOOTER_THRESHOLD = 0.1;
     public static final double PIVOT_INTAKE_THRESH = 0.2;
     
     // Others

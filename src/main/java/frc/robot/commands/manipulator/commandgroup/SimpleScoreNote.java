@@ -14,11 +14,11 @@ import frc.robot.commands.manipulator.feeder.ShooterFeed;
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class SimpleScoreNote extends SequentialCommandGroup {
   /** Creates a new SimpleScoreNote. */
-  public SimpleScoreNote(double pivotGoal, double shooterSpeed) {
+  public SimpleScoreNote(double pivotGoal, double shooterSpeed, double threshold) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new ShootPrep(pivotGoal, shooterSpeed),
+      new ShootPrep(pivotGoal, shooterSpeed, threshold),
       new ShooterFeed(),
       new ScoreReset()
     );

@@ -21,7 +21,7 @@ public class IntakeNote extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-        new PivotPID(ManipulatorConstants.PIVOT_MIN),
+        new PivotPID(ManipulatorConstants.PIVOT_MIN, ManipulatorConstants.PIVOT_INTAKE_THRESHOLD),
         new IntakeWithFeed(),
         new ParallelCommandGroup(
             new SimpleIntake(ManipulatorConstants.LOADBACK_SPEED),
