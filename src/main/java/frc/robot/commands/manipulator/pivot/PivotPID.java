@@ -8,6 +8,7 @@ import frc.robot.Constants.ManipulatorConstants;
 public class PivotPID extends Command {
   /** Creates a new TiltPIDCommand. */
   public double setpoint;
+  public double threshold;
   private boolean test = false;
 
   public PivotPID() {
@@ -15,10 +16,11 @@ public class PivotPID extends Command {
     test = true;
   }
 
-  public PivotPID(double set) {
+  public PivotPID(double set, double threshold) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.pivotSubsystem);
     setpoint = set;
+    this.threshold = threshold;
   }
 
   // Called when the command is initially scheduled.
@@ -43,6 +45,6 @@ public class PivotPID extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return RobotContainer.pivotSubsystem.atGoal(setpoint);
+    return RobotContainer.pivotSubsystem.atGoal(setpoint, threshold);
   }
 }
