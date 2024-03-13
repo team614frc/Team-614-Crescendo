@@ -13,13 +13,10 @@ import frc.robot.subsystems.LimelightSubsystem;
 public class IntakeFeed extends Command {
   /** Creates a new intakeFeed */
   private final FeederSubsystem feeder;
-  private final LimelightSubsystem lime;
 
   public IntakeFeed() {
     addRequirements(RobotContainer.feederSubsystem);
-    addRequirements(RobotContainer.limeSubsystem);
     feeder = RobotContainer.feederSubsystem;
-    lime = RobotContainer.limeSubsystem;
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -31,7 +28,6 @@ public class IntakeFeed extends Command {
   @Override
   public void execute() {
     feeder.setFeed(ManipulatorConstants.INTAKE_SPEED);
-    lime.blinkLEDs();
   }
 
   // Called once the command ends or is interrupted.
