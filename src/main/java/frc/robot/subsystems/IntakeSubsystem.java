@@ -6,8 +6,6 @@ package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.CANSparkFlex;
-
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ManipulatorConstants;
 
@@ -34,12 +32,7 @@ public class IntakeSubsystem extends SubsystemBase {
     intakeMotor.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
     intakeMotor.setInverted(false);
     intakeMotor.setIdleMode(CANSparkFlex.IdleMode.kCoast);
-    intakeMotor.burnFlash(); 
-
-    // intakeMotorL.setInverted(false);
-    // intakeMotorR.setInverted(true);
-    //intakeMotorL.follow(intakeMotorR); // Sets the left motor to be the follow of the right intake motor
-    SmartDashboard.putData("IntakeSubsystem", this);
+    intakeMotor.burnFlash();
   }
 
 @Override

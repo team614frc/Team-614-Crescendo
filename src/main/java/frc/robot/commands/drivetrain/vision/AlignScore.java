@@ -6,11 +6,12 @@ package frc.robot.commands.drivetrain.vision;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.VisionConstants;
+import frc.robot.Robot;
 import frc.robot.RobotContainer;
 
 public class AlignScore extends Command {
   /** Creates a new alignScore. */
-  private double angle, turn, rightX, poseAngle;
+  private double angle, rightX, offset;
   private boolean isVisionBased;
 
   public AlignScore() {
@@ -20,22 +21,10 @@ public class AlignScore extends Command {
 
   public AlignScore (double set) {
     addRequirements(RobotContainer.swerveDrive);
-    turn = set;
+    angle = set;
     isVisionBased = false;
   }
-
-  public double getVisionBasedAngle() {
-    return RobotContainer.limeSubsystem.getAngleOffset();
-  }
-
-  public double getPositionBasedAngle() {
-    if (RobotContainer.swerveDrive.getHeading().getDegrees() <= 0) {
-      turn = -turn;
-    }
-    poseAngle = RobotContainer.swerveDrive.getHeading().getDegrees() % 360 - turn;
-    return poseAngle;
-  }
-
+  
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {}
@@ -43,20 +32,21 @@ public class AlignScore extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    angle = isVisionBased ? getVisionBasedAngle() : getPositionBasedAngle();
-
-    if (Math.abs(angle) < 20 && turn > 0) {
-      rightX = 0.7 * angle / 100.0;
-    } else if (turn < 0) {
-      rightX = 0.25;
+    angle = RobotContainer.swerveDrive.getCorrectAngleTarget(angle);
+    offset = isVisionBased ? 
+      RobotContainer.limeSubsystem.getAngleOffset() : 
+      RobotContainer.swerveDrive.getHeading().getDegrees() - angle;
+    
+    if (Math.abs(offset) < 10) {
+      rightX = VisionConstants.simpleAlignYInput * angle / 100.0; // Formula for turn value when the distance to angle is less than 10 degrees
+    } else if (Math.abs(offset) < 20) {
+      rightX = offset < 0 ? -0.15 : 0.15;  // Turn value when the distance to angle is less than 20 degrees
+    } else {
+      rightX = offset < 0 ? -0.4 : 0.4; // Turn value when the distance to angle is greater than 20 degrees
     }
 
     if (Math.abs(angle) > VisionConstants.threshold){
-      RobotContainer.swerveDrive.drive(
-        RobotContainer.getDriverLeftY(),
-        RobotContainer.getDriverLeftX(),
-        -(rightX), //VisionConstants.simpleAlignYInput * angle / 100.0
-            true, true);
+      RobotContainer.swerveDrive.turnToAngle(rightX);
     } else {
       RobotContainer.swerveDrive.drive(
         RobotContainer.getDriverLeftY(),
