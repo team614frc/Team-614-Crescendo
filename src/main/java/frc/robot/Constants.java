@@ -60,6 +60,7 @@ public final class Constants {
     public static final double LOADBACK_SPEED = -0.08; // MAYBE BACK AND FORTH WAS THE MOVE 
     public static final double LOADING_SPEED = 1; // (Note fixed its deformity)
     public static final double AMP_LOAD = 0.5;
+    public static final double RUMBLE_TIMER = 2;
     
 
     // Speed Constants for Pivot
@@ -74,7 +75,7 @@ public final class Constants {
     public static final double PIVOT_FAR_SCORE = -0.56;
     public static final double PIVOT_AMP_GOAL = -(Math.PI/2);
     public static final double PIVOT_TRAP_SCORE = -0.15;
-    public static final double PIVOT_THRESHOLD = 0.2;
+    public static final double PIVOT_THRESHOLD = 0.1;
     public static final double PIVOT_INTAKE_THRESH = 0.2;
     
     // Others

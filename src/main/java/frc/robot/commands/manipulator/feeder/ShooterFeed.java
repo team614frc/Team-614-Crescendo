@@ -14,13 +14,11 @@ import frc.robot.subsystems.LimelightSubsystem;
 public class ShooterFeed extends Command {
   /** Creates a new shootFeed. */
     private final FeederSubsystem feeder;
-    private final LimelightSubsystem lime;
 
   public ShooterFeed() {
     addRequirements(RobotContainer.feederSubsystem);
     addRequirements(RobotContainer.limeSubsystem);
     feeder = RobotContainer.feederSubsystem;
-    lime = RobotContainer.limeSubsystem;
     // Use addRequirements() here to declare subsystem dependencies.
   }
 
@@ -38,7 +36,6 @@ public class ShooterFeed extends Command {
   @Override
   public void end(boolean interrupted) {
     feeder.setFeed(0);
-    lime.turnOffLEDs();
   }
 
   // Returns true when the command should end.
