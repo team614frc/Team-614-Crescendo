@@ -6,6 +6,7 @@ package frc.robot.commands.drivetrain.vision;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.VisionConstants;
+import frc.robot.Robot;
 import frc.robot.RobotContainer;
 
 public class AlignScore extends Command {
@@ -20,7 +21,7 @@ public class AlignScore extends Command {
 
   public AlignScore (double set) {
     addRequirements(RobotContainer.swerveDrive);
-    angle = RobotContainer.swerveDrive.getCorrectAngleTarget(set);
+    angle = set;
     isVisionBased = false;
   }
   
@@ -31,6 +32,7 @@ public class AlignScore extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    angle = RobotContainer.swerveDrive.getCorrectAngleTarget(angle);
     offset = isVisionBased ? 
       RobotContainer.limeSubsystem.getAngleOffset() : 
       RobotContainer.swerveDrive.getHeading().getDegrees() - angle;
