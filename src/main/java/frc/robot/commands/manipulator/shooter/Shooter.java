@@ -4,16 +4,23 @@
 
 package frc.robot.commands.manipulator.shooter;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.ShooterSubsystem;
 
 public class Shooter extends Command {
-
-  public double shooterSpeed;
+  private double shooterSpeed;
   private final ShooterSubsystem shooter;
+  private boolean test = false;
 
   /** Creates a new shooter. */
+  public Shooter() {
+    addRequirements(RobotContainer.shooterSubsystem);
+    shooter = RobotContainer.shooterSubsystem;
+    test = true;
+  }
+  
   public Shooter(double shooterSpeed) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.shooterSubsystem);
@@ -25,6 +32,9 @@ public class Shooter extends Command {
   @Override
   public void initialize() {
     shooter.enable();
+    if (test) {
+      shooterSpeed = SmartDashboard.getNumber("Shooter Test", 5000);
+    }
   }
 
   // Called every time the scheduler runs while the command is scheduled.

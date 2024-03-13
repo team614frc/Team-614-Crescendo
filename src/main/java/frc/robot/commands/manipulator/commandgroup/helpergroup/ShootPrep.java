@@ -5,7 +5,6 @@
 package frc.robot.commands.manipulator.commandgroup.helpergroup;
 
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
-import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.commands.manipulator.pivot.PivotPID;
 import frc.robot.commands.manipulator.shooter.Shooter;
 
@@ -22,4 +21,13 @@ public class ShootPrep extends ParallelCommandGroup {
       new Shooter(shooterSpeed)
     );
   }
+
+  public ShootPrep() {
+    // Add your commands in the addCommands() call, e.g.
+    // addCommands(new FooCommand(), new BarCommand());
+    addCommands(
+      new PivotPID(),
+      new Shooter()
+    );
+  } 
 }

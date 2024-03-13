@@ -4,8 +4,6 @@
 
 package frc.robot.commands.manipulator.feeder;
 
-import edu.wpi.first.wpilibj.GenericHID.RumbleType;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.ManipulatorConstants;
@@ -16,12 +14,10 @@ public class IntakeFeed extends Command {
   /** Creates a new intakeFeed */
   private final FeederSubsystem feeder;
   private final LimelightSubsystem lime;
-  public Timer commandTimer;
 
   public IntakeFeed() {
     addRequirements(RobotContainer.feederSubsystem);
     addRequirements(RobotContainer.limeSubsystem);
-    commandTimer = new Timer();
     feeder = RobotContainer.feederSubsystem;
     lime = RobotContainer.limeSubsystem;
     // Use addRequirements() here to declare subsystem dependencies.
@@ -42,13 +38,6 @@ public class IntakeFeed extends Command {
   @Override
   public void end(boolean interrupted) {
     feeder.setFeed(0);
-    commandTimer.reset();
-    if(commandTimer.get() > 2) {
-      RobotContainer.getDriverController().getHID().setRumble(RumbleType.kRightRumble, .4);
-      RobotContainer.getDriverController().getHID().setRumble(RumbleType.kLeftRumble, .4);
-      RobotContainer.getCoDriverController().getHID().setRumble(RumbleType.kRightRumble, .4);
-      RobotContainer.getCoDriverController().getHID().setRumble(RumbleType.kLeftRumble, .4);
-    }
   }
 
   // Returns true when the command should end.

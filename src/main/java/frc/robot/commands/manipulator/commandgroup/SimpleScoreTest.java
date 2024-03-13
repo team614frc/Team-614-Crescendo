@@ -2,25 +2,25 @@
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
 
-package frc.robot.commands.manipulator.commandgroup.helpergroup;
+package frc.robot.commands.manipulator.commandgroup;
 
-import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
-import frc.robot.commands.manipulator.feeder.SimpleFeed;
-import frc.robot.commands.manipulator.intake.SimpleIntake;
-import frc.robot.commands.manipulator.shooter.Shooter;
+import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.commands.manipulator.commandgroup.helpergroup.ScoreReset;
+import frc.robot.commands.manipulator.commandgroup.helpergroup.ShootPrep;
+import frc.robot.commands.manipulator.feeder.ShooterFeed;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-public class ResetWheels extends ParallelCommandGroup {
-  /** Creates a new PukeCleanup. */
-  public ResetWheels() {
+public class SimpleScoreTest extends SequentialCommandGroup {
+  /** Creates a new SimpleScoreNote. */
+  public SimpleScoreTest() {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new SimpleFeed(0),
-      new SimpleIntake(0),
-      new Shooter(0)
+      new ShootPrep(),
+      new ShooterFeed(),
+      new ScoreReset()
     );
   }
 }
