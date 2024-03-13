@@ -140,14 +140,14 @@ public class RobotContainer {
 
   private void configureButtonBindings() {
 
-    m_driverController.rightStick().whileTrue(new setXCommand());
     m_driverController.leftTrigger().whileTrue(new IntakeNote());
     m_driverController.rightTrigger().whileTrue(new EmptyStomach()).onFalse(new ResetWheels());
-    m_driverController.y().onTrue(new PivotPID());
-    m_driverController.a().whileTrue(new PivotDown(0.5, -0.1));
+    m_driverController.leftBumper().onTrue(new PivotPID(ManipulatorConstants.PIVOT_AMP_GOAL));
+    m_driverController.rightBumper().whileTrue(new PivotDown(0.5, -0.1));
     m_driverController.start().whileTrue(new ResetRobotHeading());
     m_driverController.x().whileTrue(new AlignScore(90));
     m_driverController.b().whileTrue(new AlignScore(-90));
+    m_driverController.a().whileTrue(new AlignScore());
 
     m_coDriverController.rightStick().whileTrue(new setXCommand());
     m_coDriverController.rightTrigger().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_AMP_GOAL, 2000));  

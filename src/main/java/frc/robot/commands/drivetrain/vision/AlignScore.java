@@ -23,15 +23,7 @@ public class AlignScore extends Command {
     angle = set;
     isVisionBased = false;
   }
-
-  public double getVisionBased() {
-    return RobotContainer.limeSubsystem.getAngleOffset();
-  }
-
-  public double getPositionBased() {
-    return RobotContainer.swerveDrive.getHeading().getDegrees() - angle;
-  }
-
+  
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {}
@@ -39,7 +31,9 @@ public class AlignScore extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    angle = isVisionBased ? getVisionBased() : getPositionBased();
+    angle = isVisionBased ? 
+      RobotContainer.limeSubsystem.getAngleOffset() : 
+      RobotContainer.swerveDrive.getHeading().getDegrees() - angle;
     
     if (Math.abs(angle) < 10) {
       rightX = VisionConstants.simpleAlignYInput * angle / 100.0; // Formula for turn value when the distance to angle is less than 10 degrees
