@@ -147,8 +147,8 @@ public class RobotContainer {
     m_driverController.x().whileTrue(new TurnToAngle(90));
     m_driverController.b().whileTrue(new TurnToAngle(-90));
 
-    m_coDriverController.rightStick().whileTrue(new setXCommand());
-    m_coDriverController.rightTrigger().onTrue(new SimpleScoreTest());  //originally amp score
+    m_coDriverController.rightStick().whileTrue(new SimpleScoreTest());
+    m_coDriverController.rightTrigger().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_AMP_GOAL, 2000));  
     m_coDriverController.rightBumper().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_FAR_SCORE, 5000));
     m_coDriverController.leftBumper().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_CLOSE_SCORE, 5000));
     m_coDriverController.y().whileTrue(new ScoreReset());

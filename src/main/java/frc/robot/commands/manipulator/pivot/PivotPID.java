@@ -18,7 +18,6 @@ public class PivotPID extends Command {
   public PivotPID(double set) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.pivotSubsystem);
-    test = false;
     setpoint = set;
   }
 
@@ -26,8 +25,9 @@ public class PivotPID extends Command {
   @Override
   public void initialize() {
     RobotContainer.pivotSubsystem.enable();
-    if (test)
+    if (test) {
       setpoint = SmartDashboard.getNumber("Test Pivot", ManipulatorConstants.PIVOT_MAX);
+    }
   }
 
   // Called every time the scheduler runs while the command is scheduled.

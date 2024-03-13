@@ -25,7 +25,6 @@ public class Shooter extends Command {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.shooterSubsystem);
     shooter = RobotContainer.shooterSubsystem;
-    test = false;
     this.shooterSpeed = shooterSpeed;
   }
 
@@ -33,8 +32,9 @@ public class Shooter extends Command {
   @Override
   public void initialize() {
     shooter.enable();
-    if (test)
+    if (test) {
       shooterSpeed = SmartDashboard.getNumber("Shooter Test", 5000);
+    }
   }
 
   // Called every time the scheduler runs while the command is scheduled.
