@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.OIConstants;
+import frc.robot.commands.drivetrain.vision.AlignScore;
 import frc.robot.commands.drivetrain.vision.TurnToAngle;
 import frc.robot.commands.drivetrain.ResetRobotHeading;
 import frc.robot.commands.drivetrain.setXCommand;

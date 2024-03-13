@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.765872873427322,
-      "y": 4.361647649950041
+      "x": 1.456099942611335,
+      "y": 5.565873600441298
     },
-    "rotation": -63.88608736970931
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
@@ -14,13 +14,25 @@
         {
           "type": "named",
           "data": {
-            "name": "First Shot"
+            "name": "Score Close"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "SStest1"
+            "pathName": "cit1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Score Far"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "cit2"
           }
         },
         {
@@ -32,7 +44,13 @@
         {
           "type": "path",
           "data": {
-            "pathName": "SStest2"
+            "pathName": "cit3"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Score Close"
           }
         }
       ]

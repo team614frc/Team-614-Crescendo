@@ -14,25 +14,25 @@
         {
           "type": "named",
           "data": {
-            "name": "First Shot"
+            "name": "Score Close"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "cit1"
+            "pathName": "cit1.5"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "Score Far"
+            "name": "Score Close"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "cit2"
+            "pathName": "cit2.5"
           }
         },
         {
@@ -56,6 +56,6 @@
       ]
     }
   },
-  "folder": "Front Side",
+  "folder": null,
   "choreoAuto": false
 }
