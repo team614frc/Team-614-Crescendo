@@ -29,10 +29,10 @@ public class Rumble extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-      RobotContainer.getDriverController().getHID().setRumble(RumbleType.kRightRumble, .5);
-      RobotContainer.getDriverController().getHID().setRumble(RumbleType.kLeftRumble, .5);
-      RobotContainer.getCoDriverController().getHID().setRumble(RumbleType.kRightRumble, .5);
-      RobotContainer.getCoDriverController().getHID().setRumble(RumbleType.kLeftRumble, .5);
+      RobotContainer.getDriverController().getHID().setRumble(RumbleType.kRightRumble, ManipulatorConstants.RUMBLE_SETTING);
+      RobotContainer.getDriverController().getHID().setRumble(RumbleType.kLeftRumble, ManipulatorConstants.RUMBLE_SETTING);
+      RobotContainer.getCoDriverController().getHID().setRumble(RumbleType.kRightRumble, ManipulatorConstants.RUMBLE_SETTING);
+      RobotContainer.getCoDriverController().getHID().setRumble(RumbleType.kLeftRumble, ManipulatorConstants.RUMBLE_SETTING);
       RobotContainer.limeSubsystem.blinkLEDs();
   }
 

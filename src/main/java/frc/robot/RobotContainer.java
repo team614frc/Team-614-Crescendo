@@ -25,6 +25,7 @@ import frc.robot.commands.drivetrain.setXCommand;
 import frc.robot.commands.manipulator.commandgroup.AutoFirstShot;
 import frc.robot.commands.manipulator.commandgroup.AutoScore;
 import frc.robot.commands.manipulator.commandgroup.IntakeNote;
+import frc.robot.commands.manipulator.commandgroup.Puke;
 import frc.robot.commands.manipulator.commandgroup.SimpleScoreNote;
 import frc.robot.commands.manipulator.commandgroup.SimpleScoreTest;
 import frc.robot.commands.manipulator.commandgroup.helpergroup.EmptyStomach;
@@ -142,7 +143,7 @@ public class RobotContainer {
   private void configureButtonBindings() {
 
     m_driverController.leftTrigger().whileTrue(new IntakeNote());
-    m_driverController.rightTrigger().whileTrue(new EmptyStomach()).onFalse(new ResetWheels());
+    m_driverController.rightTrigger().whileTrue(new Puke()).onFalse(new ResetWheels());
     m_driverController.leftBumper().onTrue(new PivotPID(ManipulatorConstants.PIVOT_AMP_GOAL, ManipulatorConstants.PIVOT_INTAKE_THRESHOLD));
     m_driverController.rightBumper().whileTrue(new PivotDown(0.5, -0.1));
     m_driverController.start().whileTrue(new ResetRobotHeading());
