@@ -1,0 +1,31 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 0.7703033187607442,
+      "y": 6.730682250526229
+    },
+    "rotation": 59.42685765820634
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "Firstshot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AS1"
+          }
+        }
+      ]
+    }
+  },
+  "folder": "Amp Side",
+  "choreoAuto": false
+}
