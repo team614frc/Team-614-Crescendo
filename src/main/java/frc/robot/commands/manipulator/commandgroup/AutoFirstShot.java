@@ -18,7 +18,7 @@ public class AutoFirstShot extends ParallelCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new ShootPrep(ManipulatorConstants.PIVOT_CLOSE_SCORE, ManipulatorConstants.SCORE_SIMPLE_RPM),
+      new ShootPrep(ManipulatorConstants.PIVOT_CLOSE_SCORE, ManipulatorConstants.SCORE_SIMPLE_RPM, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD),
       new ShooterFeed()
     );
   }
