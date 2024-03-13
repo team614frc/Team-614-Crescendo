@@ -42,9 +42,7 @@ public final class Constants {
 
     // Constants for Shooter
     public static final double SHOOT_MAX_VEL_SET = 6630.0;
-    public static final double SCORE_HIGH_SPEED = SHOOT_MAX_VEL_SET * 0.6; 
-    public static final double SCORE_MID_SPEED = SHOOT_MAX_VEL_SET * 0.3; 
-    public static final double SCORE_LOW_SPEED = SHOOT_MAX_VEL_SET * 0.15; 
+    public static final double SCORE_AMP_SPEED = 2000;
     public static final double SCORE_SIMPLE = 0.8;
     public static final double SCORE_SIMPLE_RPM = 5000;
     public static final double SHOOTER_FEED = 0.2;
