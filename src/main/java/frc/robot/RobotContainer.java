@@ -18,7 +18,6 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.OIConstants;
-import frc.robot.commands.drivetrain.vision.AlignScore;
 import frc.robot.commands.drivetrain.vision.TurnToAngle;
 import frc.robot.commands.drivetrain.ResetRobotHeading;
 import frc.robot.commands.drivetrain.setXCommand;
@@ -26,16 +25,12 @@ import frc.robot.commands.manipulator.commandgroup.AutoFirstShot;
 import frc.robot.commands.manipulator.commandgroup.AutoScore;
 import frc.robot.commands.manipulator.commandgroup.IntakeNote;
 import frc.robot.commands.manipulator.commandgroup.SimpleScoreNote;
+import frc.robot.commands.manipulator.commandgroup.SimpleScoreTest;
 import frc.robot.commands.manipulator.commandgroup.helpergroup.EmptyStomach;
 import frc.robot.commands.manipulator.commandgroup.helpergroup.ResetWheels;
 import frc.robot.commands.manipulator.commandgroup.helpergroup.ScoreReset;
-import frc.robot.commands.manipulator.commandgroup.helpergroup.ShootPrep;
-import frc.robot.commands.manipulator.feeder.IntakeFeed;
-import frc.robot.commands.manipulator.feeder.ShooterFeed;
-import frc.robot.commands.manipulator.intake.SimpleIntake;
 import frc.robot.commands.manipulator.pivot.PivotDown;
 import frc.robot.commands.manipulator.pivot.PivotPID;
-import frc.robot.commands.manipulator.pivot.PivotUp;
 import frc.robot.commands.manipulator.shooter.Shooter;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.FeederSubsystem;
@@ -147,17 +142,18 @@ public class RobotContainer {
     m_driverController.rightStick().whileTrue(new setXCommand());
     m_driverController.leftTrigger().whileTrue(new IntakeNote());
     m_driverController.rightTrigger().whileTrue(new EmptyStomach()).onFalse(new ResetWheels());
-    m_driverController.y().onTrue(new PivotPID(SmartDashboard.getNumber("Test Pivot", ManipulatorConstants.PIVOT_MAX)));
+    m_driverController.y().onTrue(new PivotPID());
     m_driverController.a().whileTrue(new PivotDown(0.5, -0.1));
     m_driverController.start().whileTrue(new ResetRobotHeading());
     m_driverController.x().whileTrue(new AlignScore(90));
     m_driverController.b().whileTrue(new AlignScore(-90));
 
     m_coDriverController.rightStick().whileTrue(new setXCommand());
-    m_coDriverController.rightTrigger().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_AMP_GOAL, 2000));
+    m_coDriverController.rightTrigger().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_AMP_GOAL, 2000));  
     m_coDriverController.rightBumper().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_FAR_SCORE, 5000));
     m_coDriverController.leftBumper().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_CLOSE_SCORE, 5000));
     m_coDriverController.y().whileTrue(new ScoreReset());
+    m_coDriverController.a().whileTrue(new SimpleScoreTest());
     m_coDriverController.b().whileTrue(new Shooter(ManipulatorConstants.SCORE_SIMPLE_RPM));
   }
 

@@ -6,29 +6,20 @@ package frc.robot.commands.manipulator.feeder;
 
 
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
+import frc.robot.Constants.ManipulatorConstants;
 
 /**
- * The Intake Command simply uses the IntakeSubsystem
- * to set the Intake rollers to a specific value.
- * Also sets the intake to a rest speed in order to hold the game piece
- * when there is no input on the intake.
- * -
- * @param intakeSpeed,RobotContainer.intakeSubsystem this is the value that the intake will get set to
+ * Rumble command rumbles the controller when the TimeofFlight sensor detects 
+ * a note and while the 
+ * IntakeNote command is running
  */
 
 public class Rumble extends Command {
   
-  public double intakeSpeed;
-  public Timer commandTimer;
-
-  /** Creates a new Intake. */
-  public Rumble() {
-    // Use addRequirements() here to declare subsystem dependencies.
-    commandTimer = new Timer();
-  }
+  /** Creates a new Rumble. */
+  public Rumble() {}
 
   // Called when the command is initially scheduled.
   @Override
@@ -37,10 +28,10 @@ public class Rumble extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-      RobotContainer.getDriverController().getHID().setRumble(RumbleType.kRightRumble, .4);
-      RobotContainer.getDriverController().getHID().setRumble(RumbleType.kLeftRumble, .4);
-      RobotContainer.getCoDriverController().getHID().setRumble(RumbleType.kRightRumble, .4);
-      RobotContainer.getCoDriverController().getHID().setRumble(RumbleType.kLeftRumble, .4);
+      RobotContainer.getDriverController().getHID().setRumble(RumbleType.kRightRumble, ManipulatorConstants.RUMBLE_SETTING);
+      RobotContainer.getDriverController().getHID().setRumble(RumbleType.kLeftRumble, ManipulatorConstants.RUMBLE_SETTING);
+      RobotContainer.getCoDriverController().getHID().setRumble(RumbleType.kRightRumble, ManipulatorConstants.RUMBLE_SETTING);
+      RobotContainer.getCoDriverController().getHID().setRumble(RumbleType.kLeftRumble, ManipulatorConstants.RUMBLE_SETTING);
   }
 
   // Called once the command ends or is interrupted.
@@ -55,6 +46,6 @@ public class Rumble extends Command {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return commandTimer.get() > 2;
+    return !RobotContainer.feederSubsystem.isSensorTripped();
   }
 }
