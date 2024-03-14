@@ -3,25 +3,41 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.392,
-        "y": 5.4
+        "x": 1.456099942611335,
+        "y": 5.565873600441298
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.019603572684467,
-        "y": 7.284142084482872
+        "x": 2.0728986001800274,
+        "y": 5.551187918118234
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.417113363743722,
-        "y": 5.786158835287259
+        "x": 2.8365540809793615,
+        "y": 5.565873600441298
       },
       "prevControl": {
-        "x": 7.403801283452299,
-        "y": 5.580559282764362
+        "x": 2.278498152702925,
+        "y": 5.565873600441298
+      },
+      "nextControl": {
+        "x": 3.394610009255798,
+        "y": 5.565873600441298
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 1.456099942611335,
+        "y": 5.580559282764361
+      },
+      "prevControl": {
+        "x": 2.4253549759335664,
+        "y": 5.573216441602829
       },
       "nextControl": null,
       "isLocked": false,
@@ -33,7 +49,7 @@
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.8,
+      "waypointRelativePos": 0.35,
       "command": {
         "type": "parallel",
         "data": {
@@ -61,7 +77,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Frontside",
+  "folder": "New Folder",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0
