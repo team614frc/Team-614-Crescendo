@@ -4,21 +4,21 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.RobotContainer;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.RobotContainer;
 
 public class LimelightSubsystem extends SubsystemBase {
   /** Creates a new LimelightSubsystem. */
   private NetworkTable limelightTable;
   private double x, y, area, angle;
-  private Pose2d limePose, roboPose;
+  private Pose2d limePose, robotPose;
   
   public LimelightSubsystem() {
     limelightTable = NetworkTableInstance.getDefault().getTable("limelight");
-    roboPose = RobotContainer.swerveDrive.getPose();
+    robotPose = RobotContainer.swerveDrive.getPose();
     this.turnOffLEDs();
   }
 
@@ -44,8 +44,8 @@ public class LimelightSubsystem extends SubsystemBase {
 
   public double getTargetAngle(double Y, double X) { // Gets the target angle from where the robot in relation to starting heading
     angle = Math.atan2(
-      roboPose.getY() - Y,
-      roboPose.getX() - X);
+      robotPose.getY() - Y,
+      robotPose.getX() - X);
     return angle;
   }
 
