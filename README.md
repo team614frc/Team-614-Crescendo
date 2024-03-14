@@ -11,12 +11,12 @@ Remember to check that your driver station is set to the correct alliance when e
 
 ### Front Side
 
-![image](https://github.com/team614frc/Team-614-Crescendo/assets/102235153/09c2d305-6906-4121-9e9f-fb2f203a217d)
+![image](https://github.com/team614frc/Team-614-Crescendo/assets/102235153/b263c85b-013e-49f1-ae2b-e7fce1a303f7)
 
 A four piece auto that gets the 3 pieces next to our speaker.
 
 ### Source Side
 
-![image](https://github.com/team614frc/Team-614-Crescendo/assets/102235153/5f19873a-5dec-44de-8aa1-9c0ac3dfe3ec)
+![image](https://github.com/team614frc/Team-614-Crescendo/assets/102235153/6ae99015-e8b2-464e-aeb0-8ba0fcf5091e)
 
-A 3 piece auto that goes for the further pieces. (Untested)
+A two piece auto that scores one of the farther pieces and goes for a third.
