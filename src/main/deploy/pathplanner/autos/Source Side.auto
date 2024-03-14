@@ -14,13 +14,13 @@
         {
           "type": "named",
           "data": {
-            "name": "First Shot"
+            "name": "Score Close"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "SStest1"
+            "pathName": "Sourceside1"
           }
         },
         {
@@ -32,7 +32,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "SStest2"
+            "pathName": "Sourceside2"
           }
         }
       ]

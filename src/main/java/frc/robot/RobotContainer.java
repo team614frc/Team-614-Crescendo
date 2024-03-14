@@ -90,6 +90,7 @@ public class RobotContainer {
             swerveDrive));
     autoChooser = AutoBuilder.buildAutoChooser();
     SmartDashboard.putData(autoChooser);
+    SmartDashboard.putNumber("GYRO", swerveDrive.getHeading().getDegrees());
   }
 
   public static CommandXboxController getDriverController() {
