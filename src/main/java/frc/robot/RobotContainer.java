@@ -158,7 +158,7 @@ public class RobotContainer {
     m_coDriverController.leftBumper().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_CLOSE_SCORE, ManipulatorConstants.SCORE_SIMPLE_RPM, ManipulatorConstants.PIVOT_INTAKE_THRESHOLD));
     m_coDriverController.y().whileTrue(new ScoreReset());
     m_coDriverController.a().whileTrue(new ShootPrep(ManipulatorConstants.PIVOT_CLOSE_SCORE, ManipulatorConstants.SCORE_AMP_SPEED, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD));
-    m_coDriverController.b().whileTrue(new Shooter(ManipulatorConstants.SCORE_AMP_SPEED));
+    m_coDriverController.b().whileTrue(new Shooter(ManipulatorConstants.SCORE_SIMPLE_RPM));
   }
 
   /**
