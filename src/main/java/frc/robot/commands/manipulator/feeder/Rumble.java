@@ -7,7 +7,6 @@ package frc.robot.commands.manipulator.feeder;
 
 import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Robot;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.ManipulatorConstants;
 
@@ -34,7 +33,6 @@ public class Rumble extends Command {
       RobotContainer.getCoDriverController().getHID().setRumble(RumbleType.kRightRumble, ManipulatorConstants.RUMBLE_SETTING);
       RobotContainer.getCoDriverController().getHID().setRumble(RumbleType.kLeftRumble, ManipulatorConstants.RUMBLE_SETTING);
       RobotContainer.limeSubsystem.blinkLEDs();
-      RobotContainer.LEDSubsystem.rainbow();
   }
 
   // Called once the command ends or is interrupted.
@@ -45,7 +43,6 @@ public class Rumble extends Command {
       RobotContainer.getCoDriverController().getHID().setRumble(RumbleType.kRightRumble, 0);
       RobotContainer.getCoDriverController().getHID().setRumble(RumbleType.kLeftRumble, 0);
       RobotContainer.limeSubsystem.turnOffLEDs();
-      RobotContainer.LEDSubsystem.orange();
   }
 
   // Returns true when the command should end.

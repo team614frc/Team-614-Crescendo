@@ -55,7 +55,6 @@ public class RobotContainer {
   public final static ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
   public final static PivotSubsystem pivotSubsystem = new PivotSubsystem();
   public final static LimelightSubsystem limeSubsystem = new LimelightSubsystem();
-  public final static LEDSubsystem LEDSubsystem = new LEDSubsystem();
   static CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
   static CommandXboxController m_coDriverController = new CommandXboxController(OIConstants.kCoDriverControllerPort);
   private final SendableChooser<Command> autoChooser;
