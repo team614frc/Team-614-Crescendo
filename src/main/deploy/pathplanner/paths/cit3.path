@@ -3,41 +3,41 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.4259367928917284,
-        "y": 5.507130871149041
+        "x": 1.38,
+        "y": 5.76
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.025692216302399,
-        "y": 5.507130871149041
+        "x": 1.6885563183648735,
+        "y": 6.754499998409657
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.0421536335022585,
-        "y": 5.507130871149041
+        "x": 2.7190686223948486,
+        "y": 7.034441832747708
       },
       "prevControl": {
-        "x": 2.7631256693640407,
-        "y": 5.507130871149041
+        "x": 1.7351279067495533,
+        "y": 7.019756150424644
       },
       "nextControl": {
-        "x": 3.5414668324864382,
-        "y": 5.507130871149041
+        "x": 3.850121569764136,
+        "y": 7.051323220021876
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.4259367928917284,
-        "y": 5.507130871149041
+        "x": 1.3,
+        "y": 5.374959730241464
       },
       "prevControl": {
-        "x": 2.0256922163023967,
-        "y": 5.521816553472107
+        "x": 1.9022699648261556,
+        "y": 5.796718118051621
       },
       "nextControl": null,
       "isLocked": false,
@@ -49,7 +49,7 @@
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.55,
+      "waypointRelativePos": 0.4,
       "command": {
         "type": "parallel",
         "data": {
@@ -77,7 +77,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "FS 6P",
+  "folder": "Frontside",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

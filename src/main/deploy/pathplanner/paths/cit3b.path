@@ -3,41 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.39,
-        "y": 7.25
+        "x": 2.0,
+        "y": 5.57
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.363865042578029,
-        "y": 7.298784114562863
+        "x": 2.043527235533899,
+        "y": 6.373586128209824
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.343684952128402,
-        "y": 7.445640937793504
+        "x": 2.8806111279485536,
+        "y": 6.961013421132389
       },
       "prevControl": {
-        "x": 7.343684952128402,
-        "y": 7.445640937793504
-      },
-      "nextControl": {
-        "x": 9.343684952128402,
-        "y": 7.445640937793504
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 3.39,
-        "y": 5.404331094887593
-      },
-      "prevControl": {
-        "x": 4.892549606208337,
-        "y": 6.711356821640298
+        "x": 2.542840434518079,
+        "y": 6.60855704537885
       },
       "nextControl": null,
       "isLocked": false,
@@ -46,8 +30,8 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.75,
-      "rotationDegrees": 0,
+      "waypointRelativePos": 0.35,
+      "rotationDegrees": 43.83153463414196,
       "rotateFast": false
     }
   ],
@@ -55,7 +39,7 @@
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.95,
+      "waypointRelativePos": 0.55,
       "command": {
         "type": "parallel",
         "data": {
@@ -79,11 +63,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
+    "rotation": 40.6012946450044,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "FS 6P",
+  "folder": "Frontside",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

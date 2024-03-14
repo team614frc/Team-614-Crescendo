@@ -3,10 +3,10 @@
   "robotLength": 0.84,
   "holonomicMode": true,
   "pathFolders": [
-    "AS 3P",
-    "FS 6P",
+    "Ampside",
+    "Frontside",
     "Other",
-    "SS 3P"
+    "Sourceside"
   ],
   "autoFolders": [
     "Front Side",

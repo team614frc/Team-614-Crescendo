@@ -1,0 +1,43 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 0.765872873427322,
+      "y": 4.361647649950041
+    },
+    "rotation": -63.88608736970931
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "Score Close"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Sourceside1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Score Close"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "Sourceside2"
+          }
+        }
+      ]
+    }
+  },
+  "folder": "Source Side",
+  "choreoAuto": false
+}

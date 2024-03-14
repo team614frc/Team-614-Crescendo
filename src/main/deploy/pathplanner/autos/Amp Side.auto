@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.8393012850426425,
-      "y": 4.317590602980848
+      "x": 0.7365015087811937,
+      "y": 6.740728186286426
     },
-    "rotation": -54.360531487797054
+    "rotation": 61.62075691389205
   },
   "command": {
     "type": "sequential",
@@ -14,18 +14,24 @@
         {
           "type": "named",
           "data": {
-            "name": "Firstshot"
+            "name": "Score Close"
+          }
+        },
+        {
+          "type": "wait",
+          "data": {
+            "waitTime": 7.0
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "SS 3P"
+            "pathName": "Ampside"
           }
         }
       ]
     }
   },
-  "folder": "Source Side",
+  "folder": "Amp Side",
   "choreoAuto": false
 }

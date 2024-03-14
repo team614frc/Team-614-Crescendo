@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.OIConstants;
+import frc.robot.commands.drivetrain.ResetRobotHeading;
 import frc.robot.commands.drivetrain.vision.AlignScore;
 import frc.robot.commands.drivetrain.vision.TurnToAngle;
 import frc.robot.commands.drivetrain.ResetRobotHeading;
@@ -76,6 +77,7 @@ public class RobotContainer {
     // Pathplanner Commands for use in auto. Name is what you type into pathplanner,
     // and the commands are "borrowed" from the controller
     NamedCommands.registerCommand("Score Close", new AutoScore(ManipulatorConstants.PIVOT_CLOSE_SCORE));
+    
     NamedCommands.registerCommand("Score Far", new AutoScore(ManipulatorConstants.PIVOT_FAR_SCORE));
     NamedCommands.registerCommand("Score Amp", new AutoScore(ManipulatorConstants.PIVOT_AMP_GOAL));
     NamedCommands.registerCommand("Intake", new IntakeNote());
@@ -91,6 +93,7 @@ public class RobotContainer {
             swerveDrive));
     autoChooser = AutoBuilder.buildAutoChooser();
     SmartDashboard.putData(autoChooser);
+    SmartDashboard.putNumber("GYRO", swerveDrive.getHeading().getDegrees());
   }
 
   public static CommandXboxController getDriverController() {
