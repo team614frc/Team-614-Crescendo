@@ -17,13 +17,14 @@ public class LEDSubsystem extends SubsystemBase {
   public LEDSubsystem() {
     m_led = new AddressableLED(9);
 
-    m_ledBuffer = new AddressableLEDBuffer(60);
+    m_ledBuffer = new AddressableLEDBuffer(59);
     m_led.setLength(m_ledBuffer.getLength());
 
     m_led.setData(m_ledBuffer);
     m_led.start();
 
     rainbowHue = 0;
+    rainbow();
   }
 
   @Override
