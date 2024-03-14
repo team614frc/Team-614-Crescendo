@@ -34,6 +34,6 @@ public class TurnToAngle extends PIDCommand {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return Math.abs((RobotContainer.swerveDrive.getHeading().getDegrees()-turn)) < VisionConstants.threshold;
+    return Math.abs(RobotContainer.swerveDrive.getHeading().getDegrees() - turn) < VisionConstants.threshold;
   }
 }
