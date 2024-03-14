@@ -7,16 +7,20 @@ package frc.robot.commands.drivetrain.vision;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.PIDCommand;
 import frc.robot.RobotContainer;
+import frc.robot.Constants.ManipulatorConstants;
+import frc.robot.Constants.VisionConstants;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class TurnToAngle extends PIDCommand {
   /** Creates a new TurnToAngle. */
+  public double turn;
   public TurnToAngle(double angle) {
+    
     super(
         // The controller that the command will use
-        new PIDController(0.0017, 0, 0.001),
+        new PIDController(0.001, 0, 0.001),
         // This should return the measurement
         () -> RobotContainer.swerveDrive.getHeading().getDegrees(),
         // This should return the setpoint (can also be a constant)
@@ -24,11 +28,12 @@ public class TurnToAngle extends PIDCommand {
         // This uses the output
         output -> RobotContainer.swerveDrive.turnToAngle(output));
     addRequirements(RobotContainer.swerveDrive);
+    turn = RobotContainer.swerveDrive.getCorrectAngleTarget(angle);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return false;
+    return Math.abs(RobotContainer.swerveDrive.getHeading().getDegrees() - turn) < VisionConstants.threshold;
   }
 }
