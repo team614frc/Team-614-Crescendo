@@ -36,7 +36,7 @@ public class AlignScore extends Command {
         RobotContainer.getDriverLeftY(),
         RobotContainer.getDriverLeftX(),
         RobotContainer.getDriverRightX(),
-                true, true);
+        true, true);
     }
   }
     // insert code to adjust robot angle here
