@@ -29,8 +29,8 @@ public class AlignScore extends Command {
       RobotContainer.swerveDrive.drive(
         RobotContainer.getDriverLeftY(),
         RobotContainer.getDriverLeftX(),
-        -(VisionConstants.simpleAlignYInput * (angle/100.0)),
-                true, true);
+        -VisionConstants.simpleAlignYInput * angle / 100.0,
+        true, true);
     } else {
       RobotContainer.swerveDrive.drive(
         RobotContainer.getDriverLeftY(),
