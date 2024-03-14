@@ -24,7 +24,7 @@ public class LEDSubsystem extends SubsystemBase {
     m_led.start();
 
     rainbowHue = 0;
-    rainbow();
+    orange();
   }
 
   @Override
@@ -32,7 +32,15 @@ public class LEDSubsystem extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-  private void rainbow() {
+  public void orange() {
+    for (int i = 0; i < 59; i++) {
+      m_ledBuffer.setRGB(i, 255, 17, 0);
+    }
+    m_led.setData(m_ledBuffer);
+  }
+
+
+  public void rainbow() {
     // For every pixel
     for (var i = 0; i < m_ledBuffer.getLength(); i++) {
       // Calculate the hue - hue is easier for rainbows because the color

@@ -7,7 +7,6 @@ package frc.robot.commands.drivetrain.vision;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.PIDCommand;
 import frc.robot.RobotContainer;
-import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.VisionConstants;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
@@ -17,7 +16,6 @@ public class TurnToAngle extends PIDCommand {
   /** Creates a new TurnToAngle. */
   public double turn;
   public TurnToAngle(double angle) {
-    
     super(
         // The controller that the command will use
         new PIDController(0.001, 0, 0.001),

@@ -21,23 +21,21 @@ import frc.robot.Constants.OIConstants;
 import frc.robot.commands.drivetrain.vision.AlignScore;
 import frc.robot.commands.drivetrain.vision.TurnToAngle;
 import frc.robot.commands.drivetrain.ResetRobotHeading;
-import frc.robot.commands.drivetrain.setXCommand;
 import frc.robot.commands.manipulator.commandgroup.AutoFirstShot;
 import frc.robot.commands.manipulator.commandgroup.AutoScore;
 import frc.robot.commands.manipulator.commandgroup.IntakeNote;
 import frc.robot.commands.manipulator.commandgroup.Puke;
 import frc.robot.commands.manipulator.commandgroup.SimpleScoreNote;
 import frc.robot.commands.manipulator.commandgroup.SimpleScoreTest;
-import frc.robot.commands.manipulator.commandgroup.helpergroup.EmptyStomach;
 import frc.robot.commands.manipulator.commandgroup.helpergroup.ResetWheels;
 import frc.robot.commands.manipulator.commandgroup.helpergroup.ScoreReset;
 import frc.robot.commands.manipulator.commandgroup.helpergroup.ShootPrep;
 import frc.robot.commands.manipulator.pivot.PivotDown;
 import frc.robot.commands.manipulator.pivot.PivotPID;
-import frc.robot.commands.manipulator.shooter.Shooter;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.FeederSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.LEDSubsystem;
 import frc.robot.subsystems.LimelightSubsystem;
 import frc.robot.subsystems.PivotSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
@@ -57,6 +55,7 @@ public class RobotContainer {
   public final static ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
   public final static PivotSubsystem pivotSubsystem = new PivotSubsystem();
   public final static LimelightSubsystem limeSubsystem = new LimelightSubsystem();
+  public final static LEDSubsystem LEDSubsystem = new LEDSubsystem();
   static CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
   static CommandXboxController m_coDriverController = new CommandXboxController(OIConstants.kCoDriverControllerPort);
   private final SendableChooser<Command> autoChooser;
@@ -141,7 +140,6 @@ public class RobotContainer {
   }
 
   private void configureButtonBindings() {
-
     m_driverController.leftTrigger().whileTrue(new IntakeNote());
     m_driverController.rightTrigger().whileTrue(new Puke()).onFalse(new ResetWheels());
     m_driverController.leftBumper().onTrue(new PivotPID(ManipulatorConstants.PIVOT_AMP_GOAL, ManipulatorConstants.PIVOT_INTAKE_THRESHOLD));
@@ -156,6 +154,7 @@ public class RobotContainer {
     m_coDriverController.leftBumper().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_CLOSE_SCORE, ManipulatorConstants.SCORE_SIMPLE_RPM, ManipulatorConstants.PIVOT_INTAKE_THRESHOLD));
     m_coDriverController.y().whileTrue(new ScoreReset());
     m_coDriverController.a().whileTrue(new ShootPrep(ManipulatorConstants.PIVOT_CLOSE_SCORE, ManipulatorConstants.SCORE_AMP_SPEED, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD));
+    m_coDriverController.leftTrigger().onTrue(new SimpleScoreTest());
   }
 
   /**
