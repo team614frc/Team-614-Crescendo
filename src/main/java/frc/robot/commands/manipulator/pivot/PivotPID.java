@@ -9,11 +9,13 @@ public class PivotPID extends Command {
   /** Creates a new TiltPIDCommand. */
   public double setpoint;
   public double threshold;
+
   private boolean test = false;
 
-  public PivotPID() {
+  public PivotPID(double threshold) {
     addRequirements(RobotContainer.pivotSubsystem);
     test = true;
+    this.threshold = threshold;
   }
 
   public PivotPID(double set, double threshold) {
