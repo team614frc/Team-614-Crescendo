@@ -28,7 +28,7 @@ public class PivotPID extends Command {
   public void initialize() {
     RobotContainer.pivotSubsystem.enable();
     if (test) {
-      setpoint = SmartDashboard.getNumber("Test Pivot", ManipulatorConstants.PIVOT_MAX);
+      setpoint = SmartDashboard.getNumber("Test Pivot", ManipulatorConstants.PIVOT_FAR_SCORE);
     }
   }
 

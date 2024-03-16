@@ -70,9 +70,9 @@ public final class Constants {
     // Encoder Values for the Pivot
     public static final double PIVOT_MAX = -(Math.PI/2)-0.02;
     public static final double PIVOT_MIN = 0.08;
-    public static final double PIVOT_CLOSE_SCORE = -0.25;
-    public static final double PIVOT_FAR_SCORE = -0.55;
-    public static final double PIVOT_AMP_GOAL = -(Math.PI/2);
+    public static final double PIVOT_CLOSE_SCORE = -0.24; // -0.25
+    public static final double PIVOT_FAR_SCORE = -0.543; // -0.55
+    public static final double PIVOT_AMP_GOAL = -(Math.PI/2)-0.02;
     public static final double PIVOT_TRAP_SCORE = -0.15;
     public static final double PIVOT_INTAKE_THRESHOLD = 0.2;
     public static final double PIVOT_SHOOTER_THRESHOLD = 0.1;
