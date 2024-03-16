@@ -3,25 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 3.392,
-        "y": 5.4
+        "x": 0.7365015087811937,
+        "y": 6.740728186286426
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.019603572684467,
-        "y": 7.284142084482872
+        "x": 1.456099942611335,
+        "y": 7.078498879716901
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 8.417113363743722,
-        "y": 5.786158835287259
+        "x": 2.704382940071784,
+        "y": 7.709983219608658
       },
       "prevControl": {
-        "x": 7.403801283452299,
-        "y": 5.580559282764362
+        "x": 2.2197554234106684,
+        "y": 7.621869125670272
       },
       "nextControl": null,
       "isLocked": false,
@@ -30,25 +30,7 @@
   ],
   "rotationTargets": [],
   "constraintZones": [],
-  "eventMarkers": [
-    {
-      "name": "New Event Marker",
-      "waypointRelativePos": 0.8,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "Intake"
-              }
-            }
-          ]
-        }
-      }
-    }
-  ],
+  "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 2.0,
     "maxAcceleration": 5.0,
@@ -61,9 +43,9 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Frontside",
+  "folder": "Ampside",
   "previewStartingState": {
-    "rotation": 0,
+    "rotation": 58.62699485989154,
     "velocity": 0
   },
   "useDefaultConstraints": true

@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.765872873427322,
-      "y": 4.361647649950041
+      "x": 0.7365015087811937,
+      "y": 6.740728186286426
     },
-    "rotation": -63.88608736970931
+    "rotation": 61.62075691389205
   },
   "command": {
     "type": "sequential",
@@ -18,26 +18,20 @@
           }
         },
         {
-          "type": "path",
+          "type": "wait",
           "data": {
-            "pathName": "Sourceside1"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Score Close"
+            "waitTime": 7.0
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Sourceside2"
+            "pathName": "Ampside"
           }
         }
       ]
     }
   },
-  "folder": "Source Side",
+  "folder": "Amp Side",
   "choreoAuto": false
 }

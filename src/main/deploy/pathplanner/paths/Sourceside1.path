@@ -3,41 +3,57 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.4259367928917284,
-        "y": 5.507130871149041
+        "x": 0.765872873427322,
+        "y": 4.361647649950041
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.025692216302399,
-        "y": 5.507130871149041
+        "x": 5.993975780438144,
+        "y": 0.704912751507078
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 3.0421536335022585,
-        "y": 5.507130871149041
+        "x": 7.580029471329069,
+        "y": 1.4391968676602838
       },
       "prevControl": {
-        "x": 2.7631256693640407,
-        "y": 5.507130871149041
+        "x": 6.84618152041551,
+        "y": 1.413891765904643
       },
       "nextControl": {
-        "x": 3.5414668324864382,
-        "y": 5.507130871149041
+        "x": 8.005914258697928,
+        "y": 1.4538825499833483
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.4259367928917284,
-        "y": 5.507130871149041
+        "x": 8.284942222836145,
+        "y": 0.7783411631223989
       },
       "prevControl": {
-        "x": 2.0256922163023967,
-        "y": 5.521816553472107
+        "x": 8.049971305667118,
+        "y": 1.2482829974604508
+      },
+      "nextControl": {
+        "x": 8.50037672771236,
+        "y": 0.3474721533699705
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 0.765872873427322,
+        "y": 4.361647649950041
+      },
+      "prevControl": {
+        "x": 3.7764377496554644,
+        "y": 2.100052572198168
       },
       "nextControl": null,
       "isLocked": false,
@@ -49,7 +65,7 @@
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.55,
+      "waypointRelativePos": 0.5499999999999999,
       "command": {
         "type": "parallel",
         "data": {
@@ -66,21 +82,21 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 2.0,
+    "maxVelocity": 2.5,
     "maxAcceleration": 5.0,
     "maxAngularVelocity": 572.0,
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
+    "rotation": -61.81999999999999,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Frontside",
+  "folder": "Sourceside",
   "previewStartingState": {
-    "rotation": 0,
+    "rotation": -61.82140989004084,
     "velocity": 0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

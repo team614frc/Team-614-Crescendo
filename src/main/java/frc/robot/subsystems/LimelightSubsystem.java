@@ -7,6 +7,7 @@ package frc.robot.subsystems;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
 
@@ -57,5 +58,7 @@ public class LimelightSubsystem extends SubsystemBase {
     x = limelightTable.getEntry("tx").getDouble(0.0);
     y = limelightTable.getEntry("ty").getDouble(0.0);
     area = limelightTable.getEntry("ta").getDouble(0.0);
+
+    SmartDashboard.putNumber("AngleOffset", x);
   }
 }
