@@ -9,11 +9,13 @@ public class PivotPID extends Command {
   /** Creates a new TiltPIDCommand. */
   public double setpoint;
   public double threshold;
+
   private boolean test = false;
 
-  public PivotPID() {
+  public PivotPID(double threshold) {
     addRequirements(RobotContainer.pivotSubsystem);
     test = true;
+    this.threshold = threshold;
   }
 
   public PivotPID(double set, double threshold) {
@@ -28,7 +30,7 @@ public class PivotPID extends Command {
   public void initialize() {
     RobotContainer.pivotSubsystem.enable();
     if (test) {
-      setpoint = SmartDashboard.getNumber("Test Pivot", ManipulatorConstants.PIVOT_MAX);
+      setpoint = SmartDashboard.getNumber("Test Pivot", ManipulatorConstants.PIVOT_FAR_SCORE);
     }
   }
 

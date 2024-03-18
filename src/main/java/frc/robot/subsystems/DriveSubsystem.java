@@ -224,7 +224,7 @@ public class DriveSubsystem extends SubsystemBase {
 
   public void drive(ChassisSpeeds speeds, boolean fieldRelative) {
     if (fieldRelative)
-      speeds = ChassisSpeeds.fromFieldRelativeSpeeds(speeds, getPose().getRotation());
+      speeds = ChassisSpeeds.fromFieldRelativeSpeeds(speeds, getHeading()); // getPose().getRotation
     var swerveModuleStates = DriveConstants.kDriveKinematics.toSwerveModuleStates(speeds);
     SwerveDriveKinematics.desaturateWheelSpeeds(swerveModuleStates, DriveConstants.kMaxSpeedMetersPerSecond);
     setModuleStates(swerveModuleStates);
