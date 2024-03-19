@@ -24,6 +24,8 @@ public class LimelightSubsystem extends SubsystemBase {
     limelightTable = NetworkTableInstance.getDefault().getTable("limelight");
     robotPose = RobotContainer.swerveDrive.getPose();
     this.turnOffLEDs();
+
+    //LIST OF VALUES FOR ANGLEMAP GOES HERE
   }
 
   public void enableVisionProcessing() {
@@ -58,8 +60,8 @@ public class LimelightSubsystem extends SubsystemBase {
   }
 
   public double estimateDistance() {
-    /*Gets angle offset by adding mount angle and how far off the apriltag is from crosshair and converts to radians*/
-    double angleToGoal = (ManipulatorConstants.CAMERA_MOUNT_ANGLE_DEGREES + y) * (3.14159 / 180.0);
+    /* Gets angle offset by adding mount angle and how far off the apriltag is from crosshair and converts to radians */
+    double angleToGoal = (ManipulatorConstants.CAMERA_MOUNT_ANGLE_DEGREES + y) * Math.PI / 180.0;
     //calculate distance
     return (ManipulatorConstants.GOAL_HEIGHT - ManipulatorConstants.CAMERA_HEIGHT) / Math.tan(angleToGoal);
   }

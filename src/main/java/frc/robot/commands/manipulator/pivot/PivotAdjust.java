@@ -13,8 +13,6 @@ public class PivotAdjust extends Command {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.pivotSubsystem);
     addRequirements(RobotContainer.limeSubsystem);
-    distanceFromAprilTag = RobotContainer.limeSubsystem.estimateDistance();
-    setpoint = RobotContainer.limeSubsystem.interpolateAngle(distanceFromAprilTag);
   }
 
   // Called when the command is initially scheduled.
@@ -26,6 +24,8 @@ public class PivotAdjust extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+    distanceFromAprilTag = RobotContainer.limeSubsystem.estimateDistance();
+    setpoint = RobotContainer.limeSubsystem.interpolateAngle(distanceFromAprilTag);
     RobotContainer.pivotSubsystem.setGoal(setpoint);
   }
 
