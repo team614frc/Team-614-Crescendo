@@ -16,7 +16,6 @@ public class TurnToAngle extends PIDCommand {
   /** Creates a new TurnToAngle. */
   public double turn;
   public TurnToAngle(double angle) {
-    
     super(
         // The controller that the command will use
         new PIDController(0.001, 0, 0.001),
