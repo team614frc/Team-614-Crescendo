@@ -21,7 +21,6 @@ import frc.robot.Constants.OIConstants;
 import frc.robot.commands.drivetrain.ResetRobotHeading;
 import frc.robot.commands.drivetrain.vision.AlignScore;
 import frc.robot.commands.drivetrain.vision.TurnToAngle;
-import frc.robot.commands.drivetrain.ResetRobotHeading;
 import frc.robot.commands.manipulator.commandgroup.AutoFirstShot;
 import frc.robot.commands.manipulator.commandgroup.AutoScore;
 import frc.robot.commands.manipulator.commandgroup.IntakeNote;
@@ -36,7 +35,6 @@ import frc.robot.commands.manipulator.pivot.PivotPID;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.FeederSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
-import frc.robot.subsystems.LEDSubsystem;
 import frc.robot.subsystems.LimelightSubsystem;
 import frc.robot.subsystems.PivotSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
@@ -59,6 +57,12 @@ public class RobotContainer {
   static CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
   static CommandXboxController m_coDriverController = new CommandXboxController(OIConstants.kCoDriverControllerPort);
   private final SendableChooser<Command> autoChooser;
+  private final Command simpleScoreAmp = new SimpleScoreNote(ManipulatorConstants.PIVOT_AMP_GOAL, ManipulatorConstants.SCORE_AMP_SPEED, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
+  private final Command simpleScoreFar = new SimpleScoreNote(ManipulatorConstants.PIVOT_FAR_SCORE, ManipulatorConstants.SCORE_SIMPLE_RPM, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
+  private final Command simpleScoreClose = new SimpleScoreNote(ManipulatorConstants.PIVOT_CLOSE_SCORE, ManipulatorConstants.SCORE_SIMPLE_RPM, ManipulatorConstants.PIVOT_INTAKE_THRESHOLD);
+  private final Command prepClose = new ShootPrep(ManipulatorConstants.PIVOT_CLOSE_SCORE, ManipulatorConstants.SCORE_SIMPLE_RPM, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
+  private final Command prepAmp = new ShootPrep(ManipulatorConstants.PIVOT_AMP_GOAL, ManipulatorConstants.SCORE_AMP_SPEED, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
+  private final Command armUp = new PivotPID(ManipulatorConstants.PIVOT_AMP_GOAL, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -144,19 +148,19 @@ public class RobotContainer {
   private void configureButtonBindings() {
     m_driverController.leftTrigger().whileTrue(new IntakeNote());
     m_driverController.rightTrigger().whileTrue(new Puke()).onFalse(new ResetWheels());
-    m_driverController.leftBumper().onTrue(new PivotPID(ManipulatorConstants.PIVOT_AMP_GOAL, ManipulatorConstants.PIVOT_INTAKE_THRESHOLD));
+    m_driverController.leftBumper().onTrue(armUp);
     m_driverController.rightBumper().whileTrue(new PivotDown(0.5, -0.1));
     m_driverController.start().whileTrue(new ResetRobotHeading());
     m_driverController.x().whileTrue(new TurnToAngle(90));
     m_driverController.b().whileTrue(new TurnToAngle(-90));
     m_driverController.a().whileTrue(new AlignScore());
 
-    m_coDriverController.rightTrigger().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_AMP_GOAL, ManipulatorConstants.SCORE_AMP_SPEED, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD));  
-    m_coDriverController.rightBumper().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_FAR_SCORE, ManipulatorConstants.SCORE_SIMPLE_RPM, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD));
-    m_coDriverController.leftBumper().onTrue(new SimpleScoreNote(ManipulatorConstants.PIVOT_CLOSE_SCORE, ManipulatorConstants.SCORE_SIMPLE_RPM, ManipulatorConstants.PIVOT_INTAKE_THRESHOLD));
+    m_coDriverController.rightTrigger().onTrue(simpleScoreAmp);  
+    m_coDriverController.rightBumper().onTrue(simpleScoreFar);
+    m_coDriverController.leftBumper().onTrue(simpleScoreClose);
     m_coDriverController.y().whileTrue(new ScoreReset());
-    m_coDriverController.a().whileTrue(new ShootPrep(ManipulatorConstants.PIVOT_CLOSE_SCORE, ManipulatorConstants.SCORE_SIMPLE_RPM, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD));
-    m_coDriverController.x().whileTrue(new ShootPrep(ManipulatorConstants.PIVOT_AMP_GOAL, ManipulatorConstants.SCORE_AMP_SPEED, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD));
+    m_coDriverController.a().whileTrue(prepClose);
+    m_coDriverController.x().whileTrue(prepAmp);
     m_coDriverController.leftTrigger().onTrue(new SimpleScoreTest());
   }
 
