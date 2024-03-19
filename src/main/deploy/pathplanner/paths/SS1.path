@@ -1,0 +1,122 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 0.7952442380734501,
+        "y": 4.4057046969192335
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 1.9847845062416432,
+        "y": 3.2895928403663612
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 4.158265490055131,
+        "y": 3.230850111074105
+      },
+      "prevControl": {
+        "x": 3.460523142983021,
+        "y": 2.5145013014134054
+      },
+      "nextControl": {
+        "x": 5.259691664284939,
+        "y": 4.361647649950041
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 8.108714034959377,
+        "y": 4.126676732781015
+      },
+      "prevControl": {
+        "x": 7.535972424359876,
+        "y": 4.156048097427144
+      },
+      "nextControl": {
+        "x": 8.681455645558877,
+        "y": 4.0973053681348865
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 4.158265490055131,
+        "y": 3.230850111074105
+      },
+      "prevControl": {
+        "x": 5.1128348410542985,
+        "y": 4.244162191365528
+      },
+      "nextControl": {
+        "x": 3.634534932863992,
+        "y": 2.674889981132743
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 1.2211290254423093,
+        "y": 3.686106263089092
+      },
+      "prevControl": {
+        "x": 2.234441105733734,
+        "y": 3.333649887335553
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.8,
+      "rotationDegrees": 0,
+      "rotateFast": false
+    },
+    {
+      "waypointRelativePos": 3.3,
+      "rotationDegrees": 0,
+      "rotateFast": false
+    }
+  ],
+  "constraintZones": [],
+  "eventMarkers": [
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 1.9,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": []
+        }
+      }
+    }
+  ],
+  "globalConstraints": {
+    "maxVelocity": 2.5,
+    "maxAcceleration": 5.0,
+    "maxAngularVelocity": 572.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -60.0,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "SSV2",
+  "previewStartingState": {
+    "rotation": -60.0,
+    "velocity": 0
+  },
+  "useDefaultConstraints": false
+}

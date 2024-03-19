@@ -1,0 +1,61 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 1.3826715309960145,
+      "y": 5.56
+    },
+    "rotation": 0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "Score Close"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "FSL1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Score Far"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "FSL2"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Score Far"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "FSL3"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Score Far"
+          }
+        }
+      ]
+    }
+  },
+  "folder": "Front Side",
+  "choreoAuto": false
+}
