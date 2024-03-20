@@ -5,7 +5,6 @@
 package frc.robot.commands.manipulator.feeder;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.RobotContainer;
 import frc.robot.subsystems.FeederSubsystem;
 
