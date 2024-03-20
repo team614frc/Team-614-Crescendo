@@ -5,22 +5,28 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.math.geometry.Pose2d;
+import edu.wpi.first.math.interpolation.InterpolatingDoubleTreeMap;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
+import frc.robot.Constants.ManipulatorConstants;
 
 public class LimelightSubsystem extends SubsystemBase {
   /** Creates a new LimelightSubsystem. */
   private NetworkTable limelightTable;
   private double x, y, area, angle;
-  private Pose2d limePose, robotPose;
+  private Pose2d robotPose;
+  private InterpolatingDoubleTreeMap angleMap = new InterpolatingDoubleTreeMap();
+
   
   public LimelightSubsystem() {
     limelightTable = NetworkTableInstance.getDefault().getTable("limelight");
     robotPose = RobotContainer.swerveDrive.getPose();
     this.turnOffLEDs();
+
+    //LIST OF VALUES FOR ANGLEMAP GOES HERE
   }
 
   public void enableVisionProcessing() {
@@ -50,7 +56,16 @@ public class LimelightSubsystem extends SubsystemBase {
     return angle;
   }
 
-  
+  public double interpolateAngle(double key) {
+    return angleMap.get(key);
+  }
+
+  public double estimateDistance() {
+    /* Gets angle offset by adding mount angle and how far off the apriltag is from crosshair and converts to radians */
+    double angleToGoal = (ManipulatorConstants.CAMERA_MOUNT_ANGLE_DEGREES + y) * Math.PI / 180.0;
+    //calculate distance
+    return (ManipulatorConstants.GOAL_HEIGHT - ManipulatorConstants.CAMERA_HEIGHT) / Math.tan(angleToGoal);
+  }
 
   @Override
   public void periodic() {
