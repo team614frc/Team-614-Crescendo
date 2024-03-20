@@ -28,7 +28,7 @@ public class ShootPrep extends ParallelCommandGroup {
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
       new PivotPID(ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD),
-      new Shooter(ManipulatorConstants.SCORE_SIMPLE_RPM)
+      new Shooter()
     );
   } 
 }
