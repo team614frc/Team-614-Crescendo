@@ -151,8 +151,8 @@ public class RobotContainer {
     m_driverController.leftBumper().onTrue(armUp);
     m_driverController.rightBumper().whileTrue(new PivotDown(0.5, -0.1));
     m_driverController.start().whileTrue(new ResetRobotHeading());
-    m_driverController.x().whileTrue(new TurnToAngle(90));
-    m_driverController.b().whileTrue(new TurnToAngle(-90));
+    m_driverController.x().whileTrue(new AlignScore(90));
+    m_driverController.b().whileTrue(new AlignScore(-90));
     m_driverController.a().whileTrue(new AlignScore());
 
     m_coDriverController.rightTrigger().onTrue(simpleScoreAmp);  

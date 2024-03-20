@@ -103,7 +103,7 @@ public final class Constants {
     public static final double PIVOT_kD = 0.0;
     public static final double PIVOT_kS = 0.5;
     public static final double PIVOT_kG = 0.25;
-    public static final double PIVOT_kV = 0.25;
+    public static final double PIVOT_kV = 0.4;
     public static final double PIVOT_kA = 0.01;
     
   }
