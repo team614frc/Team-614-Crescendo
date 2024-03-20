@@ -161,6 +161,7 @@ public class RobotContainer {
     m_coDriverController.y().whileTrue(new ScoreReset());
     m_coDriverController.a().whileTrue(prepClose);
     m_coDriverController.x().whileTrue(prepAmp);
+    m_coDriverController.b().whileTrue(new Puke()).onFalse(new ResetWheels());
     m_coDriverController.leftTrigger().onTrue(new SimpleScoreTest());
   }
 

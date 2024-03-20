@@ -53,7 +53,7 @@ public final class Constants {
     public static final double INTAKE_SPEED = 0.5;
     public static final double INTAKE_REST_SPEED = 0.00;
     public static final double SHOOTER_THRESHOLD = 150;
-    public static final double PUKE_SPEED = -0.65;
+    public static final double PUKE_SPEED = -0.8;
 
     // Constants for Feeder
     public static final double LOADBACK_SPEED = -0.08; // MAYBE BACK AND FORTH WAS THE MOVE 
