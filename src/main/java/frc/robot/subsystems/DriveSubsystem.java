@@ -313,6 +313,10 @@ public class DriveSubsystem extends SubsystemBase {
     return correctAngle;
   }
 
+  public double getDisplacementToTarget(double y) {
+    return getCorrectAngleTarget(y) - getHeading().getDegrees();
+  }
+
   public void turnToAngle(double turn) {
     drive(
         RobotContainer.getDriverLeftY(),

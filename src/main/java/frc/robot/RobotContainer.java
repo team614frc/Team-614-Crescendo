@@ -62,7 +62,7 @@ public class RobotContainer {
   private final Command simpleScoreClose = new SimpleScoreNote(ManipulatorConstants.PIVOT_CLOSE_SCORE, ManipulatorConstants.SCORE_SIMPLE_RPM, ManipulatorConstants.PIVOT_INTAKE_THRESHOLD);
   private final Command prepClose = new ShootPrep(ManipulatorConstants.PIVOT_CLOSE_SCORE, ManipulatorConstants.SCORE_SIMPLE_RPM, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
   private final Command prepAmp = new ShootPrep(ManipulatorConstants.PIVOT_AMP_GOAL, ManipulatorConstants.SCORE_AMP_SPEED, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
-  private final Command armUp = new PivotPID(ManipulatorConstants.PIVOT_AMP_GOAL, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
+  private final Command armUp = new PivotPID(ManipulatorConstants.PIVOT_AMP_GOAL, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD); // change
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -151,8 +151,8 @@ public class RobotContainer {
     m_driverController.leftBumper().onTrue(armUp);
     m_driverController.rightBumper().whileTrue(new PivotDown(0.5, -0.1));
     m_driverController.start().whileTrue(new ResetRobotHeading());
-    m_driverController.x().whileTrue(new TurnToAngle(90));
-    m_driverController.b().whileTrue(new TurnToAngle(-90));
+    m_driverController.x().whileTrue(new AlignScore(90));
+    m_driverController.b().whileTrue(new AlignScore(-90));
     m_driverController.a().whileTrue(new AlignScore());
 
     m_coDriverController.rightTrigger().onTrue(simpleScoreAmp);  

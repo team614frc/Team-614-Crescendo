@@ -10,10 +10,18 @@ import frc.robot.RobotContainer;
 
 public class AlignScore extends Command {
   /** Creates a new AlignScore. */
-  private double angle;
+  private double angle, target, turn;
+  private boolean isTarget;
 
   public AlignScore() {
     addRequirements(RobotContainer.swerveDrive);
+    isTarget = false;
+  }
+
+  public AlignScore(double target) {
+    addRequirements(RobotContainer.swerveDrive);
+    this.target = target;
+    isTarget = true;
   }
 
   // Called when the command is initially scheduled.
@@ -23,26 +31,37 @@ public class AlignScore extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    angle = RobotContainer.limeSubsystem.getAngleOffset();
-    if (Math.abs(angle) > VisionConstants.threshold){
+    angle = isTarget ? RobotContainer.swerveDrive.getDisplacementToTarget(target)
+        : RobotContainer.limeSubsystem.getAngleOffset();
+
+    turn = -VisionConstants.simpleAlignYInput * angle / 100.0;
+
+    if (turn > 0.5) {
+      turn = 0.5;
+    } else if (turn < -0.5) {
+      turn = -0.5;
+    }
+
+    if (Math.abs(angle) > VisionConstants.threshold) {
       RobotContainer.swerveDrive.drive(
-        RobotContainer.getDriverLeftY(),
-        RobotContainer.getDriverLeftX(),
-        -VisionConstants.simpleAlignYInput * angle / 100.0,
-        true, true);
+          RobotContainer.getDriverLeftY(),
+          RobotContainer.getDriverLeftX(),
+          turn,
+          true, true);
     } else {
       RobotContainer.swerveDrive.drive(
-        RobotContainer.getDriverLeftY(),
-        RobotContainer.getDriverLeftX(),
-        RobotContainer.getDriverRightX(),
-        true, true);
+          RobotContainer.getDriverLeftY(),
+          RobotContainer.getDriverLeftX(),
+          RobotContainer.getDriverRightX(),
+          true, true);
     }
   }
-    // insert code to adjust robot angle here
+  // insert code to adjust robot angle here
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+  }
 
   // Returns true when the command should end.
   @Override
