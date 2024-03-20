@@ -81,7 +81,7 @@ public final class Constants {
     
     // Others
     public static final double PIVOT_MAX_VEL = 4;
-    public static final double PIVOT_MAX_ACCEL = 10;
+    public static final double PIVOT_MAX_ACCEL = 20;
     public static final double PIVOT_WEIGHT = 9.55; 
     public static final double MOTOR_ZERO_SPEED = 0;
     public static final int MOTOR_CURRENT_LIMIT = 40;
@@ -98,12 +98,12 @@ public final class Constants {
   public static final class PIDConstants {
 
     // PID constants for pivot
-    public static final double PIVOT_kP = 0.23; // VOLTS
+    public static final double PIVOT_kP = 0.8; // VOLTS
     public static final double PIVOT_kI = 0;
     public static final double PIVOT_kD = 0.0;
     public static final double PIVOT_kS = 0.5;
     public static final double PIVOT_kG = 0.25;
-    public static final double PIVOT_kV = 0.4;
+    public static final double PIVOT_kV = 0.25;
     public static final double PIVOT_kA = 0.01;
     
   }
