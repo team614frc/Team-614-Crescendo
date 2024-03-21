@@ -64,7 +64,7 @@ public class RobotContainer {
   private final Command simpleScoreClose = new SimpleScoreNote(ManipulatorConstants.PIVOT_CLOSE_SCORE, ManipulatorConstants.SCORE_SIMPLE_RPM, ManipulatorConstants.PIVOT_INTAKE_THRESHOLD);
   private final Command prepClose = new ShootPrep(ManipulatorConstants.PIVOT_CLOSE_SCORE, ManipulatorConstants.SCORE_SIMPLE_RPM, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
   private final Command prepAmp = new ShootPrep(ManipulatorConstants.PIVOT_AMP_GOAL, ManipulatorConstants.SCORE_AMP_SPEED, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
-  private final Command armUp = new PivotPID(ManipulatorConstants.PIVOT_AMP_GOAL, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD); // change
+  private final Command armUp = new PivotPID(ManipulatorConstants.PIVOT_AMP_GOAL, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
