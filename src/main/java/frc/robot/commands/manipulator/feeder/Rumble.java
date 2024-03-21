@@ -33,6 +33,7 @@ public class Rumble extends Command {
       RobotContainer.getCoDriverController().getHID().setRumble(RumbleType.kRightRumble, ManipulatorConstants.RUMBLE_SETTING);
       RobotContainer.getCoDriverController().getHID().setRumble(RumbleType.kLeftRumble, ManipulatorConstants.RUMBLE_SETTING);
       RobotContainer.limeSubsystem.blinkLEDs();
+      RobotContainer.ledSubsystem.turnGreen();
   }
 
   // Called once the command ends or is interrupted.
@@ -43,6 +44,7 @@ public class Rumble extends Command {
       RobotContainer.getCoDriverController().getHID().setRumble(RumbleType.kRightRumble, 0);
       RobotContainer.getCoDriverController().getHID().setRumble(RumbleType.kLeftRumble, 0);
       RobotContainer.limeSubsystem.turnOffLEDs();
+      RobotContainer.ledSubsystem.turnOrange();
   }
 
   // Returns true when the command should end.

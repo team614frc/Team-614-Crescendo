@@ -35,6 +35,7 @@ import frc.robot.commands.manipulator.pivot.PivotPID;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.FeederSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
+import frc.robot.subsystems.LEDSubsystem;
 import frc.robot.subsystems.LimelightSubsystem;
 import frc.robot.subsystems.PivotSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
@@ -54,6 +55,7 @@ public class RobotContainer {
   public final static ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
   public final static PivotSubsystem pivotSubsystem = new PivotSubsystem();
   public final static LimelightSubsystem limeSubsystem = new LimelightSubsystem();
+  public final static LEDSubsystem ledSubsystem = new LEDSubsystem();
   static CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
   static CommandXboxController m_coDriverController = new CommandXboxController(OIConstants.kCoDriverControllerPort);
   private final SendableChooser<Command> autoChooser;
@@ -97,7 +99,6 @@ public class RobotContainer {
             swerveDrive));
     autoChooser = AutoBuilder.buildAutoChooser();
     SmartDashboard.putData(autoChooser);
-    SmartDashboard.putNumber("GYRO", swerveDrive.getHeading().getDegrees());
   }
 
   public static CommandXboxController getDriverController() {
@@ -151,8 +152,8 @@ public class RobotContainer {
     m_driverController.leftBumper().onTrue(armUp);
     m_driverController.rightBumper().whileTrue(new PivotDown(0.5, -0.1));
     m_driverController.start().whileTrue(new ResetRobotHeading());
-    m_driverController.x().whileTrue(new TurnToAngle(90));
-    m_driverController.b().whileTrue(new TurnToAngle(-90));
+    m_driverController.x().whileTrue(new AlignScore(90));
+    m_driverController.b().whileTrue(new AlignScore(-90));
     m_driverController.a().whileTrue(new AlignScore());
 
     m_coDriverController.rightTrigger().onTrue(simpleScoreAmp);  

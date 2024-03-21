@@ -23,8 +23,6 @@ public class IntakeNote extends SequentialCommandGroup {
     addCommands(
         new PivotPID(ManipulatorConstants.PIVOT_MIN, ManipulatorConstants.PIVOT_INTAKE_THRESHOLD),
         new IntakeWithFeed(),
-        new ParallelCommandGroup(
-            new SimpleIntake(ManipulatorConstants.LOADBACK_SPEED),
-            new Rumble().withTimeout(ManipulatorConstants.RUMBLE_TIMER)));
+        new Rumble().withTimeout(ManipulatorConstants.RUMBLE_TIMER));
   }
 }
