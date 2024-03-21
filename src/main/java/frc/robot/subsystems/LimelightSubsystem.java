@@ -8,6 +8,7 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.interpolation.InterpolatingDoubleTreeMap;
 import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.ManipulatorConstants;
@@ -18,7 +19,7 @@ public class LimelightSubsystem extends SubsystemBase {
   private double x, y, area, angle;
   private Pose2d robotPose;
   private InterpolatingDoubleTreeMap angleMap = new InterpolatingDoubleTreeMap();
-
+  private double[] arpilTagInfo;
   
   public LimelightSubsystem() {
     limelightTable = NetworkTableInstance.getDefault().getTable("limelight");
@@ -63,7 +64,11 @@ public class LimelightSubsystem extends SubsystemBase {
     /* Gets angle offset by adding mount angle and how far off the apriltag is from crosshair and converts to radians */
     double angleToGoal = (ManipulatorConstants.CAMERA_MOUNT_ANGLE_DEGREES + y) * Math.PI / 180.0;
     //calculate distance
-    return (ManipulatorConstants.GOAL_HEIGHT - ManipulatorConstants.CAMERA_HEIGHT) / Math.tan(angleToGoal);
+    double test1 = (ManipulatorConstants.GOAL_HEIGHT - ManipulatorConstants.CAMERA_HEIGHT) / Math.tan(angleToGoal);
+    double test2 = arpilTagInfo[0];
+    SmartDashboard.putNumber("calculator range", test1);
+    SmartDashboard.putNumber("limelight range", test2);
+    return test2;
   }
 
   @Override
@@ -72,5 +77,6 @@ public class LimelightSubsystem extends SubsystemBase {
     x = limelightTable.getEntry("tx").getDouble(0.0);
     y = limelightTable.getEntry("ty").getDouble(0.0);
     area = limelightTable.getEntry("ta").getDouble(0.0);
+    arpilTagInfo = limelightTable.getEntry("targetpose_robotspace").getDoubleArray(new double[6]);
   }
 }
