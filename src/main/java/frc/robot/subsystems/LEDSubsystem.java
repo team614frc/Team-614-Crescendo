@@ -31,20 +31,19 @@ public class LEDSubsystem extends SubsystemBase {
     // This method will be called once per scheduler run
   }
 
-  public void orange() {
+  public void turnOrange() {
     for (int i = 0; i < m_ledBuffer.getLength(); i++) {
       m_ledBuffer.setRGB(i, 255, 17, 0);
     }
     m_led.setData(m_ledBuffer);
   }
 
-    public void green() {
+    public void turnGreen() {
     for (int i = 0; i < m_ledBuffer.getLength(); i++) {
       m_ledBuffer.setRGB(i, 60, 255, 0);
     }
     m_led.setData(m_ledBuffer);
   }
-
 
   public void rainbow() {
     // For every pixel
