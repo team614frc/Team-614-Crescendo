@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.0,
-      "y": 4.0
+      "x": 1.3533001663498863,
+      "y": 7.342841161532055
     },
     "rotation": 0
   },
@@ -14,12 +14,12 @@
         {
           "type": "path",
           "data": {
-            "pathName": "2 meter"
+            "pathName": "GetRekt"
           }
         }
       ]
     }
   },
-  "folder": "Other Stuff",
+  "folder": "Amp Side",
   "choreoAuto": false
 }

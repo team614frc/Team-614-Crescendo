@@ -1,10 +1,12 @@
 {
-  "robotWidth": 0.67,
-  "robotLength": 0.84,
+  "robotWidth": 0.81,
+  "robotLength": 0.97,
   "holonomicMode": true,
   "pathFolders": [
     "Ampside",
+    "FS Mid",
     "Frontside",
+    "FS2",
     "Other",
     "Sourceside"
   ],

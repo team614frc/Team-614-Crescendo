@@ -21,7 +21,8 @@ import frc.robot.Constants.OIConstants;
 import frc.robot.commands.drivetrain.ResetRobotHeading;
 import frc.robot.commands.drivetrain.vision.AlignScore;
 import frc.robot.commands.drivetrain.vision.TurnToAngle;
-import frc.robot.commands.manipulator.commandgroup.AutoFirstShot;
+import frc.robot.commands.manipulator.commandgroup.AutoAlignScore;
+import frc.robot.commands.manipulator.commandgroup.AutoQuickShot;
 import frc.robot.commands.manipulator.commandgroup.AutoScore;
 import frc.robot.commands.manipulator.commandgroup.IntakeNote;
 import frc.robot.commands.manipulator.commandgroup.Puke;
@@ -83,11 +84,12 @@ public class RobotContainer {
     // Pathplanner Commands for use in auto. Name is what you type into pathplanner,
     // and the commands are "borrowed" from the controller
     NamedCommands.registerCommand("Score Close", new AutoScore(ManipulatorConstants.PIVOT_CLOSE_SCORE));
-    
+    NamedCommands.registerCommand("Aimbot", new AutoAlignScore());
     NamedCommands.registerCommand("Score Far", new AutoScore(ManipulatorConstants.PIVOT_FAR_SCORE));
     NamedCommands.registerCommand("Score Amp", new AutoScore(ManipulatorConstants.PIVOT_AMP_GOAL));
     NamedCommands.registerCommand("Intake", new IntakeNote());
-    NamedCommands.registerCommand("First Shot", new AutoFirstShot());
+    NamedCommands.registerCommand("Quick Shot", new AutoQuickShot(3000)); //quickshot for first piece
+    NamedCommands.registerCommand("Drop Piece", new AutoQuickShot(1000));
 
     swerveDrive.setDefaultCommand(
         new RunCommand(

@@ -3,43 +3,53 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.7776214192857734,
-        "y": 6.711356821640298
+        "x": 2.954039539563874,
+        "y": 5.56
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.5735854011958479,
-        "y": 6.814156597901747
+        "x": 7.139459001637144,
+        "y": 3.7301633100512412
+      },
+      "isLocked": false,
+      "linkedName": "FSM2"
+    },
+    {
+      "anchor": {
+        "x": 8.19682812889776,
+        "y": 2.349709171690258
+      },
+      "prevControl": {
+        "x": 7.051344907698759,
+        "y": 2.4084519009825143
+      },
+      "nextControl": {
+        "x": 9.342311350096761,
+        "y": 2.2909664423980014
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.792497034010169,
-        "y": 6.975699103455452
+        "x": 2.954039539563874,
+        "y": 5.56
       },
       "prevControl": {
-        "x": 2.0728986001800274,
-        "y": 7.00507046810158
+        "x": 5.1247032397105965,
+        "y": 4.523190155503746
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "asv21"
+      "linkedName": null
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.6,
-      "rotationDegrees": 0.0,
-      "rotateFast": false
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.25,
+      "waypointRelativePos": 0.4,
       "command": {
         "type": "parallel",
         "data": {
@@ -63,13 +73,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0,
+    "rotation": 0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Ampside",
+  "folder": "FS Mid",
   "previewStartingState": {
-    "rotation": 60.0,
+    "rotation": 0,
     "velocity": 0
   },
   "useDefaultConstraints": true

@@ -14,7 +14,7 @@
         {
           "type": "named",
           "data": {
-            "name": "Score Close"
+            "name": "Quick Shot"
           }
         },
         {
@@ -26,7 +26,7 @@
         {
           "type": "named",
           "data": {
-            "name": "Score Far"
+            "name": "Aimbot"
           }
         },
         {
