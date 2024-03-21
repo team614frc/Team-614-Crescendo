@@ -48,12 +48,12 @@
     },
     {
       "anchor": {
-        "x": 1.1036435668577964,
-        "y": 3.9651342272273102
+        "x": 1.6470138128111684,
+        "y": 3.9945055918734385
       },
       "prevControl": {
-        "x": 3.7617520673323988,
-        "y": 2.39376621865945
+        "x": 3.6002095617786947,
+        "y": 2.114738254521233
       },
       "nextControl": null,
       "isLocked": false,
@@ -68,7 +68,12 @@
     },
     {
       "waypointRelativePos": 1.35,
-      "rotationDegrees": -36.54210914722277,
+      "rotationDegrees": -40.0,
+      "rotateFast": false
+    },
+    {
+      "waypointRelativePos": 2.35,
+      "rotationDegrees": -40.0,
       "rotateFast": false
     }
   ],
@@ -76,7 +81,7 @@
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.0,
+      "waypointRelativePos": 0.15000000000000002,
       "command": {
         "type": "parallel",
         "data": {
@@ -84,7 +89,7 @@
             {
               "type": "named",
               "data": {
-                "name": "First Shot"
+                "name": "Drop Piece"
               }
             }
           ]
@@ -110,21 +115,21 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 2.5,
+    "maxVelocity": 2.0,
     "maxAcceleration": 5.0,
     "maxAngularVelocity": 572.0,
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -61.389540334034805,
+    "rotation": 0.0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "GetRektr",
+  "folder": "Other",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

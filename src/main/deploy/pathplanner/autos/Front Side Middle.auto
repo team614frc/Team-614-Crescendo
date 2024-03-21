@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.7952442380734501,
-      "y": 4.4057046969192335
+      "x": 1.3826715309960145,
+      "y": 5.56
     },
-    "rotation": -60.0
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
@@ -14,30 +14,42 @@
         {
           "type": "named",
           "data": {
-            "name": "Score Close"
+            "name": "Quick Shot"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "SS1"
+            "pathName": "FSM1"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "Score Far"
+            "name": "Aimbot"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "SS2"
+            "pathName": "FSM2"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Aimbot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "FSM3"
           }
         }
       ]
     }
   },
-  "folder": "Source Side",
+  "folder": "Front Side",
   "choreoAuto": false
 }

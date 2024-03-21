@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.7365015087811937,
-      "y": 6.740728186286426
+      "x": 0.7864328286796117,
+      "y": 6.699608275781847
     },
-    "rotation": 61.62075691389205
+    "rotation": 60.0
   },
   "command": {
     "type": "sequential",
@@ -14,19 +14,43 @@
         {
           "type": "named",
           "data": {
-            "name": "Score Close"
-          }
-        },
-        {
-          "type": "wait",
-          "data": {
-            "waitTime": 7.0
+            "name": "Quick Shot"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Ampside"
+            "pathName": "AS1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Aimbot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AS2"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Aimbot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AS3"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Aimbot"
           }
         }
       ]

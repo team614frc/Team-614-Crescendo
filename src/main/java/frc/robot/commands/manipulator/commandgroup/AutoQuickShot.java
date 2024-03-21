@@ -4,25 +4,22 @@
 
 package frc.robot.commands.manipulator.commandgroup;
 
-import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import frc.robot.Constants.ManipulatorConstants;
-import frc.robot.commands.manipulator.commandgroup.helpergroup.IntakeWithFeed;
-import frc.robot.commands.manipulator.feeder.Rumble;
-import frc.robot.commands.manipulator.intake.SimpleIntake;
-import frc.robot.commands.manipulator.pivot.PivotPID;
+import frc.robot.commands.manipulator.commandgroup.helpergroup.ShootPrep;
+import frc.robot.commands.manipulator.feeder.ShooterFeed;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-public class IntakeNote extends SequentialCommandGroup {
-  /** Creates a new IntakeNote. */
-  public IntakeNote() {
+public class AutoQuickShot extends SequentialCommandGroup {
+  /** Creates a new AutoQuickShot. */
+  public AutoQuickShot(double shooterSpeed) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-        new PivotPID(ManipulatorConstants.PIVOT_MIN, ManipulatorConstants.PIVOT_INTAKE_THRESHOLD),
-        new IntakeWithFeed(),
-        new Rumble().withTimeout(ManipulatorConstants.RUMBLE_TIMER));
+      new ShootPrep(ManipulatorConstants.PIVOT_CLOSE_SCORE, shooterSpeed, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD),
+      new ShooterFeed()
+    );
   }
 }

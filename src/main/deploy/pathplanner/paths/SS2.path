@@ -3,41 +3,41 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.22,
-        "y": 3.69
+        "x": 2.1903840587645407,
+        "y": 3.6567348984429637
       },
       "prevControl": null,
       "nextControl": {
-        "x": 5.844319180946055,
-        "y": 0.26434228181515484
+        "x": 6.552031708714581,
+        "y": 0.058742729292257656
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "SS1.5"
     },
     {
       "anchor": {
-        "x": 8.04997130566712,
-        "y": 2.4084519009825143
+        "x": 8.108714034959377,
+        "y": 2.393766218659451
       },
       "prevControl": {
-        "x": 6.617976384827948,
-        "y": 2.394682719051368
+        "x": 6.375803520837812,
+        "y": 2.393766218659451
       },
       "nextControl": {
-        "x": 9.577282267265787,
-        "y": 2.4231375833055786
+        "x": 9.636095599168113,
+        "y": 2.393766218659451
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.22,
-        "y": 3.69
+        "x": 2.1903840587645407,
+        "y": 3.6567348984429637
       },
       "prevControl": {
-        "x": 4.8750641476238235,
-        "y": 0.32308501110741134
+        "x": 5.861804639530567,
+        "y": 0.10279977626144975
       },
       "nextControl": null,
       "isLocked": false,
@@ -46,12 +46,7 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.4,
-      "rotationDegrees": 0,
-      "rotateFast": false
-    },
-    {
-      "waypointRelativePos": 1.65,
+      "waypointRelativePos": 0.25,
       "rotationDegrees": 0,
       "rotateFast": false
     }
@@ -60,7 +55,7 @@
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.6,
+      "waypointRelativePos": 0.3,
       "command": {
         "type": "parallel",
         "data": {
@@ -84,13 +79,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -57.21317249339429,
+    "rotation": 0.0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "SSV2",
+  "folder": "Sourceside",
   "previewStartingState": {
-    "rotation": -60.0,
+    "rotation": -30.0,
     "velocity": 0.0
   },
   "useDefaultConstraints": false

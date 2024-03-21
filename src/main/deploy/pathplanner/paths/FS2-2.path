@@ -3,45 +3,45 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.3826715309960145,
-        "y": 5.56
+        "x": 2.8923596738070048,
+        "y": 5.545
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.087584282507205,
-        "y": 4.023876956519567
+        "x": 2.33085782650993,
+        "y": 4.659732661057451
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "FS2-1"
     },
     {
       "anchor": {
-        "x": 2.6896972577528335,
-        "y": 4.0826196858118236
+        "x": 2.7631256693640407,
+        "y": 4.038562638842631
       },
       "prevControl": {
-        "x": 2.2642946992026562,
-        "y": 4.107643365726539
+        "x": 1.6763851774619725,
+        "y": 4.023876956517219
       },
       "nextControl": {
-        "x": 2.939353857244923,
-        "y": 4.06793400348876
+        "x": 3.2800144934517768,
+        "y": 4.045547622953071
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.24912678806091,
-        "y": 5.56
+        "x": 1.4,
+        "y": 5.545
       },
       "prevControl": {
-        "x": 2.0728986001841405,
-        "y": 4.860960848934222
+        "x": 1.8382531745825246,
+        "y": 5.0515082017213055
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "FS2-2"
     }
   ],
   "rotationTargets": [],
@@ -66,7 +66,7 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 2.5,
+    "maxVelocity": 2.0,
     "maxAcceleration": 5.0,
     "maxAngularVelocity": 572.0,
     "maxAngularAcceleration": 720.0
@@ -77,10 +77,10 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "FS Long",
+  "folder": "FS2",
   "previewStartingState": {
-    "rotation": 0.0,
+    "rotation": 0,
     "velocity": 0
   },
-  "useDefaultConstraints": false
+  "useDefaultConstraints": true
 }

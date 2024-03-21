@@ -3,43 +3,37 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.7776214192857734,
-        "y": 6.711356821640298
+        "x": 1.4,
+        "y": 5.545
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.5735854011958479,
-        "y": 6.814156597901747
+        "x": 1.6470138128111684,
+        "y": 6.549814316086593
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "FS2-2"
     },
     {
       "anchor": {
-        "x": 2.792497034010169,
-        "y": 6.975699103455452
+        "x": 2.8659254456254897,
+        "y": 6.990384785778517
       },
       "prevControl": {
-        "x": 2.0728986001800274,
-        "y": 7.00507046810158
+        "x": 1.8379276830110023,
+        "y": 7.078498879716901
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "asv21"
+      "linkedName": "FS2-3"
     }
   ],
-  "rotationTargets": [
-    {
-      "waypointRelativePos": 0.6,
-      "rotationDegrees": 0.0,
-      "rotateFast": false
-    }
-  ],
+  "rotationTargets": [],
   "constraintZones": [],
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.25,
+      "waypointRelativePos": 0.15,
       "command": {
         "type": "parallel",
         "data": {
@@ -63,13 +57,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0,
+    "rotation": 0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Ampside",
+  "folder": "FS2",
   "previewStartingState": {
-    "rotation": 60.0,
+    "rotation": 0,
     "velocity": 0
   },
   "useDefaultConstraints": true

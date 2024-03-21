@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.765872873427322,
-      "y": 4.361647649950041
+      "x": 0.7805585557503859,
+      "y": 4.388081878131556
     },
-    "rotation": -59.74356283647076
+    "rotation": -60.0
   },
   "command": {
     "type": "sequential",
@@ -14,25 +14,25 @@
         {
           "type": "named",
           "data": {
-            "name": "Score Close"
+            "name": "Quick Shot"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Sourceside1"
+            "pathName": "SS1.5"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "Score Close"
+            "name": "Aimbot"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "Sourceside2"
+            "pathName": "SS2"
           }
         }
       ]

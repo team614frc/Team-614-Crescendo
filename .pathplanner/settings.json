@@ -1,14 +1,13 @@
 {
-  "robotWidth": 0.75,
-  "robotLength": 0.92,
+  "robotWidth": 0.81,
+  "robotLength": 0.97,
   "holonomicMode": true,
   "pathFolders": [
     "Ampside",
-    "FS Long",
+    "FS Mid",
     "Frontside",
-    "GetRektr",
+    "FS2",
     "Other",
-    "SSV2",
     "Sourceside"
   ],
   "autoFolders": [

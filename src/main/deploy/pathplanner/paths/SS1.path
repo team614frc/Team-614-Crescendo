@@ -36,12 +36,12 @@
         "y": 4.126676732781015
       },
       "prevControl": {
-        "x": 7.535972424359876,
-        "y": 4.156048097427144
+        "x": 7.535219806938479,
+        "y": 4.126676732781015
       },
       "nextControl": {
-        "x": 8.681455645558877,
-        "y": 4.0973053681348865
+        "x": 8.975169292020158,
+        "y": 4.126676732781015
       },
       "isLocked": false,
       "linkedName": null
@@ -64,26 +64,21 @@
     },
     {
       "anchor": {
-        "x": 1.2211290254423093,
-        "y": 3.686106263089092
+        "x": 2.1903840587645407,
+        "y": 3.6567348984429637
       },
       "prevControl": {
-        "x": 2.234441105733734,
-        "y": 3.333649887335553
+        "x": 3.0715249981483868,
+        "y": 2.9811935115820147
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "SS1.5"
     }
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.8,
-      "rotationDegrees": 0,
-      "rotateFast": false
-    },
-    {
-      "waypointRelativePos": 3.3,
+      "waypointRelativePos": 0.75,
       "rotationDegrees": 0,
       "rotateFast": false
     }
@@ -92,11 +87,18 @@
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 1.9,
+      "waypointRelativePos": 1.45,
       "command": {
         "type": "parallel",
         "data": {
-          "commands": []
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Intake"
+              }
+            }
+          ]
         }
       }
     }
@@ -109,11 +111,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -60.0,
+    "rotation": 0.0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "SSV2",
+  "folder": "Sourceside",
   "previewStartingState": {
     "rotation": -60.0,
     "velocity": 0

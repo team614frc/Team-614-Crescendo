@@ -59,5 +59,6 @@ public class LEDSubsystem extends SubsystemBase {
     rainbowHue += 3;
     // Check bounds
     rainbowHue %= 180;
+    m_led.setData(m_ledBuffer);
   }
 }

@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.3826715309960145,
-      "y": 5.56
+      "x": 1.456099942611335,
+      "y": 5.565873600441298
     },
     "rotation": 0
   },
@@ -14,43 +14,43 @@
         {
           "type": "named",
           "data": {
+            "name": "Quick Shot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "cit1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Aimbot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "cit2"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
             "name": "Score Close"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "FSL1"
+            "pathName": "cit3"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "Score Far"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "FSL2"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Score Far"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "FSL3"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Score Far"
+            "name": "Score Close"
           }
         }
       ]
