@@ -17,8 +17,8 @@ public class LEDSubsystem extends SubsystemBase {
   public LEDSubsystem() {
     m_led = new AddressableLED(9);
 
-    m_ledBuffer = new AddressableLEDBuffer(59);
-    m_led.setLength(59);
+    m_ledBuffer = new AddressableLEDBuffer(105);
+    m_led.setLength(105);
 
     m_led.setData(m_ledBuffer);
     m_led.start();
@@ -32,14 +32,14 @@ public class LEDSubsystem extends SubsystemBase {
   }
 
   public void orange() {
-    for (int i = 0; i < 59; i++) {
+    for (int i = 0; i < m_ledBuffer.getLength(); i++) {
       m_ledBuffer.setRGB(i, 255, 17, 0);
     }
     m_led.setData(m_ledBuffer);
   }
 
     public void green() {
-    for (int i = 0; i < 59; i++) {
+    for (int i = 0; i < m_ledBuffer.getLength(); i++) {
       m_ledBuffer.setRGB(i, 60, 255, 0);
     }
     m_led.setData(m_ledBuffer);
@@ -48,7 +48,7 @@ public class LEDSubsystem extends SubsystemBase {
 
   public void rainbow() {
     // For every pixel
-    for (var i = 0; i < 59; i++) {
+    for (var i = 0; i < m_ledBuffer.getLength(); i++) {
       // Calculate the hue - hue is easier for rainbows because the color
       // shape is a circle so only one value needs to precess
       final var hue = (rainbowHue + (i * 180 / m_ledBuffer.getLength())) % 180;
@@ -59,5 +59,6 @@ public class LEDSubsystem extends SubsystemBase {
     rainbowHue += 3;
     // Check bounds
     rainbowHue %= 180;
+    m_led.setData(m_ledBuffer);
   }
 }

@@ -36,10 +36,10 @@ public class AlignScore extends Command {
 
     turn = -VisionConstants.simpleAlignYInput * angle / 100.0;
 
-    if (turn > 0.5) {
-      turn = 0.5;
-    } else if (turn < -0.5) {
-      turn = -0.5;
+    if (turn > 0.2) {
+      turn = 0.35;
+    } else if (turn < -0.2) {
+      turn = -0.35;
     }
 
     if (Math.abs(angle) > VisionConstants.threshold) {
