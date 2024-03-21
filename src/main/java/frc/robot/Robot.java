@@ -31,7 +31,6 @@ public class Robot extends TimedRobot {
     m_robotContainer = new RobotContainer();
     SmartDashboard.putNumber("Test Pivot", ManipulatorConstants.PIVOT_MAX);
     SmartDashboard.putNumber("Shooter Test", 2500);
-    RobotContainer.ledSubsystem.rainbow();
   }
 
   /**
