@@ -34,6 +34,12 @@
           "data": {
             "pathName": "SS2"
           }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Aimbot"
+          }
         }
       ]
     }
