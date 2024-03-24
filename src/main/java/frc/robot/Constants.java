@@ -98,7 +98,7 @@ public final class Constants {
   public static final class PIDConstants {
 
     // PID constants for pivot
-    public static final double PIVOT_kP = 0.8; // VOLTS
+    public static final double PIVOT_kP = 0.6; // VOLTS
     public static final double PIVOT_kI = 0;
     public static final double PIVOT_kD = 0.0;
     public static final double PIVOT_kS = 0.5;
