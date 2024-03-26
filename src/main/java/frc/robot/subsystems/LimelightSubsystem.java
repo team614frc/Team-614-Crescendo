@@ -27,7 +27,8 @@ public class LimelightSubsystem extends SubsystemBase {
     this.turnOffLEDs();
 
     //LIST OF VALUES FOR ANGLEMAP GOES HERE
-    angleMap.put(-1.61, -0.1);
+    angleMap.put(-1.61, ManipulatorConstants.PIVOT_CLOSE_SCORE);
+    angleMap.put(-3.66, ManipulatorConstants.PIVOT_FAR_SCORE);
   }
 
   public void enableVisionProcessing() {

@@ -53,6 +53,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("GYRO", RobotContainer.swerveDrive.getHeading().getDegrees());
     SmartDashboard.putNumber("ROBOT POSE ROTATION", RobotContainer.swerveDrive.getPose().getRotation().getDegrees());
     CommandScheduler.getInstance().run();
+    RobotContainer.limeSubsystem.estimateDistance();
   }
 
   /** This function is called once each time the robot enters Disabled mode. */
