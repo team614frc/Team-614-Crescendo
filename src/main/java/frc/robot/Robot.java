@@ -33,7 +33,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Turn P val", 0.0005);
     SmartDashboard.putNumber("Turn I val", 0);
     SmartDashboard.putNumber("Turn D val", 0);
-    SmartDashboard.putNumber("Shooter Test", 2500);
+    SmartDashboard.putNumber("Shooter Test", 5000);
     RobotContainer.ledSubsystem.turnOrange();
   }
 
@@ -52,8 +52,8 @@ public class Robot extends TimedRobot {
     // block in order for anything in the Command-based framework to work.
     SmartDashboard.putNumber("GYRO", RobotContainer.swerveDrive.getHeading().getDegrees());
     SmartDashboard.putNumber("ROBOT POSE ROTATION", RobotContainer.swerveDrive.getPose().getRotation().getDegrees());
+    SmartDashboard.putNumber("2D Range", RobotContainer.limeSubsystem.estimateDistance());
     CommandScheduler.getInstance().run();
-    RobotContainer.limeSubsystem.estimateDistance();
   }
 
   /** This function is called once each time the robot enters Disabled mode. */
