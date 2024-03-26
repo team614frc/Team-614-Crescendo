@@ -27,6 +27,7 @@ public class LimelightSubsystem extends SubsystemBase {
     this.turnOffLEDs();
 
     //LIST OF VALUES FOR ANGLEMAP GOES HERE
+    angleMap.put(-1.61, -0.1);
   }
 
   public void enableVisionProcessing() {
@@ -65,7 +66,7 @@ public class LimelightSubsystem extends SubsystemBase {
     double angleToGoal = (ManipulatorConstants.CAMERA_MOUNT_ANGLE_DEGREES + y) * Math.PI / 180.0;
     //calculate distance
     double test1 = (ManipulatorConstants.GOAL_HEIGHT - ManipulatorConstants.CAMERA_HEIGHT) / Math.tan(angleToGoal);
-    double test2 = arpilTagInfo[0];
+    double test2 = arpilTagInfo[2];
     SmartDashboard.putNumber("calculator range", test1);
     SmartDashboard.putNumber("limelight range", test2);
     return test2;
