@@ -18,7 +18,7 @@ public class TurnToAngle extends PIDCommand {
   public TurnToAngle(double angle) {
     super(
         // The controller that the command will use
-        new PIDController(0.001, 0, 0.001),
+        new PIDController(0.0005, 0.001, 0),
         // This should return the measurement
         () -> RobotContainer.swerveDrive.getHeading().getDegrees(),
         // This should return the setpoint (can also be a constant)
@@ -32,6 +32,6 @@ public class TurnToAngle extends PIDCommand {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return Math.abs(RobotContainer.swerveDrive.getHeading().getDegrees() - turn) < VisionConstants.threshold;
+    return false;
   }
 }
