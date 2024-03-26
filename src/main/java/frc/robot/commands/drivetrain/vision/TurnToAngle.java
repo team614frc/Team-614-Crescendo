@@ -5,6 +5,7 @@
 package frc.robot.commands.drivetrain.vision;
 
 import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.PIDCommand;
 import frc.robot.Constants.VisionConstants;
 import frc.robot.RobotContainer;
@@ -18,7 +19,10 @@ public class TurnToAngle extends PIDCommand {
   public TurnToAngle(double angle) {
     super(
         // The controller that the command will use
-        new PIDController(0.0005, 0.001, 0),
+        new PIDController(
+          0.001, 
+          0, 
+          0),
         // This should return the measurement
         () -> RobotContainer.swerveDrive.getHeading().getDegrees(),
         // This should return the setpoint (can also be a constant)
