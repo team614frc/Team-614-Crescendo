@@ -6,6 +6,7 @@ package frc.robot.commands.manipulator.commandgroup.helpergroup;
 
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import frc.robot.Constants.ManipulatorConstants;
+import frc.robot.commands.manipulator.led.TurnLEDOrange;
 import frc.robot.commands.manipulator.pivot.PivotPID;
 import frc.robot.commands.manipulator.shooter.Shooter;
 
@@ -19,7 +20,8 @@ public class ScoreReset extends ParallelCommandGroup {
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
       new Shooter(0),
-      new PivotPID(ManipulatorConstants.PIVOT_MIN, ManipulatorConstants.PIVOT_INTAKE_THRESHOLD)
+      new PivotPID(ManipulatorConstants.PIVOT_MIN, ManipulatorConstants.PIVOT_INTAKE_THRESHOLD),
+      new TurnLEDOrange()
     );
   }
 }
