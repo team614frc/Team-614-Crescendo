@@ -58,9 +58,6 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("ROBOT POSE ROTATION", RobotContainer.swerveDrive.getPose().getRotation().getDegrees());
     SmartDashboard.putNumber("2D Range", RobotContainer.limeSubsystem.estimateDistance());
     CommandScheduler.getInstance().run();
-    if (RobotContainer.limeSubsystem.estimateDistance() < 3.675 && RobotContainer.feederSubsystem.isSensorTripped()) {
-      RobotContainer.ledSubsystem.rainbow();
-    }
     RobotContainer.limeSubsystem.estimateDistance();
   }
 
@@ -71,7 +68,9 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-  public void disabledPeriodic() {}
+  public void disabledPeriodic() {
+    RobotContainer.ledSubsystem.turnOrange();
+  }
 
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
@@ -110,6 +109,13 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     SmartDashboard.putNumber("PIVOT ANGLE", RobotContainer.pivotSubsystem.getMeasurement());
+    if (RobotContainer.limeSubsystem.estimateDistance() < 3.675 && RobotContainer.feederSubsystem.isSensorTripped() && RobotContainer.limeSubsystem.estimateDistance() != 0) {
+      RobotContainer.ledSubsystem.rainbow();
+    } else if (RobotContainer.feederSubsystem.isSensorTripped()) {
+      RobotContainer.ledSubsystem.turnGreen();
+    } else {
+      RobotContainer.ledSubsystem.turnOrange();
+    }
   }
 
   @Override

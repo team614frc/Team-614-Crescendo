@@ -104,10 +104,9 @@ public final class Constants {
     public static final double PIVOT_kI = 0;
     public static final double PIVOT_kD = 0.0;
     public static final double PIVOT_kS = 0.5;
-    public static final double PIVOT_kG = 0.25;
-    public static final double PIVOT_kV = 0.25;
+    public static final double PIVOT_kG = 0.2;
+    public static final double PIVOT_kV = 0.2;
     public static final double PIVOT_kA = 0.01;
-    
   }
 
   public static final class TimeConstants {
