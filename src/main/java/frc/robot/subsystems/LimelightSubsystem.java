@@ -22,10 +22,9 @@ public class LimelightSubsystem extends SubsystemBase {
   private double[] aprilTagInfo;
   
   public LimelightSubsystem() {
-    limelightTable = NetworkTableInstance.getDefault().getTable("limelight-intake");
+    limelightTable = NetworkTableInstance.getDefault().getTable("limelight-speaker");
     robotPose = RobotContainer.swerveDrive.getPose();
     this.turnOffLEDs();
-
     aprilTagInfo = limelightTable.getEntry("targetpose_robotspace").getDoubleArray(new double[6]);
     //LIST OF VALUES FOR ANGLEMAP GOES HERE
     angleMap.put(1.3, ManipulatorConstants.PIVOT_CLOSE_SCORE);
