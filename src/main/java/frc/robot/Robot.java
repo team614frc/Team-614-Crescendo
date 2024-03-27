@@ -56,6 +56,9 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("GYRO", RobotContainer.swerveDrive.getHeading().getDegrees());
     SmartDashboard.putNumber("ROBOT POSE ROTATION", RobotContainer.swerveDrive.getPose().getRotation().getDegrees());
     CommandScheduler.getInstance().run();
+    if (RobotContainer.limeSubsystem.estimateDistance() < 3.675 && RobotContainer.feederSubsystem.isSensorTripped()) {
+      RobotContainer.ledSubsystem.rainbow();
+    }
     RobotContainer.limeSubsystem.estimateDistance();
   }
 
