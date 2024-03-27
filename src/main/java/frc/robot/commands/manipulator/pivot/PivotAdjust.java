@@ -4,7 +4,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.ManipulatorConstants;
-import frc.robot.subsystems.PivotSubsystem;
 
 public class PivotAdjust extends Command {
   /** Creates a new TiltPIDCommand. */

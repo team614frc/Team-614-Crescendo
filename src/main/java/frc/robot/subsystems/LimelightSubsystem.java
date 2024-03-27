@@ -24,13 +24,13 @@ public class LimelightSubsystem extends SubsystemBase {
   public LimelightSubsystem() {
     limelightTable = NetworkTableInstance.getDefault().getTable("limelight-intake");
     robotPose = RobotContainer.swerveDrive.getPose();
-    aprilTagInfo = limelightTable.getEntry("targetpose_robotspace").getDoubleArray(new double[6]);
     this.turnOffLEDs();
 
     //LIST OF VALUES FOR ANGLEMAP GOES HERE
-    angleMap.put(1.695, ManipulatorConstants.PIVOT_CLOSE_SCORE);
-    angleMap.put(2.705, -0.31);
+    angleMap.put(1.3, ManipulatorConstants.PIVOT_CLOSE_SCORE);
+    angleMap.put(2.705, -.31);
     angleMap.put(3.675, -.45);
+
   }
 
   public void enableVisionProcessing() {
@@ -49,10 +49,6 @@ public class LimelightSubsystem extends SubsystemBase {
     limelightTable.getEntry("ledMode").setNumber(3); // Turn on Limelight LEDs
   }
 
-  public boolean isTargetSeen() {
-    return x == 0 ? false :  true;
-  }
-
   public double getAngleOffset() { // Get the angle offset for the AprilTag in view
     return x;
   }
@@ -69,12 +65,7 @@ public class LimelightSubsystem extends SubsystemBase {
   }
 
   public double estimateDistance() {
-    /* Gets angle offset by adding mount angle and how far off the apriltag is from crosshair and converts to radians */
-    double angleToGoal = (ManipulatorConstants.CAMERA_MOUNT_ANGLE_DEGREES + y) * Math.PI / 180.0;
-    //calculate distance
-    double test1 = (ManipulatorConstants.GOAL_HEIGHT - ManipulatorConstants.CAMERA_HEIGHT) / Math.tan(angleToGoal);
     double test2 = aprilTagInfo[2];
-    SmartDashboard.putNumber("calculator range", test1);
     SmartDashboard.putNumber("limelight range", test2);
     return test2;
   }
@@ -85,9 +76,6 @@ public class LimelightSubsystem extends SubsystemBase {
     x = limelightTable.getEntry("tx").getDouble(0.0);
     y = limelightTable.getEntry("ty").getDouble(0.0);
     area = limelightTable.getEntry("ta").getDouble(0.0);
-
-    SmartDashboard.putBoolean("LIMELIGHT TARGET", isTargetSeen());
-    SmartDashboard.putNumber("AngleOffset", x);
     aprilTagInfo = limelightTable.getEntry("targetpose_robotspace").getDoubleArray(new double[6]);
   }
 }
