@@ -28,12 +28,12 @@ import frc.robot.commands.manipulator.commandgroup.AutoQuickShot;
 import frc.robot.commands.manipulator.commandgroup.AutoScore;
 import frc.robot.commands.manipulator.commandgroup.IntakeNote;
 import frc.robot.commands.manipulator.commandgroup.Puke;
+import frc.robot.commands.manipulator.commandgroup.SimpleScoreAdjust;
 import frc.robot.commands.manipulator.commandgroup.SimpleScoreNote;
 import frc.robot.commands.manipulator.commandgroup.SimpleScoreTest;
 import frc.robot.commands.manipulator.commandgroup.helpergroup.ResetWheels;
 import frc.robot.commands.manipulator.commandgroup.helpergroup.ScoreReset;
 import frc.robot.commands.manipulator.commandgroup.helpergroup.ShootPrep;
-import frc.robot.commands.manipulator.pivot.PivotAdjust;
 import frc.robot.commands.manipulator.pivot.PivotDown;
 import frc.robot.commands.manipulator.pivot.PivotPID;
 import frc.robot.subsystems.DriveSubsystem;
@@ -160,6 +160,7 @@ public class RobotContainer {
     m_driverController.x().whileTrue(new AlignScore(90));
     m_driverController.b().whileTrue(new AlignScore(-90));
     m_driverController.a().whileTrue(new AlignScore());
+    m_driverController.y().onTrue(new SimpleScoreTest());
 
     m_coDriverController.rightTrigger().onTrue(simpleScoreAmp);  
     m_coDriverController.rightBumper().onTrue(simpleScoreFar);
@@ -168,7 +169,7 @@ public class RobotContainer {
     m_coDriverController.a().whileTrue(prepClose);
     m_coDriverController.x().whileTrue(prepAmp);
     m_coDriverController.b().whileTrue(new Puke()).onFalse(new ResetWheels());
-    m_coDriverController.leftTrigger().onTrue(new PivotAdjust());
+    m_coDriverController.leftTrigger().onTrue(new SimpleScoreAdjust());
   }
 
   /**

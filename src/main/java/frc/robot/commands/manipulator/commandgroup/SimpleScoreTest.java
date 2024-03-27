@@ -5,6 +5,7 @@
 package frc.robot.commands.manipulator.commandgroup;
 
 import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.commands.manipulator.commandgroup.helpergroup.ScoreReset;
 import frc.robot.commands.manipulator.commandgroup.helpergroup.ShootPrep;
 import frc.robot.commands.manipulator.feeder.ShooterFeed;
@@ -18,7 +19,7 @@ public class SimpleScoreTest extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new ShootPrep(),
+      new ShootPrep(ManipulatorConstants.SHOOTER_THRESHOLD),
       new ShooterFeed(),
       new ScoreReset()
     );

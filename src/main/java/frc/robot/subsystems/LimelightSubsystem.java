@@ -19,16 +19,17 @@ public class LimelightSubsystem extends SubsystemBase {
   private double x, y, area, angle;
   private Pose2d robotPose;
   private InterpolatingDoubleTreeMap angleMap = new InterpolatingDoubleTreeMap();
-  private double[] arpilTagInfo;
+  private double[] aprilTagInfo;
   
   public LimelightSubsystem() {
-    limelightTable = NetworkTableInstance.getDefault().getTable("limelight-intake");
+    limelightTable = NetworkTableInstance.getDefault().getTable("limelight-speaker");
     robotPose = RobotContainer.swerveDrive.getPose();
     this.turnOffLEDs();
-
+    aprilTagInfo = limelightTable.getEntry("targetpose_robotspace").getDoubleArray(new double[6]);
     //LIST OF VALUES FOR ANGLEMAP GOES HERE
-    angleMap.put(-1.61, ManipulatorConstants.PIVOT_CLOSE_SCORE);
-    angleMap.put(-3.66, ManipulatorConstants.PIVOT_FAR_SCORE);
+    angleMap.put(1.3, ManipulatorConstants.PIVOT_CLOSE_SCORE); //1.3, close
+    angleMap.put(2.705, -.31); // 2.705, -.31
+    angleMap.put(3.675, -.45); //3.675, -.45
   }
 
   public void enableVisionProcessing() {
@@ -47,10 +48,6 @@ public class LimelightSubsystem extends SubsystemBase {
     limelightTable.getEntry("ledMode").setNumber(3); // Turn on Limelight LEDs
   }
 
-  public boolean isTargetSeen() {
-    return x == 0 ? false :  true;
-  }
-
   public double getAngleOffset() { // Get the angle offset for the AprilTag in view
     return x;
   }
@@ -67,12 +64,8 @@ public class LimelightSubsystem extends SubsystemBase {
   }
 
   public double estimateDistance() {
-    /* Gets angle offset by adding mount angle and how far off the apriltag is from crosshair and converts to radians */
-    double angleToGoal = (ManipulatorConstants.CAMERA_MOUNT_ANGLE_DEGREES + y) * Math.PI / 180.0;
-    //calculate distance
-    double test1 = (ManipulatorConstants.GOAL_HEIGHT - ManipulatorConstants.CAMERA_HEIGHT) / Math.tan(angleToGoal);
-    double test2 = arpilTagInfo[2];
-    SmartDashboard.putNumber("calculator range", test1);
+    // double test2 = Math.sqrt(Math.pow(aprilTagInfo[2], 2) + Math.pow(aprilTagInfo[0], 2));
+    double test2 = aprilTagInfo[2];
     SmartDashboard.putNumber("limelight range", test2);
     return test2;
   }
@@ -83,9 +76,6 @@ public class LimelightSubsystem extends SubsystemBase {
     x = limelightTable.getEntry("tx").getDouble(0.0);
     y = limelightTable.getEntry("ty").getDouble(0.0);
     area = limelightTable.getEntry("ta").getDouble(0.0);
-
-    SmartDashboard.putBoolean("LIMELIGHT TARGET", isTargetSeen());
-    SmartDashboard.putNumber("AngleOffset", x);
-    arpilTagInfo = limelightTable.getEntry("targetpose_robotspace").getDoubleArray(new double[6]);
+    aprilTagInfo = limelightTable.getEntry("targetpose_robotspace").getDoubleArray(new double[6]);
   }
 }

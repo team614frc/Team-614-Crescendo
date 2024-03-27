@@ -37,6 +37,7 @@ public class Robot extends TimedRobot {
     SmartDashboard.putNumber("Turn kS", 0.1);
     SmartDashboard.putNumber("Turn kV", 0.2);
     SmartDashboard.putNumber("Turn kA", 0.1);
+    SmartDashboard.putNumber("Shooter Test", 5000);
     RobotContainer.ledSubsystem.turnOrange();
   }
 
@@ -55,6 +56,7 @@ public class Robot extends TimedRobot {
     // block in order for anything in the Command-based framework to work.
     SmartDashboard.putNumber("GYRO", RobotContainer.swerveDrive.getHeading().getDegrees());
     SmartDashboard.putNumber("ROBOT POSE ROTATION", RobotContainer.swerveDrive.getPose().getRotation().getDegrees());
+    SmartDashboard.putNumber("2D Range", RobotContainer.limeSubsystem.estimateDistance());
     CommandScheduler.getInstance().run();
     if (RobotContainer.limeSubsystem.estimateDistance() < 3.675 && RobotContainer.feederSubsystem.isSensorTripped()) {
       RobotContainer.ledSubsystem.rainbow();
