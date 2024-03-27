@@ -10,6 +10,9 @@ import com.pathplanner.lib.util.HolonomicPathFollowerConfig;
 import com.pathplanner.lib.util.PIDConstants;
 import com.pathplanner.lib.util.ReplanningConfig;
 
+import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.math.controller.ProfiledPIDController;
+import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -18,6 +21,7 @@ import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
+import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.util.WPIUtilJNI;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.SPI;
@@ -66,6 +70,18 @@ public class DriveSubsystem extends SubsystemBase {
 
   // Heading variables
   private double correctAngle;
+
+  // Turn PID 
+  public double turn_kP;
+  public double turn_kI;
+  public double turn_kD;
+  public double turn_kS;
+  public double turn_kV;
+  public double turn_kA;
+  public PIDController turnController = new PIDController(0, 0, 0);
+  public TrapezoidProfile.Constraints turnConstraints = new TrapezoidProfile.Constraints(1, 1);
+  public SimpleMotorFeedforward turnFeed = 
+    new SimpleMotorFeedforward(0, 0, 0);
 
   // Odometry class for tracking robot pose
   SwerveDriveOdometry m_odometry = new SwerveDriveOdometry(
@@ -121,6 +137,16 @@ public class DriveSubsystem extends SubsystemBase {
             m_rearRight.getPosition()
         });
     m_field.setRobotPose(m_odometry.getPoseMeters());
+    turn_kP = SmartDashboard.getNumber("Turn P val", 0);
+    turn_kI = SmartDashboard.getNumber("Turn I val", 0);
+    turn_kD = SmartDashboard.getNumber("Turn D val", 0);
+    turn_kS = SmartDashboard.getNumber("Turn kS", 0.1);
+    turn_kV = SmartDashboard.getNumber("Turn kV", 0.2);
+    turn_kA = SmartDashboard.getNumber("Turn kA", 0.1);
+    turnController.setP(turn_kP);
+    turnController.setI(turn_kI);
+    turnController.setD(turn_kD);
+    turnFeed = new SimpleMotorFeedforward(turn_kS, turn_kV, turn_kA);
   }
 
   /**
@@ -299,8 +325,8 @@ public class DriveSubsystem extends SubsystemBase {
   
   public double getAngleModifier(double angle) {
     double least = angle;
-    if (Math.abs(getHeading().getDegrees() - least) > Math.abs(getHeading().getDegrees() - (angle + 360))) least = angle + 360;
-    if (Math.abs(getHeading().getDegrees() - least) > Math.abs(getHeading().getDegrees() - (angle - 360))) least = angle - 360;
+    if (Math.abs(getHeading().getDegrees() - least) > Math.abs(getHeading().getDegrees() - (angle + 360))) {least = angle + 360;}
+    if (Math.abs(getHeading().getDegrees() - least) > Math.abs(getHeading().getDegrees() - (angle - 360))) {least = angle - 360;}
     return least;
   }
 
@@ -314,7 +340,7 @@ public class DriveSubsystem extends SubsystemBase {
   }
 
   public double getDisplacementToTarget(double y) {
-    return getCorrectAngleTarget(y) - getHeading().getDegrees();
+    return getHeading().getDegrees() - getCorrectAngleTarget(y);
   }
 
   public void turnToAngle(double turn) {
@@ -323,6 +349,14 @@ public class DriveSubsystem extends SubsystemBase {
         RobotContainer.getDriverLeftX(),
         -(turn),
             true, true);
+  }
+
+  public PIDController getTurnController() {
+    return turnController;
+  }
+
+  public SimpleMotorFeedforward getTurnFF() {
+    return turnFeed;
   }
   
   /**

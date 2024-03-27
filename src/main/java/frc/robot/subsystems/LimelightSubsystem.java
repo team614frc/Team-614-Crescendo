@@ -22,7 +22,7 @@ public class LimelightSubsystem extends SubsystemBase {
   private double[] arpilTagInfo;
   
   public LimelightSubsystem() {
-    limelightTable = NetworkTableInstance.getDefault().getTable("limelight");
+    limelightTable = NetworkTableInstance.getDefault().getTable("limelight-intake");
     robotPose = RobotContainer.swerveDrive.getPose();
     this.turnOffLEDs();
 

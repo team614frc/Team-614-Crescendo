@@ -50,10 +50,10 @@ public final class Constants {
     public static final double SHOOTER_kFF = 0.000082;
     public static final double SHOOTER_kP = 0.00045;
     public static final double OUTTAKE_SPEED = -0.5;
-    public static final double INTAKE_SPEED = 0.5;
+    public static final double INTAKE_SPEED = 0.75;
     public static final double INTAKE_REST_SPEED = 0.00;
     public static final double SHOOTER_THRESHOLD = 150;
-    public static final double PUKE_SPEED = -0.8;
+    public static final double PUKE_SPEED = -1;
 
     // Constants for Feeder
     public static final double LOADBACK_SPEED = -0.08; // MAYBE BACK AND FORTH WAS THE MOVE 
@@ -138,8 +138,8 @@ public final class Constants {
     public static final double kMaxAngularSpeed = 2 * Math.PI; // radians per second
 
     public static final double kDirectionSlewRate = 1.2; // radians per second
-    public static final double kMagnitudeSlewRate = 1.8; // percent per second (1 = 100%)
-    public static final double kRotationalSlewRate = 2.0; // percent per second (1 = 100%)
+    public static final double kMagnitudeSlewRate = 100; // percent per second (1 = 100%)
+    public static final double kRotationalSlewRate = 100; // percent per second (1 = 100%)
 
     // Chassis configuration
     public static final double kTrackWidth = Units.inchesToMeters(26.5);

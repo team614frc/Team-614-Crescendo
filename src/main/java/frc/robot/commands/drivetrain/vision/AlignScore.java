@@ -4,13 +4,14 @@
 
 package frc.robot.commands.drivetrain.vision;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.VisionConstants;
 import frc.robot.RobotContainer;
 
 public class AlignScore extends Command {
   /** Creates a new AlignScore. */
-  private double angle, target, turn;
+  private double angle, target, turn, correctAngle;
   private boolean isTarget;
 
   public AlignScore() {
@@ -31,22 +32,25 @@ public class AlignScore extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
+
     angle = isTarget ? RobotContainer.swerveDrive.getDisplacementToTarget(target)
         : RobotContainer.limeSubsystem.getAngleOffset();
 
-    turn = -VisionConstants.simpleAlignYInput * angle / 100.0;
+    SmartDashboard.putNumber("ANGLE OFFSET POSE", angle);
 
-    if (turn > 0.2) {
-      turn = 0.35;
-    } else if (turn < -0.2) {
-      turn = -0.35;
+    if (!isTarget && RobotContainer.limeSubsystem.getAngleOffset() == 0) {
+      angle = RobotContainer.swerveDrive.getDisplacementToTarget(0);
     }
+    // turn = -VisionConstants.simpleAlignYInput * angle / 100.0;
+    turn = angle / 180.0;
+    
+    
 
     if (Math.abs(angle) > VisionConstants.threshold) {
       RobotContainer.swerveDrive.drive(
           RobotContainer.getDriverLeftY(),
           RobotContainer.getDriverLeftX(),
-          turn,
+          -turn,
           true, true);
     } else {
       RobotContainer.swerveDrive.drive(

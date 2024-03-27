@@ -30,10 +30,13 @@ public class Robot extends TimedRobot {
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
     SmartDashboard.putNumber("Test Pivot", ManipulatorConstants.PIVOT_MAX);
-    SmartDashboard.putNumber("Turn P val", 0.0005);
+    SmartDashboard.putNumber("Shooter Test", 2500);
+    SmartDashboard.putNumber("Turn P val", 0);
     SmartDashboard.putNumber("Turn I val", 0);
     SmartDashboard.putNumber("Turn D val", 0);
-    SmartDashboard.putNumber("Shooter Test", 2500);
+    SmartDashboard.putNumber("Turn kS", 0.1);
+    SmartDashboard.putNumber("Turn kV", 0.2);
+    SmartDashboard.putNumber("Turn kA", 0.1);
     RobotContainer.ledSubsystem.turnOrange();
   }
 

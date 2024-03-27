@@ -6,8 +6,10 @@ package frc.robot;
 
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
+import com.pathplanner.lib.util.PIDConstants;
 
 import edu.wpi.first.math.MathUtil;
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.DataLogManager;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -155,8 +157,8 @@ public class RobotContainer {
     m_driverController.leftBumper().onTrue(armUp);
     m_driverController.rightBumper().whileTrue(new PivotDown(0.5, -0.1));
     m_driverController.start().whileTrue(new ResetRobotHeading());
-    m_driverController.x().whileTrue(new TurnToAngle(90));
-    m_driverController.b().whileTrue(new TurnToAngle(-90));
+    m_driverController.x().whileTrue(new AlignScore(90));
+    m_driverController.b().whileTrue(new AlignScore(-90));
     m_driverController.a().whileTrue(new AlignScore());
 
     m_coDriverController.rightTrigger().onTrue(simpleScoreAmp);  
