@@ -22,15 +22,14 @@ public class LimelightSubsystem extends SubsystemBase {
   private double[] aprilTagInfo;
   
   public LimelightSubsystem() {
-    limelightTable = NetworkTableInstance.getDefault().getTable("limelight-intake");
+    limelightTable = NetworkTableInstance.getDefault().getTable("limelight-speaker");
     robotPose = RobotContainer.swerveDrive.getPose();
     this.turnOffLEDs();
-
+    aprilTagInfo = limelightTable.getEntry("targetpose_robotspace").getDoubleArray(new double[6]);
     //LIST OF VALUES FOR ANGLEMAP GOES HERE
     angleMap.put(1.3, ManipulatorConstants.PIVOT_CLOSE_SCORE);
     angleMap.put(2.705, -.31);
     angleMap.put(3.675, -.45);
-
   }
 
   public void enableVisionProcessing() {
@@ -65,7 +64,7 @@ public class LimelightSubsystem extends SubsystemBase {
   }
 
   public double estimateDistance() {
-    double test2 = aprilTagInfo[2];
+    double test2 = Math.sqrt(Math.pow(aprilTagInfo[2], 2) + Math.pow(aprilTagInfo[0], 2));
     SmartDashboard.putNumber("limelight range", test2);
     return test2;
   }
