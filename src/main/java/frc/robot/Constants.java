@@ -124,7 +124,7 @@ public final class Constants {
     // Align to Target values
     public static final double alignSetpoint = 0.0;
     public static final double simpleAlignYInput = 1.5;
-    public static final double threshold = 0.5;
+    public static final double threshold = 0.05;
 
     // AprilTag Pose values
     public static final double tag7X = -8.308975;

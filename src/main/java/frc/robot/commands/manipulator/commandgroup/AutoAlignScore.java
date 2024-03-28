@@ -7,6 +7,7 @@ package frc.robot.commands.manipulator.commandgroup;
 import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
 import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.commands.drivetrain.vision.AlignScore;
+import frc.robot.commands.drivetrain.vision.AprilTagAlign;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
@@ -19,6 +20,6 @@ public class AutoAlignScore extends ParallelDeadlineGroup {
     super(
       new AutoScore(ManipulatorConstants.PIVOT_FAR_SCORE)
       );
-    addCommands(new AlignScore());
+    addCommands(new AprilTagAlign());
   }
 }

@@ -11,6 +11,7 @@ import com.pathplanner.lib.util.PIDConstants;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.DataLogManager;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -22,6 +23,7 @@ import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.drivetrain.ResetRobotHeading;
 import frc.robot.commands.drivetrain.vision.AlignScore;
+import frc.robot.commands.drivetrain.vision.AprilTagAlign;
 import frc.robot.commands.manipulator.commandgroup.AutoAlignScore;
 import frc.robot.commands.manipulator.commandgroup.AutoQuickShot;
 import frc.robot.commands.manipulator.commandgroup.AutoScore;
@@ -78,6 +80,7 @@ public class RobotContainer {
   private final Command armUp = new PivotPID(ManipulatorConstants.PIVOT_AMP_GOAL,
       ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
 
+  private static DriverStation.Alliance alliance;
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
    */
@@ -120,6 +123,14 @@ public class RobotContainer {
 
   public static CommandXboxController getCoDriverController() {
     return m_coDriverController;
+  }
+
+  public static void setAlliance(DriverStation.Alliance color) {
+    alliance = color;
+  }
+  
+  public static boolean isAllianceRed() {
+    return alliance == DriverStation.Alliance.Red;
   }
 
   /**
@@ -166,8 +177,7 @@ public class RobotContainer {
     m_driverController.rightBumper().whileTrue(new PivotDown(0.5, -0.1));
     m_driverController.start().whileTrue(new ResetRobotHeading());
     m_driverController.x().whileTrue(new AlignScore(90));
-    m_driverController.b().whileTrue(new AlignScore(-90));
-    m_driverController.a().whileTrue(new AlignScore());
+    m_driverController.a().whileTrue(new AprilTagAlign());
     m_driverController.y().onTrue(new SimpleScoreTest());
 
     m_coDriverController.rightTrigger().onTrue(simpleScoreAmp);

@@ -4,32 +4,29 @@
 
 package frc.robot.commands.drivetrain.vision;
 
-import java.sql.Driver;
-
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.VisionConstants;
 import frc.robot.RobotContainer;
 
-public class AlignScore extends Command {
-  /** Creates a new AlignScore. */
-  private double angle, target, turn, correctAngle;
-  private boolean isTarget;
-
-  public AlignScore(double target) {
+public class AprilTagAlign extends Command {
+  /** Creates a new AprilTagAlign. */
+  private double angle, turn;
+  public AprilTagAlign() {
     addRequirements(RobotContainer.swerveDrive);
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-  }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    angle = RobotContainer.swerveDrive.getDisplacementToTarget(target);
+    angle = RobotContainer.limeSubsystem.getAngleOffset();
+
+    if (RobotContainer.limeSubsystem.getAngleOffset() == 0) {
+      angle = RobotContainer.swerveDrive.getDisplacementToTarget(0);
+    }
     turn = -angle / 180.0;
 
     if (Math.abs(angle) > VisionConstants.threshold) {
@@ -46,12 +43,10 @@ public class AlignScore extends Command {
           true, true);
     }
   }
-  // insert code to adjust robot angle here
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
-  }
+  public void end(boolean interrupted) {}
 
   // Returns true when the command should end.
   @Override
