@@ -18,9 +18,22 @@
           }
         },
         {
-          "type": "path",
+          "type": "deadline",
           "data": {
-            "pathName": "FSM1"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "FSM1"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake"
+                }
+              }
+            ]
           }
         },
         {
@@ -30,9 +43,22 @@
           }
         },
         {
-          "type": "path",
+          "type": "deadline",
           "data": {
-            "pathName": "FSM2"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "FSM2"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake"
+                }
+              }
+            ]
           }
         },
         {
@@ -42,9 +68,28 @@
           }
         },
         {
-          "type": "path",
+          "type": "deadline",
           "data": {
-            "pathName": "FSM3"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "FSM3"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Aimbot"
           }
         }
       ]

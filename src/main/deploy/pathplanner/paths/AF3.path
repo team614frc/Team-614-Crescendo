@@ -3,41 +3,41 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.9980965865330664,
-        "y": 6.388271810532888
+        "x": 3.6369237675863553,
+        "y": 5.595244965087426
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.684202849622158,
-        "y": 6.7994709155786826
+        "x": 4.826464035754549,
+        "y": 6.564499998409657
       },
       "isLocked": false,
-      "linkedName": "asv22"
+      "linkedName": "AF2"
     },
     {
       "anchor": {
-        "x": 8.22619949354389,
-        "y": 5.742101788318067
+        "x": 8.248228017028485,
+        "y": 5.771473152964195
       },
       "prevControl": {
-        "x": 7.0954019546679525,
-        "y": 5.742101788318067
+        "x": 7.195156572412747,
+        "y": 6.66658388088757
       },
       "nextControl": {
-        "x": 9.226199493543891,
-        "y": 5.742101788318067
+        "x": 9.129368956412332,
+        "y": 5.0225033544879265
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.9980965865330664,
-        "y": 6.388271810532888
+        "x": 3.6369237675863553,
+        "y": 5.595244965087426
       },
       "prevControl": {
-        "x": 6.361117838514747,
-        "y": 6.784785233255618
+        "x": 5.986632939276613,
+        "y": 7.592497761024145
       },
       "nextControl": null,
       "isLocked": false,
@@ -46,7 +46,17 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.85,
+      "waypointRelativePos": 0.8,
+      "rotationDegrees": -30.095796208526885,
+      "rotateFast": false
+    },
+    {
+      "waypointRelativePos": 0.4,
+      "rotationDegrees": 0,
+      "rotateFast": false
+    },
+    {
+      "waypointRelativePos": 1.7,
       "rotationDegrees": 0,
       "rotateFast": false
     }
@@ -61,13 +71,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 20.0,
+    "rotation": 0.0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Ampside",
+  "folder": "AntiFresta",
   "previewStartingState": {
-    "rotation": 10.0,
+    "rotation": 0,
     "velocity": 0
   },
   "useDefaultConstraints": false

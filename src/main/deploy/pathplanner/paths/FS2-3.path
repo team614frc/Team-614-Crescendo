@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.4,
+        "x": 1.5,
         "y": 5.545
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.6470138128111684,
-        "y": 6.549814316086593
+        "x": 2.8337543047179126,
+        "y": 5.947701340840965
       },
       "isLocked": false,
       "linkedName": "FS2-2"
@@ -20,44 +20,32 @@
         "y": 6.990384785778517
       },
       "prevControl": {
-        "x": 1.8379276830110023,
-        "y": 7.078498879716901
+        "x": 2.1022699648261556,
+        "y": 6.623242727701913
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": "FS2-3"
     }
   ],
-  "rotationTargets": [],
-  "constraintZones": [],
-  "eventMarkers": [
+  "rotationTargets": [
     {
-      "name": "New Event Marker",
-      "waypointRelativePos": 0.15,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "Intake"
-              }
-            }
-          ]
-        }
-      }
+      "waypointRelativePos": 0.65,
+      "rotationDegrees": 43.629752434901846,
+      "rotateFast": false
     }
   ],
+  "constraintZones": [],
+  "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 2.0,
+    "maxVelocity": 2.5,
     "maxAcceleration": 5.0,
     "maxAngularVelocity": 572.0,
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
+    "rotation": 43.70783311375006,
     "rotateFast": false
   },
   "reversed": false,
@@ -66,5 +54,5 @@
     "rotation": 0,
     "velocity": 0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

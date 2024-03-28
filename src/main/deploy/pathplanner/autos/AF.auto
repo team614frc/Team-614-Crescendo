@@ -2,29 +2,35 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.7805585557503859,
-      "y": 4.388081878131556
+      "x": 1.3703175816503543,
+      "y": 7.334125659332116
     },
-    "rotation": -60.0
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
     "data": {
       "commands": [
         {
-          "type": "named",
+          "type": "path",
           "data": {
-            "name": "Quick Shot"
+            "pathName": "AF1"
           }
         },
         {
-          "type": "parallel",
+          "type": "named",
+          "data": {
+            "name": "Aimbot"
+          }
+        },
+        {
+          "type": "deadline",
           "data": {
             "commands": [
               {
                 "type": "path",
                 "data": {
-                  "pathName": "SS1.5"
+                  "pathName": "AF2"
                 }
               },
               {
@@ -43,13 +49,13 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "deadline",
           "data": {
             "commands": [
               {
                 "type": "path",
                 "data": {
-                  "pathName": "SS2"
+                  "pathName": "AF3"
                 }
               },
               {
@@ -70,6 +76,6 @@
       ]
     }
   },
-  "folder": "Source Side",
+  "folder": "Amp Side",
   "choreoAuto": false
 }

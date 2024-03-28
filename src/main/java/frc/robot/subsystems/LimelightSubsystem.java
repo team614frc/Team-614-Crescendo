@@ -39,6 +39,10 @@ public class LimelightSubsystem extends SubsystemBase {
     limelightTable.getEntry("ledMode").setNumber(3); // Turn on Limelight LEDs
   }
 
+  public boolean isTargetSeen() {
+    return x == 0 ? false :  true;
+  }
+
   public double getAngleOffset() { // Get the angle offset for the AprilTag in view
     return x;
   }
@@ -57,6 +61,7 @@ public class LimelightSubsystem extends SubsystemBase {
     y = limelightTable.getEntry("ty").getDouble(0.0);
     area = limelightTable.getEntry("ta").getDouble(0.0);
 
+    SmartDashboard.putBoolean("LIMELIGHT TARGET", isTargetSeen());
     SmartDashboard.putNumber("AngleOffset", x);
   }
 }
