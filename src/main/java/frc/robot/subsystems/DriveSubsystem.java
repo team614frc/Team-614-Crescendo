@@ -66,24 +66,17 @@ public class DriveSubsystem extends SubsystemBase {
   private double m_currentTranslationMag = 0.0;
 
   // Limits rate of output signal to the specified range, provids stability
-  private SlewRateLimiter m_magLimiter = new SlewRateLimiter(50000);
-  private SlewRateLimiter m_rotLimiter = new SlewRateLimiter(50000);
+  private SlewRateLimiter m_magLimiter = new SlewRateLimiter(DriveConstants.kMagnitudeSlewRate);
+  private SlewRateLimiter m_rotLimiter = new SlewRateLimiter(DriveConstants.kRotationalSlewRate);
   private double m_prevTime = WPIUtilJNI.now() * 1e-6;
 
   // Heading variables
   private double correctAngle;
 
-  // Turn PID 
-  public double turn_kP;
-  public double turn_kI;
-  public double turn_kD;
-  public double turn_kS;
-  public double turn_kV;
-  public double turn_kA;
+  // Turn PID
   public PIDController turnController = new PIDController(0, 0, 0);
   public TrapezoidProfile.Constraints turnConstraints = new TrapezoidProfile.Constraints(1, 1);
-  public SimpleMotorFeedforward turnFeed = 
-    new SimpleMotorFeedforward(0, 0, 0);
+  public SimpleMotorFeedforward turnFeed = new SimpleMotorFeedforward(0, 0, 0);
 
   // Odometry class for tracking robot pose
   SwerveDriveOdometry m_odometry = new SwerveDriveOdometry(
@@ -96,7 +89,7 @@ public class DriveSubsystem extends SubsystemBase {
           m_rearRight.getPosition()
       });
 
-        /** Creates a new DriveSubsystem. */
+  /** Creates a new DriveSubsystem. */
   public DriveSubsystem() {
     AutoBuilder.configureHolonomic(
         this::getPose, // Robot pose supplier
@@ -139,16 +132,6 @@ public class DriveSubsystem extends SubsystemBase {
             m_rearRight.getPosition()
         });
     m_field.setRobotPose(m_odometry.getPoseMeters());
-    turn_kP = SmartDashboard.getNumber("Turn P val", 0);
-    turn_kI = SmartDashboard.getNumber("Turn I val", 0);
-    turn_kD = SmartDashboard.getNumber("Turn D val", 0);
-    turn_kS = SmartDashboard.getNumber("Turn kS", 0.1);
-    turn_kV = SmartDashboard.getNumber("Turn kV", 0.2);
-    turn_kA = SmartDashboard.getNumber("Turn kA", 0.1);
-    turnController.setP(turn_kP);
-    turnController.setI(turn_kI);
-    turnController.setD(turn_kD);
-    turnFeed = new SimpleMotorFeedforward(turn_kS, turn_kV, turn_kA);
   }
 
   /**
@@ -322,13 +305,17 @@ public class DriveSubsystem extends SubsystemBase {
   }
 
   public int getNumberOfRotations() {
-    return (int) getHeading().getDegrees()/360;
+    return (int) getHeading().getDegrees() / 360;
   }
-  
+
   public double getAngleModifier(double angle) {
     double least = angle;
-    if (Math.abs(getHeading().getDegrees() - least) > Math.abs(getHeading().getDegrees() - (angle + 360))) {least = angle + 360;}
-    if (Math.abs(getHeading().getDegrees() - least) > Math.abs(getHeading().getDegrees() - (angle - 360))) {least = angle - 360;}
+    if (Math.abs(getHeading().getDegrees() - least) > Math.abs(getHeading().getDegrees() - (angle + 360))) {
+      least = angle + 360;
+    }
+    if (Math.abs(getHeading().getDegrees() - least) > Math.abs(getHeading().getDegrees() - (angle - 360))) {
+      least = angle - 360;
+    }
     return least;
   }
 
@@ -350,7 +337,7 @@ public class DriveSubsystem extends SubsystemBase {
         RobotContainer.getDriverLeftY(),
         RobotContainer.getDriverLeftX(),
         -(turn),
-            true, true);
+        true, true);
   }
 
   public PIDController getTurnController() {
@@ -360,7 +347,7 @@ public class DriveSubsystem extends SubsystemBase {
   public SimpleMotorFeedforward getTurnFF() {
     return turnFeed;
   }
-  
+
   /**
    * Returns the turn rate of the robot.
    *

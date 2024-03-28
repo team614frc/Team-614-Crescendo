@@ -27,7 +27,8 @@ public class AlignScore extends Command {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
@@ -41,16 +42,13 @@ public class AlignScore extends Command {
     if (!isTarget && RobotContainer.limeSubsystem.getAngleOffset() == 0) {
       angle = RobotContainer.swerveDrive.getDisplacementToTarget(0);
     }
-    // turn = -VisionConstants.simpleAlignYInput * angle / 100.0;
-    turn = angle / 180.0;
-    
-    
+    turn = -angle / 180.0;
 
     if (Math.abs(angle) > VisionConstants.threshold) {
       RobotContainer.swerveDrive.drive(
           RobotContainer.getDriverLeftY(),
           RobotContainer.getDriverLeftX(),
-          -turn,
+          turn,
           true, true);
     } else {
       RobotContainer.swerveDrive.drive(

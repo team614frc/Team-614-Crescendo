@@ -26,16 +26,17 @@ public class PivotAdjust extends Command {
   @Override
   public void execute() {
     distanceFromAprilTag = RobotContainer.limeSubsystem.estimateDistance();
-    if(distanceFromAprilTag > 0) {
-    setpoint = RobotContainer.limeSubsystem.interpolateAngle(distanceFromAprilTag);
-    RobotContainer.pivotSubsystem.setGoal(setpoint);
-    SmartDashboard.putNumber("End pivot", RobotContainer.pivotSubsystem.getMeasurement());
+    if (distanceFromAprilTag > 0) {
+      setpoint = RobotContainer.limeSubsystem.interpolateAngle(distanceFromAprilTag);
+      RobotContainer.pivotSubsystem.setGoal(setpoint);
+      SmartDashboard.putNumber("Interpolated pivot angle", RobotContainer.pivotSubsystem.getMeasurement());
     }
   }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+  }
 
   // Returns true when the command should end.
   @Override

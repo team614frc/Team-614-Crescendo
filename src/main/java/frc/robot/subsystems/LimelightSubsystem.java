@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.ManipulatorConstants;
+import frc.robot.Constants.VisionConstants;
 
 public class LimelightSubsystem extends SubsystemBase {
   /** Creates a new LimelightSubsystem. */
@@ -20,16 +21,17 @@ public class LimelightSubsystem extends SubsystemBase {
   private Pose2d robotPose;
   private InterpolatingDoubleTreeMap angleMap = new InterpolatingDoubleTreeMap();
   private double[] aprilTagInfo;
-  
+
   public LimelightSubsystem() {
     limelightTable = NetworkTableInstance.getDefault().getTable("limelight-speaker");
     robotPose = RobotContainer.swerveDrive.getPose();
     this.turnOffLEDs();
     aprilTagInfo = limelightTable.getEntry("targetpose_robotspace").getDoubleArray(new double[6]);
-    //LIST OF VALUES FOR ANGLEMAP GOES HERE
-    angleMap.put(1.01, ManipulatorConstants.PIVOT_CLOSE_SCORE); //1.3, close
-    angleMap.put(2.415, -.31); // 2.705, -.31
-    angleMap.put(3.385, -.45); //3.675, -.45
+
+    // LIST OF VALUES FOR ANGLEMAP GOES HERE
+    angleMap.put(VisionConstants.treeMapMin, VisionConstants.pivotTreeMapAngleMin);
+    angleMap.put(VisionConstants.treeMap1, VisionConstants.pivotTreeMapAngle1);
+    angleMap.put(VisionConstants.treeMapMax, VisionConstants.pivotTreeMapAngleMax);
   }
 
   public void enableVisionProcessing() {
@@ -52,10 +54,11 @@ public class LimelightSubsystem extends SubsystemBase {
     return x;
   }
 
-  public double getTargetAngle(double Y, double X) { // Gets the target angle from where the robot in relation to starting heading
+  public double getTargetAngle(double Y, double X) { // Gets the target angle from where the robot in relation to
+                                                     // starting heading
     angle = Math.atan2(
-      robotPose.getY() - Y,
-      robotPose.getX() - X);
+        robotPose.getY() - Y,
+        robotPose.getX() - X);
     return angle;
   }
 
@@ -64,7 +67,8 @@ public class LimelightSubsystem extends SubsystemBase {
   }
 
   public double estimateDistance() {
-    // double test2 = Math.sqrt(Math.pow(aprilTagInfo[2], 2) + Math.pow(aprilTagInfo[0], 2));
+    // double test2 = Math.sqrt(Math.pow(aprilTagInfo[2], 2) +
+    // Math.pow(aprilTagInfo[0], 2));
     double test2 = aprilTagInfo[2];
     SmartDashboard.putNumber("limelight range", test2);
     return test2;
