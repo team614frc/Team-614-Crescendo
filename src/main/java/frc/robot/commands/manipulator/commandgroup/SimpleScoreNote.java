@@ -23,4 +23,5 @@ public class SimpleScoreNote extends SequentialCommandGroup {
       new ScoreReset()
     );
   }
+
 }

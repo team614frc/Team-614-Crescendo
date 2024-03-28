@@ -6,8 +6,10 @@ package frc.robot;
 
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
+import com.pathplanner.lib.util.PIDConstants;
 
 import edu.wpi.first.math.MathUtil;
+import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.DataLogManager;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -20,12 +22,12 @@ import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.drivetrain.ResetRobotHeading;
 import frc.robot.commands.drivetrain.vision.AlignScore;
-import frc.robot.commands.drivetrain.vision.TurnToAngle;
 import frc.robot.commands.manipulator.commandgroup.AutoAlignScore;
 import frc.robot.commands.manipulator.commandgroup.AutoQuickShot;
 import frc.robot.commands.manipulator.commandgroup.AutoScore;
 import frc.robot.commands.manipulator.commandgroup.IntakeNote;
 import frc.robot.commands.manipulator.commandgroup.Puke;
+import frc.robot.commands.manipulator.commandgroup.SimpleScoreAdjust;
 import frc.robot.commands.manipulator.commandgroup.SimpleScoreNote;
 import frc.robot.commands.manipulator.commandgroup.SimpleScoreTest;
 import frc.robot.commands.manipulator.commandgroup.helpergroup.ResetWheels;
@@ -57,15 +59,24 @@ public class RobotContainer {
   public final static PivotSubsystem pivotSubsystem = new PivotSubsystem();
   public final static LimelightSubsystem limeSubsystem = new LimelightSubsystem();
   public final static LEDSubsystem ledSubsystem = new LEDSubsystem();
+
   static CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
   static CommandXboxController m_coDriverController = new CommandXboxController(OIConstants.kCoDriverControllerPort);
+
   private final SendableChooser<Command> autoChooser;
-  private final Command simpleScoreAmp = new SimpleScoreNote(ManipulatorConstants.PIVOT_AMP_GOAL, ManipulatorConstants.SCORE_AMP_SPEED, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
-  private final Command simpleScoreFar = new SimpleScoreNote(ManipulatorConstants.PIVOT_FAR_SCORE, ManipulatorConstants.SCORE_SIMPLE_RPM, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
-  private final Command simpleScoreClose = new SimpleScoreNote(ManipulatorConstants.PIVOT_CLOSE_SCORE, ManipulatorConstants.SCORE_SIMPLE_RPM, ManipulatorConstants.PIVOT_INTAKE_THRESHOLD);
-  private final Command prepClose = new ShootPrep(ManipulatorConstants.PIVOT_CLOSE_SCORE, ManipulatorConstants.SCORE_SIMPLE_RPM, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
-  private final Command prepAmp = new ShootPrep(ManipulatorConstants.PIVOT_AMP_GOAL, ManipulatorConstants.SCORE_AMP_SPEED, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
-  private final Command armUp = new PivotPID(ManipulatorConstants.PIVOT_AMP_GOAL, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
+
+  private final Command simpleScoreAmp = new SimpleScoreNote(ManipulatorConstants.PIVOT_AMP_GOAL,
+      ManipulatorConstants.SCORE_AMP_SPEED, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
+  private final Command simpleScoreFar = new SimpleScoreNote(ManipulatorConstants.PIVOT_FAR_SCORE,
+      ManipulatorConstants.SCORE_SIMPLE_RPM, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
+  private final Command simpleScoreClose = new SimpleScoreNote(ManipulatorConstants.PIVOT_CLOSE_SCORE,
+      ManipulatorConstants.SCORE_SIMPLE_RPM, ManipulatorConstants.PIVOT_INTAKE_THRESHOLD);
+  private final Command prepClose = new ShootPrep(ManipulatorConstants.PIVOT_CLOSE_SCORE,
+      ManipulatorConstants.SCORE_SIMPLE_RPM, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
+  private final Command prepAmp = new ShootPrep(ManipulatorConstants.PIVOT_AMP_GOAL,
+      ManipulatorConstants.SCORE_AMP_SPEED, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
+  private final Command armUp = new PivotPID(ManipulatorConstants.PIVOT_AMP_GOAL,
+      ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
 
   /**
    * The container for the robot. Contains subsystems, OI devices, and commands.
@@ -77,10 +88,10 @@ public class RobotContainer {
     // DriverStation.startDataLog(DataLogManager.getLog());
     // (optional) Record only DS control data by uncommenting next line.
     // DriverStation.startDataLog(DataLogManager.getLog(), false);
-  
+
     // Configure the button bindings
     configureButtonBindings();
-    
+
     // Pathplanner Commands for use in auto. Name is what you type into pathplanner,
     // and the commands are "borrowed" from the controller
     NamedCommands.registerCommand("Score Close", new AutoScore(ManipulatorConstants.PIVOT_CLOSE_SCORE));
@@ -88,7 +99,7 @@ public class RobotContainer {
     NamedCommands.registerCommand("Score Far", new AutoScore(ManipulatorConstants.PIVOT_FAR_SCORE));
     NamedCommands.registerCommand("Score Amp", new AutoScore(ManipulatorConstants.PIVOT_AMP_GOAL));
     NamedCommands.registerCommand("Intake", new IntakeNote());
-    NamedCommands.registerCommand("Quick Shot", new AutoQuickShot(3000)); //quickshot for first piece
+    NamedCommands.registerCommand("Quick Shot", new AutoQuickShot(3000)); // quickshot for first piece
     NamedCommands.registerCommand("Drop Piece", new AutoQuickShot(1000));
 
     swerveDrive.setDefaultCommand(
@@ -157,15 +168,16 @@ public class RobotContainer {
     m_driverController.x().whileTrue(new AlignScore(90));
     m_driverController.b().whileTrue(new AlignScore(-90));
     m_driverController.a().whileTrue(new AlignScore());
+    m_driverController.y().onTrue(new SimpleScoreTest());
 
-    m_coDriverController.rightTrigger().onTrue(simpleScoreAmp);  
+    m_coDriverController.rightTrigger().onTrue(simpleScoreAmp);
     m_coDriverController.rightBumper().onTrue(simpleScoreFar);
     m_coDriverController.leftBumper().onTrue(simpleScoreClose);
     m_coDriverController.y().whileTrue(new ScoreReset());
     m_coDriverController.a().whileTrue(prepClose);
     m_coDriverController.x().whileTrue(prepAmp);
     m_coDriverController.b().whileTrue(new Puke()).onFalse(new ResetWheels());
-    m_coDriverController.leftTrigger().onTrue(new SimpleScoreTest());
+    m_coDriverController.leftTrigger().onTrue(new SimpleScoreAdjust());
   }
 
   /**

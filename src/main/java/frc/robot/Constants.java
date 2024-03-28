@@ -50,46 +50,47 @@ public final class Constants {
     public static final double SHOOTER_kFF = 0.000082;
     public static final double SHOOTER_kP = 0.00045;
     public static final double OUTTAKE_SPEED = -0.5;
-    public static final double INTAKE_SPEED = 0.5;
+    public static final double INTAKE_SPEED = 0.75;
     public static final double INTAKE_REST_SPEED = 0.00;
     public static final double SHOOTER_THRESHOLD = 150;
-    public static final double PUKE_SPEED = -0.8;
+    public static final double PUKE_SPEED = -1;
 
     // Constants for Feeder
-    public static final double LOADBACK_SPEED = -0.08; // MAYBE BACK AND FORTH WAS THE MOVE 
+    public static final double LOADBACK_SPEED = -0.08; // MAYBE BACK AND FORTH WAS THE MOVE
     public static final double LOADING_SPEED = 1; // (Note fixed its deformity)
     public static final double AMP_LOAD = 0.5;
     public static final double RUMBLE_TIMER = 2;
     public static final double RUMBLE_SETTING = .6;
-    
 
     // Speed Constants for Pivot
     public static final double PIVOT_UP_SPEED = 0.1;
     public static final double PIVOT_DOWN_SPEED = -0.1;
     public static final double MOTOR_GRAV_SPEED = 0.02;
-    
+
     // Encoder Values for the Pivot
-    public static final double PIVOT_MAX = -(Math.PI/2)-0.02;
+    public static final double PIVOT_MAX = -(Math.PI / 2) - 0.02;
     public static final double PIVOT_MIN = 0.08;
     public static final double PIVOT_CLOSE_SCORE = -0.1; // -0.25
     public static final double PIVOT_FAR_SCORE = -0.4; // -0.55
-    public static final double PIVOT_AMP_GOAL = -(Math.PI/2)-0.02;
+    public static final double PIVOT_AMP_GOAL = -(Math.PI / 2) - 0.02;
     public static final double PIVOT_TRAP_SCORE = -0.15;
     public static final double PIVOT_INTAKE_THRESHOLD = 0.15;
     public static final double PIVOT_SHOOTER_THRESHOLD = 0.1;
     public static final double PIVOT_INTAKE_THRESH = 0.2;
-    
+
     // Others
     public static final double PIVOT_MAX_VEL = 4;
     public static final double PIVOT_MAX_ACCEL = 20;
-    public static final double PIVOT_WEIGHT = 9.55; 
+    public static final double PIVOT_WEIGHT = 9.55;
     public static final double MOTOR_ZERO_SPEED = 0;
     public static final int MOTOR_CURRENT_LIMIT = 40;
-    
+    public static final double CAMERA_MOUNT_ANGLE_DEGREES = 20;
+    public static final double CAMERA_HEIGHT = 0.35; // meters
+    public static final double GOAL_HEIGHT = 1.455; // meters
   }
 
   public static final class SensorConstants {
-    
+
     public static final int sensorPort1 = 0;
     public static final double sensorThreshold = 350;
 
@@ -102,14 +103,14 @@ public final class Constants {
     public static final double PIVOT_kI = 0;
     public static final double PIVOT_kD = 0.0;
     public static final double PIVOT_kS = 0.5;
-    public static final double PIVOT_kG = 0.25;
-    public static final double PIVOT_kV = 0.25;
+    public static final double PIVOT_kG = 0.2;
+    public static final double PIVOT_kV = 0.2;
     public static final double PIVOT_kA = 0.01;
-    
+
   }
 
   public static final class TimeConstants {
-    
+
     // Timers
     public static final double SpeakerFeed = 2;
     public static final double SpeakerEnd = 2.7;
@@ -120,12 +121,23 @@ public final class Constants {
 
   public static final class VisionConstants {
 
+    // Align to Target values
     public static final double alignSetpoint = 0.0;
     public static final double simpleAlignYInput = 1.5;
     public static final double threshold = 0.5;
 
+    // AprilTag Pose values
     public static final double tag7X = -8.308975;
-    public static final double tag7Y =  1.442593;
+    public static final double tag7Y = 1.442593;
+
+    // Pivot Interpolation tree map values
+    public static final double treeMapMin = 1.01;
+    public static final double treeMap1 = 2.415;
+    public static final double treeMapMax = 3.385;
+
+    public static final double pivotTreeMapAngleMin = ManipulatorConstants.PIVOT_CLOSE_SCORE;
+    public static final double pivotTreeMapAngle1 = -.31;
+    public static final double pivotTreeMapAngleMax = -.45;
 
   }
 
@@ -136,8 +148,8 @@ public final class Constants {
     public static final double kMaxAngularSpeed = 2 * Math.PI; // radians per second
 
     public static final double kDirectionSlewRate = 1.2; // radians per second
-    public static final double kMagnitudeSlewRate = 1.8; // percent per second (1 = 100%)
-    public static final double kRotationalSlewRate = 2.0; // percent per second (1 = 100%)
+    public static final double kMagnitudeSlewRate = 100; // percent per second (1 = 100%)
+    public static final double kRotationalSlewRate = 100; // percent per second (1 = 100%)
 
     // Chassis configuration
     public static final double kTrackWidth = Units.inchesToMeters(26.5);
@@ -171,12 +183,15 @@ public final class Constants {
   }
 
   public static final class ModuleConstants {
-    // The MAXSwerve module can be configured with one of three pinion gears: 12T, 13T, or 14T.
-    // This changes the drive speed of the module (a pinion gear with more teeth will result in a
+    // The MAXSwerve module can be configured with one of three pinion gears: 12T,
+    // 13T, or 14T.
+    // This changes the drive speed of the module (a pinion gear with more teeth
+    // will result in a
     // robot that drives faster).
     public static final int kDrivingMotorPinionTeeth = 14;
 
-    // Invert the turning encoder, since the output shaft rotates in the opposite direction of
+    // Invert the turning encoder, since the output shaft rotates in the opposite
+    // direction of
     // the steering motor in the MAXSwerve Module.
     public static final boolean kTurningEncoderInverted = true;
 
@@ -184,7 +199,8 @@ public final class Constants {
     public static final double kDrivingMotorFreeSpeedRps = NeoMotorConstants.kFreeSpeedRpm / 60;
     public static final double kWheelDiameterMeters = 0.0762;
     public static final double kWheelCircumferenceMeters = kWheelDiameterMeters * Math.PI;
-    // 45 teeth on the wheel's bevel gear, 22 teeth on the first-stage spur gear, 15 teeth on the bevel pinion
+    // 45 teeth on the wheel's bevel gear, 22 teeth on the first-stage spur gear, 15
+    // teeth on the bevel pinion
     public static final double kDrivingMotorReduction = (45.0 * 22) / (kDrivingMotorPinionTeeth * 15);
     public static final double kDriveWheelFreeSpeedRps = (kDrivingMotorFreeSpeedRps * kWheelCircumferenceMeters)
         / kDrivingMotorReduction;
