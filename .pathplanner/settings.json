@@ -4,10 +4,11 @@
   "holonomicMode": true,
   "pathFolders": [
     "Ampside",
+    "AntiFresta",
     "FS Mid",
     "FS2",
     "Frontside",
-    "AntiFresta",
+    "SS SP",
     "Other",
     "Sourceside"
   ],

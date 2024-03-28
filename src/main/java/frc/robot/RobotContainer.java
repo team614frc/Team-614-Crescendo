@@ -22,6 +22,7 @@ import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.drivetrain.ResetRobotHeading;
 import frc.robot.commands.drivetrain.vision.AlignScore;
+import frc.robot.commands.manipulator.commandgroup.AutoAimShot;
 import frc.robot.commands.manipulator.commandgroup.AutoAlignScore;
 import frc.robot.commands.manipulator.commandgroup.AutoQuickShot;
 import frc.robot.commands.manipulator.commandgroup.AutoScore;
@@ -96,6 +97,7 @@ public class RobotContainer {
     // and the commands are "borrowed" from the controller
     NamedCommands.registerCommand("Score Close", new AutoScore(ManipulatorConstants.PIVOT_CLOSE_SCORE));
     NamedCommands.registerCommand("Aimbot", new AutoAlignScore());
+    NamedCommands.registerCommand("True Aimbot", new AutoAimShot());
     NamedCommands.registerCommand("Score Far", new AutoScore(ManipulatorConstants.PIVOT_FAR_SCORE));
     NamedCommands.registerCommand("Score Amp", new AutoScore(ManipulatorConstants.PIVOT_AMP_GOAL));
     NamedCommands.registerCommand("Intake", new IntakeNote());

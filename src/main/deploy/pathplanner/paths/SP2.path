@@ -1,0 +1,74 @@
+{
+  "version": 1.0,
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 2.263812470373616,
+        "y": 3.7448489923751045
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 3.5414668324864382,
+        "y": 1.9385100666444632
+      },
+      "isLocked": false,
+      "linkedName": "SP1"
+    },
+    {
+      "anchor": {
+        "x": 8.04997130566712,
+        "y": 0.7636554807993345
+      },
+      "prevControl": {
+        "x": 7.049971305667119,
+        "y": 0.7636554807993345
+      },
+      "nextControl": {
+        "x": 9.04997130566712,
+        "y": 0.7636554807993345
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 1.9260417769493865,
+        "y": 3.4805067105661944
+      },
+      "prevControl": {
+        "x": 4.8191211945930155,
+        "y": 1.4098255030141549
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "SP2"
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.8,
+      "rotationDegrees": 0,
+      "rotateFast": false
+    }
+  ],
+  "constraintZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 5.0,
+    "maxAngularVelocity": 572.0,
+    "maxAngularAcceleration": 720.0
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -46.0,
+    "rotateFast": false
+  },
+  "reversed": false,
+  "folder": "SS SP",
+  "previewStartingState": {
+    "rotation": -44.0,
+    "velocity": 0
+  },
+  "useDefaultConstraints": false
+}
