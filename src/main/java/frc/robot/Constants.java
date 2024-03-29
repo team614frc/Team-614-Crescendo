@@ -122,22 +122,22 @@ public final class Constants {
   public static final class VisionConstants {
 
     // Align to Target values
-    public static final double AlignSetpoint = 0.0;
-    public static final double SimpleAlignYInput = 1.5;
-    public static final double AlignThreshold = 0.05;
+    public static final double ALIGN_SETPOINT = 0.0;
+    public static final double SIMPLE_ALIGN_Y_INPUT = 1.5;
+    public static final double ALIGN_THRESHOLD = 0.05;
 
     // AprilTag Pose values
-    public static final double Tag7X = -8.308975;
-    public static final double Tag7Y = 1.442593;
+    public static final double TAG_7X = -8.308975;
+    public static final double TAG_7Y = 1.442593;
 
     // Pivot Interpolation tree map values
-    public static final double TreeMapMin = 1.01;
-    public static final double TreeMap1 = 2.415;
-    public static final double TreeMapMax = 3.385;
+    public static final double TREE_MAP_MIN = 1.01;
+    public static final double TREE_MAP1 = 2.415;
+    public static final double TREE_MAP_MAX = 3.385;
 
-    public static final double PivotTreeMapAngleMin = ManipulatorConstants.PIVOT_CLOSE_SCORE;
-    public static final double PivotTreeMapAngle1 = -.31;
-    public static final double PivotTreeMapAngleMax = -.45;
+    public static final double PIVOT_TREE_MAP_ANGLE_MIN = ManipulatorConstants.PIVOT_CLOSE_SCORE;
+    public static final double PIVOT_TREE_MAP_ANGLE1 = -.31;
+    public static final double PIVOT_TREE_MAP_ANGLE_MAX = -.45;
 
   }
 

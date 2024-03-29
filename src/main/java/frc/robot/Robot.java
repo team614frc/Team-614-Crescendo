@@ -123,7 +123,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     SmartDashboard.putNumber("PIVOT ANGLE", RobotContainer.pivotSubsystem.getMeasurement());
-    if (Math.abs(RobotContainer.limeSubsystem.estimateDistance()) < VisionConstants.TreeMapMax
+    if (Math.abs(RobotContainer.limeSubsystem.estimateDistance()) < VisionConstants.TREE_MAP_MAX
         && RobotContainer.feederSubsystem.isSensorTripped()
         && RobotContainer.limeSubsystem.estimateDistance() != 0) {
       RobotContainer.ledSubsystem.rainbow();

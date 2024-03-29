@@ -10,9 +10,8 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.RobotContainer;
-import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.VisionConstants;
+import frc.robot.RobotContainer;
 
 public class LimelightSubsystem extends SubsystemBase {
   /** Creates a new LimelightSubsystem. */
@@ -29,9 +28,9 @@ public class LimelightSubsystem extends SubsystemBase {
     aprilTagInfo = limelightTable.getEntry("targetpose_robotspace").getDoubleArray(new double[6]);
 
     // LIST OF VALUES FOR ANGLEMAP GOES HERE
-    angleMap.put(VisionConstants.TreeMapMin, VisionConstants.PivotTreeMapAngleMin);
-    angleMap.put(VisionConstants.TreeMap1, VisionConstants.PivotTreeMapAngle1);
-    angleMap.put(VisionConstants.TreeMapMax, VisionConstants.PivotTreeMapAngleMax);
+    angleMap.put(VisionConstants.TREE_MAP_MIN, VisionConstants.PIVOT_TREE_MAP_ANGLE_MIN);
+    angleMap.put(VisionConstants.TREE_MAP1, VisionConstants.PIVOT_TREE_MAP_ANGLE1);
+    angleMap.put(VisionConstants.TREE_MAP_MAX, VisionConstants.PIVOT_TREE_MAP_ANGLE_MAX);
   }
 
   public void enableVisionProcessing() {

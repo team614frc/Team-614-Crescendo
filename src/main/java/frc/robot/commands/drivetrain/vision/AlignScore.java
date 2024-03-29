@@ -4,17 +4,13 @@
 
 package frc.robot.commands.drivetrain.vision;
 
-import java.sql.Driver;
-
-import edu.wpi.first.wpilibj.DriverStation;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.VisionConstants;
 import frc.robot.RobotContainer;
 
 /** Creates a new AlignScore. */
 public class AlignScore extends Command {
-  
+
   private double angle, target, turn, correctAngle;
   private boolean isTarget;
 
@@ -33,7 +29,7 @@ public class AlignScore extends Command {
     angle = RobotContainer.swerveDrive.getDisplacementToTarget(target);
     turn = -angle / 180.0;
 
-    if (Math.abs(angle) > VisionConstants.AlignThreshold) {
+    if (Math.abs(angle) > VisionConstants.ALIGN_THRESHOLD) {
       RobotContainer.swerveDrive.drive(
           RobotContainer.getDriverLeftY(),
           RobotContainer.getDriverLeftX(),
