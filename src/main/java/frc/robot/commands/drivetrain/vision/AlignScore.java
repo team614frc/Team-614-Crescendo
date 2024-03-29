@@ -33,7 +33,7 @@ public class AlignScore extends Command {
     angle = RobotContainer.swerveDrive.getDisplacementToTarget(target);
     turn = -angle / 180.0;
 
-    if (Math.abs(angle) > VisionConstants.threshold) {
+    if (Math.abs(angle) > VisionConstants.AlignThreshold) {
       RobotContainer.swerveDrive.drive(
           RobotContainer.getDriverLeftY(),
           RobotContainer.getDriverLeftX(),

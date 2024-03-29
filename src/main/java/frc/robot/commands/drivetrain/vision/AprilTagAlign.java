@@ -29,7 +29,7 @@ public class AprilTagAlign extends Command {
       angle = RobotContainer.swerveDrive.getDisplacementToTarget(0);
     }
     turn = -angle / 180.0;
-    if (Math.abs(angle) <= VisionConstants.threshold) {
+    if (Math.abs(angle) <= VisionConstants.AlignThreshold) {
       turn = RobotContainer.getDriverRightX();
     }
     

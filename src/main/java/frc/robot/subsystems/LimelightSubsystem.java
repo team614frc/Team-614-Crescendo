@@ -29,9 +29,9 @@ public class LimelightSubsystem extends SubsystemBase {
     aprilTagInfo = limelightTable.getEntry("targetpose_robotspace").getDoubleArray(new double[6]);
 
     // LIST OF VALUES FOR ANGLEMAP GOES HERE
-    angleMap.put(VisionConstants.treeMapMin, VisionConstants.pivotTreeMapAngleMin);
-    angleMap.put(VisionConstants.treeMap1, VisionConstants.pivotTreeMapAngle1);
-    angleMap.put(VisionConstants.treeMapMax, VisionConstants.pivotTreeMapAngleMax);
+    angleMap.put(VisionConstants.TreeMapMin, VisionConstants.PivotTreeMapAngleMin);
+    angleMap.put(VisionConstants.TreeMap1, VisionConstants.PivotTreeMapAngle1);
+    angleMap.put(VisionConstants.TreeMapMax, VisionConstants.PivotTreeMapAngleMax);
   }
 
   public void enableVisionProcessing() {
