@@ -12,8 +12,9 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.VisionConstants;
 import frc.robot.RobotContainer;
 
+/** Creates a new AlignScore. */
 public class AlignScore extends Command {
-  /** Creates a new AlignScore. */
+  
   private double angle, target, turn, correctAngle;
   private boolean isTarget;
 

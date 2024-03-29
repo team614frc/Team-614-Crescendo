@@ -29,5 +29,5 @@ public class ShootPrep extends ParallelCommandGroup {
       new PivotPID(threshold),
       new Shooter()
     );
-  } 
+  }
 }

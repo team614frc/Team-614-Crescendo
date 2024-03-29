@@ -7,10 +7,11 @@ package frc.robot.commands.drivetrain.vision;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.VisionConstants;
 import frc.robot.RobotContainer;
-
+/** Creates a new AprilTagAlign. */
 public class AprilTagAlign extends Command {
-  /** Creates a new AprilTagAlign. */
+  
   private double angle, turn;
+
   public AprilTagAlign() {
     addRequirements(RobotContainer.swerveDrive);
   }
@@ -28,22 +29,17 @@ public class AprilTagAlign extends Command {
       angle = RobotContainer.swerveDrive.getDisplacementToTarget(0);
     }
     turn = -angle / 180.0;
-
-    if (Math.abs(angle) > VisionConstants.threshold) {
-      RobotContainer.swerveDrive.drive(
+    if (Math.abs(angle) <= VisionConstants.threshold) {
+      turn = RobotContainer.getDriverRightX();
+    }
+    
+    RobotContainer.swerveDrive.drive(
           RobotContainer.getDriverLeftY(),
           RobotContainer.getDriverLeftX(),
           turn,
           true, true);
-    } else {
-      RobotContainer.swerveDrive.drive(
-          RobotContainer.getDriverLeftY(),
-          RobotContainer.getDriverLeftX(),
-          RobotContainer.getDriverRightX(),
-          true, true);
-    }
   }
-
+  
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {}

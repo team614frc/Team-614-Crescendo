@@ -310,10 +310,10 @@ public class DriveSubsystem extends SubsystemBase {
 
   public double getAngleModifier(double angle) {
     double least = angle;
-    if (Math.abs(getHeading().getDegrees() - least) > Math.abs(getHeading().getDegrees() - (angle + 360))) {
+    if (Math.abs(getHeading().getDegrees() - least) > Math.abs(getHeading().getDegrees() - angle + 360)) {
       least = angle + 360;
     }
-    if (Math.abs(getHeading().getDegrees() - least) > Math.abs(getHeading().getDegrees() - (angle - 360))) {
+    if (Math.abs(getHeading().getDegrees() - least) > Math.abs(getHeading().getDegrees() - angle - 360)) {
       least = angle - 360;
     }
     return least;
