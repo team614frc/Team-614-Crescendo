@@ -91,8 +91,8 @@ public final class Constants {
 
   public static final class SensorConstants {
 
-    public static final int sensorPort1 = 0;
-    public static final double sensorThreshold = 350;
+    public static final int SENSOR_PORT1 = 0;
+    public static final double SENSOR_THRESHOLD = 350;
 
   }
 
@@ -112,10 +112,10 @@ public final class Constants {
   public static final class TimeConstants {
 
     // Timers
-    public static final double SpeakerFeed = 2;
-    public static final double SpeakerEnd = 2.7;
-    public static final double AmpFeed = 1.35;
-    public static final double AmpEnd = 2;
+    public static final double SPEAKER_FEED = 2;
+    public static final double SPEAKER_END = 2.7;
+    public static final double AMP_FEED = 1.35;
+    public static final double AMP_END = 2;
 
   }
 
