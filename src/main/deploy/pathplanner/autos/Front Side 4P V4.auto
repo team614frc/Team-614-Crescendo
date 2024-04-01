@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.7864328286796117,
-      "y": 6.699608275781847
+      "x": 1.4,
+      "y": 5.545
     },
-    "rotation": 60.0
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
@@ -18,9 +18,22 @@
           }
         },
         {
-          "type": "path",
+          "type": "parallel",
           "data": {
-            "pathName": "AS1"
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "cit1"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake"
+                }
+              }
+            ]
           }
         },
         {
@@ -32,30 +45,30 @@
         {
           "type": "path",
           "data": {
-            "pathName": "AS2"
+            "pathName": "cit2"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "Aimbot"
+            "name": "Score Close"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "AS3"
+            "pathName": "cit3"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "Aimbot"
+            "name": "Score Close"
           }
         }
       ]
     }
   },
-  "folder": "Amp Side",
+  "folder": "Front Side",
   "choreoAuto": false
 }

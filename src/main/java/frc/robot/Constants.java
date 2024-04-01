@@ -51,10 +51,10 @@ public final class Constants {
     public static final double SHOOTER_kFF = 0.000082;
     public static final double SHOOTER_kP = 0.00045;
     public static final double OUTTAKE_SPEED = -0.5;
-    public static final double INTAKE_SPEED = 0.5;
+    public static final double INTAKE_SPEED = 0.75;
     public static final double INTAKE_REST_SPEED = 0.00;
     public static final double SHOOTER_THRESHOLD = 150;
-    public static final double PUKE_SPEED = -0.8;
+    public static final double PUKE_SPEED = -1;
     public static final double TRAP_SPEED = 4000;
 
     // Constants for BLOW POWER
@@ -88,25 +88,27 @@ public final class Constants {
     public static final double PIVOT_WEIGHT = 9.55;
     public static final double MOTOR_ZERO_SPEED = 0;
     public static final int MOTOR_CURRENT_LIMIT = 40;
-
+    public static final double CAMERA_MOUNT_ANGLE_DEGREES = 20;
+    public static final double CAMERA_HEIGHT = 0.35; // meters
+    public static final double GOAL_HEIGHT = 1.455; // meters
   }
 
   public static final class SensorConstants {
 
-    public static final int sensorPort1 = 0;
-    public static final double sensorThreshold = 350;
+    public static final int SENSOR_PORT1 = 0;
+    public static final double SENSOR_THRESHOLD = 350;
 
   }
 
   public static final class PIDConstants {
 
     // PID constants for pivot
-    public static final double PIVOT_kP = 0.8; // VOLTS
+    public static final double PIVOT_kP = 0.6; // VOLTS
     public static final double PIVOT_kI = 0;
     public static final double PIVOT_kD = 0.0;
     public static final double PIVOT_kS = 0.5;
-    public static final double PIVOT_kG = 0.25;
-    public static final double PIVOT_kV = 0.25;
+    public static final double PIVOT_kG = 0.2;
+    public static final double PIVOT_kV = 0.2;
     public static final double PIVOT_kA = 0.01;
 
   }
@@ -114,21 +116,32 @@ public final class Constants {
   public static final class TimeConstants {
 
     // Timers
-    public static final double SpeakerFeed = 2;
-    public static final double SpeakerEnd = 2.7;
-    public static final double AmpFeed = 1.35;
-    public static final double AmpEnd = 2;
+    public static final double SPEAKER_FEED = 2;
+    public static final double SPEAKER_END = 2.7;
+    public static final double AMP_FEED = 1.35;
+    public static final double AMP_END = 2;
 
   }
 
   public static final class VisionConstants {
 
-    public static final double alignSetpoint = 0.0;
-    public static final double simpleAlignYInput = 1.5;
-    public static final double threshold = 0.5;
+    // Align to Target values
+    public static final double ALIGN_SETPOINT = 0.0;
+    public static final double SIMPLE_ALIGN_Y_INPUT = 1.5;
+    public static final double ALIGN_THRESHOLD = 0.05;
 
-    public static final double tag7X = -8.308975;
-    public static final double tag7Y = 1.442593;
+    // AprilTag Pose values
+    public static final double TAG_7X = -8.308975;
+    public static final double TAG_7Y = 1.442593;
+
+    // Pivot Interpolation tree map values
+    public static final double TREE_MAP_MIN = 1.01;
+    public static final double TREE_MAP1 = 2.415;
+    public static final double TREE_MAP_MAX = 3.385;
+
+    public static final double PIVOT_TREE_MAP_ANGLE_MIN = ManipulatorConstants.PIVOT_CLOSE_SCORE;
+    public static final double PIVOT_TREE_MAP_ANGLE1 = -.31;
+    public static final double PIVOT_TREE_MAP_ANGLE_MAX = -.45;
 
   }
 
@@ -139,8 +152,8 @@ public final class Constants {
     public static final double kMaxAngularSpeed = 2 * Math.PI; // radians per second
 
     public static final double kDirectionSlewRate = 1.2; // radians per second
-    public static final double kMagnitudeSlewRate = 1.8; // percent per second (1 = 100%)
-    public static final double kRotationalSlewRate = 2.0; // percent per second (1 = 100%)
+    public static final double kMagnitudeSlewRate = 100; // percent per second (1 = 100%)
+    public static final double kRotationalSlewRate = 100; // percent per second (1 = 100%)
 
     // Chassis configuration
     public static final double kTrackWidth = Units.inchesToMeters(26.5);

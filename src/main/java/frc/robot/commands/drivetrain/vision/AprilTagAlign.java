@@ -8,13 +8,12 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.VisionConstants;
 import frc.robot.RobotContainer;
 
-/** Creates a new AlignScore. */
-public class AlignScore extends Command {
+/** Creates a new AprilTagAlign. */
+public class AprilTagAlign extends Command {
 
-  private double angle, target, turn, correctAngle;
-  private boolean isTarget;
+  private double angle, turn;
 
-  public AlignScore(double target) {
+  public AprilTagAlign() {
     addRequirements(RobotContainer.swerveDrive);
   }
 
@@ -26,24 +25,22 @@ public class AlignScore extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    angle = RobotContainer.swerveDrive.getDisplacementToTarget(target);
-    turn = -angle / 180.0;
+    angle = RobotContainer.limeSubsystem.getAngleOffset();
 
-    if (Math.abs(angle) > VisionConstants.ALIGN_THRESHOLD) {
-      RobotContainer.swerveDrive.drive(
-          RobotContainer.getDriverLeftY(),
-          RobotContainer.getDriverLeftX(),
-          turn,
-          true, true);
-    } else {
-      RobotContainer.swerveDrive.drive(
-          RobotContainer.getDriverLeftY(),
-          RobotContainer.getDriverLeftX(),
-          RobotContainer.getDriverRightX(),
-          true, true);
+    if (RobotContainer.limeSubsystem.getAngleOffset() == 0) {
+      angle = RobotContainer.swerveDrive.getDisplacementToTarget(0);
     }
+    turn = -angle / 180.0;
+    if (Math.abs(angle) <= VisionConstants.ALIGN_THRESHOLD) {
+      turn = RobotContainer.getDriverRightX();
+    }
+
+    RobotContainer.swerveDrive.drive(
+        RobotContainer.getDriverLeftY(),
+        RobotContainer.getDriverLeftX(),
+        turn,
+        true, true);
   }
-  // insert code to adjust robot angle here
 
   // Called once the command ends or is interrupted.
   @Override
