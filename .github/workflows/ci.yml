@@ -19,7 +19,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-java@v4
         with:
-          distribution: 'zulu'
+          distribution: "zulu"
           java-version: 17
       # Grant execute permission for gradlew
       - name: Grant execute permission for gradlew
