@@ -32,8 +32,8 @@ public final class Constants {
     public static final int INTAKE_MOTOR = 25;
 
     // CAN ID for the Pivot Motors
-    public static final int PIVOT_MOTOR_RIGHT = 13;
-    public static final int PIVOT_MOTOR_LEFT = 14;
+    public static final int PIVOT_LEFT_MOTOR = 13;
+    public static final int PIVOT_RIGHT_MOTOR = 14;
 
     // Constants for Shooter
     public static final double SHOOT_MAX_VEL_SET = 6630.0;
@@ -49,10 +49,10 @@ public final class Constants {
     public static final double INTAKE_REST_SPEED = 0.00;
     public static final double SHOOTER_THRESHOLD = 150;
     public static final double PUKE_SPEED = -1;
-    public static final double TRAP_SPEED = 4000;
+    public static final double TRAP_SPEED = 1900;
 
     // Constants for BLOW POWER
-    public static final double LEAF_BLOWER_POWER = 0.8;
+    public static final double LEAF_BLOWER_POWER = -1;
 
     // Constants for Feeder
     public static final double LOADBACK_SPEED = -0.08; // MAYBE BACK AND FORTH WAS THE MOVE
