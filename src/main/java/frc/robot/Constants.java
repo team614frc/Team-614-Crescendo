@@ -4,26 +4,20 @@
 
 package frc.robot;
 
-import java.util.HashMap;
-
 import com.revrobotics.CANSparkBase.IdleMode;
-
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj2.command.Command;
+import java.util.HashMap;
 
 /**
- * The Constants class provides a convenient place for teams to hold robot-wide
- * numerical or boolean
- * constants. This class should not be used for any other purpose. All constants
- * should be declared
+ * The Constants class provides a convenient place for teams to hold robot-wide numerical or boolean
+ * constants. This class should not be used for any other purpose. All constants should be declared
  * globally (i.e. public static). Do not put anything functional in this class.
  *
- * <p>
- * It is advised to statically import this class (or one of its inner classes)
- * wherever the
+ * <p>It is advised to statically import this class (or one of its inner classes) wherever the
  * constants are needed, to reduce verbosity.
  */
 public final class Constants {
@@ -56,43 +50,40 @@ public final class Constants {
     public static final double PUKE_SPEED = -0.8;
 
     // Constants for Feeder
-    public static final double LOADBACK_SPEED = -0.08; // MAYBE BACK AND FORTH WAS THE MOVE 
+    public static final double LOADBACK_SPEED = -0.08; // MAYBE BACK AND FORTH WAS THE MOVE
     public static final double LOADING_SPEED = 1; // (Note fixed its deformity)
     public static final double AMP_LOAD = 0.5;
     public static final double RUMBLE_TIMER = 2;
     public static final double RUMBLE_SETTING = .6;
-    
 
     // Speed Constants for Pivot
     public static final double PIVOT_UP_SPEED = 0.1;
     public static final double PIVOT_DOWN_SPEED = -0.1;
     public static final double MOTOR_GRAV_SPEED = 0.02;
-    
+
     // Encoder Values for the Pivot
-    public static final double PIVOT_MAX = -(Math.PI/2)-0.02;
+    public static final double PIVOT_MAX = -(Math.PI / 2) - 0.02;
     public static final double PIVOT_MIN = 0.08;
     public static final double PIVOT_CLOSE_SCORE = -0.1; // -0.25
     public static final double PIVOT_FAR_SCORE = -0.4; // -0.55
-    public static final double PIVOT_AMP_GOAL = -(Math.PI/2)-0.02;
+    public static final double PIVOT_AMP_GOAL = -(Math.PI / 2) - 0.02;
     public static final double PIVOT_TRAP_SCORE = -0.15;
     public static final double PIVOT_INTAKE_THRESHOLD = 0.15;
     public static final double PIVOT_SHOOTER_THRESHOLD = 0.1;
     public static final double PIVOT_INTAKE_THRESH = 0.2;
-    
+
     // Others
     public static final double PIVOT_MAX_VEL = 4;
     public static final double PIVOT_MAX_ACCEL = 20;
-    public static final double PIVOT_WEIGHT = 9.55; 
+    public static final double PIVOT_WEIGHT = 9.55;
     public static final double MOTOR_ZERO_SPEED = 0;
     public static final int MOTOR_CURRENT_LIMIT = 40;
-    
   }
 
   public static final class SensorConstants {
-    
+
     public static final int sensorPort1 = 0;
     public static final double sensorThreshold = 350;
-
   }
 
   public static final class PIDConstants {
@@ -105,17 +96,15 @@ public final class Constants {
     public static final double PIVOT_kG = 0.25;
     public static final double PIVOT_kV = 0.25;
     public static final double PIVOT_kA = 0.01;
-    
   }
 
   public static final class TimeConstants {
-    
+
     // Timers
     public static final double SpeakerFeed = 2;
     public static final double SpeakerEnd = 2.7;
     public static final double AmpFeed = 1.35;
     public static final double AmpEnd = 2;
-
   }
 
   public static final class VisionConstants {
@@ -125,8 +114,7 @@ public final class Constants {
     public static final double threshold = 0.5;
 
     public static final double tag7X = -8.308975;
-    public static final double tag7Y =  1.442593;
-
+    public static final double tag7Y = 1.442593;
   }
 
   public static final class DriveConstants {
@@ -144,11 +132,12 @@ public final class Constants {
     // Distance between centers of right and left wheels on robot
     public static final double kWheelBase = Units.inchesToMeters(26.5);
     // Distance between front and back wheels on robot
-    public static final SwerveDriveKinematics kDriveKinematics = new SwerveDriveKinematics(
-        new Translation2d(kWheelBase / 2, kTrackWidth / 2),
-        new Translation2d(kWheelBase / 2, -kTrackWidth / 2),
-        new Translation2d(-kWheelBase / 2, kTrackWidth / 2),
-        new Translation2d(-kWheelBase / 2, -kTrackWidth / 2));
+    public static final SwerveDriveKinematics kDriveKinematics =
+        new SwerveDriveKinematics(
+            new Translation2d(kWheelBase / 2, kTrackWidth / 2),
+            new Translation2d(kWheelBase / 2, -kTrackWidth / 2),
+            new Translation2d(-kWheelBase / 2, kTrackWidth / 2),
+            new Translation2d(-kWheelBase / 2, -kTrackWidth / 2));
 
     // Angular offsets of the modules relative to the chassis in radians
     public static final double kFrontLeftChassisAngularOffset = -Math.PI / 2;
@@ -184,21 +173,25 @@ public final class Constants {
     public static final double kDrivingMotorFreeSpeedRps = NeoMotorConstants.kFreeSpeedRpm / 60;
     public static final double kWheelDiameterMeters = 0.0762;
     public static final double kWheelCircumferenceMeters = kWheelDiameterMeters * Math.PI;
-    // 45 teeth on the wheel's bevel gear, 22 teeth on the first-stage spur gear, 15 teeth on the bevel pinion
-    public static final double kDrivingMotorReduction = (45.0 * 22) / (kDrivingMotorPinionTeeth * 15);
-    public static final double kDriveWheelFreeSpeedRps = (kDrivingMotorFreeSpeedRps * kWheelCircumferenceMeters)
-        / kDrivingMotorReduction;
+    // 45 teeth on the wheel's bevel gear, 22 teeth on the first-stage spur gear, 15 teeth on the
+    // bevel pinion
+    public static final double kDrivingMotorReduction =
+        (45.0 * 22) / (kDrivingMotorPinionTeeth * 15);
+    public static final double kDriveWheelFreeSpeedRps =
+        (kDrivingMotorFreeSpeedRps * kWheelCircumferenceMeters) / kDrivingMotorReduction;
 
-    public static final double kDrivingEncoderPositionFactor = (kWheelDiameterMeters * Math.PI)
-        / kDrivingMotorReduction; // meters
-    public static final double kDrivingEncoderVelocityFactor = ((kWheelDiameterMeters * Math.PI)
-        / kDrivingMotorReduction) / 60.0; // meters per second
+    public static final double kDrivingEncoderPositionFactor =
+        (kWheelDiameterMeters * Math.PI) / kDrivingMotorReduction; // meters
+    public static final double kDrivingEncoderVelocityFactor =
+        ((kWheelDiameterMeters * Math.PI) / kDrivingMotorReduction) / 60.0; // meters per second
 
     public static final double kTurningEncoderPositionFactor = (2 * Math.PI); // radians
-    public static final double kTurningEncoderVelocityFactor = (2 * Math.PI) / 60.0; // radians per second
+    public static final double kTurningEncoderVelocityFactor =
+        (2 * Math.PI) / 60.0; // radians per second
 
     public static final double kTurningEncoderPositionPIDMinInput = 0; // radians
-    public static final double kTurningEncoderPositionPIDMaxInput = kTurningEncoderPositionFactor; // radians
+    public static final double kTurningEncoderPositionPIDMaxInput =
+        kTurningEncoderPositionFactor; // radians
 
     public static final double kDrivingP = 0.04;
     public static final double kDrivingI = 0;
@@ -250,8 +243,9 @@ public final class Constants {
     public static final HashMap<String, Command> AUTO_EVENT_MAP = new HashMap<>();
 
     // Constraint for the motion profiled robot angle controller
-    public static final TrapezoidProfile.Constraints kThetaControllerConstraints = new TrapezoidProfile.Constraints(
-        kMaxAngularSpeedRadiansPerSecond, kMaxAngularSpeedRadiansPerSecondSquared);
+    public static final TrapezoidProfile.Constraints kThetaControllerConstraints =
+        new TrapezoidProfile.Constraints(
+            kMaxAngularSpeedRadiansPerSecond, kMaxAngularSpeedRadiansPerSecondSquared);
   }
 
   public static final class NeoMotorConstants {

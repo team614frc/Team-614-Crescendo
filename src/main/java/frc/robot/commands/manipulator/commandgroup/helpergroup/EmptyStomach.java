@@ -19,9 +19,8 @@ public class EmptyStomach extends ParallelCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new SimpleFeed(ManipulatorConstants.PUKE_SPEED),
-      new SimpleIntake(ManipulatorConstants.PUKE_SPEED),
-      new Shooter(ManipulatorConstants.SCORE_AMP_SPEED)
-    );
+        new SimpleFeed(ManipulatorConstants.PUKE_SPEED),
+        new SimpleIntake(ManipulatorConstants.PUKE_SPEED),
+        new Shooter(ManipulatorConstants.SCORE_AMP_SPEED));
   }
 }

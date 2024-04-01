@@ -11,6 +11,7 @@ import frc.robot.RobotContainer;
 public class AlignScore extends Command {
   /** Creates a new AlignScore. */
   private double angle, target, turn;
+
   private boolean isTarget;
 
   public AlignScore() {
@@ -31,8 +32,10 @@ public class AlignScore extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    angle = isTarget ? RobotContainer.swerveDrive.getDisplacementToTarget(target)
-        : RobotContainer.limeSubsystem.getAngleOffset();
+    angle =
+        isTarget
+            ? RobotContainer.swerveDrive.getDisplacementToTarget(target)
+            : RobotContainer.limeSubsystem.getAngleOffset();
 
     turn = -VisionConstants.simpleAlignYInput * angle / 100.0;
 
@@ -44,24 +47,22 @@ public class AlignScore extends Command {
 
     if (Math.abs(angle) > VisionConstants.threshold) {
       RobotContainer.swerveDrive.drive(
-          RobotContainer.getDriverLeftY(),
-          RobotContainer.getDriverLeftX(),
-          turn,
-          true, true);
+          RobotContainer.getDriverLeftY(), RobotContainer.getDriverLeftX(), turn, true, true);
     } else {
       RobotContainer.swerveDrive.drive(
           RobotContainer.getDriverLeftY(),
           RobotContainer.getDriverLeftX(),
           RobotContainer.getDriverRightX(),
-          true, true);
+          true,
+          true);
     }
   }
+
   // insert code to adjust robot angle here
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
-  }
+  public void end(boolean interrupted) {}
 
   // Returns true when the command should end.
   @Override

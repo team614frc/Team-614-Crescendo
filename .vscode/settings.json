@@ -14,10 +14,6 @@
     "**/.factorypath": true,
     "**/*~": true
   },
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": true,
-  },
-  "editor.formatOnSave": true,
   "java.test.config": [
     {
       "name": "WPIlibUnitTests",

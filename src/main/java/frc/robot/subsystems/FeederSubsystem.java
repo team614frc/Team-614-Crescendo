@@ -7,7 +7,6 @@ package frc.robot.subsystems;
 import com.playingwithfusion.TimeOfFlight;
 import com.revrobotics.CANSparkFlex;
 import com.revrobotics.CANSparkLowLevel.MotorType;
-
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.SensorConstants;
@@ -15,6 +14,7 @@ import frc.robot.Constants.SensorConstants;
 public class FeederSubsystem extends SubsystemBase {
   /** Creates a new FeederSubsystem. */
   private TimeOfFlight sensor;
+
   private CANSparkFlex feedMotor;
 
   public FeederSubsystem() {
@@ -26,8 +26,7 @@ public class FeederSubsystem extends SubsystemBase {
     feedMotor.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
     feedMotor.setInverted(true);
     feedMotor.setIdleMode(CANSparkFlex.IdleMode.kBrake);
-    feedMotor.burnFlash(); 
-
+    feedMotor.burnFlash();
   }
 
   @Override
@@ -39,12 +38,11 @@ public class FeederSubsystem extends SubsystemBase {
     return sensor.getRange();
   }
 
-  public void setFeed (double feedSpeed) {
+  public void setFeed(double feedSpeed) {
     feedMotor.set(-feedSpeed);
   }
 
   public boolean isSensorTripped() {
     return getSensorRange() < SensorConstants.sensorThreshold;
   }
-
 }

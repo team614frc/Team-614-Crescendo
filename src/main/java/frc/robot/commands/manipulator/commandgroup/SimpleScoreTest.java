@@ -17,10 +17,6 @@ public class SimpleScoreTest extends SequentialCommandGroup {
   public SimpleScoreTest() {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(
-      new ShootPrep(),
-      new ShooterFeed(),
-      new ScoreReset()
-    );
+    addCommands(new ShootPrep(), new ShooterFeed(), new ScoreReset());
   }
 }

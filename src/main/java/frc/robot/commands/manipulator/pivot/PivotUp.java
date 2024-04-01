@@ -4,22 +4,18 @@
 
 package frc.robot.commands.manipulator.pivot;
 
-import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.RobotContainer;
-import frc.robot.Constants.ManipulatorConstants;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj2.command.Command;
+import frc.robot.Constants.ManipulatorConstants;
+import frc.robot.RobotContainer;
 
 /**
- * The Pivot Command uses the PivotSubsystem in order
- * to set a specific value to the Pivot for the intake
- * of the robot
- * -
- * 
- * @param pivotSpeed,RobotContainer.pivotSubsystem takes in the speed that the
- *                                                 pivot is supposed to be set
- *                                                 to
+ * The Pivot Command uses the PivotSubsystem in order to set a specific value to the Pivot for the
+ * intake of the robot -
+ *
+ * @param pivotSpeed,RobotContainer.pivotSubsystem takes in the speed that the pivot is supposed to
+ *     be set to
  */
-
 public class PivotUp extends Command {
 
   private double pivotSpeed;
@@ -41,10 +37,11 @@ public class PivotUp extends Command {
   @Override
   public void execute() {
 
-    if (Math.abs(RobotContainer.pivotSubsystem.getPivotLEncoder()) < ManipulatorConstants.PIVOT_MAX) { 
+    if (Math.abs(RobotContainer.pivotSubsystem.getPivotLEncoder())
+        < ManipulatorConstants.PIVOT_MAX) {
       RobotContainer.pivotSubsystem.set(pivotSpeed);
-      SmartDashboard.putNumber("Encoder Position in Command",
-      RobotContainer.pivotSubsystem.getPivotLEncoder());
+      SmartDashboard.putNumber(
+          "Encoder Position in Command", RobotContainer.pivotSubsystem.getPivotLEncoder());
     } else {
       RobotContainer.pivotSubsystem.set(ManipulatorConstants.MOTOR_ZERO_SPEED);
     }

@@ -18,8 +18,10 @@ public class AutoQuickShot extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new ShootPrep(ManipulatorConstants.PIVOT_CLOSE_SCORE, shooterSpeed, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD),
-      new ShooterFeed()
-    );
+        new ShootPrep(
+            ManipulatorConstants.PIVOT_CLOSE_SCORE,
+            shooterSpeed,
+            ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD),
+        new ShooterFeed());
   }
 }

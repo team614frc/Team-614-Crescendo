@@ -6,35 +6,34 @@ package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkFlex;
 import com.revrobotics.CANSparkLowLevel.MotorType;
-import frc.robot.Constants.ManipulatorConstants;
-import frc.robot.Constants.PIDConstants;
 import edu.wpi.first.math.controller.ArmFeedforward;
 import edu.wpi.first.math.controller.ProfiledPIDController;
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.ProfiledPIDSubsystem;
+import frc.robot.Constants.ManipulatorConstants;
+import frc.robot.Constants.PIDConstants;
 
 /**
- * The PivotSubsystem has the motor objects for the motors of the
- * Pivot on the robot. It also sets them a value based on the input
- * received from a command
- * - 
- * @param pivotSpeed Variable represents the speed passed from a command
- * that pivot motors should be set to
+ * The PivotSubsystem has the motor objects for the motors of the Pivot on the robot. It also sets
+ * them a value based on the input received from a command -
+ *
+ * @param pivotSpeed Variable represents the speed passed from a command that pivot motors should be
+ *     set to
  * @returns pivotPosition through the getPosition()
  */
-
 public class PivotSubsystem extends ProfiledPIDSubsystem {
   /** Creates a new PivotSubsystem. */
-
   private CANSparkFlex pivotMotorR;
+
   private CANSparkFlex pivotMotorL;
 
-  private ArmFeedforward feedforward = new ArmFeedforward(
-    PIDConstants.PIVOT_kS,
-    PIDConstants.PIVOT_kG,
-    PIDConstants.PIVOT_kV,
-    PIDConstants.PIVOT_kA);
+  private ArmFeedforward feedforward =
+      new ArmFeedforward(
+          PIDConstants.PIVOT_kS,
+          PIDConstants.PIVOT_kG,
+          PIDConstants.PIVOT_kV,
+          PIDConstants.PIVOT_kA);
 
   /** Creates a new PivotSubsystem. */
   public PivotSubsystem() {
@@ -44,8 +43,7 @@ public class PivotSubsystem extends ProfiledPIDSubsystem {
             PIDConstants.PIVOT_kI,
             PIDConstants.PIVOT_kD,
             new TrapezoidProfile.Constraints(
-              ManipulatorConstants.PIVOT_MAX_VEL, 
-              ManipulatorConstants.PIVOT_MAX_ACCEL)));
+                ManipulatorConstants.PIVOT_MAX_VEL, ManipulatorConstants.PIVOT_MAX_ACCEL)));
 
     pivotMotorR = new CANSparkFlex(ManipulatorConstants.PIVOT_MOTOR_RIGHT, MotorType.kBrushless);
     // pivotMotorR.restoreFactoryDefaults();
@@ -84,16 +82,16 @@ public class PivotSubsystem extends ProfiledPIDSubsystem {
   }
 
   public double getEncoderinDegrees() {
-    double val = 180.0/360.0;  // 7168 ticks per rev, 180:1 gear ratio
-    return (getPivotLEncoder()/val);
+    double val = 180.0 / 360.0; // 7168 ticks per rev, 180:1 gear ratio
+    return (getPivotLEncoder() / val);
   }
 
   public double getEncoderinRadians() {
-    return (getEncoderinDegrees()*(Math.PI/180.0));
+    return (getEncoderinDegrees() * (Math.PI / 180.0));
   }
 
   public boolean atGoal(double goal, double threshold) {
-    return Math.abs(getMeasurement() - goal) < threshold; 
+    return Math.abs(getMeasurement() - goal) < threshold;
   }
 
   public void set(double speed) {
