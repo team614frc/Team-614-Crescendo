@@ -8,12 +8,13 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.VisionConstants;
 import frc.robot.RobotContainer;
 
-/** Creates a new AprilTagAlign. */
-public class AprilTagAlign extends Command {
+/** Creates a new AlignToTrap. */
+
+public class AlignToTrap extends Command {
 
   private double angle, turn;
 
-  public AprilTagAlign() {
+  public AlignToTrap() {
     addRequirements(RobotContainer.swerveDrive);
   }
 

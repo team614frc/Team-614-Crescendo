@@ -9,13 +9,13 @@ import frc.robot.Constants.VisionConstants;
 import frc.robot.RobotContainer;
 
 /** Creates a new AlignScore. */
-public class AlignScore extends Command {
+public class AlignToAngle extends Command {
 
-  private double angle, target, turn, correctAngle;
-  private boolean isTarget;
+  private double angle, target, turn;
 
-  public AlignScore(double target) {
+  public AlignToAngle(double target) {
     addRequirements(RobotContainer.swerveDrive);
+    this.target = target;
   }
 
   // Called when the command is initially scheduled.
