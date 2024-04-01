@@ -15,7 +15,7 @@ import frc.robot.Constants.ManipulatorConstants;
 
 public class ShooterSubsystem extends PIDSubsystem {
   /** Creates a new ShooterSubsystem. */
-  
+
   CANSparkFlex shooterMotorR;
   CANSparkFlex shooterMotorL;
 
@@ -30,7 +30,6 @@ public class ShooterSubsystem extends PIDSubsystem {
     shooterMotorL.setInverted(true);
     shooterMotorL.setIdleMode(CANSparkFlex.IdleMode.kCoast);
     shooterMotorL.burnFlash();
-
 
     shooterMotorR = new CANSparkFlex(ManipulatorConstants.SHOOTER_MOTOR_RIGHT, MotorType.kBrushless);
     // shooterMotorR.restoreFactoryDefaults();
