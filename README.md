@@ -5,11 +5,6 @@
 2. `rm -rf /home/lvuser/deploy`
 3. Redeploy
 
-## Format Files
-```
-./gradlew spotlessApply
-```
-
 ## Autonomous Documentation
 Each auto is sorted by the side of the subwoofer that our robot will start on.
 Remember to check that your driver station is set to the correct alliance when enabling auto, as using the wrong alliance will flip the auto. Every auto also fires the preloaded shot immediately.

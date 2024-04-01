@@ -8,6 +8,7 @@ import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj.DataLogManager;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -18,14 +19,16 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.drivetrain.ResetRobotHeading;
-import frc.robot.commands.drivetrain.vision.AlignScore;
+import frc.robot.commands.drivetrain.vision.AlignToAngle;
+import frc.robot.commands.drivetrain.vision.AlignToSpeaker;
 import frc.robot.commands.manipulator.commandgroup.AutoAlignScore;
 import frc.robot.commands.manipulator.commandgroup.AutoQuickShot;
 import frc.robot.commands.manipulator.commandgroup.AutoScore;
 import frc.robot.commands.manipulator.commandgroup.IntakeNote;
 import frc.robot.commands.manipulator.commandgroup.Puke;
+import frc.robot.commands.manipulator.commandgroup.ScoreTrap;
+import frc.robot.commands.manipulator.commandgroup.SimpleScoreAdjust;
 import frc.robot.commands.manipulator.commandgroup.SimpleScoreNote;
-import frc.robot.commands.manipulator.commandgroup.SimpleScoreTest;
 import frc.robot.commands.manipulator.commandgroup.helpergroup.ResetWheels;
 import frc.robot.commands.manipulator.commandgroup.helpergroup.ScoreReset;
 import frc.robot.commands.manipulator.commandgroup.helpergroup.ShootPrep;
@@ -35,6 +38,7 @@ import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.FeederSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.LEDSubsystem;
+import frc.robot.subsystems.LeafBlowerSubsytem;
 import frc.robot.subsystems.LimelightSubsystem;
 import frc.robot.subsystems.PivotSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
@@ -54,12 +58,16 @@ public class RobotContainer {
   public static final ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
   public static final PivotSubsystem pivotSubsystem = new PivotSubsystem();
   public static final LimelightSubsystem limeSubsystem = new LimelightSubsystem();
+  public static final LeafBlowerSubsytem leafBlowerSubsystem = new LeafBlowerSubsytem();
   public static final LEDSubsystem ledSubsystem = new LEDSubsystem();
+
   static CommandXboxController m_driverController =
       new CommandXboxController(OIConstants.kDriverControllerPort);
   static CommandXboxController m_coDriverController =
       new CommandXboxController(OIConstants.kCoDriverControllerPort);
+
   private final SendableChooser<Command> autoChooser;
+
   private final Command simpleScoreAmp =
       new SimpleScoreNote(
           ManipulatorConstants.PIVOT_AMP_GOAL,
@@ -88,6 +96,8 @@ public class RobotContainer {
   private final Command armUp =
       new PivotPID(
           ManipulatorConstants.PIVOT_AMP_GOAL, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
+
+  private static DriverStation.Alliance alliance;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -131,6 +141,14 @@ public class RobotContainer {
     return m_coDriverController;
   }
 
+  public static void setAlliance(DriverStation.Alliance color) {
+    alliance = color;
+  }
+
+  public static boolean isAllianceRed() {
+    return alliance == DriverStation.Alliance.Red;
+  }
+
   /**
    * Use this method to define your button->command mappings. Buttons can be created by
    * instantiating a {@link edu.wpi.first.wpilibj.GenericHID} or one of its subclasses ({@link
@@ -167,9 +185,10 @@ public class RobotContainer {
     m_driverController.leftBumper().onTrue(armUp);
     m_driverController.rightBumper().whileTrue(new PivotDown(0.5, -0.1));
     m_driverController.start().whileTrue(new ResetRobotHeading());
-    m_driverController.x().whileTrue(new AlignScore(90));
-    m_driverController.b().whileTrue(new AlignScore(-90));
-    m_driverController.a().whileTrue(new AlignScore());
+    m_driverController.x().whileTrue(new AlignToAngle(90));
+    m_driverController.y().whileTrue(new ScoreTrap());
+    m_driverController.b().whileTrue(new AlignToAngle(-90));
+    m_driverController.a().whileTrue(new AlignToSpeaker());
 
     m_coDriverController.rightTrigger().onTrue(simpleScoreAmp);
     m_coDriverController.rightBumper().onTrue(simpleScoreFar);
@@ -178,7 +197,7 @@ public class RobotContainer {
     m_coDriverController.a().whileTrue(prepClose);
     m_coDriverController.x().whileTrue(prepAmp);
     m_coDriverController.b().whileTrue(new Puke()).onFalse(new ResetWheels());
-    m_coDriverController.leftTrigger().onTrue(new SimpleScoreTest());
+    m_coDriverController.leftTrigger().onTrue(new SimpleScoreAdjust());
   }
 
   /**
