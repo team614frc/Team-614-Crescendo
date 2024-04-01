@@ -18,7 +18,7 @@ public class LeafBlowerSubsytem extends SubsystemBase {
         leafBlowerMotor = new CANSparkMax(ManipulatorConstants.LEAF_BLOWER_MOTOR, MotorType.kBrushed);
         leafBlowerMotor.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
         leafBlowerMotor.setInverted(false);
-        leafBlowerMotor.setIdleMode(CANSparkMax.IdleMode.kBrake);
+        leafBlowerMotor.setIdleMode(CANSparkMax.IdleMode.kCoast);
         leafBlowerMotor.burnFlash();
 
     }
