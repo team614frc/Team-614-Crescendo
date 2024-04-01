@@ -9,7 +9,6 @@ import frc.robot.Constants.VisionConstants;
 import frc.robot.RobotContainer;
 
 /** Creates a new AlignToTrap. */
-
 public class AlignToTrap extends Command {
 
   private double angle, turn;
@@ -38,10 +37,7 @@ public class AlignToTrap extends Command {
     }
 
     RobotContainer.swerveDrive.drive(
-        RobotContainer.getDriverLeftY(),
-        RobotContainer.getDriverLeftX(),
-        turn,
-        true, true);
+        RobotContainer.getDriverLeftY(), RobotContainer.getDriverLeftX(), turn, true, true);
   }
 
   // Called once the command ends or is interrupted.

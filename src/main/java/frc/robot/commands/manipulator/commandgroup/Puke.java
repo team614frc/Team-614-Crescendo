@@ -18,8 +18,8 @@ public class Puke extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new PivotPID(ManipulatorConstants.PIVOT_FAR_SCORE, ManipulatorConstants.PIVOT_INTAKE_THRESHOLD),
-      new EmptyStomach()
-    );
+        new PivotPID(
+            ManipulatorConstants.PIVOT_FAR_SCORE, ManipulatorConstants.PIVOT_INTAKE_THRESHOLD),
+        new EmptyStomach());
   }
 }

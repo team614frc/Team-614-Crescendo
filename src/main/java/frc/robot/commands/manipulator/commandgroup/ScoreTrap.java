@@ -11,13 +11,13 @@ import frc.robot.commands.manipulator.shooter.Blow;
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
 public class ScoreTrap extends ParallelCommandGroup {
-    /** Creates a new PukeHelper. */
-    public ScoreTrap() {
-        // Add your commands in the addCommands() call, e.g.
-        // addCommands(new FooCommand(), new BarCommand());
-        addCommands(
-                new SimpleScoreTest(), // new
-                                       // SimpleScoreNote(ManipulatorConstants.PIVOT_TRAP_SCORE,ManipulatorConstants.TRAP_SPEED,ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD),
-                new Blow());
-    }
+  /** Creates a new PukeHelper. */
+  public ScoreTrap() {
+    // Add your commands in the addCommands() call, e.g.
+    // addCommands(new FooCommand(), new BarCommand());
+    addCommands(
+        new SimpleScoreTest(), // new
+        // SimpleScoreNote(ManipulatorConstants.PIVOT_TRAP_SCORE,ManipulatorConstants.TRAP_SPEED,ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD),
+        new Blow());
+  }
 }

@@ -20,8 +20,7 @@ public class AlignToAngle extends Command {
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {
-  }
+  public void initialize() {}
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
@@ -31,24 +30,22 @@ public class AlignToAngle extends Command {
 
     if (Math.abs(angle) > VisionConstants.ALIGN_THRESHOLD) {
       RobotContainer.swerveDrive.drive(
-          RobotContainer.getDriverLeftY(),
-          RobotContainer.getDriverLeftX(),
-          turn,
-          true, true);
+          RobotContainer.getDriverLeftY(), RobotContainer.getDriverLeftX(), turn, true, true);
     } else {
       RobotContainer.swerveDrive.drive(
           RobotContainer.getDriverLeftY(),
           RobotContainer.getDriverLeftX(),
           RobotContainer.getDriverRightX(),
-          true, true);
+          true,
+          true);
     }
   }
+
   // insert code to adjust robot angle here
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {
-  }
+  public void end(boolean interrupted) {}
 
   // Returns true when the command should end.
   @Override

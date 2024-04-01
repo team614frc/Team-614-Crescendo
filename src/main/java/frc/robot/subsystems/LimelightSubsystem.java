@@ -16,6 +16,7 @@ import frc.robot.RobotContainer;
 public class LimelightSubsystem extends SubsystemBase {
   /** Creates a new LimelightSubsystem. */
   private NetworkTable limelightTable;
+
   private double x, y, area, angle;
   private Pose2d robotPose;
   private InterpolatingDoubleTreeMap angleMap = new InterpolatingDoubleTreeMap();
@@ -61,11 +62,10 @@ public class LimelightSubsystem extends SubsystemBase {
     return x;
   }
 
-  public double getTargetAngle(double Y, double X) { // Gets the target angle from where the robot in relation to
-                                                     // starting heading
-    angle = Math.atan2(
-        robotPose.getY() - Y,
-        robotPose.getX() - X);
+  public double getTargetAngle(
+      double Y, double X) { // Gets the target angle from where the robot in relation to
+    // starting heading
+    angle = Math.atan2(robotPose.getY() - Y, robotPose.getX() - X);
     return angle;
   }
 

@@ -10,34 +10,33 @@ import frc.robot.RobotContainer;
 import frc.robot.subsystems.LeafBlowerSubsytem;
 
 public class Blow extends Command {
-    private final LeafBlowerSubsytem blower;
+  private final LeafBlowerSubsytem blower;
 
-    public Blow() {
-        // Use addRequirements() here to declare subsystem dependencies.
-        addRequirements(RobotContainer.leafBlowerSubsystem);
-        blower = RobotContainer.leafBlowerSubsystem;
-    }
+  public Blow() {
+    // Use addRequirements() here to declare subsystem dependencies.
+    addRequirements(RobotContainer.leafBlowerSubsystem);
+    blower = RobotContainer.leafBlowerSubsystem;
+  }
 
-    // Called when the command is initially scheduled.
-    @Override
-    public void initialize() {
-    }
+  // Called when the command is initially scheduled.
+  @Override
+  public void initialize() {}
 
-    // Called every time the scheduler runs while the command is scheduled.
-    @Override
-    public void execute() {
-        blower.blow(ManipulatorConstants.LEAF_BLOWER_POWER);
-    }
+  // Called every time the scheduler runs while the command is scheduled.
+  @Override
+  public void execute() {
+    blower.blow(ManipulatorConstants.LEAF_BLOWER_POWER);
+  }
 
-    // Called once the command ends or is interrupted.
-    @Override
-    public void end(boolean interrupted) {
-        blower.blow(0);
-    }
+  // Called once the command ends or is interrupted.
+  @Override
+  public void end(boolean interrupted) {
+    blower.blow(0);
+  }
 
-    // Returns true when the command should end.
-    @Override
-    public boolean isFinished() {
-        return false;
-    }
+  // Returns true when the command should end.
+  @Override
+  public boolean isFinished() {
+    return false;
+  }
 }

@@ -5,20 +5,19 @@
 package frc.robot.commands.manipulator.intake;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.RobotContainer;
 import frc.robot.Constants.ManipulatorConstants;
+import frc.robot.RobotContainer;
 
 /**
- * The Intake Command simply uses the IntakeSubsystem
- * to set the Intake rollers to a specific value.
- * Also sets the intake to a rest speed in order to hold the game piece
- * when there is no input on the intake.
- * -
- * @param intakeSpeed,RobotContainer.intakeSubsystem this is the value that the intake will get set to
+ * The Intake Command simply uses the IntakeSubsystem to set the Intake rollers to a specific value.
+ * Also sets the intake to a rest speed in order to hold the game piece when there is no input on
+ * the intake. -
+ *
+ * @param intakeSpeed,RobotContainer.intakeSubsystem this is the value that the intake will get set
+ *     to
  */
-
 public class SimpleIntake extends Command {
-  
+
   public double intakeSpeed;
 
   /** Creates a new Intake. */
@@ -36,7 +35,7 @@ public class SimpleIntake extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-      RobotContainer.intakeSubsystem.setIntake(intakeSpeed);
+    RobotContainer.intakeSubsystem.setIntake(intakeSpeed);
   }
 
   // Called once the command ends or is interrupted.

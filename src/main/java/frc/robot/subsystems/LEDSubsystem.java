@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class LEDSubsystem extends SubsystemBase {
   /** Creates a new LEDSubsystem. */
   private AddressableLED m_led;
+
   private AddressableLEDBuffer m_ledBuffer;
   private int rainbowHue;
 
@@ -38,7 +39,7 @@ public class LEDSubsystem extends SubsystemBase {
     m_led.setData(m_ledBuffer);
   }
 
-    public void turnGreen() {
+  public void turnGreen() {
     for (int i = 0; i < m_ledBuffer.getLength(); i++) {
       m_ledBuffer.setRGB(i, 60, 255, 0);
     }
