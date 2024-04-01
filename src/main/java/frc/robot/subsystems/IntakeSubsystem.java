@@ -4,25 +4,21 @@
 
 package frc.robot.subsystems;
 
-import com.revrobotics.CANSparkLowLevel.MotorType;
 import com.revrobotics.CANSparkFlex;
+import com.revrobotics.CANSparkLowLevel.MotorType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.ManipulatorConstants;
 
-
 /**
- * The IntakeSubsystem contains all the motors for the intake
- * of the robot and sets them a value that is passed to it
- * using a command
- * -
- * @param intakeSpeed Variable indicates the speed passed by the commans
- * that the intake motors should be set to
+ * The IntakeSubsystem contains all the motors for the intake of the robot and sets them a value
+ * that is passed to it using a command -
+ *
+ * @param intakeSpeed Variable indicates the speed passed by the commans that the intake motors
+ *     should be set to
  * @returns through the getSpeed() returns the speed that the intake is going at
  */
-
 public class IntakeSubsystem extends SubsystemBase {
   /** Creates a new IntakeSubsystem. */
-  
   private CANSparkFlex intakeMotor;
 
   public IntakeSubsystem() {
@@ -35,7 +31,7 @@ public class IntakeSubsystem extends SubsystemBase {
     intakeMotor.burnFlash();
   }
 
-@Override
+  @Override
   public void periodic() {
     // This method will be called once per scheduler run
   }

@@ -18,8 +18,7 @@ public class ScoreReset extends ParallelCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new Shooter(0),
-      new PivotPID(ManipulatorConstants.PIVOT_MIN, ManipulatorConstants.PIVOT_INTAKE_THRESHOLD)
-    );
+        new Shooter(0),
+        new PivotPID(ManipulatorConstants.PIVOT_MIN, ManipulatorConstants.PIVOT_INTAKE_THRESHOLD));
   }
 }

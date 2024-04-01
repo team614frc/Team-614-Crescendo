@@ -15,6 +15,7 @@ import frc.robot.RobotContainer;
 public class TurnToAngle extends PIDCommand {
   /** Creates a new TurnToAngle. */
   public double turn;
+
   public TurnToAngle(double angle) {
     super(
         // The controller that the command will use
@@ -32,6 +33,7 @@ public class TurnToAngle extends PIDCommand {
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
-    return Math.abs(RobotContainer.swerveDrive.getHeading().getDegrees() - turn) < VisionConstants.threshold;
+    return Math.abs(RobotContainer.swerveDrive.getHeading().getDegrees() - turn)
+        < VisionConstants.threshold;
   }
 }

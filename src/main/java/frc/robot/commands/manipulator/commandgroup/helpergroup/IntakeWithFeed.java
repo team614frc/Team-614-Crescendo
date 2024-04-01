@@ -18,8 +18,6 @@ public class IntakeWithFeed extends ParallelDeadlineGroup {
     // Add the deadline command in the super() call. Add other commands using
     // addCommands().
     super(new IntakeFeed());
-    addCommands(
-      new SimpleIntake(ManipulatorConstants.INTAKE_SPEED)
-    );
+    addCommands(new SimpleIntake(ManipulatorConstants.INTAKE_SPEED));
   }
 }

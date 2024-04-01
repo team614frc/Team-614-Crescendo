@@ -20,7 +20,7 @@ public class Shooter extends Command {
     shooter = RobotContainer.shooterSubsystem;
     test = true;
   }
-  
+
   public Shooter(double shooterSpeed) {
     // Use addRequirements() here to declare subsystem dependencies.
     addRequirements(RobotContainer.shooterSubsystem);

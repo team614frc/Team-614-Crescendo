@@ -17,10 +17,6 @@ public class ResetWheels extends ParallelCommandGroup {
   public ResetWheels() {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(
-      new SimpleFeed(0),
-      new SimpleIntake(0),
-      new Shooter(0)
-    );
+    addCommands(new SimpleFeed(0), new SimpleIntake(0), new Shooter(0));
   }
 }

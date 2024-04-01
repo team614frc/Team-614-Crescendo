@@ -25,7 +25,7 @@ public class IntakeFeed extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    feeder.setFeed(0.4); //0.5
+    feeder.setFeed(0.4); // 0.5
   }
 
   // Called once the command ends or is interrupted.
