@@ -16,7 +16,7 @@ public class LimelightSubsystem extends SubsystemBase {
   private NetworkTable limelightTable;
   private double x, y, area, angle;
   private Pose2d limePose, robotPose;
-  
+
   public LimelightSubsystem() {
     limelightTable = NetworkTableInstance.getDefault().getTable("limelight");
     robotPose = RobotContainer.swerveDrive.getPose();
@@ -25,6 +25,14 @@ public class LimelightSubsystem extends SubsystemBase {
 
   public void enableVisionProcessing() {
     limelightTable.getEntry("camMode").setNumber(0); // Set Limelight to vision processing mode
+  }
+
+  public void setPipeline0() {
+    limelightTable.getEntry("pipeline").setNumber(0); // Set Limelight pipeline to 0
+  }
+
+  public void setPipeline1() {
+    limelightTable.getEntry("pipeline").setNumber(1); // Set Limelight pipeline to 1
   }
 
   public void turnOffLEDs() {
@@ -43,10 +51,11 @@ public class LimelightSubsystem extends SubsystemBase {
     return x;
   }
 
-  public double getTargetAngle(double Y, double X) { // Gets the target angle from where the robot in relation to starting heading
+  public double getTargetAngle(double Y, double X) { // Gets the target angle from where the robot in relation to
+                                                     // starting heading
     angle = Math.atan2(
-      robotPose.getY() - Y,
-      robotPose.getX() - X);
+        robotPose.getY() - Y,
+        robotPose.getX() - X);
     return angle;
   }
 
