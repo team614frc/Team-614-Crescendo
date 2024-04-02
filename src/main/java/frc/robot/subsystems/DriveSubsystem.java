@@ -347,7 +347,7 @@ public class DriveSubsystem extends SubsystemBase {
       smallest = getDisplacementToTarget(315);
     } else if (Math.abs(getDisplacementToTarget(-315)) < Math.abs(smallest)) {
       smallest = getDisplacementToTarget(-315);
-    } 
+    }
     return smallest;
   }
 

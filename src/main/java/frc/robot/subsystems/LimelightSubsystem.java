@@ -74,8 +74,7 @@ public class LimelightSubsystem extends SubsystemBase {
   }
 
   public double estimateDistance() {
-    double test2 = Math.sqrt(Math.pow(aprilTagInfo[2], 2) +
-    Math.pow(aprilTagInfo[0], 2));
+    double test2 = Math.sqrt(Math.pow(aprilTagInfo[2], 2) + Math.pow(aprilTagInfo[0], 2));
     // double test2 = aprilTagInfo[2];
     SmartDashboard.putNumber("limelight range", test2);
     return test2;
