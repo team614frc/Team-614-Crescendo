@@ -16,8 +16,11 @@ public class SimpleScoreTrap extends ParallelCommandGroup {
   public SimpleScoreTrap() {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(new SimpleScoreNote(ManipulatorConstants.PIVOT_TRAP_SCORE,
-          ManipulatorConstants.TRAP_SPEED, ManipulatorConstants.SHOOTER_THRESHOLD),
-          new Blow());
+    addCommands(
+        new SimpleScoreNote(
+            ManipulatorConstants.PIVOT_TRAP_SCORE,
+            ManipulatorConstants.TRAP_SPEED,
+            ManipulatorConstants.SHOOTER_THRESHOLD),
+        new Blow());
   }
 }
