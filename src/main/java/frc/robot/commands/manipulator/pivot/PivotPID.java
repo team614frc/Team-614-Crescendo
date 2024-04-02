@@ -2,12 +2,13 @@ package frc.robot.commands.manipulator.pivot;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.RobotContainer;
 import frc.robot.Constants.ManipulatorConstants;
+import frc.robot.RobotContainer;
 
 public class PivotPID extends Command {
   /** Creates a new TiltPIDCommand. */
   public double setpoint;
+
   public double threshold;
 
   private boolean test = false;

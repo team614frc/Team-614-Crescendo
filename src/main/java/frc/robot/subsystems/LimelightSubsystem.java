@@ -10,6 +10,7 @@ import edu.wpi.first.networktables.NetworkTable;
 import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants.VisionConstants;
 import frc.robot.RobotContainer;
 import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.VisionConstants;
@@ -17,6 +18,7 @@ import frc.robot.Constants.VisionConstants;
 public class LimelightSubsystem extends SubsystemBase {
   /** Creates a new LimelightSubsystem. */
   private NetworkTable limelightTable;
+
   private double x, y, area, angle;
   private Pose2d robotPose;
   private InterpolatingDoubleTreeMap angleMap = new InterpolatingDoubleTreeMap();
@@ -29,13 +31,21 @@ public class LimelightSubsystem extends SubsystemBase {
     aprilTagInfo = limelightTable.getEntry("targetpose_robotspace").getDoubleArray(new double[6]);
 
     // LIST OF VALUES FOR ANGLEMAP GOES HERE
-    angleMap.put(VisionConstants.treeMapMin, VisionConstants.pivotTreeMapAngleMin);
-    angleMap.put(VisionConstants.treeMap1, VisionConstants.pivotTreeMapAngle1);
-    angleMap.put(VisionConstants.treeMapMax, VisionConstants.pivotTreeMapAngleMax);
+    angleMap.put(VisionConstants.TREE_MAP_MIN, VisionConstants.PIVOT_TREE_MAP_ANGLE_MIN);
+    angleMap.put(VisionConstants.TREE_MAP1, VisionConstants.PIVOT_TREE_MAP_ANGLE1);
+    angleMap.put(VisionConstants.TREE_MAP_MAX, VisionConstants.PIVOT_TREE_MAP_ANGLE_MAX);
   }
 
   public void enableVisionProcessing() {
     limelightTable.getEntry("camMode").setNumber(0); // Set Limelight to vision processing mode
+  }
+
+  public void setPipeline0() {
+    limelightTable.getEntry("pipeline").setNumber(0); // Set Limelight pipeline to 0
+  }
+
+  public void setPipeline1() {
+    limelightTable.getEntry("pipeline").setNumber(1); // Set Limelight pipeline to 1
   }
 
   public void turnOffLEDs() {
@@ -54,11 +64,10 @@ public class LimelightSubsystem extends SubsystemBase {
     return x;
   }
 
-  public double getTargetAngle(double Y, double X) { // Gets the target angle from where the robot in relation to
-                                                     // starting heading
-    angle = Math.atan2(
-        robotPose.getY() - Y,
-        robotPose.getX() - X);
+  public double getTargetAngle(
+      double Y, double X) { // Gets the target angle from where the robot in relation to
+    // starting heading
+    angle = Math.atan2(robotPose.getY() - Y, robotPose.getX() - X);
     return angle;
   }
 

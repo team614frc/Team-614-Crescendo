@@ -16,18 +16,12 @@ public class ShootPrep extends ParallelCommandGroup {
   public ShootPrep(double pivotGoal, double shooterSpeed, double threshold) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(
-      new PivotPID(pivotGoal, threshold),
-      new Shooter(shooterSpeed)
-    );
-  } 
+    addCommands(new PivotPID(pivotGoal, threshold), new Shooter(shooterSpeed));
+  }
 
   public ShootPrep(double threshold) {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
-    addCommands(
-      new PivotPID(threshold),
-      new Shooter()
-    );
-  } 
+    addCommands(new PivotPID(threshold), new Shooter());
+  }
 }

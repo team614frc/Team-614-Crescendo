@@ -1,4 +1,3 @@
-
 // Copyright (c) FIRST and other WPILib contributors.
 // Open Source Software; you can modify and/or share it under the terms of
 // the WPILib BSD license file in the root directory of this project.
@@ -12,7 +11,7 @@ import frc.robot.subsystems.FeederSubsystem;
 
 public class ShooterFeed extends Command {
   /** Creates a new shootFeed. */
-    private final FeederSubsystem feeder;
+  private final FeederSubsystem feeder;
 
   public ShooterFeed() {
     addRequirements(RobotContainer.feederSubsystem);

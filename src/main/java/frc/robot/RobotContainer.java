@@ -6,11 +6,10 @@ package frc.robot;
 
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
-import com.pathplanner.lib.util.PIDConstants;
-
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.DataLogManager;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -21,25 +20,29 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.drivetrain.ResetRobotHeading;
-import frc.robot.commands.drivetrain.vision.AlignScore;
+import frc.robot.commands.drivetrain.vision.AlignToAngle;
+import frc.robot.commands.drivetrain.vision.AlignToSpeaker;
+import frc.robot.commands.drivetrain.vision.AlignToTrap;
 import frc.robot.commands.manipulator.commandgroup.AutoAimShot;
 import frc.robot.commands.manipulator.commandgroup.AutoAlignScore;
 import frc.robot.commands.manipulator.commandgroup.AutoQuickShot;
 import frc.robot.commands.manipulator.commandgroup.AutoScore;
 import frc.robot.commands.manipulator.commandgroup.IntakeNote;
 import frc.robot.commands.manipulator.commandgroup.Puke;
+import frc.robot.commands.manipulator.commandgroup.ScoreTrap;
 import frc.robot.commands.manipulator.commandgroup.SimpleScoreAdjust;
 import frc.robot.commands.manipulator.commandgroup.SimpleScoreNote;
-import frc.robot.commands.manipulator.commandgroup.SimpleScoreTest;
 import frc.robot.commands.manipulator.commandgroup.helpergroup.ResetWheels;
 import frc.robot.commands.manipulator.commandgroup.helpergroup.ScoreReset;
 import frc.robot.commands.manipulator.commandgroup.helpergroup.ShootPrep;
 import frc.robot.commands.manipulator.pivot.PivotDown;
 import frc.robot.commands.manipulator.pivot.PivotPID;
+import frc.robot.commands.manipulator.shooter.Blow;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.FeederSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
 import frc.robot.subsystems.LEDSubsystem;
+import frc.robot.subsystems.LeafBlowerSubsytem;
 import frc.robot.subsystems.LimelightSubsystem;
 import frc.robot.subsystems.PivotSubsystem;
 import frc.robot.subsystems.ShooterSubsystem;
@@ -53,35 +56,54 @@ import frc.robot.subsystems.ShooterSubsystem;
 
 public class RobotContainer {
   // The robot's subsystems
-  public final static DriveSubsystem swerveDrive = new DriveSubsystem();
-  public final static IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
-  public final static FeederSubsystem feederSubsystem = new FeederSubsystem();
-  public final static ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
-  public final static PivotSubsystem pivotSubsystem = new PivotSubsystem();
-  public final static LimelightSubsystem limeSubsystem = new LimelightSubsystem();
-  public final static LEDSubsystem ledSubsystem = new LEDSubsystem();
+  public static final DriveSubsystem swerveDrive = new DriveSubsystem();
+  public static final IntakeSubsystem intakeSubsystem = new IntakeSubsystem();
+  public static final FeederSubsystem feederSubsystem = new FeederSubsystem();
+  public static final ShooterSubsystem shooterSubsystem = new ShooterSubsystem();
+  public static final PivotSubsystem pivotSubsystem = new PivotSubsystem();
+  public static final LimelightSubsystem limeSubsystem = new LimelightSubsystem();
+  public static final LeafBlowerSubsytem leafBlowerSubsystem = new LeafBlowerSubsytem();
+  public static final LEDSubsystem ledSubsystem = new LEDSubsystem();
 
-  static CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
-  static CommandXboxController m_coDriverController = new CommandXboxController(OIConstants.kCoDriverControllerPort);
+  static CommandXboxController m_driverController =
+      new CommandXboxController(OIConstants.kDriverControllerPort);
+  static CommandXboxController m_coDriverController =
+      new CommandXboxController(OIConstants.kCoDriverControllerPort);
 
   private final SendableChooser<Command> autoChooser;
 
-  private final Command simpleScoreAmp = new SimpleScoreNote(ManipulatorConstants.PIVOT_AMP_GOAL,
-      ManipulatorConstants.SCORE_AMP_SPEED, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
-  private final Command simpleScoreFar = new SimpleScoreNote(ManipulatorConstants.PIVOT_FAR_SCORE,
-      ManipulatorConstants.SCORE_SIMPLE_RPM, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
-  private final Command simpleScoreClose = new SimpleScoreNote(ManipulatorConstants.PIVOT_CLOSE_SCORE,
-      ManipulatorConstants.SCORE_SIMPLE_RPM, ManipulatorConstants.PIVOT_INTAKE_THRESHOLD);
-  private final Command prepClose = new ShootPrep(ManipulatorConstants.PIVOT_CLOSE_SCORE,
-      ManipulatorConstants.SCORE_SIMPLE_RPM, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
-  private final Command prepAmp = new ShootPrep(ManipulatorConstants.PIVOT_AMP_GOAL,
-      ManipulatorConstants.SCORE_AMP_SPEED, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
-  private final Command armUp = new PivotPID(ManipulatorConstants.PIVOT_AMP_GOAL,
-      ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
+  private final Command simpleScoreAmp =
+      new SimpleScoreNote(
+          ManipulatorConstants.PIVOT_AMP_GOAL,
+          ManipulatorConstants.SCORE_AMP_SPEED,
+          ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
+  private final Command simpleScoreFar =
+      new SimpleScoreNote(
+          ManipulatorConstants.PIVOT_FAR_SCORE,
+          ManipulatorConstants.SCORE_SIMPLE_RPM,
+          ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
+  private final Command simpleScoreClose =
+      new SimpleScoreNote(
+          ManipulatorConstants.PIVOT_CLOSE_SCORE,
+          ManipulatorConstants.SCORE_SIMPLE_RPM,
+          ManipulatorConstants.PIVOT_INTAKE_THRESHOLD);
+  private final Command prepClose =
+      new ShootPrep(
+          ManipulatorConstants.PIVOT_CLOSE_SCORE,
+          ManipulatorConstants.SCORE_SIMPLE_RPM,
+          ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
+  private final Command prepAmp =
+      new ShootPrep(
+          ManipulatorConstants.PIVOT_AMP_GOAL,
+          ManipulatorConstants.SCORE_AMP_SPEED,
+          ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
+  private final Command armUp =
+      new PivotPID(
+          ManipulatorConstants.PIVOT_AMP_GOAL, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
 
-  /**
-   * The container for the robot. Contains subsystems, OI devices, and commands.
-   */
+  private static DriverStation.Alliance alliance;
+
+  /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
 
     DataLogManager.start();
@@ -95,7 +117,8 @@ public class RobotContainer {
 
     // Pathplanner Commands for use in auto. Name is what you type into pathplanner,
     // and the commands are "borrowed" from the controller
-    NamedCommands.registerCommand("Score Close", new AutoScore(ManipulatorConstants.PIVOT_CLOSE_SCORE));
+    NamedCommands.registerCommand(
+        "Score Close", new AutoScore(ManipulatorConstants.PIVOT_CLOSE_SCORE));
     NamedCommands.registerCommand("Aimbot", new AutoAlignScore());
     NamedCommands.registerCommand("True Aimbot", new AutoAimShot());
     NamedCommands.registerCommand("Score Far", new AutoScore(ManipulatorConstants.PIVOT_FAR_SCORE));
@@ -106,11 +129,9 @@ public class RobotContainer {
 
     swerveDrive.setDefaultCommand(
         new RunCommand(
-            () -> swerveDrive.drive(
-                getDriverLeftY(),
-                getDriverLeftX(),
-                getDriverRightX(),
-                true, true),
+            () ->
+                swerveDrive.drive(
+                    getDriverLeftY(), getDriverLeftX(), getDriverRightX(), true, true),
             swerveDrive));
     autoChooser = AutoBuilder.buildAutoChooser();
     SmartDashboard.putData(autoChooser);
@@ -124,19 +145,22 @@ public class RobotContainer {
     return m_coDriverController;
   }
 
+  public static void setAlliance(DriverStation.Alliance color) {
+    alliance = color;
+  }
+
+  public static boolean isAllianceRed() {
+    return alliance == DriverStation.Alliance.Red;
+  }
+
   /**
-   * Use this method to define your button->command mappings. Buttons can be
-   * created by
-   * instantiating a {@link edu.wpi.first.wpilibj.GenericHID} or one of its
-   * subclasses ({@link
-   * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then calling
-   * passing it to a
+   * Use this method to define your button->command mappings. Buttons can be created by
+   * instantiating a {@link edu.wpi.first.wpilibj.GenericHID} or one of its subclasses ({@link
+   * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then calling passing it to a
    * {@link JoystickButton}.
    */
-
   public static double getLeftXWithDeadband() {
-    return -MathUtil.applyDeadband(m_driverController.getLeftX(),
-        OIConstants.kDriveDeadband);
+    return -MathUtil.applyDeadband(m_driverController.getLeftX(), OIConstants.kDriveDeadband);
   }
 
   public static double getDriverLeftX() {
@@ -144,8 +168,7 @@ public class RobotContainer {
   }
 
   public static double getLeftYWithDeadband() {
-    return -MathUtil.applyDeadband(m_driverController.getLeftY(),
-        OIConstants.kDriveDeadband);
+    return -MathUtil.applyDeadband(m_driverController.getLeftY(), OIConstants.kDriveDeadband);
   }
 
   public static double getDriverLeftY() {
@@ -153,8 +176,7 @@ public class RobotContainer {
   }
 
   public static double getRightXWithDeadband() {
-    return -MathUtil.applyDeadband(m_driverController.getRightX(),
-        OIConstants.kDriveDeadband);
+    return -MathUtil.applyDeadband(m_driverController.getRightX(), OIConstants.kDriveDeadband);
   }
 
   public static double getDriverRightX() {
@@ -167,10 +189,11 @@ public class RobotContainer {
     m_driverController.leftBumper().onTrue(armUp);
     m_driverController.rightBumper().whileTrue(new PivotDown(0.5, -0.1));
     m_driverController.start().whileTrue(new ResetRobotHeading());
-    m_driverController.x().whileTrue(new AlignScore(90));
-    m_driverController.b().whileTrue(new AlignScore(-90));
-    m_driverController.a().whileTrue(new AlignScore());
-    m_driverController.y().onTrue(new SimpleScoreTest());
+    // m_driverController.start().whileTrue(new Blow());
+    m_driverController.x().whileTrue(new AlignToAngle(90));
+    m_driverController.y().whileTrue(new ScoreTrap());
+    m_driverController.b().whileTrue(new AlignToTrap());
+    m_driverController.a().whileTrue(new AlignToSpeaker());
 
     m_coDriverController.rightTrigger().onTrue(simpleScoreAmp);
     m_coDriverController.rightBumper().onTrue(simpleScoreFar);

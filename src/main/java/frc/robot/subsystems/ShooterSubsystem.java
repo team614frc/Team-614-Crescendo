@@ -6,7 +6,6 @@ package frc.robot.subsystems;
 
 import com.revrobotics.CANSparkFlex;
 import com.revrobotics.CANSparkLowLevel.MotorType;
-
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.PIDSubsystem;
@@ -15,8 +14,8 @@ import frc.robot.Constants.ManipulatorConstants;
 
 public class ShooterSubsystem extends PIDSubsystem {
   /** Creates a new ShooterSubsystem. */
-  
   CANSparkFlex shooterMotorR;
+
   CANSparkFlex shooterMotorL;
 
   public ShooterSubsystem() {
@@ -31,8 +30,8 @@ public class ShooterSubsystem extends PIDSubsystem {
     shooterMotorL.setIdleMode(CANSparkFlex.IdleMode.kCoast);
     shooterMotorL.burnFlash();
 
-
-    shooterMotorR = new CANSparkFlex(ManipulatorConstants.SHOOTER_MOTOR_RIGHT, MotorType.kBrushless);
+    shooterMotorR =
+        new CANSparkFlex(ManipulatorConstants.SHOOTER_MOTOR_RIGHT, MotorType.kBrushless);
     // shooterMotorR.restoreFactoryDefaults();
     shooterMotorR.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
     shooterMotorR.setInverted(true);
