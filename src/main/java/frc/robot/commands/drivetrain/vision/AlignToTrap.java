@@ -25,12 +25,9 @@ public class AlignToTrap extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    angle = RobotContainer.limeSubsystem.getAngleOffset();
-
-    if (RobotContainer.limeSubsystem.getAngleOffset() == 0) {
-      angle = RobotContainer.swerveDrive.getDisplacementToTarget(0);
-    }
+    angle = RobotContainer.swerveDrive.getDisplacementToClimb();
     turn = -angle / 180.0;
+
     if (Math.abs(angle) <= VisionConstants.ALIGN_THRESHOLD) {
       turn = RobotContainer.getDriverRightX();
     }
