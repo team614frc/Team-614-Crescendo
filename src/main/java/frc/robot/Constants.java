@@ -72,7 +72,7 @@ public final class Constants {
     public static final double PIVOT_CLOSE_SCORE = -0.1; // -0.25
     public static final double PIVOT_FAR_SCORE = -0.4; // -0.55
     public static final double PIVOT_AMP_GOAL = -(Math.PI / 2) - 0.02;
-    public static final double PIVOT_TRAP_SCORE = -0.15;
+    public static final double PIVOT_TRAP_SCORE = 0;
     public static final double PIVOT_INTAKE_THRESHOLD = 0.15;
     public static final double PIVOT_SHOOTER_THRESHOLD = 0.1;
 
