@@ -9,6 +9,8 @@ import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.util.HolonomicPathFollowerConfig;
 import com.pathplanner.lib.util.PIDConstants;
 import com.pathplanner.lib.util.ReplanningConfig;
+import edu.wpi.first.math.controller.PIDController;
+import edu.wpi.first.math.controller.SimpleMotorFeedforward;
 import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -17,6 +19,7 @@ import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.kinematics.SwerveDriveOdometry;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
+import edu.wpi.first.math.trajectory.TrapezoidProfile;
 import edu.wpi.first.util.WPIUtilJNI;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.SPI;
@@ -69,6 +72,11 @@ public class DriveSubsystem extends SubsystemBase {
 
   // Heading variables
   private double correctAngle;
+
+  // Turn PID
+  public PIDController turnController = new PIDController(0, 0, 0);
+  public TrapezoidProfile.Constraints turnConstraints = new TrapezoidProfile.Constraints(1, 1);
+  public SimpleMotorFeedforward turnFeed = new SimpleMotorFeedforward(0, 0, 0);
 
   // Odometry class for tracking robot pose
   SwerveDriveOdometry m_odometry =
@@ -308,9 +316,13 @@ public class DriveSubsystem extends SubsystemBase {
   public double getAngleModifier(double angle) {
     double least = angle;
     if (Math.abs(getHeading().getDegrees() - least)
-        > Math.abs(getHeading().getDegrees() - (angle + 360))) least = angle + 360;
+        > Math.abs(getHeading().getDegrees() - angle + 360)) {
+      least = angle + 360;
+    }
     if (Math.abs(getHeading().getDegrees() - least)
-        > Math.abs(getHeading().getDegrees() - (angle - 360))) least = angle - 360;
+        > Math.abs(getHeading().getDegrees() - angle - 360)) {
+      least = angle - 360;
+    }
     return least;
   }
 
@@ -324,11 +336,43 @@ public class DriveSubsystem extends SubsystemBase {
   }
 
   public double getDisplacementToTarget(double y) {
-    return getCorrectAngleTarget(y) - getHeading().getDegrees();
+    return getHeading().getDegrees() - getCorrectAngleTarget(y);
+  }
+
+  public double getDisplacementToClimb() {
+    double smallest = getDisplacementToTarget(45);
+    if (Math.abs(getDisplacementToTarget(-45)) < Math.abs(smallest)) {
+      smallest = getDisplacementToTarget(-45);
+    } else if (Math.abs(getDisplacementToTarget(315)) < Math.abs(smallest)) {
+      smallest = getDisplacementToTarget(315);
+    } else if (Math.abs(getDisplacementToTarget(-315)) < Math.abs(smallest)) {
+      smallest = getDisplacementToTarget(-315);
+    }
+    return smallest;
+  }
+
+  public double getDisplacementToTrap() {
+    double smallest = getDisplacementToTarget(135);
+    if (Math.abs(getDisplacementToTarget(-135)) < Math.abs(smallest)) {
+      smallest = getDisplacementToTarget(-135);
+    } else if (Math.abs(getDisplacementToTarget(-225)) < Math.abs(smallest)) {
+      smallest = getDisplacementToTarget(-225);
+    } else if (Math.abs(getDisplacementToTarget(225)) < Math.abs(smallest)) {
+      smallest = getDisplacementToTarget(225);
+    }
+    return smallest;
   }
 
   public void turnToAngle(double turn) {
     drive(RobotContainer.getDriverLeftY(), RobotContainer.getDriverLeftX(), -(turn), true, true);
+  }
+
+  public PIDController getTurnController() {
+    return turnController;
+  }
+
+  public SimpleMotorFeedforward getTurnFF() {
+    return turnFeed;
   }
 
   /**

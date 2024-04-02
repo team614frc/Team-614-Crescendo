@@ -8,44 +8,31 @@ import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants.VisionConstants;
 import frc.robot.RobotContainer;
 
-public class AlignScore extends Command {
-  /** Creates a new AlignScore. */
+/** Creates a new AlignScore. */
+public class AlignToAngle extends Command {
+
   private double angle, target, turn;
 
-  private boolean isTarget;
-
-  public AlignScore() {
-    addRequirements(RobotContainer.swerveDrive);
-    isTarget = false;
-  }
-
-  public AlignScore(double target) {
+  public AlignToAngle(double target) {
     addRequirements(RobotContainer.swerveDrive);
     this.target = target;
-    isTarget = true;
   }
 
   // Called when the command is initially scheduled.
   @Override
-  public void initialize() {}
+  public void initialize() {
+    if (!RobotContainer.isAllianceRed()) {
+      target = -target;
+    }
+  }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    angle =
-        isTarget
-            ? RobotContainer.swerveDrive.getDisplacementToTarget(target)
-            : RobotContainer.limeSubsystem.getAngleOffset();
+    angle = RobotContainer.swerveDrive.getDisplacementToTarget(target);
+    turn = -angle / 180.0;
 
-    turn = -VisionConstants.simpleAlignYInput * angle / 100.0;
-
-    if (turn > 0.2) {
-      turn = 0.35;
-    } else if (turn < -0.2) {
-      turn = -0.35;
-    }
-
-    if (Math.abs(angle) > VisionConstants.threshold) {
+    if (Math.abs(angle) > VisionConstants.ALIGN_THRESHOLD) {
       RobotContainer.swerveDrive.drive(
           RobotContainer.getDriverLeftY(), RobotContainer.getDriverLeftX(), turn, true, true);
     } else {
@@ -62,7 +49,11 @@ public class AlignScore extends Command {
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted) {
+    if (!RobotContainer.isAllianceRed()) {
+      target = -target;
+    }
+  }
 
   // Returns true when the command should end.
   @Override

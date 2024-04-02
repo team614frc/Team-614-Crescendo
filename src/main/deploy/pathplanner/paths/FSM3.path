@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.954039539563874,
-        "y": 5.56
+        "x": 3.183216224252354,
+        "y": 5.398293261041498
       },
       "prevControl": null,
       "nextControl": {
-        "x": 7.139459001637144,
-        "y": 3.7301633100512412
+        "x": 7.368635686325624,
+        "y": 3.56845657109274
       },
       "isLocked": false,
       "linkedName": "FSM2"
@@ -32,12 +32,12 @@
     },
     {
       "anchor": {
-        "x": 2.954039539563874,
-        "y": 5.56
+        "x": 3.183216224252354,
+        "y": 5.398293261041498
       },
       "prevControl": {
-        "x": 5.1247032397105965,
-        "y": 4.523190155503746
+        "x": 5.353879924399077,
+        "y": 4.361483416545245
       },
       "nextControl": null,
       "isLocked": false,
@@ -66,7 +66,7 @@
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 2.0,
+    "maxVelocity": 2.5,
     "maxAcceleration": 5.0,
     "maxAngularVelocity": 572.0,
     "maxAngularAcceleration": 720.0
@@ -82,5 +82,5 @@
     "rotation": 0,
     "velocity": 0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

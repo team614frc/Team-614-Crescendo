@@ -18,7 +18,7 @@ public class FeederSubsystem extends SubsystemBase {
   private CANSparkFlex feedMotor;
 
   public FeederSubsystem() {
-    sensor = new TimeOfFlight(SensorConstants.sensorPort1);
+    sensor = new TimeOfFlight(SensorConstants.SENSOR_PORT1);
     sensor.setRangeOfInterest(1000, 1000, 1000, 1000);
 
     feedMotor = new CANSparkFlex(ManipulatorConstants.FEEDER_MOTOR, MotorType.kBrushless);
@@ -43,6 +43,6 @@ public class FeederSubsystem extends SubsystemBase {
   }
 
   public boolean isSensorTripped() {
-    return getSensorRange() < SensorConstants.sensorThreshold;
+    return getSensorRange() < SensorConstants.SENSOR_THRESHOLD;
   }
 }

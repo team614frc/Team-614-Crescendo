@@ -33,7 +33,7 @@ public class Shooter extends Command {
   public void initialize() {
     shooter.enable();
     if (test) {
-      shooterSpeed = SmartDashboard.getNumber("Shooter Test", 5000);
+      shooterSpeed = SmartDashboard.getNumber("Shooter Test", 1900);
     }
   }
 

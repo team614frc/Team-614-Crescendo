@@ -16,6 +16,12 @@
           "data": {
             "pathName": "GetRekt"
           }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Aimbot"
+          }
         }
       ]
     }

@@ -4,11 +4,13 @@
 
 package frc.robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.Constants.ManipulatorConstants;
+import frc.robot.Constants.VisionConstants;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -26,11 +28,12 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-    // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
+    // Instantiate our RobotContainer. This will perform all our button bindings,
+    // and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
     SmartDashboard.putNumber("Test Pivot", ManipulatorConstants.PIVOT_MAX);
-    SmartDashboard.putNumber("Shooter Test", 2500);
+    SmartDashboard.putNumber("Shooter Test", 5000);
     RobotContainer.ledSubsystem.turnOrange();
   }
 
@@ -43,14 +46,23 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotPeriodic() {
-    // Runs the Scheduler.  This is responsible for polling buttons, adding newly-scheduled
-    // commands, running already-scheduled commands, removing finished or interrupted commands,
-    // and running subsystem periodic() methods.  This must be called from the robot's periodic
+    // Runs the Scheduler. This is responsible for polling buttons, adding
+    // newly-scheduled
+    // commands, running already-scheduled commands, removing finished or
+    // interrupted commands,
+    // and running subsystem periodic() methods. This must be called from the
+    // robot's periodic
     // block in order for anything in the Command-based framework to work.
     SmartDashboard.putNumber("GYRO", RobotContainer.swerveDrive.getHeading().getDegrees());
     SmartDashboard.putNumber(
         "ROBOT POSE ROTATION", RobotContainer.swerveDrive.getPose().getRotation().getDegrees());
+    SmartDashboard.putNumber("2D Range", RobotContainer.limeSubsystem.estimateDistance());
     CommandScheduler.getInstance().run();
+    RobotContainer.limeSubsystem.estimateDistance();
+    if (DriverStation.getAlliance().isPresent()) {
+      RobotContainer.setAlliance(DriverStation.getAlliance().get());
+    }
+    SmartDashboard.putString("DRIVERSTATION", DriverStation.getAlliance().get().toString());
   }
 
   /** This function is called once each time the robot enters Disabled mode. */
@@ -60,7 +72,9 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-  public void disabledPeriodic() {}
+  public void disabledPeriodic() {
+    RobotContainer.ledSubsystem.turnOrange();
+  }
 
   /** This autonomous runs the autonomous command selected by your {@link RobotContainer} class. */
   @Override
@@ -99,6 +113,15 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     SmartDashboard.putNumber("PIVOT ANGLE", RobotContainer.pivotSubsystem.getMeasurement());
+    if (Math.abs(RobotContainer.limeSubsystem.estimateDistance()) < VisionConstants.TREE_MAP_MAX
+        && RobotContainer.feederSubsystem.isSensorTripped()
+        && RobotContainer.limeSubsystem.estimateDistance() != 0) {
+      RobotContainer.ledSubsystem.rainbow();
+    } else if (RobotContainer.feederSubsystem.isSensorTripped()) {
+      RobotContainer.ledSubsystem.turnGreen();
+    } else {
+      RobotContainer.ledSubsystem.turnOrange();
+    }
   }
 
   @Override

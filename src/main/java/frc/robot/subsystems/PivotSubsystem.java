@@ -45,7 +45,7 @@ public class PivotSubsystem extends ProfiledPIDSubsystem {
             new TrapezoidProfile.Constraints(
                 ManipulatorConstants.PIVOT_MAX_VEL, ManipulatorConstants.PIVOT_MAX_ACCEL)));
 
-    pivotMotorR = new CANSparkFlex(ManipulatorConstants.PIVOT_MOTOR_RIGHT, MotorType.kBrushless);
+    pivotMotorR = new CANSparkFlex(ManipulatorConstants.PIVOT_RIGHT_MOTOR, MotorType.kBrushless);
     // pivotMotorR.restoreFactoryDefaults();
     pivotMotorR.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
     pivotMotorR.setIdleMode(CANSparkFlex.IdleMode.kBrake);
@@ -53,11 +53,12 @@ public class PivotSubsystem extends ProfiledPIDSubsystem {
     pivotMotorR.setInverted(true);
     pivotMotorR.burnFlash();
 
-    pivotMotorL = new CANSparkFlex(ManipulatorConstants.PIVOT_MOTOR_LEFT, MotorType.kBrushless);
+    pivotMotorL = new CANSparkFlex(ManipulatorConstants.PIVOT_LEFT_MOTOR, MotorType.kBrushless);
     // pivotMotorL.restoreFactoryDefaults();
     pivotMotorL.setSmartCurrentLimit(ManipulatorConstants.MOTOR_CURRENT_LIMIT);
     pivotMotorL.setIdleMode(CANSparkFlex.IdleMode.kBrake);
     pivotMotorL.getEncoder().setPosition(0);
+    pivotMotorR.setInverted(false);
     pivotMotorL.burnFlash();
 
     SmartDashboard.putNumber("Pivot Height", getMeasurement());

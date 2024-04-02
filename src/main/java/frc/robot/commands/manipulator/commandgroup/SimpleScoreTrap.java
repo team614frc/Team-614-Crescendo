@@ -4,21 +4,24 @@
 
 package frc.robot.commands.manipulator.commandgroup;
 
-import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
+import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
 import frc.robot.Constants.ManipulatorConstants;
-import frc.robot.commands.manipulator.commandgroup.helpergroup.ScoreReset;
-import frc.robot.commands.manipulator.commandgroup.helpergroup.ShootPrep;
-import frc.robot.commands.manipulator.feeder.ShooterFeed;
+import frc.robot.commands.manipulator.shooter.Blow;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-public class SimpleScoreTest extends SequentialCommandGroup {
-  /** Creates a new SimpleScoreNote. */
-  public SimpleScoreTest() {
+public class SimpleScoreTrap extends ParallelCommandGroup {
+  /** Creates a new SimpleScoreTrap. */
+  public SimpleScoreTrap() {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-        new ShootPrep(ManipulatorConstants.SHOOTER_THRESHOLD), new ShooterFeed(), new ScoreReset());
+        new SimpleScoreNote(
+            ManipulatorConstants.PIVOT_MIN,
+            ManipulatorConstants.TRAP_SPEED,
+            ManipulatorConstants.PIVOT_INTAKE_THRESHOLD),
+        // new SimpleScoreTest(),
+        new Blow());
   }
 }

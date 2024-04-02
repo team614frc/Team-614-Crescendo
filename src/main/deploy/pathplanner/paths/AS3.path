@@ -46,7 +46,7 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.75,
+      "waypointRelativePos": 0.85,
       "rotationDegrees": 0,
       "rotateFast": false
     }
@@ -61,13 +61,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0,
+    "rotation": 20.0,
     "rotateFast": false
   },
   "reversed": false,
   "folder": "Ampside",
   "previewStartingState": {
-    "rotation": 0.0,
+    "rotation": 10.0,
     "velocity": 0
   },
   "useDefaultConstraints": false
