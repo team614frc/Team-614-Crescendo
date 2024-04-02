@@ -5,6 +5,7 @@
 package frc.robot.commands.manipulator.commandgroup;
 
 import edu.wpi.first.wpilibj2.command.ParallelCommandGroup;
+import frc.robot.RobotContainer;
 import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.commands.manipulator.shooter.Blow;
 
@@ -18,9 +19,10 @@ public class SimpleScoreTrap extends ParallelCommandGroup {
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
         new SimpleScoreNote(
-            ManipulatorConstants.PIVOT_TRAP_SCORE,
+            ManipulatorConstants.PIVOT_MIN,
             ManipulatorConstants.TRAP_SPEED,
-            ManipulatorConstants.SHOOTER_THRESHOLD),
+            ManipulatorConstants.PIVOT_INTAKE_THRESHOLD),
+        // new SimpleScoreTest(),
         new Blow());
   }
 }

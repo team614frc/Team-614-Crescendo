@@ -30,6 +30,7 @@ import frc.robot.commands.manipulator.commandgroup.IntakeNote;
 import frc.robot.commands.manipulator.commandgroup.Puke;
 import frc.robot.commands.manipulator.commandgroup.SimpleScoreAdjust;
 import frc.robot.commands.manipulator.commandgroup.SimpleScoreNote;
+import frc.robot.commands.manipulator.commandgroup.SimpleScoreTest;
 import frc.robot.commands.manipulator.commandgroup.SimpleScoreTrap;
 import frc.robot.commands.manipulator.commandgroup.helpergroup.ResetWheels;
 import frc.robot.commands.manipulator.commandgroup.helpergroup.ScoreReset;

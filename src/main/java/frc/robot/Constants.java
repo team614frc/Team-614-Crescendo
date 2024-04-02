@@ -126,13 +126,13 @@ public final class Constants {
     public static final double TAG_7Y = 1.442593;
 
     // Pivot Interpolation tree map values
-    public static final double TREE_MAP_MIN = 1.01;
-    public static final double TREE_MAP1 = 2.415;
+    public static final double TREE_MAP_MIN = 1.243;
+    public static final double TREE_MAP1 = 2.3;
     public static final double TREE_MAP_MAX = 3.385;
 
     public static final double PIVOT_TREE_MAP_ANGLE_MIN = ManipulatorConstants.PIVOT_CLOSE_SCORE;
-    public static final double PIVOT_TREE_MAP_ANGLE1 = -.31;
-    public static final double PIVOT_TREE_MAP_ANGLE_MAX = -.45;
+    public static final double PIVOT_TREE_MAP_ANGLE1 = -.4;
+    public static final double PIVOT_TREE_MAP_ANGLE_MAX = -.535;
   }
 
   public static final class DriveConstants {

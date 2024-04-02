@@ -343,16 +343,20 @@ public class DriveSubsystem extends SubsystemBase {
     double smallest = getDisplacementToTarget(45);
     if (Math.abs(getDisplacementToTarget(-45)) < Math.abs(smallest)) {
       smallest = getDisplacementToTarget(-45);
-    } else if (Math.abs(getDisplacementToTarget(180)) < Math.abs(smallest)) {
-      smallest = getDisplacementToTarget(180);
-    }
+    } else if (Math.abs(getDisplacementToTarget(315)) < Math.abs(smallest)) {
+      smallest = getDisplacementToTarget(315);
+    } else if (Math.abs(getDisplacementToTarget(-315)) < Math.abs(smallest)) {
+      smallest = getDisplacementToTarget(-315);
+    } 
     return smallest;
   }
 
   public double getDisplacementToTrap() {
-    double smallest = getDisplacementToTarget(0);
-    if (Math.abs(getDisplacementToTarget(135)) < Math.abs(smallest)) {
-      smallest = getDisplacementToTarget(135);
+    double smallest = getDisplacementToTarget(135);
+    if (Math.abs(getDisplacementToTarget(-135)) < Math.abs(smallest)) {
+      smallest = getDisplacementToTarget(-135);
+    } else if (Math.abs(getDisplacementToTarget(-225)) < Math.abs(smallest)) {
+      smallest = getDisplacementToTarget(-225);
     } else if (Math.abs(getDisplacementToTarget(225)) < Math.abs(smallest)) {
       smallest = getDisplacementToTarget(225);
     }
