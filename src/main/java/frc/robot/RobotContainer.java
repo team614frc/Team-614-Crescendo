@@ -21,7 +21,7 @@ import frc.robot.Constants.OIConstants;
 import frc.robot.commands.drivetrain.ResetRobotHeading;
 import frc.robot.commands.drivetrain.vision.AlignToAngle;
 import frc.robot.commands.drivetrain.vision.AlignToSpeaker;
-import frc.robot.commands.drivetrain.vision.AlignToTrap;
+import frc.robot.commands.drivetrain.vision.AlignToClimb;
 import frc.robot.commands.manipulator.commandgroup.AutoAlignScore;
 import frc.robot.commands.manipulator.commandgroup.AutoQuickShot;
 import frc.robot.commands.manipulator.commandgroup.AutoScore;
@@ -190,7 +190,7 @@ public class RobotContainer {
     // m_driverController.start().whileTrue(new Blow());
     m_driverController.x().whileTrue(new AlignToAngle(90));
     m_driverController.y().whileTrue(new ScoreTrap());
-    m_driverController.b().whileTrue(new AlignToTrap());
+    m_driverController.b().whileTrue(new AlignToClimb());
     m_driverController.a().whileTrue(new AlignToSpeaker());
 
     m_coDriverController.rightTrigger().onTrue(simpleScoreAmp);

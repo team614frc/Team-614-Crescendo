@@ -5,16 +5,15 @@
 package frc.robot.commands.drivetrain.vision;
 
 import edu.wpi.first.wpilibj2.command.Command;
-import frc.robot.RobotContainer;
 import frc.robot.Constants.VisionConstants;
+import frc.robot.RobotContainer;
 
 /** Creates a new AlignToTrap. */
+public class AlignToClimb extends Command {
 
-public class AlignToTrap extends Command {
-  
   private double angle, turn;
 
-  public AlignToTrap() {
+  public AlignToClimb() {
     addRequirements(RobotContainer.swerveDrive);
   }
 
@@ -26,7 +25,7 @@ public class AlignToTrap extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    angle = RobotContainer.swerveDrive.getDisplacementToTrap();
+    angle = RobotContainer.swerveDrive.getDisplacementToClimb();
     turn = -angle / 180.0;
 
     if (Math.abs(angle) <= VisionConstants.ALIGN_THRESHOLD) {

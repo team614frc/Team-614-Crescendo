@@ -349,6 +349,16 @@ public class DriveSubsystem extends SubsystemBase {
     return smallest;
   }
 
+  public double getDisplacementToTrap() {
+    double smallest = getDisplacementToTarget(0);
+    if (Math.abs(getDisplacementToTarget(135)) < Math.abs(smallest)) {
+      smallest = getDisplacementToTarget(135);
+    } else if (Math.abs(getDisplacementToTarget(225)) < Math.abs(smallest)) {
+      smallest = getDisplacementToTarget(225);
+    }
+    return smallest;
+  }
+
   public void turnToAngle(double turn) {
     drive(RobotContainer.getDriverLeftY(), RobotContainer.getDriverLeftX(), -(turn), true, true);
   }
