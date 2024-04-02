@@ -5,7 +5,7 @@
 package frc.robot.commands.manipulator.commandgroup;
 
 import edu.wpi.first.wpilibj2.command.ParallelDeadlineGroup;
-import frc.robot.commands.drivetrain.vision.AlignScore;
+import frc.robot.commands.drivetrain.vision.AlignToSpeaker;
 
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
@@ -18,6 +18,6 @@ public class AutoAimShot extends ParallelDeadlineGroup {
     super(
       new AutoInterpShot()
       );
-    addCommands(new AlignScore());
+    addCommands(new AlignToSpeaker());
   }
 }

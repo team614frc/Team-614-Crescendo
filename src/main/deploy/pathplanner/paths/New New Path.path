@@ -3,29 +3,29 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.35,
-        "y": 4.097305368134887
+        "x": 1.4,
+        "y": 5.545
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.7057565421034249,
-        "y": 3.8917058156119895
+        "x": 2.400000000000002,
+        "y": 5.545
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.9260417769493865,
-        "y": 3.4805067105661944
+        "x": 1.4,
+        "y": 7.33
       },
       "prevControl": {
-        "x": 1.6910708597803605,
-        "y": 3.7301633100582845
+        "x": 0.3999999999999999,
+        "y": 7.33
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "SP1"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],
@@ -39,11 +39,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -44.0,
+    "rotation": 0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "SS SP",
+  "folder": null,
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

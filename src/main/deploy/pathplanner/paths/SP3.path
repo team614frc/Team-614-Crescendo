@@ -3,12 +3,12 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.9260417769493865,
+        "x": 1.588271083518912,
         "y": 3.4805067105661944
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.540093230453473,
+        "x": 4.202322537022997,
         "y": 1.7769675610865214
       },
       "isLocked": false,
@@ -32,16 +32,16 @@
     },
     {
       "anchor": {
-        "x": 1.9260417769493865,
+        "x": 1.588271083518912,
         "y": 3.4805067105661944
       },
       "prevControl": {
-        "x": 5.788376227913923,
-        "y": 0.014685682318828806
+        "x": 5.450605534483452,
+        "y": 0.014685682318828802
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "SP3"
     }
   ],
   "rotationTargets": [
@@ -51,7 +51,19 @@
       "rotateFast": false
     }
   ],
-  "constraintZones": [],
+  "constraintZones": [
+    {
+      "name": "New Constraints Zone",
+      "minWaypointRelativePos": 1.25,
+      "maxWaypointRelativePos": 2.0,
+      "constraints": {
+        "maxVelocity": 4.0,
+        "maxAcceleration": 5.0,
+        "maxAngularVelocity": 572.0,
+        "maxAngularAcceleration": 720.0
+      }
+    }
+  ],
   "eventMarkers": [],
   "globalConstraints": {
     "maxVelocity": 3.0,
@@ -67,7 +79,7 @@
   "reversed": false,
   "folder": "SS SP",
   "previewStartingState": {
-    "rotation": -46.0,
+    "rotation": -44.99999999999997,
     "velocity": 0
   },
   "useDefaultConstraints": false

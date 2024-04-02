@@ -72,6 +72,12 @@
           "data": {
             "name": "True Aimbot"
           }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "SP4"
+          }
         }
       ]
     }
