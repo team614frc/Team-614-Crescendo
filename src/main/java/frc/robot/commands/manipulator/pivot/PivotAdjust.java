@@ -8,6 +8,7 @@ import frc.robot.RobotContainer;
 public class PivotAdjust extends Command {
   /** Creates a new TiltPIDCommand. */
   private double distanceFromAprilTag;
+
   private double setpoint;
 
   public PivotAdjust() {

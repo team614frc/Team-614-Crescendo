@@ -19,9 +19,8 @@ public class AutoInterpShot extends SequentialCommandGroup {
     // Add your commands in the addCommands() call, e.g.
     // addCommands(new FooCommand(), new BarCommand());
     addCommands(
-      new PrepAdjust(),
-      new ShooterFeed(),
-      new PivotPID(ManipulatorConstants.PIVOT_MIN, ManipulatorConstants.PIVOT_INTAKE_THRESHOLD)
-    );
+        new PrepAdjust(),
+        new ShooterFeed(),
+        new PivotPID(ManipulatorConstants.PIVOT_MIN, ManipulatorConstants.PIVOT_INTAKE_THRESHOLD));
   }
 }

@@ -15,9 +15,7 @@ public class AutoAimShot extends ParallelDeadlineGroup {
   public AutoAimShot() {
     // Add the deadline command in the super() call. Add other commands using
     // addCommands().
-    super(
-      new AutoInterpShot()
-      );
+    super(new AutoInterpShot());
     addCommands(new AlignToSpeaker());
   }
 }

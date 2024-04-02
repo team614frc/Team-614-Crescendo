@@ -7,7 +7,6 @@ package frc.robot;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 import edu.wpi.first.math.MathUtil;
-import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj.DataLogManager;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.XboxController;
@@ -37,7 +36,6 @@ import frc.robot.commands.manipulator.commandgroup.helpergroup.ScoreReset;
 import frc.robot.commands.manipulator.commandgroup.helpergroup.ShootPrep;
 import frc.robot.commands.manipulator.pivot.PivotDown;
 import frc.robot.commands.manipulator.pivot.PivotPID;
-import frc.robot.commands.manipulator.shooter.Blow;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.FeederSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
@@ -115,8 +113,7 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
 
-    // Pathplanner Commands for use in auto. Name is what you type into pathplanner,
-    // and the commands are "borrowed" from the controller
+    // Pathplanner Commands for use in auto. Name is what is used in pathplanner to call them.
     NamedCommands.registerCommand(
         "Score Close", new AutoScore(ManipulatorConstants.PIVOT_CLOSE_SCORE));
     NamedCommands.registerCommand("Aimbot", new AutoAlignScore());
@@ -124,7 +121,8 @@ public class RobotContainer {
     NamedCommands.registerCommand("Score Far", new AutoScore(ManipulatorConstants.PIVOT_FAR_SCORE));
     NamedCommands.registerCommand("Score Amp", new AutoScore(ManipulatorConstants.PIVOT_AMP_GOAL));
     NamedCommands.registerCommand("Intake", new IntakeNote());
-    NamedCommands.registerCommand("Quick Shot", new AutoQuickShot(3000)); // quickshot for first piece
+    NamedCommands.registerCommand(
+        "Quick Shot", new AutoQuickShot(3000)); // quickshot for first piece
     NamedCommands.registerCommand("Drop Piece", new AutoQuickShot(1000));
 
     swerveDrive.setDefaultCommand(

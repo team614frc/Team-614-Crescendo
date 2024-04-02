@@ -20,5 +20,4 @@ public class SimpleScoreNote extends SequentialCommandGroup {
     addCommands(
         new ShootPrep(pivotGoal, shooterSpeed, threshold), new ShooterFeed(), new ScoreReset());
   }
-
 }
