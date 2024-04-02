@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.7805585557503859,
-      "y": 4.388081878131556
+      "x": 1.4,
+      "y": 5.545
     },
-    "rotation": -60.0
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
@@ -24,7 +24,7 @@
               {
                 "type": "path",
                 "data": {
-                  "pathName": "SS1.5"
+                  "pathName": "cit1"
                 }
               },
               {
@@ -39,17 +39,17 @@
         {
           "type": "named",
           "data": {
-            "name": "Aimbot"
+            "name": "True Aimbot"
           }
         },
         {
-          "type": "parallel",
+          "type": "deadline",
           "data": {
             "commands": [
               {
                 "type": "path",
                 "data": {
-                  "pathName": "SS2"
+                  "pathName": "cit2"
                 }
               },
               {
@@ -64,12 +64,37 @@
         {
           "type": "named",
           "data": {
-            "name": "Aimbot"
+            "name": "Score Close"
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "cit3"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Score Close"
           }
         }
       ]
     }
   },
-  "folder": "Source Side",
+  "folder": "Front Side",
   "choreoAuto": false
 }

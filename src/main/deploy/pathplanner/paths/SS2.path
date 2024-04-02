@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.1903840587645407,
-        "y": 3.6567348984429637
+        "x": 1.98,
+        "y": 3.539249439858451
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.324925635633263,
-        "y": 0.009726654524398089
+        "x": 6.114541576868722,
+        "y": -0.10775880406011479
       },
       "isLocked": false,
       "linkedName": "SS1.5"
@@ -32,12 +32,12 @@
     },
     {
       "anchor": {
-        "x": 2.1903840587645407,
-        "y": 3.6567348984429637
+        "x": 1.98,
+        "y": 3.539249439858451
       },
       "prevControl": {
-        "x": 4.951292335500593,
-        "y": 0.058742729292257656
+        "x": 4.740908276736054,
+        "y": -0.058742729292255214
       },
       "nextControl": null,
       "isLocked": false,
@@ -66,13 +66,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": -27.984129572187076,
+    "rotation": -44.04248893729428,
     "rotateFast": false
   },
   "reversed": false,
   "folder": "Sourceside",
   "previewStartingState": {
-    "rotation": -30.0,
+    "rotation": -46.93080597131572,
     "velocity": 0.0
   },
   "useDefaultConstraints": false
