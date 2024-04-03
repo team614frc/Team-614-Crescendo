@@ -21,7 +21,7 @@ Remember to check that your driver station is set to the correct alliance when e
 
 ![5Piece](https://github.com/team614frc/Team-614-Crescendo/assets/102235153/78ecd2b0-5690-4729-b833-556b1d069bc6)
 
-New variant of the 4 piece auto. Likely not going to be run, but available. 
+New variant of the 4 piece auto. Likely not going to be run, but available.
 
 ### Anti Fresta
 
