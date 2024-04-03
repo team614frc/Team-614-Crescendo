@@ -8,48 +8,93 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.8337543047179126,
-        "y": 5.947701340840965
+        "x": 6.419860567807003,
+        "y": 7.4309552554704394
       },
       "isLocked": false,
       "linkedName": "FS2-2"
     },
     {
       "anchor": {
-        "x": 2.8659254456254897,
-        "y": 6.990384785778517
+        "x": 8.314313587482273,
+        "y": 5.698044741348875
       },
       "prevControl": {
-        "x": 2.1022699648261556,
-        "y": 6.623242727701913
+        "x": 6.753993541735883,
+        "y": 5.7155764272561385
+      },
+      "nextControl": {
+        "x": 9.62133931423498,
+        "y": 5.68335905902581
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.983410904210002,
+        "y": 5.580559282764361
+      },
+      "prevControl": {
+        "x": 4.657578689039311,
+        "y": 7.445640937793504
       },
       "nextControl": null,
       "isLocked": false,
       "linkedName": "FS2-3"
     }
   ],
-  "rotationTargets": [
+  "rotationTargets": [],
+  "constraintZones": [],
+  "eventMarkers": [
     {
-      "waypointRelativePos": 0.65,
-      "rotationDegrees": 43.629752434901846,
-      "rotateFast": false
+      "name": "New Event Marker",
+      "waypointRelativePos": 0.05,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Intake"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 1.5,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Prep Shot"
+              }
+            }
+          ]
+        }
+      }
     }
   ],
-  "constraintZones": [],
-  "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 2.5,
+    "maxVelocity": 3.0,
     "maxAcceleration": 5.0,
     "maxAngularVelocity": 572.0,
     "maxAngularAcceleration": 720.0
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 43.70783311375006,
+    "rotation": 0.0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "FS2",
+  "folder": "Frontside",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

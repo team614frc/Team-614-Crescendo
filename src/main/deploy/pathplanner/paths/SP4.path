@@ -36,7 +36,25 @@
     }
   ],
   "constraintZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 0.05,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Intake"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 4.0,
     "maxAcceleration": 5.0,
@@ -49,7 +67,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "SS SP",
+  "folder": "Source P Start",
   "previewStartingState": {
     "rotation": -46.0,
     "velocity": 0

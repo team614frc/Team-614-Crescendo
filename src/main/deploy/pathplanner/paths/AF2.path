@@ -16,16 +16,16 @@
     },
     {
       "anchor": {
-        "x": 8.05731414682865,
-        "y": 7.4603266201123475
+        "x": 8.255570858190017,
+        "y": 7.489697984762696
       },
       "prevControl": {
-        "x": 7.05731414682865,
-        "y": 7.4603266201123475
+        "x": 7.255570858190017,
+        "y": 7.489697984762696
       },
       "nextControl": {
-        "x": 9.05731414682865,
-        "y": 7.4603266201123475
+        "x": 9.255570858190017,
+        "y": 7.489697984762696
       },
       "isLocked": false,
       "linkedName": null
@@ -54,8 +54,8 @@
   "constraintZones": [
     {
       "name": "New Constraints Zone",
-      "minWaypointRelativePos": 1.25,
-      "maxWaypointRelativePos": 2.0,
+      "minWaypointRelativePos": 0.0,
+      "maxWaypointRelativePos": 0.9,
       "constraints": {
         "maxVelocity": 4.0,
         "maxAcceleration": 5.0,
@@ -64,7 +64,42 @@
       }
     }
   ],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 0.1,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Intake"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 1.6,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Prep Shot"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 5.0,

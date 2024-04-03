@@ -8,8 +8,8 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 4.826464035754549,
-        "y": 6.564499998409657
+        "x": 4.672264371362375,
+        "y": 6.814156597901747
       },
       "isLocked": false,
       "linkedName": "AF2"
@@ -36,8 +36,8 @@
         "y": 5.595244965087426
       },
       "prevControl": {
-        "x": 5.986632939276613,
-        "y": 7.592497761024145
+        "x": 5.861804639530567,
+        "y": 7.812782995870107
       },
       "nextControl": null,
       "isLocked": false,
@@ -46,7 +46,7 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.8,
+      "waypointRelativePos": 0.95,
       "rotationDegrees": -30.095796208526885,
       "rotateFast": false
     },
@@ -62,7 +62,42 @@
     }
   ],
   "constraintZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 0.15,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Intake"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 1.5,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Prep Shot"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 5.0,

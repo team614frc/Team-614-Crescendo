@@ -20,12 +20,12 @@
         "y": 4.156048097427144
       },
       "prevControl": {
-        "x": 2.175698376441477,
-        "y": 4.273533556011657
+        "x": 2.165225506498035,
+        "y": 4.2228693329286795
       },
       "nextControl": {
-        "x": 3.1157504880428983,
-        "y": 4.022852992917945
+        "x": 3.0127822688561303,
+        "y": 4.097305368134887
       },
       "isLocked": false,
       "linkedName": null
@@ -52,7 +52,42 @@
     }
   ],
   "constraintZones": [],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 0.05,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Intake"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 1.45,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Prep Shot"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 2.5,
     "maxAcceleration": 5.0,
@@ -65,7 +100,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "FS2",
+  "folder": "Frontside",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

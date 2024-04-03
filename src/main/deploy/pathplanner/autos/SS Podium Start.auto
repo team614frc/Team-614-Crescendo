@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.3703175816503543,
-      "y": 7.334125659332116
+      "x": 1.35,
+      "y": 4.097305368134887
     },
     "rotation": 0
   },
@@ -14,7 +14,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "AF1"
+            "pathName": "SP1"
           }
         },
         {
@@ -26,7 +26,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "AF2"
+            "pathName": "SP2"
           }
         },
         {
@@ -38,7 +38,7 @@
         {
           "type": "path",
           "data": {
-            "pathName": "AF3"
+            "pathName": "SP3"
           }
         },
         {
@@ -50,18 +50,12 @@
         {
           "type": "path",
           "data": {
-            "pathName": "AF4"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "True Aimbot"
+            "pathName": "SP4"
           }
         }
       ]
     }
   },
-  "folder": "Amp Side",
+  "folder": "Source Side",
   "choreoAuto": false
 }

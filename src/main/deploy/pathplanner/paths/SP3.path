@@ -57,14 +57,49 @@
       "minWaypointRelativePos": 1.25,
       "maxWaypointRelativePos": 2.0,
       "constraints": {
-        "maxVelocity": 4.0,
+        "maxVelocity": 3.5,
         "maxAcceleration": 5.0,
         "maxAngularVelocity": 572.0,
         "maxAngularAcceleration": 720.0
       }
     }
   ],
-  "eventMarkers": [],
+  "eventMarkers": [
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 0.05,
+      "command": {
+        "type": "sequential",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Intake"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 1.5,
+      "command": {
+        "type": "sequential",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Prep Shot"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
   "globalConstraints": {
     "maxVelocity": 3.0,
     "maxAcceleration": 5.0,
@@ -77,7 +112,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "SS SP",
+  "folder": "Source P Start",
   "previewStartingState": {
     "rotation": -44.99999999999997,
     "velocity": 0
