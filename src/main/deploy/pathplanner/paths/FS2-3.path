@@ -63,23 +63,6 @@
           ]
         }
       }
-    },
-    {
-      "name": "New Event Marker",
-      "waypointRelativePos": 1.5,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "Prep Shot"
-              }
-            }
-          ]
-        }
-      }
     }
   ],
   "globalConstraints": {

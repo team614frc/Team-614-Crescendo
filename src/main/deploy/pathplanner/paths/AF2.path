@@ -36,8 +36,8 @@
         "y": 5.595244965087426
       },
       "prevControl": {
-        "x": 5.421234169838644,
-        "y": 7.0050704681015805
+        "x": 4.907235288531401,
+        "y": 6.858213644870939
       },
       "nextControl": null,
       "isLocked": false,
@@ -81,23 +81,6 @@
           ]
         }
       }
-    },
-    {
-      "name": "New Event Marker",
-      "waypointRelativePos": 1.6,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "Prep Shot"
-              }
-            }
-          ]
-        }
-      }
     }
   ],
   "globalConstraints": {
@@ -108,7 +91,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0,
+    "rotation": 0.0,
     "rotateFast": false
   },
   "reversed": false,
