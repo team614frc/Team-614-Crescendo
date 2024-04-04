@@ -18,53 +18,27 @@
           }
         },
         {
-          "type": "deadline",
+          "type": "path",
           "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "SS1"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Intake"
-                }
-              }
-            ]
+            "pathName": "SS1"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "True Aimbot"
+            "name": "Aimbot"
           }
         },
         {
-          "type": "deadline",
+          "type": "path",
           "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "SS2"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Intake"
-                }
-              }
-            ]
+            "pathName": "SS2"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "True Aimbot"
+            "name": "Aimbot"
           }
         }
       ]

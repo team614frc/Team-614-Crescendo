@@ -18,78 +18,39 @@
           }
         },
         {
-          "type": "deadline",
+          "type": "path",
           "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "AS1"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Intake"
-                }
-              }
-            ]
+            "pathName": "AS1"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "True Aimbot"
+            "name": "Aimbot"
           }
         },
         {
-          "type": "deadline",
+          "type": "path",
           "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "AS2"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Intake"
-                }
-              }
-            ]
+            "pathName": "AS2"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "True Aimbot"
+            "name": "Aimbot"
           }
         },
         {
-          "type": "deadline",
+          "type": "path",
           "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "AS3"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Intake"
-                }
-              }
-            ]
+            "pathName": "AS3"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "True Aimbot"
+            "name": "Aimbot"
           }
         }
       ]
