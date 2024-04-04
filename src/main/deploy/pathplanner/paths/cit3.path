@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.38,
-        "y": 5.76
+        "x": 1.4120428956421427,
+        "y": 5.668673376702747
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.6885563183648735,
-        "y": 6.754499998409657
+        "x": 1.7205992140070163,
+        "y": 6.663173375112405
       },
       "isLocked": false,
       "linkedName": null
@@ -58,23 +58,6 @@
               "type": "named",
               "data": {
                 "name": "Intake"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "New Event Marker",
-      "waypointRelativePos": 1.45,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "Prep Shot"
               }
             }
           ]

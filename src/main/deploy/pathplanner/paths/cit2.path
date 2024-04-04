@@ -32,12 +32,12 @@
     },
     {
       "anchor": {
-        "x": 1.38,
-        "y": 5.76
+        "x": 1.4120428956421427,
+        "y": 5.683359059025811
       },
       "prevControl": {
-        "x": 1.6885563183648735,
-        "y": 4.918789708026643
+        "x": 1.7205992140070163,
+        "y": 4.842148767052454
       },
       "nextControl": null,
       "isLocked": false,
@@ -58,23 +58,6 @@
               "type": "named",
               "data": {
                 "name": "Intake"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "New Event Marker",
-      "waypointRelativePos": 1.4,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "Prep Shot"
               }
             }
           ]

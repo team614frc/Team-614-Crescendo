@@ -1,0 +1,61 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 1.4,
+      "y": 5.545
+    },
+    "rotation": 0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "Quick Shot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "cit1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Aimbot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "cit2"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Score Close"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "cit3"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Score Close"
+          }
+        }
+      ]
+    }
+  },
+  "folder": "Front Side",
+  "choreoAuto": false
+}
