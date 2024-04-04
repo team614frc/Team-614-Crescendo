@@ -3,13 +3,13 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 2.3959836112874378,
-        "y": 7.334125659332116
+        "x": 1.9847845062416432,
+        "y": 7.0050704681015805
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.954039539557799,
-        "y": 7.701267717412939
+        "x": 1.9554131415881912,
+        "y": 8.150553689307674
       },
       "isLocked": false,
       "linkedName": "AF1"
@@ -46,7 +46,7 @@
   ],
   "rotationTargets": [
     {
-      "waypointRelativePos": 0.2,
+      "waypointRelativePos": 0.25,
       "rotationDegrees": 0,
       "rotateFast": false
     }
