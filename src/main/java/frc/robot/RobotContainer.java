@@ -37,7 +37,6 @@ import frc.robot.commands.manipulator.commandgroup.helpergroup.ScoreReset;
 import frc.robot.commands.manipulator.commandgroup.helpergroup.ShootPrep;
 import frc.robot.commands.manipulator.pivot.PivotDown;
 import frc.robot.commands.manipulator.pivot.PivotPID;
-import frc.robot.commands.manipulator.shooter.Blow;
 import frc.robot.subsystems.DriveSubsystem;
 import frc.robot.subsystems.FeederSubsystem;
 import frc.robot.subsystems.IntakeSubsystem;
@@ -65,39 +64,45 @@ public class RobotContainer {
   public static final LeafBlowerSubsytem leafBlowerSubsystem = new LeafBlowerSubsytem();
   public static final LEDSubsystem ledSubsystem = new LEDSubsystem();
 
-  static CommandXboxController m_driverController = new CommandXboxController(OIConstants.kDriverControllerPort);
-  static CommandXboxController m_coDriverController = new CommandXboxController(OIConstants.kCoDriverControllerPort);
+  static CommandXboxController m_driverController =
+      new CommandXboxController(OIConstants.kDriverControllerPort);
+  static CommandXboxController m_coDriverController =
+      new CommandXboxController(OIConstants.kCoDriverControllerPort);
 
   private final SendableChooser<Command> autoChooser;
 
-  private final Command simpleScoreAmp = new SimpleScoreNote(
-      ManipulatorConstants.PIVOT_AMP_GOAL,
-      ManipulatorConstants.SCORE_AMP_SPEED,
-      ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
-  private final Command simpleScoreFar = new SimpleScoreNote(
-      ManipulatorConstants.PIVOT_FAR_SCORE,
-      ManipulatorConstants.SCORE_SIMPLE_RPM,
-      ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
-  private final Command simpleScoreClose = new SimpleScoreNote(
-      ManipulatorConstants.PIVOT_CLOSE_SCORE,
-      ManipulatorConstants.SCORE_SIMPLE_RPM,
-      ManipulatorConstants.PIVOT_INTAKE_THRESHOLD);
-  private final Command prepClose = new ShootPrep(
-      ManipulatorConstants.PIVOT_CLOSE_SCORE,
-      ManipulatorConstants.SCORE_SIMPLE_RPM,
-      ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
-  private final Command prepAmp = new ShootPrep(
-      ManipulatorConstants.PIVOT_AMP_GOAL,
-      ManipulatorConstants.SCORE_AMP_SPEED,
-      ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
-  private final Command armUp = new PivotPID(
-      ManipulatorConstants.PIVOT_AMP_GOAL, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
+  private final Command simpleScoreAmp =
+      new SimpleScoreNote(
+          ManipulatorConstants.PIVOT_AMP_GOAL,
+          ManipulatorConstants.SCORE_AMP_SPEED,
+          ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
+  private final Command simpleScoreFar =
+      new SimpleScoreNote(
+          ManipulatorConstants.PIVOT_FAR_SCORE,
+          ManipulatorConstants.SCORE_SIMPLE_RPM,
+          ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
+  private final Command simpleScoreClose =
+      new SimpleScoreNote(
+          ManipulatorConstants.PIVOT_CLOSE_SCORE,
+          ManipulatorConstants.SCORE_SIMPLE_RPM,
+          ManipulatorConstants.PIVOT_INTAKE_THRESHOLD);
+  private final Command prepClose =
+      new ShootPrep(
+          ManipulatorConstants.PIVOT_CLOSE_SCORE,
+          ManipulatorConstants.SCORE_SIMPLE_RPM,
+          ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
+  private final Command prepAmp =
+      new ShootPrep(
+          ManipulatorConstants.PIVOT_AMP_GOAL,
+          ManipulatorConstants.SCORE_AMP_SPEED,
+          ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
+  private final Command armUp =
+      new PivotPID(
+          ManipulatorConstants.PIVOT_AMP_GOAL, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
 
   private static DriverStation.Alliance alliance;
 
-  /**
-   * The container for the robot. Contains subsystems, OI devices, and commands.
-   */
+  /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
 
     DataLogManager.start();
@@ -130,8 +135,9 @@ public class RobotContainer {
 
     swerveDrive.setDefaultCommand(
         new RunCommand(
-            () -> swerveDrive.drive(
-                getDriverLeftY(), getDriverLeftX(), getDriverRightX(), true, true),
+            () ->
+                swerveDrive.drive(
+                    getDriverLeftY(), getDriverLeftX(), getDriverRightX(), true, true),
             swerveDrive));
     autoChooser = AutoBuilder.buildAutoChooser();
     SmartDashboard.putData(autoChooser);
@@ -154,12 +160,9 @@ public class RobotContainer {
   }
 
   /**
-   * Use this method to define your button->command mappings. Buttons can be
-   * created by
-   * instantiating a {@link edu.wpi.first.wpilibj.GenericHID} or one of its
-   * subclasses ({@link
-   * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then calling
-   * passing it to a
+   * Use this method to define your button->command mappings. Buttons can be created by
+   * instantiating a {@link edu.wpi.first.wpilibj.GenericHID} or one of its subclasses ({@link
+   * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then calling passing it to a
    * {@link JoystickButton}.
    */
   public static double getLeftXWithDeadband() {
