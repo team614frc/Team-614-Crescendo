@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.3826715309960145,
-      "y": 5.56
+      "x": 1.3703175816503543,
+      "y": 7.334125659332116
     },
     "rotation": 0
   },
@@ -12,44 +12,56 @@
     "data": {
       "commands": [
         {
-          "type": "named",
-          "data": {
-            "name": "Quick Shot"
-          }
-        },
-        {
           "type": "path",
           "data": {
-            "pathName": "FSM1"
+            "pathName": "AF1"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "Aimbot"
+            "name": "True Aimbot"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "FSM2"
+            "pathName": "AF2"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "Aimbot"
+            "name": "True Aimbot"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "FSM3"
+            "pathName": "AF3"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "True Aimbot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "AF4"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "True Aimbot"
           }
         }
       ]
     }
   },
-  "folder": "Front Side",
+  "folder": "Amp Side",
   "choreoAuto": false
 }

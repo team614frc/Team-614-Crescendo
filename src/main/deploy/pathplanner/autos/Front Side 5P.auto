@@ -18,34 +18,21 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "path",
           "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "cit1"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Intake"
-                }
-              }
-            ]
+            "pathName": "FS2-1"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "Aimbot"
+            "name": "True Aimbot"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "cit2"
+            "pathName": "FS2-2"
           }
         },
         {
@@ -57,13 +44,19 @@
         {
           "type": "path",
           "data": {
-            "pathName": "cit3"
+            "pathName": "FS2-3"
           }
         },
         {
           "type": "named",
           "data": {
-            "name": "Score Close"
+            "name": "True Aimbot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "FSM2"
           }
         }
       ]

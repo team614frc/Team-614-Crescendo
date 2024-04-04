@@ -3,55 +3,73 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.5,
-        "y": 5.545
+        "x": 1.588271083518912,
+        "y": 3.4805067105661944
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.419860567807003,
-        "y": 7.4309552554704394
+        "x": 4.202322537022997,
+        "y": 1.7769675610865214
       },
       "isLocked": false,
-      "linkedName": "FS2-2"
+      "linkedName": "SP2"
     },
     {
       "anchor": {
-        "x": 8.314313587482273,
-        "y": 5.698044741348875
+        "x": 8.167456764251632,
+        "y": 2.4084519009825143
       },
       "prevControl": {
-        "x": 6.753993541735883,
-        "y": 5.7155764272561385
+        "x": 5.015088671122653,
+        "y": 1.3214284205932096
       },
       "nextControl": {
-        "x": 9.62133931423498,
-        "y": 5.68335905902581
+        "x": 9.870995913727068,
+        "y": 2.995879193905079
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.983410904210002,
-        "y": 5.580559282764361
+        "x": 1.588271083518912,
+        "y": 3.4805067105661944
       },
       "prevControl": {
-        "x": 4.657578689039311,
-        "y": 7.445640937793504
+        "x": 5.450605534483452,
+        "y": 0.014685682318828802
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "FS2-3"
+      "linkedName": "SP3"
     }
   ],
-  "rotationTargets": [],
-  "constraintZones": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.95,
+      "rotationDegrees": 19.813213761646935,
+      "rotateFast": false
+    }
+  ],
+  "constraintZones": [
+    {
+      "name": "New Constraints Zone",
+      "minWaypointRelativePos": 1.25,
+      "maxWaypointRelativePos": 2.0,
+      "constraints": {
+        "maxVelocity": 3.5,
+        "maxAcceleration": 5.0,
+        "maxAngularVelocity": 572.0,
+        "maxAngularAcceleration": 720.0
+      }
+    }
+  ],
   "eventMarkers": [
     {
       "name": "New Event Marker",
       "waypointRelativePos": 0.05,
       "command": {
-        "type": "parallel",
+        "type": "sequential",
         "data": {
           "commands": [
             {
@@ -68,7 +86,7 @@
       "name": "New Event Marker",
       "waypointRelativePos": 1.5,
       "command": {
-        "type": "parallel",
+        "type": "sequential",
         "data": {
           "commands": [
             {
@@ -90,13 +108,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0,
+    "rotation": -46.0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Frontside",
+  "folder": "Source P Start",
   "previewStartingState": {
-    "rotation": 0,
+    "rotation": -44.99999999999997,
     "velocity": 0
   },
   "useDefaultConstraints": false

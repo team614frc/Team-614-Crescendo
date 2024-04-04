@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.7805585557503859,
-      "y": 4.388081878131556
+      "x": 0.7864328286796117,
+      "y": 6.699608275781847
     },
-    "rotation": -60.0
+    "rotation": 60.0
   },
   "command": {
     "type": "sequential",
@@ -18,13 +18,13 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "deadline",
           "data": {
             "commands": [
               {
                 "type": "path",
                 "data": {
-                  "pathName": "SS1.5"
+                  "pathName": "AS1"
                 }
               },
               {
@@ -39,17 +39,17 @@
         {
           "type": "named",
           "data": {
-            "name": "Aimbot"
+            "name": "True Aimbot"
           }
         },
         {
-          "type": "parallel",
+          "type": "deadline",
           "data": {
             "commands": [
               {
                 "type": "path",
                 "data": {
-                  "pathName": "SS2"
+                  "pathName": "AS2"
                 }
               },
               {
@@ -64,12 +64,37 @@
         {
           "type": "named",
           "data": {
-            "name": "Aimbot"
+            "name": "True Aimbot"
+          }
+        },
+        {
+          "type": "deadline",
+          "data": {
+            "commands": [
+              {
+                "type": "path",
+                "data": {
+                  "pathName": "AS3"
+                }
+              },
+              {
+                "type": "named",
+                "data": {
+                  "name": "Intake"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "True Aimbot"
           }
         }
       ]
     }
   },
-  "folder": "Source Side",
+  "folder": "Amp Side",
   "choreoAuto": false
 }

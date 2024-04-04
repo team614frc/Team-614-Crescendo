@@ -16,16 +16,16 @@
     },
     {
       "anchor": {
-        "x": 8.19682812889776,
-        "y": 2.349709171690258
+        "x": 8.248228017028485,
+        "y": 2.4231375833055786
       },
       "prevControl": {
-        "x": 7.051344907698759,
-        "y": 2.4084519009825143
+        "x": 7.558000947844472,
+        "y": 2.64342281815154
       },
       "nextControl": {
-        "x": 9.342311350096761,
-        "y": 2.2909664423980014
+        "x": 9.340917134838199,
+        "y": 2.07440701379184
       },
       "isLocked": false,
       "linkedName": null
@@ -44,29 +44,17 @@
       "linkedName": null
     }
   ],
-  "rotationTargets": [],
-  "constraintZones": [],
-  "eventMarkers": [
+  "rotationTargets": [
     {
-      "name": "New Event Marker",
-      "waypointRelativePos": 0.4,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "Intake"
-              }
-            }
-          ]
-        }
-      }
+      "waypointRelativePos": 0.5,
+      "rotationDegrees": -35.26945773594149,
+      "rotateFast": false
     }
   ],
+  "constraintZones": [],
+  "eventMarkers": [],
   "globalConstraints": {
-    "maxVelocity": 2.5,
+    "maxVelocity": 3.0,
     "maxAcceleration": 5.0,
     "maxAngularVelocity": 572.0,
     "maxAngularAcceleration": 720.0
@@ -77,7 +65,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "FS Mid",
+  "folder": "Frontside",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

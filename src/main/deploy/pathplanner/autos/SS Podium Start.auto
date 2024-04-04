@@ -1,0 +1,61 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 1.35,
+      "y": 4.097305368134887
+    },
+    "rotation": 0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "path",
+          "data": {
+            "pathName": "SP1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "True Aimbot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "SP2"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "True Aimbot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "SP3"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "True Aimbot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "SP4"
+          }
+        }
+      ]
+    }
+  },
+  "folder": "Source Side",
+  "choreoAuto": false
+}

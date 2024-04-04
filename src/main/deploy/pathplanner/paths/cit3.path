@@ -63,6 +63,23 @@
           ]
         }
       }
+    },
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 1.45,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Prep Shot"
+              }
+            }
+          ]
+        }
+      }
     }
   ],
   "globalConstraints": {
@@ -77,7 +94,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Frontside",
+  "folder": "fs OLD",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

@@ -3,45 +3,45 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.5,
-        "y": 5.545
+        "x": 3.6369237675863553,
+        "y": 5.595244965087426
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.419860567807003,
-        "y": 7.4309552554704394
+        "x": 4.569464595100926,
+        "y": 4.009191274196502
       },
       "isLocked": false,
-      "linkedName": "FS2-2"
+      "linkedName": "AF3"
     },
     {
       "anchor": {
-        "x": 8.314313587482273,
-        "y": 5.698044741348875
+        "x": 8.079342670313249,
+        "y": 4.097305368134887
       },
       "prevControl": {
-        "x": 6.753993541735883,
-        "y": 5.7155764272561385
+        "x": 7.079342670313249,
+        "y": 4.097305368134887
       },
       "nextControl": {
-        "x": 9.62133931423498,
-        "y": 5.68335905902581
+        "x": 9.079342670313249,
+        "y": 4.097305368134887
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.983410904210002,
-        "y": 5.580559282764361
+        "x": 3.6369237675863553,
+        "y": 5.595244965087426
       },
       "prevControl": {
-        "x": 4.657578689039311,
-        "y": 7.445640937793504
+        "x": 4.892549606208337,
+        "y": 3.5539351221815147
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "FS2-3"
+      "linkedName": null
     }
   ],
   "rotationTargets": [],
@@ -49,7 +49,7 @@
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.05,
+      "waypointRelativePos": 0.1,
       "command": {
         "type": "parallel",
         "data": {
@@ -58,23 +58,6 @@
               "type": "named",
               "data": {
                 "name": "Intake"
-              }
-            }
-          ]
-        }
-      }
-    },
-    {
-      "name": "New Event Marker",
-      "waypointRelativePos": 1.5,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "Prep Shot"
               }
             }
           ]
@@ -90,11 +73,11 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 0.0,
+    "rotation": 0,
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Frontside",
+  "folder": "AntiFresta",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

@@ -4,11 +4,12 @@
   "holonomicMode": true,
   "pathFolders": [
     "Ampside",
-    "FS Mid",
+    "AntiFresta",
     "Frontside",
-    "FS2",
     "Other",
-    "Sourceside"
+    "Source P Start",
+    "ss OLD",
+    "fs OLD"
   ],
   "autoFolders": [
     "Front Side",

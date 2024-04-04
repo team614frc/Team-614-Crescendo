@@ -2,10 +2,10 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 0.7864328286796117,
-      "y": 6.699608275781847
+      "x": 1.3826715309960145,
+      "y": 5.56
     },
-    "rotation": 60.0
+    "rotation": 0
   },
   "command": {
     "type": "sequential",
@@ -18,13 +18,13 @@
           }
         },
         {
-          "type": "parallel",
+          "type": "deadline",
           "data": {
             "commands": [
               {
                 "type": "path",
                 "data": {
-                  "pathName": "AS1"
+                  "pathName": "FSM1"
                 }
               },
               {
@@ -39,17 +39,17 @@
         {
           "type": "named",
           "data": {
-            "name": "Aimbot"
+            "name": "True Aimbot"
           }
         },
         {
-          "type": "parallel",
+          "type": "deadline",
           "data": {
             "commands": [
               {
                 "type": "path",
                 "data": {
-                  "pathName": "AS2"
+                  "pathName": "FSM2"
                 }
               },
               {
@@ -64,17 +64,17 @@
         {
           "type": "named",
           "data": {
-            "name": "Aimbot"
+            "name": "True Aimbot"
           }
         },
         {
-          "type": "parallel",
+          "type": "deadline",
           "data": {
             "commands": [
               {
                 "type": "path",
                 "data": {
-                  "pathName": "AS3"
+                  "pathName": "FSM3"
                 }
               },
               {
@@ -89,12 +89,12 @@
         {
           "type": "named",
           "data": {
-            "name": "Aimbot"
+            "name": "True Aimbot"
           }
         }
       ]
     }
   },
-  "folder": "Amp Side",
+  "folder": "Front Side",
   "choreoAuto": false
 }

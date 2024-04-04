@@ -8,35 +8,35 @@
       },
       "prevControl": null,
       "nextControl": {
-        "x": 2.33085782650993,
-        "y": 4.659732661057451
+        "x": 2.3666122466413095,
+        "y": 4.8169038019650285
       },
       "isLocked": false,
       "linkedName": "FS2-1"
     },
     {
       "anchor": {
-        "x": 2.7631256693640407,
-        "y": 4.038562638842631
+        "x": 2.6162688461334,
+        "y": 4.156048097427144
       },
       "prevControl": {
-        "x": 1.6763851774619725,
-        "y": 4.023876956517219
+        "x": 2.165225506498035,
+        "y": 4.2228693329286795
       },
       "nextControl": {
-        "x": 3.2800144934517768,
-        "y": 4.045547622953071
+        "x": 3.0127822688561303,
+        "y": 4.097305368134887
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 1.4,
+        "x": 1.5,
         "y": 5.545
       },
       "prevControl": {
-        "x": 1.8382531745825246,
+        "x": 1.9382531745825247,
         "y": 5.0515082017213055
       },
       "nextControl": null,
@@ -44,12 +44,18 @@
       "linkedName": "FS2-2"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.5,
+      "rotationDegrees": -30.744392043000275,
+      "rotateFast": false
+    }
+  ],
   "constraintZones": [],
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.3,
+      "waypointRelativePos": 0.05,
       "command": {
         "type": "parallel",
         "data": {
@@ -63,10 +69,27 @@
           ]
         }
       }
+    },
+    {
+      "name": "New Event Marker",
+      "waypointRelativePos": 1.45,
+      "command": {
+        "type": "parallel",
+        "data": {
+          "commands": [
+            {
+              "type": "named",
+              "data": {
+                "name": "Prep Shot"
+              }
+            }
+          ]
+        }
+      }
     }
   ],
   "globalConstraints": {
-    "maxVelocity": 2.0,
+    "maxVelocity": 2.5,
     "maxAcceleration": 5.0,
     "maxAngularVelocity": 572.0,
     "maxAngularAcceleration": 720.0
@@ -77,10 +100,10 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "FS2",
+  "folder": "Frontside",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0
   },
-  "useDefaultConstraints": true
+  "useDefaultConstraints": false
 }

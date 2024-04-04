@@ -23,6 +23,7 @@ import frc.robot.commands.drivetrain.vision.AlignToAngle;
 import frc.robot.commands.drivetrain.vision.AlignToClimb;
 import frc.robot.commands.drivetrain.vision.AlignToSpeaker;
 import frc.robot.commands.drivetrain.vision.AlignToTrap;
+import frc.robot.commands.manipulator.commandgroup.AutoAimShot;
 import frc.robot.commands.manipulator.commandgroup.AutoAlignScore;
 import frc.robot.commands.manipulator.commandgroup.AutoQuickShot;
 import frc.robot.commands.manipulator.commandgroup.AutoScore;
@@ -113,11 +114,17 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
 
-    // Pathplanner Commands for use in auto. Name is what you type into pathplanner,
-    // and the commands are "borrowed" from the controller
+    // Pathplanner Commands for use in auto. Name is what is used in pathplanner to call them.
     NamedCommands.registerCommand(
         "Score Close", new AutoScore(ManipulatorConstants.PIVOT_CLOSE_SCORE));
     NamedCommands.registerCommand("Aimbot", new AutoAlignScore());
+    NamedCommands.registerCommand(
+        "Prep Shot",
+        new ShootPrep(
+            ManipulatorConstants.PIVOT_FAR_SCORE,
+            ManipulatorConstants.SCORE_SIMPLE_RPM,
+            ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD));
+    NamedCommands.registerCommand("True Aimbot", new AutoAimShot());
     NamedCommands.registerCommand("Score Far", new AutoScore(ManipulatorConstants.PIVOT_FAR_SCORE));
     NamedCommands.registerCommand("Score Amp", new AutoScore(ManipulatorConstants.PIVOT_AMP_GOAL));
     NamedCommands.registerCommand("Intake", new IntakeNote());

@@ -3,53 +3,69 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.5,
-        "y": 5.545
+        "x": 3.6369237675863553,
+        "y": 5.595244965087426
       },
       "prevControl": null,
       "nextControl": {
-        "x": 6.419860567807003,
-        "y": 7.4309552554704394
+        "x": 4.672264371362375,
+        "y": 6.814156597901747
       },
       "isLocked": false,
-      "linkedName": "FS2-2"
+      "linkedName": "AF2"
     },
     {
       "anchor": {
-        "x": 8.314313587482273,
-        "y": 5.698044741348875
+        "x": 8.248228017028485,
+        "y": 5.771473152964195
       },
       "prevControl": {
-        "x": 6.753993541735883,
-        "y": 5.7155764272561385
+        "x": 7.195156572412747,
+        "y": 6.66658388088757
       },
       "nextControl": {
-        "x": 9.62133931423498,
-        "y": 5.68335905902581
+        "x": 9.129368956412332,
+        "y": 5.0225033544879265
       },
       "isLocked": false,
       "linkedName": null
     },
     {
       "anchor": {
-        "x": 2.983410904210002,
-        "y": 5.580559282764361
+        "x": 3.6369237675863553,
+        "y": 5.595244965087426
       },
       "prevControl": {
-        "x": 4.657578689039311,
-        "y": 7.445640937793504
+        "x": 5.861804639530567,
+        "y": 7.812782995870107
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "FS2-3"
+      "linkedName": "AF3"
     }
   ],
-  "rotationTargets": [],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 0.95,
+      "rotationDegrees": -30.095796208526885,
+      "rotateFast": false
+    },
+    {
+      "waypointRelativePos": 0.4,
+      "rotationDegrees": 0,
+      "rotateFast": false
+    },
+    {
+      "waypointRelativePos": 1.7,
+      "rotationDegrees": 0,
+      "rotateFast": false
+    }
+  ],
   "constraintZones": [],
   "eventMarkers": [
     {
       "name": "New Event Marker",
-      "waypointRelativePos": 0.05,
+      "waypointRelativePos": 0.15,
       "command": {
         "type": "parallel",
         "data": {
@@ -94,7 +110,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "Frontside",
+  "folder": "AntiFresta",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0
