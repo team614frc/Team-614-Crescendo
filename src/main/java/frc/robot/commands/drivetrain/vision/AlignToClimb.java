@@ -29,10 +29,10 @@ public class AlignToClimb extends Command {
 
     if (Math.abs(angle) <= VisionConstants.ALIGN_THRESHOLD) {
       turn = RobotContainer.getDriverRightX();
+    } else {
+      RobotContainer.swerveDrive.drive(
+          RobotContainer.getDriverLeftY(), RobotContainer.getDriverLeftX(), turn, true, true);
     }
-
-    RobotContainer.swerveDrive.drive(
-        RobotContainer.getDriverLeftY(), RobotContainer.getDriverLeftX(), turn, true, true);
   }
 
   // Called once the command ends or is interrupted.
