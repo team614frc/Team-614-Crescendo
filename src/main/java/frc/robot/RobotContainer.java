@@ -116,8 +116,7 @@ public class RobotContainer {
 
     // Pathplanner Commands for use in auto. Name is what is used in pathplanner to
     // call them.
-    NamedCommands.registerCommand(
-        "Score Close", new AutoScore(-0.14));
+    NamedCommands.registerCommand("Score Close", new AutoScore(-0.14));
     NamedCommands.registerCommand("Aimbot", new AutoAlignScore());
     NamedCommands.registerCommand(
         "Prep Shot",
