@@ -24,7 +24,6 @@ public class LimelightSubsystem extends SubsystemBase {
 
   public LimelightSubsystem() {
     limelightTable = NetworkTableInstance.getDefault().getTable("limelight-intake");
-    robotPose = RobotContainer.swerveDrive.getPose();
     this.turnOffLEDs();
     aprilTagInfo = limelightTable.getEntry("targetpose_robotspace").getDoubleArray(new double[6]);
 
