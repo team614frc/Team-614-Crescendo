@@ -192,7 +192,7 @@ public class RobotContainer {
     m_driverController.leftTrigger().whileTrue(new IntakeNote());
     m_driverController.rightTrigger().whileTrue(new Puke()).onFalse(new ResetWheels());
     m_driverController.leftBumper().onTrue(armUp);
-    m_driverController.rightBumper().whileTrue(new PivotDown(0.5, -0.1));
+    m_driverController.rightBumper().whileTrue(new PivotDown(0.75, -0.1));
     m_driverController.y().whileTrue(new AlignToTrap());
     m_driverController.x().whileTrue(new AlignToAngle(90));
     // m_driverController.b().whileTrue(new AlignToClimb());
