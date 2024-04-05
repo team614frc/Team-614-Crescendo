@@ -16,16 +16,16 @@
     },
     {
       "anchor": {
-        "x": 2.7,
+        "x": 2.5,
         "y": 5.545
       },
       "prevControl": {
-        "x": 3.499878156125113,
-        "y": 5.531038074850174
+        "x": 3.6998172341876696,
+        "y": 5.524057112275261
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "cit1"
     }
   ],
   "rotationTargets": [],
