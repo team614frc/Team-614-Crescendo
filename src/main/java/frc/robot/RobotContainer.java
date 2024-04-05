@@ -196,7 +196,7 @@ public class RobotContainer {
     m_driverController.y().whileTrue(new AlignToTrap());
     m_driverController.x().whileTrue(new AlignToAngle(90));
     // m_driverController.b().whileTrue(new AlignToClimb());
-    m_coDriverController.b().whileTrue(new SpinMove());
+    m_driverController.b().whileTrue(new SpinMove());
     m_driverController.a().whileTrue(new AlignToSpeaker());
     m_driverController.start().whileTrue(new ResetRobotHeading());
     // m_driverController.start().whileTrue(new Blow());
