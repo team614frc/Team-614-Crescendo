@@ -131,7 +131,7 @@ public final class Constants {
     public static final double TREE_MAP_MAX = 3.385;
 
     public static final double PIVOT_TREE_MAP_ANGLE_MIN = ManipulatorConstants.PIVOT_CLOSE_SCORE;
-    public static final double PIVOT_TREE_MAP_ANGLE1 = -.4;
+    public static final double PIVOT_TREE_MAP_ANGLE1 = -.43;
     public static final double PIVOT_TREE_MAP_ANGLE_MAX = -.535;
   }
 
