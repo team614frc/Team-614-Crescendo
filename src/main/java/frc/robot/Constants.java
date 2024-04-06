@@ -70,7 +70,7 @@ public final class Constants {
     public static final double PIVOT_MAX = -(Math.PI / 2) - 0.02;
     public static final double PIVOT_MIN = 0.08;
     public static final double PIVOT_CLOSE_SCORE = -0.1; // -0.25
-    public static final double PIVOT_FAR_SCORE = -0.4; // -0.55
+    public static final double PIVOT_FAR_SCORE = -0.45; // -0.55
     public static final double PIVOT_AMP_GOAL = -(Math.PI / 2) - 0.02;
     public static final double PIVOT_TRAP_SCORE = 0;
     public static final double PIVOT_INTAKE_THRESHOLD = 0.15;
@@ -131,7 +131,7 @@ public final class Constants {
     public static final double TREE_MAP_MAX = 3.385;
 
     public static final double PIVOT_TREE_MAP_ANGLE_MIN = ManipulatorConstants.PIVOT_CLOSE_SCORE;
-    public static final double PIVOT_TREE_MAP_ANGLE1 = -.47; // .4
+    public static final double PIVOT_TREE_MAP_ANGLE1 = -.45; // .4
     public static final double PIVOT_TREE_MAP_ANGLE_MAX = -.535;
   }
 

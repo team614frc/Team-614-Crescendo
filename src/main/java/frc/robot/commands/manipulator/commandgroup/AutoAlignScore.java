@@ -16,7 +16,7 @@ public class AutoAlignScore extends ParallelDeadlineGroup {
   public AutoAlignScore() {
     // Add the deadline command in the super() call. Add other commands using
     // addCommands().
-    super(new AutoScore(ManipulatorConstants.PIVOT_FAR_SCORE));
+    super(new AutoScore(-.45));
     addCommands(new AlignToSpeaker());
   }
 }
