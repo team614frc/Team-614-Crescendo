@@ -125,7 +125,7 @@ public class RobotContainer {
             ManipulatorConstants.SCORE_SIMPLE_RPM,
             ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD));
     NamedCommands.registerCommand("True Aimbot", new AutoAimShot());
-    NamedCommands.registerCommand("Score Far", new AutoScore(-.44));
+    NamedCommands.registerCommand("Score Far", new AutoScore(-.48));
     NamedCommands.registerCommand("Score Amp", new AutoScore(ManipulatorConstants.PIVOT_AMP_GOAL));
     NamedCommands.registerCommand("Intake", new IntakeNote());
     NamedCommands.registerCommand(
