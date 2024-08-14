@@ -24,4 +24,4 @@ public final class Main {
   }
 }
 
-// Testing cool
+// Testing
