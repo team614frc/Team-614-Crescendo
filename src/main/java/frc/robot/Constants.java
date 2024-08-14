@@ -40,6 +40,8 @@ public final class Constants {
     public static final double SCORE_AMP_SPEED = 2000;
     public static final double SCORE_SIMPLE = 0.8;
     public static final double SCORE_SIMPLE_RPM = 5000;
+    public static final double SCORE_INPLACE_BABY_RPM = 1000;
+    public static final double SCORE_INPLACE_TEEN_RPM = 1500;
     public static final double SHOOTER_FEED = 0.2;
     public static final double AMP_SPEED = 0.2;
     public static final double SHOOTER_kFF = 0.000082;
@@ -238,6 +240,7 @@ public final class Constants {
   public static final class OIConstants {
     public static final int kDriverControllerPort = 0;
     public static final int kCoDriverControllerPort = 1;
+    public static final int kOutreachControllerPort = 5;
     public static final double kDriveDeadband = 0.05;
     public static final int X_BUTTON = 3;
     public static final int Y_BUTTON = 4;
