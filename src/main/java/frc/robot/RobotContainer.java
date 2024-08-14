@@ -68,7 +68,8 @@ public class RobotContainer {
       new CommandXboxController(OIConstants.kDriverControllerPort);
   static CommandXboxController m_coDriverController =
       new CommandXboxController(OIConstants.kCoDriverControllerPort);
-
+  static CommandXboxController m_outreachController =
+      new CommandXboxController(OIConstants.kOutreachControllerPort);
   private final SendableChooser<Command> autoChooser;
 
   private final Command simpleScoreAmp =
@@ -85,6 +86,16 @@ public class RobotContainer {
       new SimpleScoreNote(
           ManipulatorConstants.PIVOT_CLOSE_SCORE,
           ManipulatorConstants.SCORE_SIMPLE_RPM,
+          ManipulatorConstants.PIVOT_INTAKE_THRESHOLD);
+  private final Command simpleScoreInPlaceBaby =
+      new SimpleScoreNote(
+          pivotSubsystem.getEncoderinRadians(),
+          ManipulatorConstants.SCORE_INPLACE_BABY_RPM,
+          ManipulatorConstants.PIVOT_INTAKE_THRESHOLD);
+private final Command simpleScoreInPlaceTeen =
+      new SimpleScoreNote(
+          pivotSubsystem.getEncoderinRadians(),
+          ManipulatorConstants.SCORE_INPLACE_TEEN_RPM,
           ManipulatorConstants.PIVOT_INTAKE_THRESHOLD);
   private final Command prepClose =
       new ShootPrep(
@@ -209,6 +220,11 @@ public class RobotContainer {
     m_coDriverController.b().whileTrue(new Puke()).onFalse(new ResetWheels());
     m_coDriverController.a().whileTrue(prepClose);
     m_coDriverController.start().whileTrue(new SimpleScoreTrap());
+
+    m_outreachController.rightBumper().onTrue(simpleScoreInPlaceBaby);
+    m_outreachController.rightTrigger().onTrue(simpleScoreInPlaceTeen);
+    m_outreachController.leftTrigger().whileTrue(new IntakeNote());
+
   }
 
   /**
