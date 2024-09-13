@@ -22,7 +22,7 @@ import frc.robot.commands.drivetrain.ResetRobotHeading;
 import frc.robot.commands.drivetrain.vision.AlignToAngle;
 import frc.robot.commands.drivetrain.vision.AlignToClimb;
 import frc.robot.commands.drivetrain.vision.AlignToSpeaker;
-import frc.robot.commands.drivetrain.vision.AlignToTrap;
+// import frc.robot.commands.drivetrain.vision.AlignToTrap;
 import frc.robot.commands.manipulator.commandgroup.AutoAimShot;
 import frc.robot.commands.manipulator.commandgroup.AutoAlignScore;
 import frc.robot.commands.manipulator.commandgroup.AutoQuickShot;
@@ -92,10 +92,15 @@ public class RobotContainer {
           pivotSubsystem.getEncoderinRadians(),
           ManipulatorConstants.SCORE_INPLACE_BABY_RPM,
           ManipulatorConstants.PIVOT_INTAKE_THRESHOLD);
-private final Command simpleScoreInPlaceTeen =
+  private final Command simpleScoreInPlaceTeen =
       new SimpleScoreNote(
           pivotSubsystem.getEncoderinRadians(),
           ManipulatorConstants.SCORE_INPLACE_TEEN_RPM,
+          ManipulatorConstants.PIVOT_INTAKE_THRESHOLD);
+  private final Command feederShot =
+      new SimpleScoreNote(
+          ManipulatorConstants.PIVOT_FEEDER_SHOT,
+          ManipulatorConstants.FEEDER_SHOT_RPM,
           ManipulatorConstants.PIVOT_INTAKE_THRESHOLD);
   private final Command prepClose =
       new ShootPrep(
@@ -204,7 +209,7 @@ private final Command simpleScoreInPlaceTeen =
     m_driverController.rightTrigger().whileTrue(new Puke()).onFalse(new ResetWheels());
     m_driverController.leftBumper().onTrue(armUp);
     m_driverController.rightBumper().whileTrue(new PivotDown(0.5, -0.1));
-    m_driverController.y().whileTrue(new AlignToTrap());
+    m_driverController.y().whileTrue(feederShot); // m_driverController.y().whileTrue(AlignToTrap());
     m_driverController.x().whileTrue(new AlignToAngle(90));
     m_driverController.b().whileTrue(new AlignToClimb());
     m_driverController.a().whileTrue(new AlignToSpeaker());
@@ -224,7 +229,6 @@ private final Command simpleScoreInPlaceTeen =
     m_outreachController.rightBumper().onTrue(simpleScoreInPlaceBaby);
     m_outreachController.rightTrigger().onTrue(simpleScoreInPlaceTeen);
     m_outreachController.leftTrigger().whileTrue(new IntakeNote());
-
   }
 
   /**
