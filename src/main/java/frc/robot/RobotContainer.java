@@ -113,6 +113,11 @@ public class RobotContainer {
           ManipulatorConstants.PIVOT_AMP_GOAL,
           ManipulatorConstants.SCORE_AMP_SPEED,
           ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
+  private final Command prepFeed =
+      new ShootPrep(
+        ManipulatorConstants.PIVOT_FEEDER_SHOT,
+        ManipulatorConstants.FEEDER_SHOT_RPM,
+        ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
   private final Command armUp =
       new PivotPID(
           ManipulatorConstants.PIVOT_AMP_GOAL, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
@@ -224,7 +229,7 @@ public class RobotContainer {
     m_coDriverController.rightBumper().onTrue(simpleScoreFar);
     m_coDriverController.y().whileTrue(new ScoreReset());
     m_coDriverController.x().whileTrue(prepAmp);
-    m_coDriverController.b().whileTrue(new Puke()).onFalse(new ResetWheels());
+    m_coDriverController.b().whileTrue(prepFeed); //m_coDriverController.b().whileTrue(new Puke()).onFalse(new ResetWheels());
     m_coDriverController.a().whileTrue(prepClose);
     m_coDriverController.start().whileTrue(new SimpleScoreTrap());
 
