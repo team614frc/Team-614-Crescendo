@@ -110,12 +110,12 @@ public class RobotContainer {
           ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
   private final Command prepAmp =
       new ShootPrep(
-          ManipulatorConstants.PIVOT_AMP_GOAL,
+          ManipulatorConstants.PIVOT_AMP_GOAL,  
           ManipulatorConstants.SCORE_AMP_SPEED,
           ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
   private final Command prepFeed =
       new ShootPrep(
-        ManipulatorConstants.PIVOT_FEEDER_SHOT,
+        ManipulatorConstants.PIVOT_CLOSE_SCORE,
         ManipulatorConstants.FEEDER_SHOT_RPM,
         ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
   private final Command armUp =
@@ -215,7 +215,7 @@ public class RobotContainer {
     m_driverController.rightTrigger().whileTrue(new Puke()).onFalse(new ResetWheels());
     m_driverController.leftBumper().onTrue(armUp);
     m_driverController.rightBumper().whileTrue(new PivotDown(0.75, -0.1));
-    m_driverController.y().whileTrue(feederShot); // m_driverController.y().whileTrue(AlignToTrap());
+    m_driverController.y().onTrue(feederShot); // m_driverController.y().whileTrue(AlignToTrap());
     m_driverController.x().whileTrue(new AlignToAngle(90));
     // m_driverController.b().whileTrue(new AlignToClimb());
     m_driverController.b().whileTrue(new SpinMove());
