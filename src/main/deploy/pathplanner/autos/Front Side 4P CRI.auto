@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.3826715309960145,
-      "y": 5.55
+      "x": 1.37,
+      "y": 5.54
     },
     "rotation": 0
   },
@@ -18,22 +18,21 @@
           }
         },
         {
-          "type": "deadline",
+          "type": "path",
           "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "cit1"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Intake"
-                }
-              }
-            ]
+            "pathName": "cit1"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "True Aimbot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "cit2"
           }
         },
         {
@@ -43,47 +42,9 @@
           }
         },
         {
-          "type": "deadline",
+          "type": "path",
           "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "cit2"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Intake"
-                }
-              }
-            ]
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Score Close"
-          }
-        },
-        {
-          "type": "deadline",
-          "data": {
-            "commands": [
-              {
-                "type": "path",
-                "data": {
-                  "pathName": "cit3"
-                }
-              },
-              {
-                "type": "named",
-                "data": {
-                  "name": "Intake"
-                }
-              }
-            ]
+            "pathName": "cit3"
           }
         },
         {

@@ -19,9 +19,9 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.drivetrain.ResetRobotHeading;
-import frc.robot.commands.drivetrain.SpinMove;
+// import frc.robot.commands.drivetrain.SpinMove;
 import frc.robot.commands.drivetrain.vision.AlignToAngle;
-// import frc.robot.commands.drivetrain.vision.AlignToClimb;
+import frc.robot.commands.drivetrain.vision.AlignToClimb;
 import frc.robot.commands.drivetrain.vision.AlignToSpeaker;
 // import frc.robot.commands.drivetrain.vision.AlignToTrap;
 import frc.robot.commands.manipulator.commandgroup.AutoAimShot;
@@ -110,14 +110,14 @@ public class RobotContainer {
           ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
   private final Command prepAmp =
       new ShootPrep(
-          ManipulatorConstants.PIVOT_AMP_GOAL,  
+          ManipulatorConstants.PIVOT_AMP_GOAL,
           ManipulatorConstants.SCORE_AMP_SPEED,
           ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
   private final Command prepFeed =
       new ShootPrep(
-        ManipulatorConstants.PIVOT_CLOSE_SCORE,
-        ManipulatorConstants.FEEDER_SHOT_RPM,
-        ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
+          ManipulatorConstants.PIVOT_CLOSE_SCORE,
+          ManipulatorConstants.FEEDER_SHOT_RPM,
+          ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
   private final Command armUp =
       new PivotPID(
           ManipulatorConstants.PIVOT_AMP_GOAL, ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
@@ -217,8 +217,7 @@ public class RobotContainer {
     m_driverController.rightBumper().whileTrue(new PivotDown(0.75, -0.1));
     m_driverController.y().onTrue(feederShot); // m_driverController.y().whileTrue(AlignToTrap());
     m_driverController.x().whileTrue(new AlignToAngle(90));
-    // m_driverController.b().whileTrue(new AlignToClimb());
-    m_driverController.b().whileTrue(new SpinMove());
+    m_driverController.b().whileTrue(new AlignToClimb());
     m_driverController.a().whileTrue(new AlignToSpeaker());
     m_driverController.start().whileTrue(new ResetRobotHeading());
     // m_driverController.start().whileTrue(new Blow());
@@ -229,7 +228,10 @@ public class RobotContainer {
     m_coDriverController.rightBumper().onTrue(simpleScoreFar);
     m_coDriverController.y().whileTrue(new ScoreReset());
     m_coDriverController.x().whileTrue(prepAmp);
-    m_coDriverController.b().whileTrue(prepFeed); //m_coDriverController.b().whileTrue(new Puke()).onFalse(new ResetWheels());
+    m_coDriverController
+        .b()
+        .whileTrue(
+            prepFeed); // m_coDriverController.b().whileTrue(new Puke()).onFalse(new ResetWheels());
     m_coDriverController.a().whileTrue(prepClose);
     m_coDriverController.start().whileTrue(new SimpleScoreTrap());
 

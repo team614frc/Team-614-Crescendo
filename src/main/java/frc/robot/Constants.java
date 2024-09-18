@@ -42,7 +42,7 @@ public final class Constants {
     public static final double SCORE_SIMPLE_RPM = 5000;
     public static final double SCORE_INPLACE_BABY_RPM = 1000;
     public static final double SCORE_INPLACE_TEEN_RPM = 1500;
-    public static final double FEEDER_SHOT_RPM = 3000;
+    public static final double FEEDER_SHOT_RPM = 4500;
     public static final double SHOOTER_FEED = 0.2;
     public static final double AMP_SPEED = 0.2;
     public static final double SHOOTER_kFF = 0.000082;
@@ -78,7 +78,7 @@ public final class Constants {
     public static final double PIVOT_TRAP_SCORE = 0;
     public static final double PIVOT_INTAKE_THRESHOLD = 0.15;
     public static final double PIVOT_SHOOTER_THRESHOLD = 0.1;
-    public static final double PIVOT_FEEDER_SHOT = -0.4;
+    public static final double PIVOT_FEEDER_SHOT = -0.385;
 
     // Others
     public static final double PIVOT_MAX_VEL = 4;
