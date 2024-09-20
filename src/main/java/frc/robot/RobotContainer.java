@@ -19,7 +19,6 @@ import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.ManipulatorConstants;
 import frc.robot.Constants.OIConstants;
 import frc.robot.commands.drivetrain.ResetRobotHeading;
-// import frc.robot.commands.drivetrain.SpinMove;
 import frc.robot.commands.drivetrain.vision.AlignToAngle;
 import frc.robot.commands.drivetrain.vision.AlignToClimb;
 import frc.robot.commands.drivetrain.vision.AlignToSpeaker;
@@ -143,7 +142,7 @@ public class RobotContainer {
     NamedCommands.registerCommand(
         "Prep Shot",
         new ShootPrep(
-            ManipulatorConstants.PIVOT_FAR_SCORE,
+            ManipulatorConstants.PIVOT_CLOSE_SCORE,
             ManipulatorConstants.SCORE_SIMPLE_RPM,
             ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD));
     NamedCommands.registerCommand("True Aimbot", new AutoAimShot());

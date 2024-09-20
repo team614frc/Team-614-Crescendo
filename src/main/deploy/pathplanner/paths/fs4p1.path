@@ -3,41 +3,25 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 1.38,
+        "x": 1.33,
         "y": 5.54
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.6885563183648735,
-        "y": 6.5344999984096575
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 2.813603352325188,
-        "y": 7.197724348055331
-      },
-      "prevControl": {
-        "x": 1.829662636679893,
-        "y": 7.183038665732267
-      },
-      "nextControl": {
-        "x": 3.9446562996944756,
-        "y": 7.214605735329499
-      },
-      "isLocked": false,
-      "linkedName": null
-    },
-    {
-      "anchor": {
-        "x": 1.37,
+        "x": 2.983410904210002,
         "y": 5.551187918118234
       },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 3.0,
+        "y": 5.54
+      },
       "prevControl": {
-        "x": 1.9722699648261584,
-        "y": 5.972946305928391
+        "x": 2.9980965865330664,
+        "y": 5.53650223579517
       },
       "nextControl": null,
       "isLocked": false,
@@ -63,23 +47,6 @@
           ]
         }
       }
-    },
-    {
-      "name": "New Event Marker",
-      "waypointRelativePos": 1.45,
-      "command": {
-        "type": "parallel",
-        "data": {
-          "commands": [
-            {
-              "type": "named",
-              "data": {
-                "name": "Prep Shot"
-              }
-            }
-          ]
-        }
-      }
     }
   ],
   "globalConstraints": {
@@ -94,7 +61,7 @@
     "rotateFast": false
   },
   "reversed": false,
-  "folder": "fs OLD",
+  "folder": "cri",
   "previewStartingState": {
     "rotation": 0,
     "velocity": 0

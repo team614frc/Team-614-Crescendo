@@ -2,8 +2,8 @@
   "version": 1.0,
   "startingPose": {
     "position": {
-      "x": 1.37,
-      "y": 5.54
+      "x": 1.33,
+      "y": 5.522617590689727
     },
     "rotation": 0
   },
@@ -14,13 +14,55 @@
         {
           "type": "named",
           "data": {
-            "name": "Quick Shot"
+            "name": "Score Close"
           }
         },
         {
           "type": "path",
           "data": {
-            "pathName": "cit1"
+            "pathName": "fs4p1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "fs4p2"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Score Close"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "fs4p3"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "fs4p4"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Score Close"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "fs4p5"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "fs4p6"
           }
         },
         {
@@ -28,34 +70,10 @@
           "data": {
             "name": "True Aimbot"
           }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "cit2"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Score Close"
-          }
-        },
-        {
-          "type": "path",
-          "data": {
-            "pathName": "cit3"
-          }
-        },
-        {
-          "type": "named",
-          "data": {
-            "name": "Score Close"
-          }
         }
       ]
     }
   },
-  "folder": "Front Side",
+  "folder": null,
   "choreoAuto": false
 }
