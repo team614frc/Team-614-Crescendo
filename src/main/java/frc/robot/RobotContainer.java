@@ -92,7 +92,7 @@ public class RobotContainer {
           pivotSubsystem.getEncoderinRadians(),
           ManipulatorConstants.SCORE_INPLACE_BABY_RPM,
           ManipulatorConstants.PIVOT_INTAKE_THRESHOLD);
-private final Command simpleScoreInPlaceTeen =
+  private final Command simpleScoreInPlaceTeen =
       new SimpleScoreNote(
           pivotSubsystem.getEncoderinRadians(),
           ManipulatorConstants.SCORE_INPLACE_TEEN_RPM,
@@ -224,7 +224,6 @@ private final Command simpleScoreInPlaceTeen =
     m_outreachController.rightBumper().onTrue(simpleScoreInPlaceBaby);
     m_outreachController.rightTrigger().onTrue(simpleScoreInPlaceTeen);
     m_outreachController.leftTrigger().whileTrue(new IntakeNote());
-
   }
 
   /**
