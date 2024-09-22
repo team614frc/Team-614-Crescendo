@@ -1,4 +1,4 @@
-﻿﻿# Team-614-Crescendo
+# Team-614-Crescendo
 
 ## Delete Pathplanner Files
 
