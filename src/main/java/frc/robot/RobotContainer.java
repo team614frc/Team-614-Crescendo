@@ -22,7 +22,6 @@ import frc.robot.commands.drivetrain.ResetRobotHeading;
 import frc.robot.commands.drivetrain.vision.AlignToAngle;
 import frc.robot.commands.drivetrain.vision.AlignToClimb;
 import frc.robot.commands.drivetrain.vision.AlignToSpeaker;
-// import frc.robot.commands.drivetrain.vision.AlignToTrap;
 import frc.robot.commands.manipulator.commandgroup.AutoAimShot;
 import frc.robot.commands.manipulator.commandgroup.AutoAlignScore;
 import frc.robot.commands.manipulator.commandgroup.AutoQuickShot;
