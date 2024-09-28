@@ -230,7 +230,7 @@ public class RobotContainer {
     m_coDriverController
         .b()
         .whileTrue(
-            prepFeed); // m_coDriverController.b().whileTrue(new Puke()).onFalse(new ResetWheels());
+            prepFeed);
     m_coDriverController.a().whileTrue(prepClose);
     m_coDriverController.start().whileTrue(new SimpleScoreTrap());
 
