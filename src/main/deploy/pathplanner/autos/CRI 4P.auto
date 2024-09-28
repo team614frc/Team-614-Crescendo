@@ -1,0 +1,79 @@
+{
+  "version": 1.0,
+  "startingPose": {
+    "position": {
+      "x": 1.33,
+      "y": 5.522617590689727
+    },
+    "rotation": 0
+  },
+  "command": {
+    "type": "sequential",
+    "data": {
+      "commands": [
+        {
+          "type": "named",
+          "data": {
+            "name": "Quick Shot"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "fs4p1"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "fs4p2"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Score Close"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "fs4p3"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "fs4p4"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "Score Close"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "fs4p5"
+          }
+        },
+        {
+          "type": "path",
+          "data": {
+            "pathName": "fs4p6"
+          }
+        },
+        {
+          "type": "named",
+          "data": {
+            "name": "True Aimbot"
+          }
+        }
+      ]
+    }
+  },
+  "folder": null,
+  "choreoAuto": false
+}

@@ -22,7 +22,6 @@ import frc.robot.commands.drivetrain.ResetRobotHeading;
 import frc.robot.commands.drivetrain.vision.AlignToAngle;
 import frc.robot.commands.drivetrain.vision.AlignToClimb;
 import frc.robot.commands.drivetrain.vision.AlignToSpeaker;
-import frc.robot.commands.drivetrain.vision.AlignToTrap;
 import frc.robot.commands.manipulator.commandgroup.AutoAimShot;
 import frc.robot.commands.manipulator.commandgroup.AutoAlignScore;
 import frc.robot.commands.manipulator.commandgroup.AutoQuickShot;
@@ -97,6 +96,11 @@ public class RobotContainer {
           pivotSubsystem.getEncoderinRadians(),
           ManipulatorConstants.SCORE_INPLACE_TEEN_RPM,
           ManipulatorConstants.PIVOT_INTAKE_THRESHOLD);
+  private final Command feederShot =
+      new SimpleScoreNote(
+          ManipulatorConstants.PIVOT_FEEDER_SHOT,
+          ManipulatorConstants.FEEDER_SHOT_RPM,
+          ManipulatorConstants.PIVOT_INTAKE_THRESHOLD);
   private final Command prepClose =
       new ShootPrep(
           ManipulatorConstants.PIVOT_CLOSE_SCORE,
@@ -106,6 +110,11 @@ public class RobotContainer {
       new ShootPrep(
           ManipulatorConstants.PIVOT_AMP_GOAL,
           ManipulatorConstants.SCORE_AMP_SPEED,
+          ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
+  private final Command prepFeed =
+      new ShootPrep(
+          ManipulatorConstants.PIVOT_CLOSE_SCORE,
+          ManipulatorConstants.FEEDER_SHOT_RPM,
           ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD);
   private final Command armUp =
       new PivotPID(
@@ -132,7 +141,7 @@ public class RobotContainer {
     NamedCommands.registerCommand(
         "Prep Shot",
         new ShootPrep(
-            ManipulatorConstants.PIVOT_FAR_SCORE,
+            ManipulatorConstants.PIVOT_CLOSE_SCORE,
             ManipulatorConstants.SCORE_SIMPLE_RPM,
             ManipulatorConstants.PIVOT_SHOOTER_THRESHOLD));
     NamedCommands.registerCommand("True Aimbot", new AutoAimShot());
@@ -203,8 +212,8 @@ public class RobotContainer {
     m_driverController.leftTrigger().whileTrue(new IntakeNote());
     m_driverController.rightTrigger().whileTrue(new Puke()).onFalse(new ResetWheels());
     m_driverController.leftBumper().onTrue(armUp);
-    m_driverController.rightBumper().whileTrue(new PivotDown(0.5, -0.1));
-    m_driverController.y().whileTrue(new AlignToTrap());
+    m_driverController.rightBumper().whileTrue(new PivotDown(0.75, -0.1));
+    m_driverController.y().onTrue(feederShot);
     m_driverController.x().whileTrue(new AlignToAngle(90));
     m_driverController.b().whileTrue(new AlignToClimb());
     m_driverController.a().whileTrue(new AlignToSpeaker());
@@ -217,7 +226,10 @@ public class RobotContainer {
     m_coDriverController.rightBumper().onTrue(simpleScoreFar);
     m_coDriverController.y().whileTrue(new ScoreReset());
     m_coDriverController.x().whileTrue(prepAmp);
-    m_coDriverController.b().whileTrue(new Puke()).onFalse(new ResetWheels());
+    m_coDriverController
+        .b()
+        .whileTrue(
+            prepFeed);
     m_coDriverController.a().whileTrue(prepClose);
     m_coDriverController.start().whileTrue(new SimpleScoreTrap());
 
