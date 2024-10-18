@@ -226,10 +226,7 @@ public class RobotContainer {
     m_coDriverController.rightBumper().onTrue(simpleScoreFar);
     m_coDriverController.y().whileTrue(new ScoreReset());
     m_coDriverController.x().whileTrue(prepAmp);
-    m_coDriverController
-        .b()
-        .whileTrue(
-            prepFeed);
+    m_coDriverController.b().whileTrue(prepFeed);
     m_coDriverController.a().whileTrue(prepClose);
     m_coDriverController.start().whileTrue(new SimpleScoreTrap());
 
